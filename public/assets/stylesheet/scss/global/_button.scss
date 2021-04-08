@@ -1,0 +1,22 @@
+.btn--primary {
+  background-color: $primary;
+  &:hover {
+    background-color: darken($primary, 5%);
+  }
+}
+
+.btn-dark {
+  &:hover {
+    background-color: $primary;
+    border: 1px solid $primary;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  }
+}
+.btn--primary {
+  &:hover {
+    background-color: $black;
+    border: 1px solid $black;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    color: #fff;
+  }
+}

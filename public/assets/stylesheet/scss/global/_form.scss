@@ -1,0 +1,16 @@
+.custom-form-group-search {
+  
+  input {
+    min-width: 425px;
+    border-radius: 7px;
+    padding: 12px;
+  }
+  i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    padding-right: 20px;
+
+  }
+}
