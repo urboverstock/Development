@@ -51,8 +51,8 @@
                 <div class="carousel-content-1 " data-aos="fade-up">
                   <h1 class="display-5 fw-bold mb-4">Your Favourite Brands Under Single Roof</h1>
                   <p class="mb-5">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
-                  
-                  <button type="button" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</button>
+
+                   <a href="{{ route('signup') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
                 <div class="carousel-app">
                   <div>
@@ -86,7 +86,7 @@
                   <h1 class="display-5 fw-bold mb-4">Your Favourite Brands Under Single Roof</h1>
                   <p class="mb-5">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
                   
-                  <button type="button" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</button>
+                 <a href="{{ route('signup') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
                 <div class="carousel-app">
                    <div>
@@ -169,7 +169,7 @@
           <h4 class="mb-0 text-muted font-500">Nemo enim ipsam voluptatem quia voluptas sit  </h4>
         </div>
         
-        <button type="button" class="btn btn-dark rounded-pill fw-bold px-5 py-4">Let's Get Started</button>
+        <a href="{{ route('signup') }}" class="btn btn-dark rounded-pill fw-bold px-5 py-4">Let's Get Started</a>
       </div>
       
     </div>
