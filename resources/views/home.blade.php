@@ -12,7 +12,7 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="position-relative">
-                <img src="{{ asset('assets/images/banner.jpeg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
+                <img src="{{ asset('assets/images/banner.jpg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
                 <div class="carousel-content-1 " data-aos="fade-up">
                   <h1 class="display-5 fw-bold mb-4">Your Favourite Brands Under Single Roof</h1>
                   <p class="mb-5">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
