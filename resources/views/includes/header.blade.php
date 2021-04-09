@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-transparent fixed-top ">
       <div class="container-fluid px-5">
         <a class="navbar-brand" href="#">
-          <img src="assets/images/logo.png" alt="">
+          <img src="{{ asset('assets/images/logo.png') }}" alt="">
         </a>
         
         <div class="custom-form-group-search position-relative  d-none d-lg-block">
@@ -13,7 +13,7 @@
           <a href="#" class="text-dark me-4 fw-bold text-decoration-none  d-none d-lg-block">
             <i class="fas fa-shopping-bag fs-4"></i>
           </a>
-          <a href="#" class="text-dark me-4 fw-bold text-decoration-none d-none d-lg-block">Login</a>
+          <a href="{{ route('signin') }}" class="text-dark me-4 fw-bold text-decoration-none d-none d-lg-block">Login</a>
           <div class="hamburger-menu">
             <div class="line line-1"> </div>
             <div class="line line-3"> </div>

@@ -21,6 +21,10 @@ Route::get('/cache-clear', function () {
     return Redirect::back()->with('success', 'All cache cleared successfully.');
 });
 
+Route::get('/signup', [App\Http\Controllers\LandingController::class, 'register'])->name('signup');
+Route::get('/signin', [App\Http\Controllers\LandingController::class, 'signIn'])->name('signin');
+
+
 Route::get('/', function () {
     return view('home');
 })->middleware('guest');

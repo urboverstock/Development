@@ -2,8 +2,6 @@
 @section('title','Home')
 @section('content')
   <!-- carousel section  -->
-
-    <!-- carousel section  -->
   <section id="z-home" class="section-1">
     <div class="row">
       <div class="col-md-12">
@@ -88,7 +86,7 @@
                   <button type="button" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</button>
                 </div>
                 <div class="carousel-app">
-                   <div>
+                  <div>
                     <a href="#" class="me-3 text-decoration-none">
                       <img src="{{ asset('assets/images/playstore.png') }}" alt="">
                     </a>
@@ -185,35 +183,40 @@
         <div class="three-item">
           <div>
             <div class="position-relative me-3">
-              <img class="w-100" src="{{ asset('assets/images/section-4/6.jpeg') }}" alt="">
-              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
+              <img class="w-100" src="{{ asset('assets/images/section-4/1.png') }}" alt="">
+              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Men</button>
             </div>
           </div>
           <div>
             <div class="position-relative me-3">
-              <img class="w-100" src="{{ asset('assets/images/section-4/2.jpeg') }}" alt="">
-              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
+              <img class="w-100" src="{{ asset('assets/images/section-4/2.png') }}" alt="">
+              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Men</button>
             </div>
           </div>
           <div>
             <div class="position-relative me-3">
-              <img class="w-100" src="{{ asset('assets/images/section-4/3.jpeg') }}" alt="">
-              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
+              <img class="w-100" src="{{ asset('assets/images/section-4/3.png') }}" alt="">
+              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Men</button>
             </div>
           </div>
           <div>
             <div class="position-relative me-3">
-              <img class="w-100" src="{{ asset('assets/images/section-4/4.jpeg') }}" alt="">
-              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
+              <img class="w-100" src="{{ asset('assets/images/section-4/1.png') }}" alt="">
+              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Men</button>
             </div>
           </div>
           <div>
             <div class="position-relative me-3">
-              <img class="w-100" src="{{ asset('assets/images/section-4/5.jpeg') }}" alt="">
-              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
+              <img class="w-100" src="{{ asset('assets/images/section-4/2.png') }}" alt="">
+              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Men</button>
             </div>
           </div>
-          
+          <div>
+            <div class="position-relative me-3">
+              <img class="w-100" src="{{ asset('assets/images/section-4/3.png') }}" alt="">
+              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Men</button>
+            </div>
+          </div>
           
         </div>
       </div>
@@ -532,7 +535,7 @@
     <div class="container">
       <div class="row align-items-center position-relative">
         <div class="sec-8-wave">
-          <img src="assets/images/section-8/3.png" alt="">
+          <img src="{{ asset('assets/images/section-8/3.png') }}" alt="">
         </div>
         <div class="col-lg-6" data-aos="fade-left">
           <div class="sec-8-header position-relative">
@@ -546,5 +549,4 @@
       </div>
     </div>
   </section>
-  
 @endsection
