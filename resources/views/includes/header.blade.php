@@ -34,6 +34,9 @@
             <li class="custom-nav-item">
               <a href="#z-contact" class="custom-nav-link">Contact Us</a>
             </li>
+            <li class="custom-nav-item">
+              <button type="button" class="btn btn-dark">Sign Up</button>
+            </li>
           </ul>
         </div>
         

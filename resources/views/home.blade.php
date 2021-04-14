@@ -21,12 +21,12 @@
                 </div>
                 <div class="carousel-app">
                    <div>
-                    <a href="#" class="me-3 text-decoration-none">
+                    <!-- <a href="#" class="me-3 text-decoration-none">
                       <img src="{{ asset('assets/images/playstore.png') }}" alt="">
                     </a>
                     <a href="#" class="text-decoration-none" >
                       <img src="{{ asset('assets/images/applestore.png') }}" alt="">
-                    </a>
+                    </a> -->
                     
                   </div>
                  
@@ -54,7 +54,7 @@
                    <a href="{{ route('signup') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
                  <div class="carousel-app">
-                   <div>
+                   <!-- <div>
                     <a href="#" class="me-3 text-decoration-none">
                       <img src="{{ asset('assets/images/playstore.png') }}" alt="">
                     </a>
@@ -62,7 +62,7 @@
                       <img src="{{ asset('assets/images/applestore.png') }}" alt="">
                     </a>
                     
-                  </div>
+                  </div> -->
                  
                 </div>
                 <div class="carousel-social-media">
@@ -88,7 +88,7 @@
                   <a href="{{ route('signup') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
                 <div class="carousel-app">
-                   <div>
+                   <!-- <div>
                     <a href="#" class="me-3 text-decoration-none">
                       <img src="{{ asset('assets/images/playstore.png') }}" alt="">
                     </a>
@@ -96,7 +96,7 @@
                       <img src="{{ asset('assets/images/applestore.png') }}" alt="">
                     </a>
                     
-                  </div>
+                  </div> -->
                  
                 </div>
                 <div class="carousel-social-media">
@@ -145,132 +145,8 @@
     </div>
   </section>
 
-  <!-- section-3 -->
-  <section id="z-about" class="">
-    <div class="row align-items-center">
-      <div class="col-lg-6 d-none d-lg-block">
-        <img  data-aos="fade-up" src="{{ asset('assets/images/section-3/1.png') }}" alt="">
-      </div>
-      <div class="col-lg-5 p-5"  data-aos="fade-left">
-        <h4 class="text--primary font-500">A Brief About</h4>
-        <h1 class="fw-bold mb-4">THE URBAN OVERSTOCK</h1>
-        <p class="text-muted mb-5">Depop is the fashion marketplace app where the next generation come to discover unique items. With a global community buying, selling and connecting to make fashion more inclusive, diverse and less wasteful. This is what transforming fashion looks like.</p>
-        <div class="d-flex mb-4">
-          <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
-          <h4 class="mb-0 text-muted font-500">Lorem ipsum dolor sit amet, consectetur </h4>
-        </div>
-        <div class="d-flex mb-4">
-          <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
-          <h4 class="mb-0 text-muted font-500">Sed ut perspiciatis unde omnis iste natus error sit </h4>
-        </div>
-        <div class="d-flex mb-5">
-          <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
-          <h4 class="mb-0 text-muted font-500">Nemo enim ipsam voluptatem quia voluptas sit  </h4>
-        </div>
-        
-        <a href="{{ route('signup') }}" class="btn btn-dark rounded-pill fw-bold px-5 py-4">Let's Get Started</a>
-      </div>
-      
-    </div>
-  </section>
-
-  <!-- section-4 latest-products  -->
-  <section id="z-products">
-    <div class="container-xl ">
-      <div class="row">
-        <div class="col-md-12 text-center mb-4" data-aos="fade-up"  >
-          <h1 class="fw-bold mb-3" >Latest Products</h1>
-          <h3 class="text-muted">Browse through the colection</h3>
-        </div>
-        <div class="three-item">
-          <div>
-            <div class="position-relative me-3">
-              <img class="w-100" src="{{ asset('assets/images/section-4/1.png') }}" alt="">
-              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
-            </div>
-          </div>
-          <div>
-            <div class="position-relative me-3">
-              <img class="w-100" src="{{ asset('assets/images/section-4/2.png') }}" alt="">
-              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
-            </div>
-          </div>
-          <div>
-            <div class="position-relative me-3">
-              <img class="w-100" src="{{ asset('assets/images/section-4/3.png') }}" alt="">
-              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
-            </div>
-          </div>
-          <div>
-            <div class="position-relative me-3">
-              <img class="w-100" src="{{ asset('assets/images/section-4/1.png') }}" alt="">
-              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
-            </div>
-          </div>
-          <div>
-            <div class="position-relative me-3">
-              <img class="w-100" src="{{ asset('assets/images/section-4/2.png') }}" alt="">
-              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
-            </div>
-          </div>
-          
-          
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- section-5  -->
-  <section class="section-5" data-aos="fade-up">
-    <div class="row">
-      <div class="col-lg-4 p-0">
-        <div class="text-center sec-5-card p-5 h-100">
-          <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/1.png') }}" alt="">
-          <h4 class="fw-bold mb-2">Free Delivery</h4>
-          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
-        </div>
-      </div>
-      <div class="col-lg-4 p-0">
-        <div class="text-center sec-5-card p-5 h-100">
-          <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/2.png') }}" alt="">
-          <h4 class="fw-bold mb-2">Free Delivery</h4>
-          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
-        </div>
-      </div>
-      <div class="col-lg-4 p-0">
-        <div class="text-center sec-5-card p-5 h-100">
-          <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/3.png') }}" alt="">
-          <h4 class="fw-bold mb-2">Free Delivery</h4>
-          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  
-  <!-- section-6  -->
-  <section class="section">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6" data-aos="fade-up">
-          <div class="urban-title text--primary position-relative mb-2">
-            <p class="mb-0">Shop Custom</p>
-          </div>
-          <div class="urban-sub-title mb-4">
-            <p class="mb-0">Find your style</p>
-          </div>
-          <p class="line-height-2 mb-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-          <button type="button" class="btn btn-dark border-0 shadow-none fw-bold px-5 py-4">Know More</button>
-        </div>
-        <div class="col-lg-6">
-          <img class="img-fluid" data-aos="zoom-in-up" src="{{ asset('assets/images/section-6/1.png') }}" alt="">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- section-7 carousel-section -->
-  <section>
+   <!-- section-3 carousel-section -->
+   <section>
     <div class="container">
       <div class="row">
         <div class="col-lg-12 mb-5" data-aos="fade-left">
@@ -527,7 +403,7 @@
     
   </section>
 
-  <!-- section-8  -->
+  <!-- section-3-1  -->
   <section>
     <div class="container">
       <div class="row align-items-center position-relative">
@@ -546,5 +422,131 @@
       </div>
     </div>
   </section>
+
+ 
+
+  <!-- section-4 latest-products  -->
+  <section id="z-products">
+    <div class="container-xl ">
+      <div class="row">
+        <div class="col-md-12 text-center mb-4" data-aos="fade-up"  >
+          <h1 class="fw-bold mb-3" >Latest Products</h1>
+          <h3 class="text-muted">Browse through the colection</h3>
+        </div>
+        <div class="three-item">
+          <div>
+            <div class="position-relative me-3">
+              <img class="w-100" src="{{ asset('assets/images/section-4/1.png') }}" alt="">
+              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
+            </div>
+          </div>
+          <div>
+            <div class="position-relative me-3">
+              <img class="w-100" src="{{ asset('assets/images/section-4/2.png') }}" alt="">
+              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
+            </div>
+          </div>
+          <div>
+            <div class="position-relative me-3">
+              <img class="w-100" src="{{ asset('assets/images/section-4/3.png') }}" alt="">
+              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
+            </div>
+          </div>
+          <div>
+            <div class="position-relative me-3">
+              <img class="w-100" src="{{ asset('assets/images/section-4/1.png') }}" alt="">
+              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
+            </div>
+          </div>
+          <div>
+            <div class="position-relative me-3">
+              <img class="w-100" src="{{ asset('assets/images/section-4/2.png') }}" alt="">
+              <button type="button" class="btn btn-dark px-5 py-3 rounded-pill  position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- section-5  -->
+  <section class="section-5" data-aos="fade-up">
+    <div class="row">
+      <div class="col-lg-4 p-0">
+        <div class="text-center sec-5-card p-5 h-100">
+          <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/1.png') }}" alt="">
+          <h4 class="fw-bold mb-2">Free Delivery</h4>
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+        </div>
+      </div>
+      <div class="col-lg-4 p-0">
+        <div class="text-center sec-5-card p-5 h-100">
+          <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/2.png') }}" alt="">
+          <h4 class="fw-bold mb-2">Free Delivery</h4>
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+        </div>
+      </div>
+      <div class="col-lg-4 p-0">
+        <div class="text-center sec-5-card p-5 h-100">
+          <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/3.png') }}" alt="">
+          <h4 class="fw-bold mb-2">Free Delivery</h4>
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- section-6  -->
+  <section class="section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6" data-aos="fade-up">
+          <div class="urban-title text--primary position-relative mb-2">
+            <p class="mb-0">Shop Custom</p>
+          </div>
+          <div class="urban-sub-title mb-4">
+            <p class="mb-0">Find your style</p>
+          </div>
+          <p class="line-height-2 mb-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+          <button type="button" class="btn btn-dark border-0 shadow-none fw-bold px-5 py-4">Know More</button>
+        </div>
+        <div class="col-lg-6">
+          <img class="img-fluid" data-aos="zoom-in-up" src="{{ asset('assets/images/section-6/1.png') }}" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+   <!-- section-7 -->
+   <section id="z-about" class="">
+    <div class="row align-items-center">
+      <div class="col-lg-6 d-none d-lg-block">
+        <img  data-aos="fade-up" src="{{ asset('assets/images/section-3/1.png') }}" alt="">
+      </div>
+      <div class="col-lg-5 p-5"  data-aos="fade-left">
+        <h4 class="text--primary font-500">A Brief About</h4>
+        <h1 class="fw-bold mb-4">THE URBAN OVERSTOCK</h1>
+        <p class="text-muted mb-5">Depop is the fashion marketplace app where the next generation come to discover unique items. With a global community buying, selling and connecting to make fashion more inclusive, diverse and less wasteful. This is what transforming fashion looks like.</p>
+        <div class="d-flex mb-4">
+          <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
+          <h4 class="mb-0 text-muted font-500">Lorem ipsum dolor sit amet, consectetur </h4>
+        </div>
+        <div class="d-flex mb-4">
+          <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
+          <h4 class="mb-0 text-muted font-500">Sed ut perspiciatis unde omnis iste natus error sit </h4>
+        </div>
+        <div class="d-flex mb-5">
+          <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
+          <h4 class="mb-0 text-muted font-500">Nemo enim ipsam voluptatem quia voluptas sit  </h4>
+        </div>
+        
+        <a href="{{ route('signup') }}" class="btn btn-dark rounded-pill fw-bold px-5 py-4">Let's Get Started</a>
+      </div>
+      
+    </div>
+  </section>
+ 
   
 @endsection

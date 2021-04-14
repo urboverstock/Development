@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('assets/stylesheet/css/main.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/stylesheet/css/custom-main.css') }}">
          <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
          
       <!-- Include css here -->
