@@ -17,7 +17,7 @@
                   <h1 class="display-5 fw-bold mb-4">Your Favourite Brands Under Single Roof</h1>
                   <p class="mb-5">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
                   
-                   <a href="{{ route('signup') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
+                   <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
                 <div class="carousel-app">
                    <div>
@@ -51,7 +51,7 @@
                   <h1 class="display-5 fw-bold mb-4 text-white">Your Favourite Brands Under Single Roof</h1>
                   <p class="mb-5 text-white">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
                   
-                   <a href="{{ route('signup') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
+                   <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
                  <div class="carousel-app">
                    <div>
@@ -85,7 +85,7 @@
                   <h1 class="display-5 fw-bold mb-4 text-white">Your Favourite Brands Under Single Roof</h1>
                   <p class="mb-5 text-white">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
                   
-                  <a href="{{ route('signup') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
+                  <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
                 <div class="carousel-app">
                    <div>
@@ -168,7 +168,7 @@
           <h4 class="mb-0 text-muted font-500">Nemo enim ipsam voluptatem quia voluptas sit  </h4>
         </div>
         
-        <a href="{{ route('signup') }}" class="btn btn-dark rounded-pill fw-bold px-5 py-4">Let's Get Started</a>
+        <a href="{{ route('get-started') }}" class="btn btn-dark rounded-pill fw-bold px-5 py-4">Let's Get Started</a>
       </div>
       
     </div>
