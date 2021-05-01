@@ -25,6 +25,10 @@ Route::get('/signup', [App\Http\Controllers\LandingController::class, 'register'
 Route::get('/signin', [App\Http\Controllers\LandingController::class, 'signIn'])->name('signin');
 
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('home');
-})->middleware('guest');
+})->middleware('guest');*/
+
+Route::get('/', [App\Http\Controllers\LandingController::class, 'home']);
+Route::get('get-started', [App\Http\Controllers\ProductController::class, 'getStarted']);
+Route::get('search-results', [App\Http\Controllers\ProductController::class, 'searchresults'])->name('search-products');

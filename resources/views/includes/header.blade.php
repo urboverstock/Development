@@ -1,13 +1,15 @@
   <header class="">
-    <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light bg-transparent fixed-top ">
+    <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light fixed-top bg-white">
       <div class="container-fluid px-5">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{url('/')}}">
           <img src="{{ asset('assets/images/logo.png') }}" alt="">
         </a>
         
-        <div class="custom-form-group-search position-relative  d-none d-lg-block">
-          <input type="text" class="form-control" placeholder="Search brands...." />
-          <i class="fas fa-search text--primary"></i>
+        <div class="custom-form-group-search position-relative 	d-none d-lg-block">
+            <form action="{{ route('search-products') }}">
+                <input name="search" type="text" class="form-control" placeholder="Search brands...." />
+                <i class="fas fa-search text--primary"></i>
+            </form>
         </div>
         <div class="d-flex align-items-center">
           <a href="#" class="text-dark me-4 fw-bold text-decoration-none  d-none d-lg-block">
@@ -33,9 +35,6 @@
             </li>
             <li class="custom-nav-item">
               <a href="#z-contact" class="custom-nav-link">Contact Us</a>
-            </li>
-            <li class="custom-nav-item">
-              <button type="button" class="btn btn-dark">Sign Up</button>
             </li>
           </ul>
         </div>

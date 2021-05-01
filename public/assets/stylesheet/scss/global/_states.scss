@@ -1,0 +1,13 @@
+.card-hover{
+    &:hover {
+        background-color: $primary;
+        a {
+            color: #fff;
+        }
+    }
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+   
+}

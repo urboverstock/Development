@@ -29,11 +29,7 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
-          <div class="footer-email-address position-relative">
-            <i class="far fa-envelope text-muted position-absolute start-0 top-50 translate-middle-y ms-3 fs-4"></i>
-            <i class="fas fa-long-arrow-alt-right position-absolute end-0 top-50 translate-middle-y me-3 fs-4"></i>
-            <input type="text" class="form-control px-5 py-3 border-0 mb-3" placeholder="Enter Email to Subscribe" />
-          </div>
+          <input type="text" class="form-control py-3 border-0 mb-3" placeholder="Enter Email to Subscribe" />
           <div class="d-flex mb-3">
             <a href="#"><img class="img-fluid me-3" src="{{ asset('assets/images/playstore.png') }}" alt=""></a>
             <a href="#"><img class="img-fluid mt-2" src="{{ asset('assets/images/applestore.png') }}" alt=""></a>

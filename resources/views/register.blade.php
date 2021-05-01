@@ -16,17 +16,17 @@
   
   <section class="us-session-form min-vh-100 d-flex justify-content-center align-items-center position-relative">
    
-    <div class="container-fluid ">
+    <div class="container-lg ">
       <div class="row align-items-center">
-        <div class="col-lg-5 p-0 d-lg-block d-none ">
-          <img class="img-fluid vh-100" src="{{asset('assets/images/session.png')}}" alt="">
+        <div class="col-lg-4 offset-lg-1">
+          <img class="img-fluid my-4" src="{{ asset('assets/images/logo.png') }}" alt="">
         </div>
-        <!-- <div class="col-lg-1">
+        <div class="col-lg-1">
           <img class="d-none d-lg-block" src="{{ asset('assets/images/line2.png') }}" alt="">
-        </div> -->
-        <div class="offset-lg-1 col-lg-5">
+        </div>
+        <div class="col-lg-5">
           
-          <div class="row py-5">
+          <div class="row">
             <div class="col-lg-6">
               <input class="form-control form-control-lg mb-4 py-3" type="text" placeholder="First Name" aria-label="">
             </div>

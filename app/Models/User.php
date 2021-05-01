@@ -40,4 +40,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role() {
+        return $this->belongsTo(UserRole::class, 'user_type', 'id');
+    }
+
+    public static function getSellers($request) {
+        $query = User::with(['role' => function($q) {
+                            $q->select('id', 'name');
+                            $q->where('name', 'Seller');
+                        }])
+                        ->wherehas('role', function($q) {
+                            $q->where('name', 'Seller');
+                        });
+
+        return  $query->paginate($request->limit);
+    }
 }

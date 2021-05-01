@@ -41,5 +41,14 @@ menuIcon.addEventListener('click', () => {
 
 
 
+let loadmore = document.querySelector('.loadmore');
 
+if(loadmore){
+  $('.loadmore').btnLoadmore({
+    showItem : 12,
+    
+    textBtn : 'Load More Products',
+    classBtn: 'btn btn-dark rounded-pill px-4 py-3 d-flex m-auto'
+  });
+}
 
