@@ -34,6 +34,56 @@ class ProductImagesSeeder extends Seeder
 	    		'file' => '/assets/images/section-4/3.png',
 	    		'file_type' => 'I',
 	    		'created_at' => date('Y-m-d H:i:s')
+			],[
+	    		'product_id' => '5',
+	    		'file' => '/assets/images/section-4/3.png',
+	    		'file_type' => 'I',
+	    		'created_at' => date('Y-m-d H:i:s')
+    		],[
+	    		'product_id' => '6',
+	    		'file' => '/assets/images/section-4/3.png',
+	    		'file_type' => 'I',
+	    		'created_at' => date('Y-m-d H:i:s')
+    		],[
+	    		'product_id' => '7',
+	    		'file' => '/assets/images/section-4/3.png',
+	    		'file_type' => 'I',
+	    		'created_at' => date('Y-m-d H:i:s')
+			],[
+	    		'product_id' => '8',
+	    		'file' => '/assets/images/section-4/1.png',
+	    		'file_type' => 'I',
+	    		'created_at' => date('Y-m-d H:i:s')
+    		],[
+	    		'product_id' => '9',
+	    		'file' => '/assets/images/section-4/2.png',
+	    		'file_type' => 'I',
+	    		'created_at' => date('Y-m-d H:i:s')
+    		],[
+	    		'product_id' => '10',
+	    		'file' => '/assets/images/section-4/3.png',
+	    		'file_type' => 'I',
+	    		'created_at' => date('Y-m-d H:i:s')
+    		],[
+	    		'product_id' => '11',
+	    		'file' => '/assets/images/section-4/3.png',
+	    		'file_type' => 'I',
+	    		'created_at' => date('Y-m-d H:i:s')
+			],[
+	    		'product_id' => '12',
+	    		'file' => '/assets/images/section-4/3.png',
+	    		'file_type' => 'I',
+	    		'created_at' => date('Y-m-d H:i:s')
+    		],[
+	    		'product_id' => '13',
+	    		'file' => '/assets/images/section-4/3.png',
+	    		'file_type' => 'I',
+	    		'created_at' => date('Y-m-d H:i:s')
+    		],[
+	    		'product_id' => '14',
+	    		'file' => '/assets/images/section-4/3.png',
+	    		'file_type' => 'I',
+	    		'created_at' => date('Y-m-d H:i:s')
     		]
     	];
 

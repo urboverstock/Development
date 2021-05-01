@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function getStarted(Request $request)
     {
-        $request->request->add(['limit' => 20]);
+        $request->request->add(['limit' => 8]);
         $request->request->add(['orderBy' => 'DESC']);
         $products = Product::getProducts($request);
         return view('getstarted', compact('products'));
@@ -19,7 +19,7 @@ class ProductController extends Controller
 
     public function searchresults(Request $request)
     {
-        $request->request->add(['limit' => 20]);
+        $request->request->add(['limit' => 8]);
         $products = Product::getProducts($request);
         $categories = ProductCategory::get();
         $search = $request->search;
@@ -28,7 +28,7 @@ class ProductController extends Controller
 
     public function paginationRecords(Request $request)
     {
-        $request->request->add(['limit' => 20]);
+        $request->request->add(['limit' => 8]);
         $products = Product::getProducts($request);
         $response['status'] = (count($products) > 0) ? 1 : 0;
         $response['html'] = View('ajax_view.products', compact('products'))->render();
