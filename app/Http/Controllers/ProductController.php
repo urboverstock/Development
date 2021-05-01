@@ -26,6 +26,15 @@ class ProductController extends Controller
         return view('common.search-results', compact('products','categories','search'));
     }
 
+    public function getProducts(Request $request)
+    {
+        $request->request->add(['limit' => 8]);
+        $products = Product::getProducts($request);
+        $categories = ProductCategory::get();
+        $search = $request->search;
+        return view('common.allproducts', compact('products','categories','search'));
+    }
+
     public function paginationRecords(Request $request)
     {
         $request->request->add(['limit' => 8]);

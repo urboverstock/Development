@@ -410,7 +410,7 @@
               </div>
             </div>
             <div>
-              <a href="{{ route('search-products') }}" class="btn btn-outline-dark rounded-pill px-4 py-3">View All Products</a>
+              <a href="{{ route('products') }}" class="btn btn-outline-dark rounded-pill px-4 py-3">View All Products</a>
             </div>
           </div>
          
