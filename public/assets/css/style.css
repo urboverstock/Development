@@ -6,3 +6,12 @@
     object-position: top;
     margin: 10%;
 }
+.transparent-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    padding-right: 20px;
+    background: transparent;
+    border: 0;
+}

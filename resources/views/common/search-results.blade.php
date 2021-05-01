@@ -90,6 +90,7 @@
       </div>
 
         <!-- loadmore started  -->
+        @if(count($products) > 0)
         <div class="row loadmore loadmore-main">
             @foreach($products as $product)
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -128,9 +129,14 @@
               </div>
             @endforeach
       </div>
+     
        <div><button type="button" class=" btn btn-dark rounded-pill px-4 py-3 d-flex m-auto loadmoreproductsbtn" >Load More Products</button>
-       
       </div>
+      @else
+      <div class="row loadmore loadmore-main text-center">
+          <h2>No Item found!</h2>
+      </div>
+      @endif
       <div class="border-bottom py-3 mt-3"></div>
       <!-- loadmore end  -->
     </div>

@@ -8,7 +8,7 @@
         <div class="custom-form-group-search position-relative 	d-none d-lg-block">
             <form action="{{ route('search-products') }}">
                 <input name="search" type="text" class="form-control" placeholder="Search brands...." />
-                <i class="fas fa-search text--primary"></i>
+                <button type="submit" class="transparent-button"><i class="fas fa-search text--primary"></i></button>
             </form>
         </div>
         <div class="d-flex align-items-center">
