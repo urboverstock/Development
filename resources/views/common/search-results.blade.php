@@ -1,6 +1,9 @@
 @extends('layouts.guest')
 @section('title','Home')
-@section('content')  
+@section('content')
+  <input type="hidden"  value="1" class="productpagecount">
+  <input type="hidden"  value="{{ route('pagination-records') }}" class="getProductPageURL">
+  <input type="hidden"  value="{{ @$search }}" class="productsearchkeyword">
   <section class="get-started-banner-section --search-banner">
     <!-- <img class="w-100" src="assets/images/get-started/banner.png" alt=""> -->
     <div class="container">
@@ -87,7 +90,7 @@
       </div>
 
         <!-- loadmore started  -->
-        <div class="row loadmore">
+        <div class="row loadmore loadmore-main">
             @foreach($products as $product)
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card product-item border-0 shadow-sm mb-5">
@@ -122,8 +125,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
-       @endforeach
+              </div>
+            @endforeach
+      </div>
+       <div><button type="button" class=" btn btn-dark rounded-pill px-4 py-3 d-flex m-auto loadmoreproductsbtn" >Load More Products</button>
+       
       </div>
       <div class="border-bottom py-3 mt-3"></div>
       <!-- loadmore end  -->

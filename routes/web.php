@@ -32,3 +32,4 @@ Route::get('/signin', [App\Http\Controllers\LandingController::class, 'signIn'])
 Route::get('/', [App\Http\Controllers\LandingController::class, 'home']);
 Route::get('get-started', [App\Http\Controllers\ProductController::class, 'getStarted']);
 Route::get('search-results', [App\Http\Controllers\ProductController::class, 'searchresults'])->name('search-products');
+Route::get('get-pagination-records', [App\Http\Controllers\ProductController::class, 'paginationRecords'])->name('pagination-records');

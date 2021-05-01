@@ -22,7 +22,17 @@ class ProductController extends Controller
         $request->request->add(['limit' => 20]);
         $products = Product::getProducts($request);
         $categories = ProductCategory::get();
+        $search = $request->search;
+        return view('common.search-results', compact('products','categories','search'));
+    }
+
+    public function paginationRecords(Request $request)
+    {
+        $request->request->add(['limit' => 20]);
+        $products = Product::getProducts($request);
+        $response['status'] = (count($products) > 0) ? 1 : 0;
+        $response['html'] = View('ajax_view.products', compact('products'))->render();
+        return response()->json($response);
         
-        return view('common.search-results', compact('products','categories'));
     }
 }

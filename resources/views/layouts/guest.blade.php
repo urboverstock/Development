@@ -45,6 +45,7 @@
         <script type="text/javascript" src="assets/js/plugins/slick.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
         <script src="{{ asset('assets/js/script/main.js') }}"></script>
+        <script src="{{ asset('assets/js/script/custom.js') }}"></script>
       <!--<script src="../assets/js/discount.js"></script>-->
       @yield('after_footer')
 

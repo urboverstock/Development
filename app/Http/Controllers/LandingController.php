@@ -33,13 +33,4 @@ class LandingController extends Controller
     {
        return view('getstarted');
     }
-
-    public function searchresults(Request $request)
-    {
-        $request->request->add(['limit' => 20]);
-        $products = Product::getProducts($request);
-        
-        return view('common.search-results', compact('products'));
-    }
-
 }
