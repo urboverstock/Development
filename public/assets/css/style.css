@@ -16,10 +16,10 @@
     border: 0;
 }
 
-/* .slick-track {
+.latest-products .slick-track {
     display: flex;
 }
-.slick-slide {
+.latest-products .slick-slide {
     display: flex;
     height: auto;
-} */
+}

@@ -396,7 +396,7 @@
   </section>
 
   <!-- latest-products  -->
-  <section class="pt-0">
+  <section class="pt-0 lates-products">
     <div class="container-xl">
       <div class="row">
         <div class="col-lg-12 mb-5" data-aos="fade-up">

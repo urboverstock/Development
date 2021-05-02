@@ -334,7 +334,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12" data-aos="fade-up">
-          <div class="center-slick">
+          <div class="">
             @foreach($sellers as $seller)
                 <div class="items">
                   <div class="card sec-7-card border-0 shadow">
