@@ -17,9 +17,9 @@
 }
 
 .slick-track {
-    display: flex;
+    display: flex !important;
 }
 .slick-slide {
-    display: flex;
+    display: flex !important;
     height: auto;
 }
