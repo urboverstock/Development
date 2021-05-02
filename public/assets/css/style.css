@@ -23,3 +23,13 @@
     display: flex;
     height: auto;
 }
+
+
+@media screen and (max-width: 500px) {
+    .z-about {
+        padding-top: 0;
+    }
+    .meet-sellers {
+        padding-bottom: 30px;
+    }
+}

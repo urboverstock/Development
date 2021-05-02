@@ -81,7 +81,8 @@ $('.four-item').slick({
 
 
 $('.center-slick').slick({
-  centerMode: true,
+  centerMode: false,
+  // centerMode: true,
   centerPadding: '0px',
   slidesToShow: 3,
   autoplay: true,

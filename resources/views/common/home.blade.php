@@ -214,7 +214,7 @@
   </section>
 
    <!-- section-7 carousel-section -->
-   <section>
+   <section class="meet-sellers">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 mb-5" data-aos="fade-left">
@@ -235,42 +235,42 @@
         <div class="col-lg-12" data-aos="fade-up">
           <div class="center-slick">
             @foreach($sellers as $seller)
-                <div class="items">
-                  <div class="card sec-7-card border-0 shadow">
-                    <div class="card-body">
-                      <div class="d-flex align-items-center sec-7-card-sm-title flex-wrap">
-                        <img class="img-fluid me-2" src="{{ asset($seller->profile_pic) }}" alt="">
-                        <h2 class="fw-bold mb-0">{{ $seller->name }}</h2>
-                      </div>
+              <div class="items">
+                <div class="card sec-7-card border-0 shadow">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center sec-7-card-sm-title flex-wrap">
+                      <img class="img-fluid me-2" src="{{ asset($seller->profile_pic) }}" alt="">
+                      <h2 class="fw-bold mb-0">{{ $seller->name }}</h2>
+                    </div>
 
-                      <div class="sec-7-card-lg-title">
-                        <div class="d-flex align-items-center border-bottom py-3 flex-wrap">
-                          <img class="avatar me-3" src="{{ asset('assets/images/section-7/1.png') }}" alt="">
-                          <div class="me-3">
-                            <p class="fw-bold mb-1 text-white">{{ $seller->name }}</p>
-                            <div class="d-flex">
-                              <i class="far fa-star text-white"></i>
-                              <i class="far fa-star text-white"></i>
-                              <i class="far fa-star text-white"></i>
-                              <i class="far fa-star text-white"></i>
-                              <i class="far fa-star text-white"></i>
-                            </div>
+                    <div class="sec-7-card-lg-title">
+                      <div class="d-flex align-items-center border-bottom py-3 flex-wrap">
+                        <img class="avatar me-3" src="{{ asset('assets/images/section-7/1.png') }}" alt="">
+                        <div class="me-3">
+                          <p class="fw-bold mb-1 text-white">{{ $seller->name }}</p>
+                          <div class="d-flex">
+                            <i class="far fa-star text-white"></i>
+                            <i class="far fa-star text-white"></i>
+                            <i class="far fa-star text-white"></i>
+                            <i class="far fa-star text-white"></i>
+                            <i class="far fa-star text-white"></i>
                           </div>
-                          <span class="badge bg--primary-darken px-3">
-                            <i class="far fa-envelope h2 mb-0"></i>
-                          </span>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between flex-wrap my-4">
-                          <h6 class="mb-0 fw-bold text-white">247k Followers</h6>
-                          <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0">Follow</button>
-                        </div>
-                        <div>
-                          <h6 class="fw-bold text-white">{{$seller->about}}</h6>
-                        </div>
+                        <span class="badge bg--primary-darken px-3">
+                          <i class="far fa-envelope h2 mb-0"></i>
+                        </span>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-between flex-wrap my-4">
+                        <h6 class="mb-0 fw-bold text-white">247k Followers</h6>
+                        <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0">Follow</button>
+                      </div>
+                      <div>
+                        <h6 class="fw-bold text-white">{{$seller->about}}</h6>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
             @endforeach
            
            
@@ -279,11 +279,14 @@
       </div>
     </div>
     
+
+    
+    
     
    </section>
 
   <!-- section-3 -->
-  <section id="z-about" class="">
+  <section id="z-about" class="z-about">
     <div class="row align-items-center">
       <div class="col-lg-6 d-none d-lg-block">
         <img  data-aos="fade-up" src="{{ asset('assets/images/section-3/1.png') }}" alt="">
