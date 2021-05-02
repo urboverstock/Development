@@ -20,15 +20,14 @@
   
   <section class="us-session-form  min-vh-100 d-flex justify-content-center align-items-center position-relative">
    
-    <div class="container-lg ">
+    <div class="container-fluid ">
       <div class="row align-items-center">
-        <div class="col-lg-4 offset-lg-1">
-          <img class="img-fluid my-4" src="{{ asset('assets/images/logo.png') }}" alt="">
+        <div class="col-lg-5 p-0 d-lg-block d-none">
+        
+          <img class="img-fluid vh-100" src="{{ asset('assets/images/session.png') }}" alt="">
         </div>
-        <div class="col-lg-1">
-          <img class="d-none d-lg-block" src="{{ asset('assets/images/line.png') }}" alt="">
-        </div>
-        <div class="col-lg-5">
+        
+        <div class="offset-lg-1 col-lg-5">
           <input class="form-control form-control-lg mb-4 py-3" type="email" placeholder="Email@address.com" aria-label="Email@address.com">
           <input class="form-control form-control-lg mb-5 py-3" type="password" placeholder="Password" aria-label="password">
           <div class="d-grid mb-3">

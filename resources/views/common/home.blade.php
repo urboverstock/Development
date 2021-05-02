@@ -19,7 +19,7 @@
                   
                    <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
-                <div class="carousel-app">
+                <!-- <div class="carousel-app">
                    <div>
                     <a href="#" class="me-3 text-decoration-none">
                       <img src="{{ asset('assets/images/playstore.png') }}" alt="">
@@ -30,7 +30,7 @@
                     
                   </div>
                  
-                </div>
+                </div> -->
                 <div class="carousel-social-media">
                   <a href="#" class="text-light text-decoration-none mb-4">
                     <i class="fab fa-facebook-f fs-3"></i>
@@ -53,7 +53,7 @@
                   
                    <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
-                 <div class="carousel-app">
+                 <!-- <div class="carousel-app">
                    <div>
                     <a href="#" class="me-3 text-decoration-none">
                       <img src="{{ asset('assets/images/playstore.png') }}" alt="">
@@ -64,7 +64,7 @@
                     
                   </div>
                  
-                </div>
+                </div> -->
                 <div class="carousel-social-media">
                   <a href="#" class="text-light text-decoration-none mb-4">
                     <i class="fab fa-facebook-f fs-3"></i>
@@ -88,6 +88,40 @@
                   <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
                 <div class="carousel-app">
+                   <!-- <div>
+                    <a href="#" class="me-3 text-decoration-none">
+                      <img src="{{ asset('assets/images/playstore.png') }}" alt="">
+                    </a>
+                    <a href="#" class="text-decoration-none" >
+                      <img src="{{ asset('assets/images/applestore.png') }}" alt="">
+                    </a>
+                    
+                  </div> -->
+                 
+                </div>
+                <div class="carousel-social-media">
+                  <a href="#" class="text-light text-decoration-none mb-4">
+                    <i class="fab fa-facebook-f fs-3"></i>
+                  </a>
+                  <a href="#" class="text-light text-decoration-none mb-4">
+                    <i class="fab fa-twitter fs-3"></i>
+                  </a>
+                  <a href="#" class="text-light text-decoration-none mb-4">
+                    <i class="fab fa-linkedin-in fs-3"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="position-relative">
+                <img src="{{ asset('assets/images/banner-4.jpg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
+                <div class="carousel-content-1 " data-aos="fade-up">
+                  <h1 class="display-5 fw-bold mb-4 text-dark">Your Favourite Brands Under Single Roof</h1>
+                  <p class="mb-5 text-dark">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
+                  
+                  <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
+                </div>
+                <!-- <div class="carousel-app">
                    <div>
                     <a href="#" class="me-3 text-decoration-none">
                       <img src="{{ asset('assets/images/playstore.png') }}" alt="">
@@ -97,6 +131,40 @@
                     </a>
                     
                   </div>
+                 
+                </div> -->
+                <div class="carousel-social-media">
+                  <a href="#" class="text-light text-decoration-none mb-4">
+                    <i class="fab fa-facebook-f fs-3"></i>
+                  </a>
+                  <a href="#" class="text-light text-decoration-none mb-4">
+                    <i class="fab fa-twitter fs-3"></i>
+                  </a>
+                  <a href="#" class="text-light text-decoration-none mb-4">
+                    <i class="fab fa-linkedin-in fs-3"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="position-relative">
+                <img src="{{ asset('assets/images/banner-5.jpg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
+                <div class="carousel-content-1 " data-aos="fade-up">
+                  <h1 class="display-5 fw-bold mb-4 text-white">Your Favourite Brands Under Single Roof</h1>
+                  <p class="mb-5 text-white">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
+                  
+                  <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
+                </div>
+                <div class="carousel-app">
+                   <!-- <div>
+                    <a href="#" class="me-3 text-decoration-none">
+                      <img src="{{ asset('assets/images/playstore.png') }}" alt="">
+                    </a>
+                    <a href="#" class="text-decoration-none" >
+                      <img src="{{ asset('assets/images/applestore.png') }}" alt="">
+                    </a>
+                    
+                  </div> -->
                  
                 </div>
                 <div class="carousel-social-media">

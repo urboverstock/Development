@@ -112,6 +112,7 @@
                 </div>
               </div>
             </div>
+           
             
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
@@ -430,7 +431,7 @@
     <div class="container-xl ">
       <div class="row">
         <div class="col-md-12 text-center mb-4" data-aos="fade-up"  >
-          <h1 class="fw-bold mb-3" >Latest Products</h1>
+          <h1 class="fw-bold mb-3">Latest Products</h1>
           <h3 class="text-muted">Browse through the colection</h3>
         </div>
         <div class="three-item">

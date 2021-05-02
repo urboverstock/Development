@@ -30,10 +30,10 @@
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
           <input type="text" class="form-control py-3 border-0 mb-3" placeholder="Enter Email to Subscribe" />
-          <div class="d-flex mb-3">
+          <!-- <div class="d-flex mb-3">
             <a href="#"><img class="img-fluid me-3" src="{{ asset('assets/images/playstore.png') }}" alt=""></a>
             <a href="#"><img class="img-fluid mt-2" src="{{ asset('assets/images/applestore.png') }}" alt=""></a>
-          </div>
+          </div> -->
           <div class="d-flex">
             <a href="#"></a>
           </div>
