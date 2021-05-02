@@ -14,9 +14,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('assets/stylesheet/css/main.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
+        <link rel="stylesheet" href="{{ asset('assets/stylesheet/css/main.min.css') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
          
       <!-- Include css here -->
 
