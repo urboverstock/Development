@@ -15,3 +15,11 @@
     background: transparent;
     border: 0;
 }
+
+.slick-track {
+    display: flex;
+}
+.slick-slide {
+    display: flex;
+    height: auto;
+}
