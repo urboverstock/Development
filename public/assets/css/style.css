@@ -16,10 +16,10 @@
     border: 0;
 }
 
-.slick-track {
-    display: flex !important;
+/* .slick-track {
+    display: flex;
 }
 .slick-slide {
-    display: flex !important;
+    display: flex;
     height: auto;
-}
+} */
