@@ -552,3 +552,7 @@
  
   
 @endsection
+
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.wpcc.io/lib/1.0.2/cookieconsent.min.css"/><script src="https://cdn.wpcc.io/lib/1.0.2/cookieconsent.min.js" defer></script><script>window.addEventListener("load", function(){window.wpcc.init({"corners":"normal","colors":{"popup":{"background":"#D9B950","text":"#ffffff","border":"#D9B950"},"button":{"background":"#000000","text":"#ffffff"}},"padding":"small","content":{"button":"Accept","link":"  "}})});</script>
