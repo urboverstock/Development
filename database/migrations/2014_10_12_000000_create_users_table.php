@@ -21,12 +21,15 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->unsignedBigInteger('user_type')->nullable();
             $table->string('profile_pic')->nullable();
-            $table->string('about')->nullable();
+            $table->text('about')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
+            $table->string('website_link')->nullable();
+            $table->enum('featured', ['0', '1'])->default('0')->comment('0 No, 1 Yes');
+            $table->enum('pro_seller', ['0', '1'])->default('0')->comment('0 No, 1 Yes');
             $table->rememberToken();
             $table->timestamps();
-             $table->softDeletes();
+            $table->softDeletes();
         });
     }
 
