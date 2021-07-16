@@ -31,8 +31,6 @@ class CreateUserPostFilesTable extends Migration
      */
     public function down()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('user_post_files');
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
