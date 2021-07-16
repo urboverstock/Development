@@ -21,16 +21,23 @@ Route::get('/cache-clear', function () {
     return Redirect::back()->with('success', 'All cache cleared successfully.');
 });
 
-Route::get('/signup', [App\Http\Controllers\LandingController::class, 'register'])->name('signup');
-Route::get('/signin', [App\Http\Controllers\LandingController::class, 'signIn'])->name('signin');
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/', [App\Http\Controllers\LandingController::class, 'home']);
+    Route::any('/signup', [App\Http\Controllers\LandingController::class, 'register'])->name('signup');
+    Route::any('/signin', [App\Http\Controllers\LandingController::class, 'signIn'])->name('signin');
+    Route::any('/forgot-password', [App\Http\Controllers\LandingController::class, 'forgot_password'])->name('forgot_password');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::any('/seller-dashboard', [App\Http\Controllers\LandingController::class, 'seller_dashboard'])->name('seller_dashboard');
+    Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');
+
+});
 
 
-/*Route::get('/', function () {
-    return view('home');
-})->middleware('guest');*/
 
-Route::get('/', [App\Http\Controllers\LandingController::class, 'home']);
 Route::get('get-started', [App\Http\Controllers\ProductController::class, 'getStarted'])->name('get-started');
 Route::get('products', [App\Http\Controllers\ProductController::class, 'getProducts'])->name('products');
 Route::get('search-results', [App\Http\Controllers\ProductController::class, 'searchresults'])->name('search-products');
 Route::get('get-pagination-records', [App\Http\Controllers\ProductController::class, 'paginationRecords'])->name('pagination-records');
+

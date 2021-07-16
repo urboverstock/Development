@@ -1,0 +1,94 @@
+.box-wrapper {
+    position: relative;
+    display: flex;
+    margin-top: 80px;
+    height: calc(100vh - 80px);
+    .box-sidebar {
+        background-color: #fff;
+        width: 460px;
+        padding-top: 50px;
+        overflow: auto;
+        border-right: 1px solid #DCDCDC;
+        .box-item {
+            padding: 0rem 1.5rem;
+            border-bottom: 1px solid #DCDCDC;
+            &:hover {
+                background-color: rgba(244, 234, 203, 0.3);
+            }
+            &.active {
+                background-color: rgba(244, 234, 203, 0.3);
+            }
+        }
+        @media (max-width: 991px) {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            z-index: 9999;
+            height: 100vh;
+            transition: all 0.3s ease-in;
+            &.open {
+                left: 0;
+            }
+        }
+
+       
+    }
+    .box-container {
+        overflow: auto;
+        height: calc(100% - 200px);
+        width: calc(100% - 460px);
+        @media (max-width: 991px) {
+            width: 100%;
+        }
+        @media (max-width: 526px){
+            margin-top: 50px;
+        }
+        .box-footer {
+           
+            height: 200px;
+            position: fixed;
+            z-index: 999;
+            bottom: 0px;
+            width: calc(100% - 460px);
+            background-color: #fff;
+            @media (max-width: 991px) {
+                width: 100%;
+            }
+        
+        }
+    }
+}
+
+
+.box-amount {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &.size-24 {
+        width: 24px !important;
+        height: 24px !important;
+        i{
+            font-size: 12px;
+        }
+    }
+    .badge-rounded {
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        border: 1px solid #000;
+        color: #000;
+        background-color: #fff;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: -6px;
+        top: -6px;
+    }
+}

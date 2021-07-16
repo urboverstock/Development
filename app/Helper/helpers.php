@@ -3,7 +3,7 @@
  	
  	if(!function_exists('emailSend')) {
 		// This function use  for email send 
-		function emailSend($postData){ 
+		function emailSend($postData){
 		    
 		    // echo "<pre>"; print_r($postData); die;
 
@@ -11,9 +11,8 @@
 				$email =  Mail::send($postData['layout'], $postData, function($message) use ($postData) {
 
 					$message->to($postData['email'])
-					        ->subject($postData['subject']); 
-					//$message->setbody($postData['token']);
-					$message->from(FROM_EMAIL_ADDRESS);
+					        ->subject($postData['subject']);
+					$message->from('phpurban@gmail.com');
 				});
 
 
