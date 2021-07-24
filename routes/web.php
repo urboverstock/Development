@@ -29,9 +29,11 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::any('/seller-dashboard', [App\Http\Controllers\LandingController::class, 'seller_dashboard'])->name('seller_dashboard');
-    Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');
+    Route::any('/seller-dashboard', [App\Http\Controllers\SellerController::class, 'dashboard'])->name('seller_dashboard');
+    Route::any('/seller-edit-profile', [App\Http\Controllers\SellerController::class, 'edit_profile'])->name('seller_edit_profile');
+    Route::any('/seller-edit-profile-documents', [App\Http\Controllers\SellerController::class, 'edit_profile_documents'])->name('seller_edit_profile_documents');
 
+    Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');
 });
 
 

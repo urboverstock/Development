@@ -38,12 +38,13 @@
             </div>
             
             <div class="col-lg-12">
-                <select class="form-select mb-4 py-3 form-select-lg mb-3" aria-label=".form-select-lg example" name="location">
+                <!-- <select class="form-select mb-4 py-3 form-select-lg mb-3" aria-label=".form-select-lg example" name="location">
                   <option value="">Select location</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
-                </select>
+                </select> -->
+                <input class="form-control form-control-lg mb-4 py-3" type="text" placeholder="Location" aria-label="" name="location" value="{{ old('location') }}">
                 <span class="error">{{ $errors->first('location') }}</span>
             </div>
             <div class="col-lg-12">

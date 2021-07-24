@@ -140,16 +140,6 @@ class LandingController extends Controller
       return view('forgot_password');
     }
 
-    public function seller_dashboard(Request $request)
-    {
-
-      if(!Auth::check()){
-         return redirect()->route('signin')->with('error', 'You need to login first');
-      }
-
-      return view('seller_dashboard');
-    }
-
    public function logout()
    {
       Auth::logout();

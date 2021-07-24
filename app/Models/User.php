@@ -41,8 +41,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public $appends = ['profile_img', 'full_name'];
+
+    public function getProfileImgAttribute($value){
+        if($this->attributes['profile_pic'] != null){
+            return asset($this->attributes['profile_pic']);
+        }else{
+            return asset('assets/images/default_profile_img.png');
+        }
+    }
+
+    public function getFullNameAttribute($value){
+        return $this->attributes['first_name'].' '.$this->attributes['last_name'];
+    }
+
     public function role() {
         return $this->belongsTo(UserRole::class, 'user_type', 'id');
+    }
+
+    public function user_documents() {
+        return $this->hasMany(UserDocument::class, 'user_id', 'id');
     }
 
     public static function getSellers($request) {

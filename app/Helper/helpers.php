@@ -51,4 +51,21 @@
 			echo "<pre>"; print_r($array); die;
 		}
 	}
+
+	if(!function_exists('UploadImage')) {
+		function UploadImage($file, $destinationPath) {
+			try{
+				$imgName = $file->getClientOriginalName();
+				$ext = explode('?', \File::extension($imgName));
+				$main_ext = $ext[0];
+				$finalName = time()."_".rand(1,10000).'.'.$main_ext; 
+				$file->move($destinationPath, $finalName);
+				return $path = $destinationPath.'/'.$finalName;
+			}catch (\Execption $e) {
+				$response['status'] = false;
+				$response['message'] = $e->getMessage()->withInput();
+				return $response;
+			}
+		}
+	}
    
