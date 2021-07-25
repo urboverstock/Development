@@ -32,7 +32,7 @@
                 </div>
               </div>
               <div class="card-body px-md-5 px-3">
-                <form method="post" action="" enctype="multipart/form-data">
+                <form method="post" action="" enctype="multipart/form-data" id="edit_profile_form">
                   {{ csrf_field() }}
                   <div class="row">
                     <div class="col-lg-12">
@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-lg-6">
                       <div class="mb-4">
-                        <label for="exampleFormControlInput1" class="form-label">First Name</label>
+                        <label class="form-label">First Name</label>
                         <div class="custom-urban-form">
                           <input class="form-control" type="text" placeholder="First Name" name="first_name" value="{{ $user->first_name }}">
                           <i class="fas fa-pen"></i>
@@ -69,7 +69,7 @@
                     </div>
                     <div class="col-lg-12">
                       <div class="mb-4">
-                        <label for="exampleFormControlInput1" class="form-label">Location</label>
+                        <label class="form-label">Location</label>
                         <div class="custom-urban-form">
                           <input class="form-control" type="text" placeholder="Location" name="location" value="{{ $user->location }}">
                           <i class="fas fa-pen"></i>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="col-lg-6">
                       <div class="mb-4">
-                        <label for="exampleFormControlInput1" class="form-label">ISD Code</label>
+                        <label class="form-label">ISD Code</label>
                         <div class="custom-urban-form">
                           <input type="text" class="form-control"  placeholder="ISD Code" name="isd_code" value="{{ $user->isd_code }}">
                           <i class="fas fa-pen"></i>
@@ -89,7 +89,7 @@
                     </div>
                     <div class="col-lg-6">
                       <div class="mb-4">
-                        <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+                        <label class="form-label">Phone Number</label>
                         <div class="custom-urban-form">
                           <input type="text" class="form-control"  placeholder="Phone Number" name="phone_number" value="{{ $user->phone_number }}">
                           <span class="badge rounded-pill badge-primary-light text-dark py-2">Verify</span>

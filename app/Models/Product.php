@@ -17,6 +17,10 @@ class Product extends Model
     	return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+	public function product_image() {
+    	return $this->hasOne(ProductImage::class, 'product_id', 'id')->where('status', ACTIVE_STATUS);
+    }
+
     public function images() {
     	return $this->belongsTo(ProductImage::class, 'product_id', 'id')->where('status', ACTIVE_STATUS);
     }

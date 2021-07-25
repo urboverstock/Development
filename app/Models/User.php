@@ -63,6 +63,11 @@ class User extends Authenticatable
         return $this->hasMany(UserDocument::class, 'user_id', 'id');
     }
 
+    public function products() {
+        return $this->hasMany(Product::class, 'user_id', 'id')
+            ->orderBy('id', 'desc');
+    }
+
     public static function getSellers($request) {
         $query = User::with(['role' => function($q) {
                             $q->select('id', 'name');

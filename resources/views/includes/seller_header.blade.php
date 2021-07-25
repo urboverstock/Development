@@ -38,22 +38,24 @@
             <div class="me-4 " data-bs-toggle="dropdown" aria-expanded="false">
               <img class="avatar-50 rounded-cricle " src="{{ $user->profile_img }}" alt="" style="cursor: pointer;">
             </div>
-            <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="dropdownMenuButton1">
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                <!-- fw-bold -->
-              <li><a class="dropdown-item border-bottom" href="{{ route('seller_edit_profile') }}">My Profile</a></li>
+              <li><a class="dropdown-item border-bottom" href="{{ route('seller_view_profile') }}">My Profile</a></li>
               <li><a class="dropdown-item border-bottom" href="{{ route('seller_dashboard') }}">Dashboard</a></li>
-              <li><a class="dropdown-item border-bottom" href="#">Deliveries</a></li>
+
+              <li><a class="dropdown-item border-bottom" href="{{ route('add_product') }}
+              ">Add Product</a></li>
+              
+              <li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li>
               <li class="logout_btn"><a class="dropdown-item border-bottom" href="javascript:;">Logout</a></li>
             </ul>
           </div>
-         
           <div class="hamburger-menu">
             <div class="line line-1"> </div>
             <div class="line line-3"> </div>
           </div>
         </div>
         <div class="custom-navbar">
-          
           <ul class="nav-list">
             <li class="custom-nav-item">
               <a href="{{ url('/') }}" class="custom-nav-link">Home</a>
@@ -69,7 +71,6 @@
             </li>
           </ul>
         </div>
-        
       </div>
     </nav>
   </header>

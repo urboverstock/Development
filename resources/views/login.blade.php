@@ -12,7 +12,7 @@
       </div>
       
       <div class="offset-lg-1 col-lg-5">
-        <form action="" method="post">
+        <form action="" method="post" id="login_form">
           {{ csrf_field() }}
           <input class="form-control form-control-lg mb-4 py-3" type="text" placeholder="Email@address.com" aria-label="Email@address.com" name="email" value="{{ old('email') }}">
           <span class="error">{{ $errors->first('email') }}</span>

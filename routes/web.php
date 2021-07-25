@@ -32,6 +32,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::any('/seller-dashboard', [App\Http\Controllers\SellerController::class, 'dashboard'])->name('seller_dashboard');
     Route::any('/seller-edit-profile', [App\Http\Controllers\SellerController::class, 'edit_profile'])->name('seller_edit_profile');
     Route::any('/seller-edit-profile-documents', [App\Http\Controllers\SellerController::class, 'edit_profile_documents'])->name('seller_edit_profile_documents');
+    Route::any('/seller-view-profile', [App\Http\Controllers\SellerController::class, 'view_profile'])->name('seller_view_profile');
+    Route::any('add-product', [App\Http\Controllers\SellerController::class, 'add_product'])->name('add_product');
+    Route::any('edit-product/{product_id}', [App\Http\Controllers\SellerController::class, 'edit_product'])->name('edit_product');
 
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');
 });

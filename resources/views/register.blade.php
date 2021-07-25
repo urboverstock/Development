@@ -29,7 +29,7 @@
               <span class="error">{{ $errors->first('email') }}</span>
             </div>
             <div class="col-lg-12">
-              <input class="form-control form-control-lg mb-4 py-3" type="password" placeholder="Password" aria-label="" name="password">
+              <input class="form-control form-control-lg mb-4 py-3" type="password" placeholder="Password" aria-label="" name="password" id="password">
               <span class="error">{{ $errors->first('password') }}</span>
             </div>
             <div class="col-lg-12">

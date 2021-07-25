@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserDocument;
+use App\Models\ProductCategory;
+use App\Models\ProductCompanies;
+use App\Models\Product;
+use App\Models\ProductImage;
 use Auth, Validator;
 
 class SellerController extends Controller
@@ -129,5 +133,146 @@ class SellerController extends Controller
         }
 
         return view('seller.edit_profile_documents', compact('user', 'doc_1', 'doc_2', 'doc_3'));
+    }
+
+    public function view_profile(){
+
+        $user = User::where('id', Auth::id())
+                ->with('products.product_image')
+                ->first();
+
+        if(!empty($user)){
+            $user = $user->toArray();
+        }
+        // echo "<pre>"; print_r($user); die;
+
+        return view('seller.view_profile', compact('user'));
+    }
+
+    public function add_product(Request $request){
+
+        $product_categories = ProductCategory::all();
+        $product_companies = ProductCompanies::all();
+
+        if($request->isMethod('post')){
+
+            $postData = $request->all();
+
+            $validator = Validator::make($postData, [
+                'name' => 'required',
+                'price' => 'required|digits_between:1,10',
+                'gender' => 'required|in:M,F',
+                'category_id' => 'required',
+                'company_id' => 'required',
+                'description' => 'required'
+            ]);
+    
+            if ($validator->fails()) {
+                return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+            }
+
+            $product                = new Product;
+            $product->user_id       = Auth::id();
+            $product->name          = $postData['name'];
+            $product->description   = $postData['description'];
+            $product->price         = $postData['price'];
+            $product->status        = '1';
+            $product->gender        = $postData['gender'];
+            $product->category_id   = $postData['category_id'];
+            $product->company_id    = $postData['company_id'];
+            
+            if($product->save()){
+
+                if(isset($postData['image']) && !empty($postData['image'])){
+                    if(empty($image)){
+                        $image          = new ProductImage;
+                        $image->product_id = $product->id;
+                        $image->file_type    = 'I';
+                    }
+    
+                    $image->file = UploadImage($postData['image'], $this->uploadUserProfilePath);
+                    $image->status = '1';
+                    $image->save();
+                }
+
+                return redirect()->route('seller_view_profile')->with('success', 'Product added successfully');
+            }else{
+                return redirect()->back()->with('error', COMMON_ERROR);
+            }
+        }
+
+        return view('seller.add_product', compact('product_categories','product_companies'));
+    }
+
+    public function edit_product(Request $request, $product_id){
+
+        $product_categories = ProductCategory::all();
+        $product_companies = ProductCompanies::all();
+        $product = Product::where('id', $product_id)
+                    ->with('product_image')
+                    ->first();
+        // echo "<pre>"; print_r($product); die;
+
+        if($request->isMethod('post')){
+
+            $postData = $request->all();
+
+            $validator = Validator::make($postData, [
+                'name' => 'required',
+                'price' => 'required|digits_between:1,10',
+                'gender' => 'required|in:M,F',
+                'category_id' => 'required',
+                'company_id' => 'required',
+                'description' => 'required'
+            ]);
+    
+            if ($validator->fails()) {
+                return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+            }
+            
+            $product = Product::find($product_id);
+
+            if(empty($product)){
+                return redirect()->back()->with('error', COMMON_ERROR);
+            }
+
+            $product->user_id       = Auth::id();
+            $product->name          = $postData['name'];
+            $product->description   = $postData['description'];
+            $product->price         = $postData['price'];
+            $product->status        = '1';
+            $product->gender        = $postData['gender'];
+            $product->category_id   = $postData['category_id'];
+            $product->company_id    = $postData['company_id'];
+            
+            if($product->save()){
+
+                if(isset($postData['image']) && !empty($postData['image'])){
+                    
+                    ProductImage::where('product_id', $product->id)
+                    ->delete();
+
+                    if(empty($image)){
+                        $image          = new ProductImage;
+                        $image->product_id = $product->id;
+                        $image->file_type    = 'I';
+                    }
+    
+                    $image->file = UploadImage($postData['image'], $this->uploadUserProfilePath);
+                    $image->status = '1';
+                    $image->save();
+                }
+
+                return redirect()->route('seller_view_profile')->with('success', 'Product updated successfully');
+            }else{
+                return redirect()->back()->with('error', COMMON_ERROR);
+            }
+        }
+
+        return view('seller.add_product', compact('product_categories','product_companies','product'));
     }
 }
