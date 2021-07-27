@@ -18,11 +18,12 @@ class SellerController extends Controller
     public function dashboard(Request $request)
     {
 
-      if(!Auth::check()){
-        return redirect()->route('signin')->with('error', 'You need to login first');
-      }
+        if(!Auth::check())
+        {
+            return redirect()->route('signin')->with('error', 'You need to login first');
+        }
 
-      return view('seller.dashboard');
+        return view('seller.dashboard');
     }
 
     public function edit_profile(Request $request){
@@ -44,11 +45,11 @@ class SellerController extends Controller
             ],[
                 'about.required' => 'The bio field is required'
             ]);
-    
+
             if ($validator->fails()) {
                 return redirect()->back()
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
             }
 
             $user->first_name       = $postData['first_name'];
@@ -76,18 +77,18 @@ class SellerController extends Controller
     public function edit_profile_documents(Request $request){
 
         $user = User::where('id', Auth::user()->id)
-                ->first();
+        ->first();
 
         $doc_1 = UserDocument::where('user_id', $user->id)
-                    ->where('type', '1')
-                    ->first();
+        ->where('type', '1')
+        ->first();
         $doc_2 = UserDocument::where('user_id', $user->id)
-                    ->where('type', '2')
-                    ->first();
+        ->where('type', '2')
+        ->first();
 
         $doc_3 = UserDocument::where('user_id', $user->id)
-                    ->where('type', '3')
-                    ->first();
+        ->where('type', '3')
+        ->first();
 
         if($request->isMethod('post')){
             $postData = $request->all();
@@ -138,8 +139,8 @@ class SellerController extends Controller
     public function view_profile(){
 
         $user = User::where('id', Auth::id())
-                ->with('products.product_image')
-                ->first();
+        ->with('products.product_image')
+        ->first();
 
         if(!empty($user)){
             $user = $user->toArray();
@@ -166,11 +167,11 @@ class SellerController extends Controller
                 'company_id' => 'required',
                 'description' => 'required'
             ]);
-    
+
             if ($validator->fails()) {
                 return redirect()->back()
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
             }
 
             $product                = new Product;
@@ -182,7 +183,7 @@ class SellerController extends Controller
             $product->gender        = $postData['gender'];
             $product->category_id   = $postData['category_id'];
             $product->company_id    = $postData['company_id'];
-            
+
             if($product->save()){
 
                 if(isset($postData['image']) && !empty($postData['image'])){
@@ -191,7 +192,7 @@ class SellerController extends Controller
                         $image->product_id = $product->id;
                         $image->file_type    = 'I';
                     }
-    
+
                     $image->file = UploadImage($postData['image'], $this->uploadUserProfilePath);
                     $image->status = '1';
                     $image->save();
@@ -211,8 +212,8 @@ class SellerController extends Controller
         $product_categories = ProductCategory::all();
         $product_companies = ProductCompanies::all();
         $product = Product::where('id', $product_id)
-                    ->with('product_image')
-                    ->first();
+        ->with('product_image')
+        ->first();
         // echo "<pre>"; print_r($product); die;
 
         if($request->isMethod('post')){
@@ -227,13 +228,13 @@ class SellerController extends Controller
                 'company_id' => 'required',
                 'description' => 'required'
             ]);
-    
+
             if ($validator->fails()) {
                 return redirect()->back()
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
             }
-            
+
             $product = Product::find($product_id);
 
             if(empty($product)){
@@ -248,11 +249,11 @@ class SellerController extends Controller
             $product->gender        = $postData['gender'];
             $product->category_id   = $postData['category_id'];
             $product->company_id    = $postData['company_id'];
-            
+
             if($product->save()){
 
                 if(isset($postData['image']) && !empty($postData['image'])){
-                    
+
                     ProductImage::where('product_id', $product->id)
                     ->delete();
 
@@ -261,7 +262,7 @@ class SellerController extends Controller
                         $image->product_id = $product->id;
                         $image->file_type    = 'I';
                     }
-    
+
                     $image->file = UploadImage($postData['image'], $this->uploadUserProfilePath);
                     $image->status = '1';
                     $image->save();

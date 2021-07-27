@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Hash;
 
 class UserSeeder extends Seeder
 {
@@ -15,42 +16,46 @@ class UserSeeder extends Seeder
     {
         $users = [
     		[
-	    		'name' => 'Super Admin',
+	    		'first_name' => 'Super Admin',
 	    		'email' => 'superadmin@yopmail.com',
-	    		'password' => '$2y$10$Bm9..S6QWhzP9iXCW7RXxubllLoeMZ1d6IrP5swYMSgWgzkMYfMim',
+	    		'password' => Hash::make(12345678),
 	    		'user_type' => '1',
                 'profile_pic' => 'assets/images/section-7/1.png',
                 'about' => '',
+                'billing_address' => '',
 	    		'created_at' => date('Y-m-d H:i:s')
     		],[
-	    		'name' => 'Levis',
+	    		'first_name' => 'Levis',
 	    		'email' => 'levis@yopmail.com',
-	    		'password' => '$2y$10$Bm9..S6QWhzP9iXCW7RXxubllLoeMZ1d6IrP5swYMSgWgzkMYfMim',
+	    		'password' => Hash::make(12345678),
 	    		'user_type' => '3',
                 'profile_pic' => 'assets/images/section-7/1.png',
                 'about' => 'Irish artist surviving online ⁣ vintage, 
                             reworking & drawing a sad man ⁣⁣⁣ I made
                             a documentary about my life, ok',
+                'billing_address' => '',
 	    		'created_at' => date('Y-m-d H:i:s')
     		],[
-                'name' => 'Jack Jones',
+                'first_name' => 'Jack Jones',
                 'email' => 'jack@yopmail.com',
-                'password' => '$2y$10$Bm9..S6QWhzP9iXCW7RXxubllLoeMZ1d6IrP5swYMSgWgzkMYfMim',
+                'password' => Hash::make(12345678),
                 'user_type' => '3',
                 'profile_pic' => 'assets/images/section-7/1.png',
                 'about' => 'Irish artist surviving online ⁣ vintage, 
                             reworking & drawing a sad man ⁣⁣⁣ I made
                             a documentary about my life, ok',
+                'billing_address' => '',
                 'created_at' => date('Y-m-d H:i:s')
             ] ,[
-                'name' => 'Jordan',
+                'first_name' => 'Jordan',
                 'email' => 'jordan@yopmail.com',
-                'password' => '$2y$10$Bm9..S6QWhzP9iXCW7RXxubllLoeMZ1d6IrP5swYMSgWgzkMYfMim',
+                'password' => Hash::make(12345678),
                 'user_type' => '3',
                 'profile_pic' => 'assets/images/section-7/1.png',
                 'about' => 'Irish artist surviving online ⁣ vintage, 
                             reworking & drawing a sad man ⁣⁣⁣ I made
                             a documentary about my life, ok',
+                'billing_address' => '',
                 'created_at' => date('Y-m-d H:i:s')
             ] 
     	];
