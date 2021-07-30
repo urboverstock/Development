@@ -46,6 +46,15 @@
     <div class="container">
       <div class="d-flex justify-content-between flex-wrap align-items-center">
         <p class="fw-bold mb-0">© 2021 Urban Overstock</p>
+        <div>
+          
+        <div class="d-flex flex-md-row align-items-center flex-column justify-content-center">
+              <small class="footer-link mb-0 mr-1">Design & Developed by </small>
+              <a href="http://zsoftware.tech/" target="blank" aria-describedby="a11y-external-message">
+                  <img style="width: 100px; height: 32px" class="z-software-logo" src="{{ asset('assets/images/z-software-logo.png') }}" alt="">
+                </a>
+            </div>
+        </div>
         <div class="d-flex">
           <img class="img-fluid me-3" src="{{ asset('assets/images/paypal.png') }}" alt="">
           <img class="img-fluid " src="{{ asset('assets/images/visa.png') }}" alt="">
