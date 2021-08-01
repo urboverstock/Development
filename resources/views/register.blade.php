@@ -56,6 +56,14 @@
                 </select>
                 <span class="error">{{ $errors->first('gender') }}</span>
             </div>
+            <div class="col-lg-12">
+                <select class="form-select mb-4 py-3 form-select-lg mb-3" aria-label=".form-select-lg example" name="user_type">
+                  <option class="us-selected" value="">Select Role</option>
+                  <option value="1">Seller</option>
+                  <option value="4">Buyer</option>
+                </select>
+                <span class="error">{{ $errors->first('user_type') }}</span>
+            </div>
             <div class="col-4">
               <input class="form-control form-control-lg mb-4 py-3" type="text" value="{{ old('isd_code') }}" aria-label="" name="isd_code" placeholder="ISD Code">
               <span class="error">{{ $errors->first('isd_code') }}</span>

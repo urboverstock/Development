@@ -23,7 +23,12 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect()->route('seller_dashboard');
+                if (!Auth::guest() && Auth::user()->user_type == 4) {
+                    return redirect()->route('buyer.dashboard');
+                }else{
+                    return redirect()->route('seller_dashboard');
+                }
+                //return redirect()->route('seller_dashboard');
             }
         }
 

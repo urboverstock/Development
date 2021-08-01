@@ -37,7 +37,8 @@ class LandingController extends Controller
                 'password' => 'required|min:8',
                 'confirm_password' => 'required|same:password',
                 'location' => 'required',
-                'gender' => 'required'
+                'gender' => 'required',
+                'user_type' => 'required'
             ]);
 
             if ($validator->fails()) {
@@ -55,8 +56,9 @@ class LandingController extends Controller
             $user->password      = Hash::make($postData['password']);
             $user->location      = $postData['location'];
             $user->gender        = $postData['gender'];
+            $user->user_type     = $postData['user_type'];
 
-            $checkUserRoleExistance = UserRole::whereRaw( 'LOWER(`name`) LIKE ?', 'Seller' )->first();
+            /* $checkUserRoleExistance = UserRole::whereRaw( 'LOWER(`name`) LIKE ?', 'Seller' )->first();
 
             $user_type = 3;
             if($checkUserRoleExistance)
@@ -64,7 +66,7 @@ class LandingController extends Controller
                 $user_type = $checkUserRoleExistance->id;
             }
 
-            $user->user_type        = $user_type;
+            $user->user_type        = $user_type; */
 
             if($user->save())
             {
@@ -114,7 +116,11 @@ class LandingController extends Controller
                 'password' => $postData['password']
             ])) {
 
-                return redirect()->route('seller_dashboard')->with('success', "Logged in successfully");
+                if (Auth::user()->user_type == 4) {
+                    return redirect()->route('buyer.dashboard')->with('success', "Logged in successfully");
+                 }else{
+                    return redirect()->route('seller_dashboard')->with('success', "Logged in successfully");
+                 }
             } else {
                 return redirect()->back()->with('error', 'Invalid email and password combination');
             }

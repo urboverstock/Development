@@ -136,6 +136,9 @@ $(document).ready(function() {
 			gender:{
 				required:true
 			},
+			user_type:{
+				required:true
+			},
 			isd_code:{
 				required:true,
 				digits: true,
