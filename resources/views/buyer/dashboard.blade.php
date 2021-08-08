@@ -3,7 +3,7 @@
 @section('content')
 
   <div class="mt-96 inner-profile-header bg-primary-lighten-2 pb-3 "> <img class="logged-wave-img position-absolute" src="../assets/images/wave-logg-seller.png" alt="">
-    <div class="header-big-avatar d-inline-flex mb-lg-0 mb-4"> <img class="img-fluid " data-aos="zoom-in-up" src="../assets/images/big-avatar.png" alt="">
+    <div class="header-big-avatar d-inline-flex mb-lg-0 mb-4"> <img class="img-fluid " data-aos="zoom-in-up" src="{{ $user['profile_img'] }}" alt="">
       <div class="d-inline-flex avatar-upload-wrapper">
         <label for="avatar-file"> <span class="p-3 bg-dark rounded-circle cursor-pointer">
                     <i class="fas fa-pencil-alt text-white"></i>
@@ -11,11 +11,13 @@
         <input type="file" class="d-none" id="avatar-file"> </div>
     </div>
     <div class="inner-profile-header-content --ver-2">
-      <h1 class="display-5 f-600 me-3">Chloe Silver</h1>
-      <h6 class="f-600 mb-2">Bio : Vintage Goods Shipping Worldwide🚢. PM questions. Instant Buy 🛒💨. No <br>
-          Returns. Free bundle shipping. Eco friendly packaging♻️</h6>
+      <h1 class="display-5 f-600 me-3">{{ $user['full_name'] }}</h1>
+
+      @if(!empty($user['about']))
+        <h6 class="f-600 mb-2" data-aos="fade-up">Bio : {{ $user['about'] }}</h6>
+      @endif
       <div class="small-line mb-2"></div>
-      <p class="text-15 f-600"> Member Since - 05 April, 2021 </p>
+      <p class="text-15 f-600"> Member Since - {{ date('d M, Y', strtotime($user->created_at)) }} </p>
     </div>
   </div>
   <!-- featured-select  -->

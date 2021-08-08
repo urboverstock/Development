@@ -21,8 +21,8 @@ class BuyerController extends Controller
       if(!Auth::check()){
         return redirect()->route('signin')->with('error', 'You need to login first');
       }
-
-      return view('buyer.dashboard');
+      $user = User::find(Auth::user()->id);
+      return view('buyer.dashboard', compact('user'));
     }
 
     public function edit_profile(Request $request){

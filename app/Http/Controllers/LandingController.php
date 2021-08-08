@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\UserRole;
+use App\Models\UserFollowers;
 use Auth, Validator, Hash;
 
 class LandingController extends Controller
@@ -188,5 +189,32 @@ class LandingController extends Controller
             ->with('error', 'No buyer account')
             ->withInput();
         }
+    }
+
+    public function addFollowUser(Request $request)
+    {
+        if(!Auth::check()){
+            $response["status"] = 0;
+            $response["message"] = "Please login first";
+        }else{
+            $postData = $request->all();
+            $check = UserFollowers::where(['user_id'=> Auth::user()->id,'follower_id'=>$postData['user_id']])->first();
+            if(empty($check)){
+                $follower                = new UserFollowers;
+                $follower->user_id       = Auth::user()->id;
+                $follower->follower_id     = $postData['user_id'];
+                if($follower->save()){
+                    $response["status"] = 1;
+                    $response["message"] = "You have follow successfully";
+                }else{
+                    $response["status"] = 0;
+                    $response["message"] = "Something went wrong";
+                }
+            }else{
+                $response["status"] = 0;
+                $response["message"] = "You have already follow";
+            }
+        }
+        return response()->json($response);
     }
 }
