@@ -2,15 +2,14 @@
 @section('title','Home')
 @section('content')
 <div class="mt-96 inner-profile-header bg-primary-lighten-2 pb-3"> 
-  <img class="logged-wave-img position-absolute" src="{{ asset('assets/images/wave-logg-seller.png') }}" alt=""> <img class="img-fluid header-big-avatar mb-lg-0 mb-4" data-aos="zoom-in-up" src="../assets/images/big-avatar.png" alt="">
+  <img class="logged-wave-img position-absolute" src="{{ asset('assets/images/wave-logg-seller.png') }}" alt=""> <img class="img-fluid header-big-avatar mb-lg-0 mb-4" data-aos="zoom-in-up" src="{{ $user->profile_img }}" alt="">
 	<div class="--right-line"></div>
 	<div class="inner-profile-header-content">
 		<div class="d-flex mb-2">
-			<h1 class="display-5 f-600 me-3">Chloe Silver</h1>
+			<h1 class="display-5 f-600 me-3">{{ $user->full_name }}</h1>
 			<div class="online-active"></div>
 		</div>
-		<h6 class="f-600 mb-2">Bio : Vintage Goods Shipping Worldwide🚢. PM questions. Instant Buy 🛒💨. No <br>
-        Returns. Free bundle shipping. Eco friendly packaging♻️</h6>
+		<h6 class="f-600 mb-2">Bio : {{ $user->about }}</h6>
 		<div class="d-flex align-items-center flex-wrap me-4 mb-4">
 			<div class="d-flex align-items-center me-2 mb-lg-0 mb-3"> <i class="fas fa-star me-2"></i> <i class="fas fa-star me-2"></i> <i class="fas fa-star me-2"></i> <i class="fas fa-star me-2"></i> <i class="fas fa-star text-white"></i> </div>
 			<h6 class="f-600 mb-lg-0 mb-3 me-3 ">(1045)</h6> <i class="far fa-heart fs-5 me-2 "></i>

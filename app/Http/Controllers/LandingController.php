@@ -181,7 +181,12 @@ class LandingController extends Controller
     public function guestBuyer(Request $request,$id)
     {
         $user = User::where(['id'=>$id,'user_type'=>4])->first();
-        //echo "<pre>";print_r($user);die;
-        return view('guest.profile', compact('user'));
+        if (!empty($user)) {
+            return view('guest.profile', compact('user'));
+        } else {
+            return redirect()->back()
+            ->with('error', 'No buyer account')
+            ->withInput();
+        }
     }
 }
