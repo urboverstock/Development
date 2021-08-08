@@ -49,5 +49,30 @@ $(document).ready(function() {
 			    alert( "Something went wrong!" );
 			});
 	});
+
+	$(".add-wishlist-product").click(function() {
+		//var user_id = $(".userId").val();
+		var product_id = $(this).data('productid');
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+			$.ajax({
+				type : 'post',
+				url: base_url+"/add-wishlist-product",
+				data: { product_id: product_id},
+				//async: false,
+			}).done(function(response) {
+					if(response.status ==1) {
+						alert(response.message);
+					}else{
+						alert(response.message);
+					}
+			}).fail(function() {
+				ajaxrequestTime = false;
+			    alert( "Something went wrong!" );
+			});
+	});
 	
 });

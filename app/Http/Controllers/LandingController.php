@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\UserRole;
 use App\Models\UserFollowers;
+use App\Models\ProductWishlist;
 use Auth, Validator, Hash;
 
 class LandingController extends Controller
@@ -213,6 +214,33 @@ class LandingController extends Controller
             }else{
                 $response["status"] = 0;
                 $response["message"] = "You have already follow";
+            }
+        }
+        return response()->json($response);
+    }
+
+    public function addWishlistProduct(Request $request)
+    {
+        if(!Auth::check()){
+            $response["status"] = 0;
+            $response["message"] = "Please login first";
+        }else{
+            $postData = $request->all();
+            $check = ProductWishlist::where(['user_id'=> Auth::user()->id,'product_id'=>$postData['product_id']])->first();
+            if(empty($check)){
+                $wishlist                = new ProductWishlist;
+                $wishlist->user_id       = Auth::user()->id;
+                $wishlist->product_id    = $postData['product_id'];
+                if($wishlist->save()){
+                    $response["status"] = 1;
+                    $response["message"] = "You have wishlist successfully";
+                }else{
+                    $response["status"] = 0;
+                    $response["message"] = "Something went wrong";
+                }
+            }else{
+                $response["status"] = 0;
+                $response["message"] = "You have already wishlist";
             }
         }
         return response()->json($response);
