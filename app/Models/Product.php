@@ -34,7 +34,7 @@ class Product extends Model
     public static function getProducts($request) {
     	$query = Product::with('category:id,name',
     						 'images:id,product_id,file,file_type',
-    						 'user:id,name')
+    						 'user:id,first_name')
     						->where('status', ACTIVE_STATUS);
     	if($request->search) {
     		$query->where(function($q) use ($request) {

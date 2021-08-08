@@ -177,4 +177,11 @@ class LandingController extends Controller
     {
         return view('getstarted');
     }
+
+    public function guestBuyer(Request $request,$id)
+    {
+        $user = User::where(['id'=>$id,'user_type'=>4])->first();
+        //echo "<pre>";print_r($user);die;
+        return view('guest.profile', compact('user'));
+    }
 }

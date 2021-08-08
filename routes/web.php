@@ -51,4 +51,4 @@ Route::get('get-started', [App\Http\Controllers\ProductController::class, 'getSt
 Route::get('products', [App\Http\Controllers\ProductController::class, 'getProducts'])->name('products');
 Route::get('search-results', [App\Http\Controllers\ProductController::class, 'searchresults'])->name('search-products');
 Route::get('get-pagination-records', [App\Http\Controllers\ProductController::class, 'paginationRecords'])->name('pagination-records');
-
+Route::get('guest-buyer/{id}', [App\Http\Controllers\LandingController::class, 'guestBuyer'])->name('guest-buyer');

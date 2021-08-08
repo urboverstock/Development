@@ -151,3 +151,35 @@ if(orders){
     ]
   });
 }
+
+let guestBuyers = document.querySelector('.center-guest-buyers');
+
+if(guestBuyers){
+  $('.center-guest-buyers').slick({
+    centerMode: true,
+    centerPadding: '60px',
+    slidesToShow: 3,
+    autoplay: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+  
+}
