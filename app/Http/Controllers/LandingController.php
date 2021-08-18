@@ -83,7 +83,7 @@ class LandingController extends Controller
 
             // Auth::login($user);
 
-            // return redirect()->route('seller_dashboard')->with('success', 'Account created successfully.');
+            // return redirect()->route('sellerDashboard')->with('success', 'Account created successfully.');
         }
 
         return view('register');
@@ -121,7 +121,7 @@ class LandingController extends Controller
                 if (Auth::user()->user_type == 4) {
                     return redirect()->route('buyer.dashboard')->with('success', "Logged in successfully");
                  }else{
-                    return redirect()->route('seller_dashboard')->with('success', "Logged in successfully");
+                    return redirect()->route('sellerDashboard')->with('success', "Logged in successfully");
                  }
             } else {
                 return redirect()->back()->with('error', 'Invalid email and password combination');

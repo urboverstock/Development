@@ -275,26 +275,29 @@ $(document).ready(function() {
 				minlength:1,
 				maxlength:10
 			},
-			gender:{
-				required:true
-			},
+			// gender:{
+			// 	required:true
+			// },
 			category_id:{
 				required:true
 			},
-			company_id:{
-				required:true
-			},
+			// company_id:{
+			// 	required:true
+			// },
 			description:{
 				required:true
-			}
+			},
+			brand:{
+				required:true
+			},
 		},
 	    messages: {
 			category_id:{
 				required: 'Category field is required'
 			},
-			company_id:{
-				required: 'Company field is required'
-			}
+			// company_id:{
+			// 	required: 'Company field is required'
+			// }
 	    },
 		errorPlacement: function(error, element) {
 	        if(element.attr("name") == "name") {
@@ -629,6 +632,46 @@ $(document).ready(function() {
 				required:true,
 				email: true,
 				emailfull: true
+			}
+		},
+	    messages: {
+
+	    },
+	});
+
+
+	jQuery.validator.addMethod("greaterThan", 
+		function(value, element, params) {
+
+		    if (!/Invalid|NaN/.test(new Date(value))) {
+		        return new Date(value) > new Date($(params).val());
+		    }
+
+		    return isNaN(value) && isNaN($(params).val()) 
+		        || (Number(value) > Number($(params).val())); 
+		},'Must be greater than {0}.');
+
+
+	$("#add_coupon_form").validate({ 
+		errorElement: 'span',
+		rules: {
+			name: {
+				required:true,
+			},			
+			type:{
+				required:true,
+			},
+			price:{
+				required:true,
+				digits: true,
+				minlength:1,
+				maxlength:10
+			},
+			start_date:{
+				required:true,
+			},
+			end_date:{
+				required:true,
 			}
 		},
 	    messages: {

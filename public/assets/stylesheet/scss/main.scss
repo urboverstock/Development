@@ -8,7 +8,7 @@ html {
   
   box-sizing: border-box;
   overflow-x: hidden;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 h1,
@@ -22,7 +22,9 @@ p,
 a {
   font-family: "Inter", sans-serif;
 }
-
+footer {
+  background-color: #F0E3B9 !important;
+}
 // header 
 
 section {
@@ -45,7 +47,8 @@ section {
 
   .line {
     width: 100%;
-    height: 3px;
+    height: 4px;
+    border-radius: 40px;
     background-color: $black;
     transition: 0.3s ease-in;
     transition: all 0.3s;
@@ -81,7 +84,11 @@ section {
   background-color: $black;
   transition: 0.3s ease-in;
 }
-
+.header-cart-badge {
+  position: relative;
+  top: -5px;
+  right: -2px;
+}
 .custom-navbar {
   position: fixed;
   right: -300px;
@@ -138,7 +145,7 @@ section {
 // section-6 
 
 .urban-title {
-  
+ 
   &:before {
     content: "";
     height: 3px;
@@ -160,6 +167,13 @@ section {
   font-size: 52px;
   font-weight: bold;
   display: inline-block;
+  &.ust-100 {
+    &:before {
+      content: "";
+      width: 100%;
+      
+    }
+  }
   &:before {
     content: "";
     height: 19px;
@@ -342,4 +356,68 @@ section {
 
 .bg-primary--two {
   background-color: #F6EFD7;
+}
+
+.--empty-dropdown {
+  min-width: 320px;
+  width: 500px;
+}
+
+.--header-margin-top-mobile-version {
+  @media(max-width: 523px){
+    margin-top: 110px;
+  }
+}
+
+.latest-activities-hover {
+  width: 240px;
+  background-color: #fff;
+  right: -76px;
+  display: none;
+  @media (max-width: 1439px){
+    right: 0;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    right: 50%;
+    top: -14px;
+    width: 0;
+    height: 0;
+    transform: rotate(90deg);
+    
+    border-top: 13px solid transparent;
+    border-right: 15px solid #fff;
+    border-bottom: 13px solid transparent;
+
+
+  }
+}
+
+.latest-activities-wrapper{
+  &:hover {
+    .latest-activities-color {
+      background-color: rgba(246, 239, 215, 1);
+    }
+    .latest-activities-hover {
+      display: block !important;
+      z-index: 1;
+    }
+  }
+}
+
+.logout-screen {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.84);
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.urbanUploadFileProduct {
+  display: none;
 }

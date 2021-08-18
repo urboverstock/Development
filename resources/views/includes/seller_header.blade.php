@@ -40,13 +40,22 @@
             </div>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                <!-- fw-bold -->
-              <li><a class="dropdown-item border-bottom" href="{{ route('seller_view_profile') }}">My Profile</a></li>
-              <li><a class="dropdown-item border-bottom" href="{{ route('seller_dashboard') }}">Dashboard</a></li>
+              <li><a class="dropdown-item border-bottom" href="{{ route('sellerView_profile') }}">My Profile</a></li>
+              <li><a class="dropdown-item border-bottom" href="{{ route('sellerDashboard') }}">Dashboard</a></li>
 
-              <li><a class="dropdown-item border-bottom" href="{{ route('add_product') }}
+              <li><a class="dropdown-item border-bottom" href="{{ route('sellerAddProduct') }}
               ">Add Product</a></li>
+
+              <li><a class="dropdown-item border-bottom" href="{{ route('sellerCoupon') }}
+              ">Coupons</a></li>
+
+              <li><a class="dropdown-item border-bottom" href="{{ route('sellerOrderList') }}
+              ">Orders</a></li>
+
+              <li><a class="dropdown-item border-bottom" href="{{ route('sellerWishlistProduct') }}
+              ">Users Wishlist</a></li>
               
-              <li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li>
+              <!-- <li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li> -->
               <li class="logout_btn"><a class="dropdown-item border-bottom" href="javascript:;">Logout</a></li>
             </ul>
           </div>

@@ -26,9 +26,9 @@ class RedirectIfAuthenticated
                 if (!Auth::guest() && Auth::user()->user_type == 4) {
                     return redirect()->route('buyer.dashboard');
                 }else{
-                    return redirect()->route('seller_dashboard');
+                    return redirect()->route('sellerDashboard');
                 }
-                //return redirect()->route('seller_dashboard');
+                //return redirect()->route('sellerDashboard');
             }
         }
 

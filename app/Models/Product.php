@@ -18,7 +18,7 @@ class Product extends Model
     }
 
 	public function product_image() {
-    	return $this->hasOne(ProductImage::class, 'product_id', 'id')->where('status', ACTIVE_STATUS);
+    	return $this->hasMany(ProductImage::class, 'product_id', 'id')->where('status', ACTIVE_STATUS);
     }
 
     public function images() {

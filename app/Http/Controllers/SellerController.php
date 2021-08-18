@@ -65,7 +65,7 @@ class SellerController extends Controller
             }
 
             if($user->save()){
-                return redirect()->route('seller_edit_profile_documents');
+                return redirect()->route('sellerEdit_profile_documents');
             }else{
                 return redirect()->back()->with('error', COMMON_ERROR);
             }
@@ -130,7 +130,7 @@ class SellerController extends Controller
                 $doc_3->save();
             }
 
-            return redirect()->route('seller_dashboard')->with('success', 'Profile updated successfully');
+            return redirect()->route('sellerDashboard')->with('success', 'Profile updated successfully');
         }
 
         return view('seller.edit_profile_documents', compact('user', 'doc_1', 'doc_2', 'doc_3'));
@@ -198,7 +198,7 @@ class SellerController extends Controller
                     $image->save();
                 }
 
-                return redirect()->route('seller_view_profile')->with('success', 'Product added successfully');
+                return redirect()->route('sellerView_profile')->with('success', 'Product added successfully');
             }else{
                 return redirect()->back()->with('error', COMMON_ERROR);
             }
@@ -268,7 +268,7 @@ class SellerController extends Controller
                     $image->save();
                 }
 
-                return redirect()->route('seller_view_profile')->with('success', 'Product updated successfully');
+                return redirect()->route('sellerView_profile')->with('success', 'Product updated successfully');
             }else{
                 return redirect()->back()->with('error', COMMON_ERROR);
             }

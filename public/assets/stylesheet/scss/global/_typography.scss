@@ -29,7 +29,87 @@
 .font-500 {
   font-weight: 500;
 }
-
+.f-600 {
+  font-weight: 600;
+}
+.text-8 {
+  font-size: 8px;
+}
 .text-14 {
   font-size: 14px;
+}
+.text-10 {
+  font-size: 10px;
+}
+.text-15 {
+  font-size: 15px;
+}
+.text-16 {
+  font-size: 16px;
+}
+.text-18 {
+  font-size: 18px;
+}
+.text-12 {
+  font-size: 12px;
+}
+.text-24 {
+  font-size: 24px;
+}
+.text-25 {
+  font-size: 25px;
+}
+.text-38 {
+  font-size: 38px;
+}
+.text-50 {
+  font-size: 50px;
+}
+.text-20 {
+  font-size: 20px;
+}
+.text-random-color {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.text-mute {
+  color: rgba(170, 170, 170, 1);
+}
+
+.mt--28 {
+  margin-top: -28px;
+}
+.text-mute-2 {
+  color: rgba(99, 98, 98, 1);
+}
+
+.br-5 {
+  border-radius: 5px;
+}
+
+.py-18 {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+
+.f-700 {
+  font-weight: 700;
+}
+.f-400 {
+  font-weight: 400;
+}
+
+.text-truncated-box-sidebar  {
+  width: 280px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media (max-width:991px){
+    width: 213px;
+  }
+}
+
+.ls-2 {
+  letter-spacing: 2px;
 }

@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="{{ asset('assets/stylesheet/css/developer.css') }}">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  @yield('styles')
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -40,7 +41,7 @@
     </div>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
     <script type="text/javascript" src="{{ asset('assets/js/vendor/btnloadmore.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
@@ -49,11 +50,14 @@
     <script type="text/javascript" src="{{ asset('assets/js/plugins/slick.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+    <script type="text/javascript" src="http://112.196.117.52/bervor_app/public/admin/assets/plugins/sweet_alert/sweetalert.min.js"></script>
     <script src="{{ asset('assets/js/script/apexChart.js') }}"></script>
     <script src="{{ asset('assets/js/script/main.js') }}"></script>
     <script src="{{ asset('assets/js/script/jquery.validate.js') }}"></script>
     <script src="{{ asset('assets/js/script/form_validation.js') }}"></script>
+
+    <script type="text/javascript"> var baseUrl = {!! json_encode(url('/')) !!};</script>
 
     <script type="text/javascript">
         $(document).ready(function(){

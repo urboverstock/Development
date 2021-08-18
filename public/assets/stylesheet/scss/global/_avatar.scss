@@ -2,6 +2,10 @@
   height: 92px;
   width: 92px;
 }
+.avatar-80 {
+  width: 80px;
+  height: auto;
+} 
 .avatar {
   width: 64px;
   height: 64px;
@@ -9,4 +13,39 @@
 .avatar-sm {
   width: 48px;
   height: auto;
+}
+
+.avatar-50 {
+  width: 50px;
+  height: auto;
+}
+
+.circle-sm {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+
+}
+.avatar-32 {
+  width: 32px;
+  height: auto;
+}
+
+.avatar-wrapper {
+  height: 300px;
+  width: 300px;
+  position: relative;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  background-image: url('../../assets/images/big-avatar.png');
+  background-size: 100% 100%;
+  overflow: hidden;
+  .avatar-file {
+    position: absolute;
+    bottom: 0;
+    outline: none;
+    color: transparent;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }

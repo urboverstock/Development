@@ -8,3 +8,28 @@
         margin-top: 0;
     }
 }
+
+.mb--39{
+    margin-bottom: -39px;
+    @media (max-width: 992px) {
+        margin-bottom: 0;
+    }
+}
+
+.mt-96 {
+    margin-top: 96px;
+}.mr-13 {
+    margin-right: 13px;
+}
+
+.w-80 {
+    width: 80px;
+    height: auto;
+}
+.px-5rem {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+.mw-100 {
+    min-width: 100% !important;
+}
