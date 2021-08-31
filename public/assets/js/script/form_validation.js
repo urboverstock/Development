@@ -26,6 +26,7 @@ $(document).ready(function() {
 		    return false;
 		}
 	});
+
 	//disable first input space
 	$('.disablefirstspace').keypress(function( e ) {
 		if(e.which === 32 && !this.value.length) {
@@ -38,6 +39,7 @@ $(document).ready(function() {
 			$(this).val('');
 		}
 	});
+
 	$(document).on('blur','input', function (e) {
 		if($.trim($(this).val()) == ""){
 			$(this).val('');
@@ -49,6 +51,7 @@ $(document).ready(function() {
 			$(this).val('');
 		}
 	});
+
 	$(document).on('blur','textarea', function (e) {
 		if($.trim($(this).val()) == ""){
 			$(this).val('');
@@ -87,7 +90,7 @@ $(document).ready(function() {
         }
 	}, "Expiry date is invalid.");
 
-/*$('#registerFirstFrm').disableAutoFill();*/
+	/*$('#registerFirstFrm').disableAutoFill();*/
 	/*Signup form validation start*/
 	$("#admin_login_form").validate({ 
 		errorElement: 'span',
@@ -639,6 +642,8 @@ $(document).ready(function() {
 	    },
 	});
 
+	
+
 
 	jQuery.validator.addMethod("greaterThan", 
 		function(value, element, params) {
@@ -678,6 +683,31 @@ $(document).ready(function() {
 
 	    },
 	});
+
+	$("#add_user_post_form").validate({ 
+		errorElement: 'span',
+		rules: {
+			title: {
+				required:true,
+			},
+			description: {
+				required:true,
+			}
+		} 
+	});
+
+
+	$("#add_advertisement_form").validate({ 
+		errorElement: 'span',
+		rules: {
+			banner: {
+				required:true,
+			}
+		}
+	});
+
+
+
 
 });
 

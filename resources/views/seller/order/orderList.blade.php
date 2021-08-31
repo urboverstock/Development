@@ -31,10 +31,11 @@
                   <thead class="bg-chat">
                     <tr>
                       <th scope="col" class="fw-normal py-3">Sr No.</th>
-                      <th scope="col" class="fw-normal py-3">User Id</th>
+                      <th scope="col" class="fw-normal py-3">User</th>
                       <th scope="col" class="fw-normal py-3">Order Number</th>
                       <th scope="col" class="fw-normal py-3">Total Quantity</th>
                       <th scope="col" class="fw-normal py-3">Total Amount</th>
+                      <th scope="col" class="fw-normal py-3">Date</th>
                       <th scope="col" class="fw-normal py-3">Status</th>
                       <th scope="col" class="fw-normal py-3">Action</th>
                     </tr>
@@ -43,12 +44,13 @@
                   	
                   	@foreach($orders as $key => $order)
                     <tr>
-                      <td scope="row" class="py-3 align-middle f-400">{{ $key + 1  }}</td>
-                      <td scope="row" class="py-3 align-middle f-400">{{ $order['get_user_detail']['first_name']}}</td>
-                      <td class="py-3 align-middle ">{{ $order['order_number'] }}</td>
-                      <td class="py-3 align-middle "> {{ $order['total_quantity'] }} </td>
-                      <td class="py-3 align-middle ">{{ $order['price'] }}</td>
-                      <td class="py-3 align-middle ">
+                      <th scope="row" class="py-3 text-24 align-middle f-400">{{ $key + 1  }}</td>
+                      <th scope="row" class="py-3 text-24 align-middle f-400">{{ $order['get_user_detail']['first_name']}}</td>
+                      <td class="py-3 align-middle text-24">{{ $order['order_number'] }}</td>
+                      <td class="py-3 align-middle text-24"> {{ $order['total_quantity'] }} </td>
+                      <td class="py-3 align-middle text-24">{{ $order['price'] }}</td>
+                      <td class="py-3 align-middle text-24">{{ date('d/m/Y', strtotime($order['created_at'])) }}</td>
+                      <td class="py-3 align-middle text-22">
 
                         <select id="order_status" class="order_status">
                           <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_PENDING] ) }}" {{ $order['status'] == ORDER_PENDING ? 'selected' : ''}}>Pending</option>
@@ -77,7 +79,7 @@
                           @endswitch -->
 
                       </td>
-                      <td class="py-3 align-middle "><a href="{{ route('sellerViewOrder', $order['id']) }}">View</a></td>
+                      <td class="py-3 align-middle "><a href="{{ route('sellerViewOrder', \Illuminate\Support\Facades\Crypt::encrypt($order['id'])) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                       
                     </tr>
                     @endforeach

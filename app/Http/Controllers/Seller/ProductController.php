@@ -12,6 +12,8 @@ use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductWishlist;
 use Auth, Validator;
+use App\Models\Notification;
+use App\Models\UserOffer;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Support\Facades\Crypt;
 
@@ -103,8 +105,8 @@ class ProductController extends Controller
     }
 
     //Edit product form and update to the table
-    public function editProduct(Request $request, $product_id){
-
+    public function editProduct(Request $request, $product_id)
+    {
         $product_categories = ProductCategory::all();
         $product_companies = ProductCompanies::all();
         $product = Product::where('id', $product_id)
@@ -278,6 +280,45 @@ class ProductController extends Controller
         // print_r($wishlists);die();
 
         return view('seller.product.productWishlist', compact('wishlists'));
+    }
+
+    public function suggestionModal($userId, $productId)
+    {
+        $data['userId'] = $userId;
+        $data['productId'] = $productId;
+        $returnHTML = view('seller.product.suggestionModal.suggestionModal', compact('data'))->render();
+
+        return $returnHTML;
+    }
+
+    public function sendSuggestionNotifcation(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'offerPercentage' => 'required|digits_between:1,10',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
+        }
+
+        $notification = new Notification;
+        $notification->seller_id = Auth::id();
+        $notification->user_id = $request->user_id;
+        $notification->product_id = $request->product_id;
+        $notification->message = $request->message;
+
+        $notification->save();
+
+        $userOffer = new UserOffer;
+        $userOffer->seller_id = Auth::id();
+        $userOffer->user_id = $request->user_id;
+        $userOffer->product_id = $request->product_id;
+        $userOffer->description = $request->message;
+        $userOffer->offer_percentage = $request->offerPercentage;
+        $userOffer->save();
+        return back()->with('success', 'Offer send successfully');;
     }
 
 }

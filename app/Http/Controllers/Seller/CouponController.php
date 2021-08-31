@@ -17,11 +17,12 @@ class CouponController extends Controller
         $search = $request->search;
         if(!empty($search))
         {
-            $data['coupons'] = Coupon::where('name', 'like', '%' . $search . '%')->get()->toArray();
+            $data['coupons'] = Coupon::where('name', 'like', '%' . $search . '%')
+            ->where('user_id', Auth::user()->id)->get()->toArray();
         }
         else
         {
-            $data['coupons'] = Coupon::get()->toArray();
+            $data['coupons'] = Coupon::where('user_id', Auth::user()->id)->get()->toArray();
         }
         return view('seller.coupon.couponList', $data);
     }
@@ -51,6 +52,7 @@ class CouponController extends Controller
 
     public function editCoupon($id)
     {
+        $id = Crypt::decrypt($id);
     	$coupon = Coupon::find($id);
         return view('seller.coupon.addCoupon', compact('coupon'));
     }
@@ -79,6 +81,7 @@ class CouponController extends Controller
 
     public function delete($id)
     {
+        $id = Crypt::decrypt($id);
         $coupon = Coupon::find($id);
         if($coupon->delete())
         {

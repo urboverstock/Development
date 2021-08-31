@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Seller;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use Illuminate\Support\Facades\Crypt;
 
 class OrderController extends Controller
 {
@@ -37,6 +38,7 @@ class OrderController extends Controller
     //View particular order details
     public function viewOrder($id)
     {
+        $id = Crypt::decrypt($id);
     	$order = Order::with('getOrderDetail.getProductDetails', 'getUserAddress.getUserDetail')->find($id);
     	// print_r($order);die();
         return view('seller.order.orderDetail', compact('order'));

@@ -47,7 +47,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/plugins/slick.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ asset('assets/js/plugins/slick.js') }}"></script> -->
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
@@ -57,7 +57,10 @@
     <script src="{{ asset('assets/js/script/jquery.validate.js') }}"></script>
     <script src="{{ asset('assets/js/script/form_validation.js') }}"></script>
 
-    <script type="text/javascript"> var baseUrl = {!! json_encode(url('/')) !!};</script>
+    <script type="text/javascript"> var baseUrl = {!! json_encode(url('/')) !!};
+    var socketURL = '<?php echo env('APP_URL'); ?>';
+    </script>
+
 
     <script type="text/javascript">
         $(document).ready(function(){

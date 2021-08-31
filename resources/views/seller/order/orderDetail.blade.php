@@ -46,17 +46,22 @@
                 </thead>
                 	@foreach($order->getOrderDetail as $key => $details)
                 		<tr>
-                      <td scope="row" class="py-3 align-middle f-400">{{ $loop->iteration }}</td>
-                      <td scope="row" class="py-3 align-middle f-400">{{ $details->getProductDetails->name }}</td>
-                      <td scope="row" class="py-3 align-middle f-400">{{ $details->product_quantity }}</td>
-                      <td scope="row" class="py-3 align-middle f-400">{{ $details->product_price }}</td>
+                      <th scope="row" class="py-3 text-24 align-middle f-400">{{ $loop->iteration }}</td>
+                      <th scope="row" class="py-3 text-24 align-middle f-400">{{ $details->getProductDetails->name }}</td>
+                      <th scope="row" class="py-3 text-24 align-middle f-400">{{ $details->product_quantity }}</td>
+                      <th scope="row" class="py-3 text-24 align-middle f-400">{{ $details->product_price }}</td>
                     </tr>
                 	@endforeach
               </table>
             </div>
-            @endif
-           
-      </div>
+            @endif           
+        </div>
+
+        <div class="col-lg-12">
+          <div class="d-flex flex-wrap mb-2 align-center" data-aos="fade-up">
+              <a href="" class="btn btn-dark rounded-pill px-4 py-2 mt-3 mb-4">Send Message</a>
+            </div>
+        </div>
     </div>
   </section>
 @endsection

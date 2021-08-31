@@ -117,6 +117,8 @@ class LandingController extends Controller
                 'email' => $postData['email'],
                 'password' => $postData['password']
             ])) {
+                
+                User::where('id', Auth::user()->id)->update(['login_status' => LOGIN]);
 
                 if (Auth::user()->user_type == 4) {
                     return redirect()->route('buyer.dashboard')->with('success', "Logged in successfully");
@@ -171,6 +173,7 @@ class LandingController extends Controller
 
     public function logout()
     {
+        User::where('id', Auth::user()->id)->update(['login_status' => LOGOUT]);
         Auth::logout();
         return redirect()->route('signin')->with('success', 'Logout successfully');
     }

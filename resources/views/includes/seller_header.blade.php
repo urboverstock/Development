@@ -54,7 +54,16 @@
 
               <li><a class="dropdown-item border-bottom" href="{{ route('sellerWishlistProduct') }}
               ">Users Wishlist</a></li>
-              
+
+              <li><a class="dropdown-item border-bottom" href="{{ route('sellerUserPost') }}
+              ">Posts</a></li>
+
+              <li><a class="dropdown-item border-bottom" href="{{ route('chat') }}
+              ">Chat</a></li>
+
+
+              <li><a class="dropdown-item border-bottom" href="{{ route('sellerListAdvertisement') }}
+              ">Advertisement</a></li>              
               <!-- <li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li> -->
               <li class="logout_btn"><a class="dropdown-item border-bottom" href="javascript:;">Logout</a></li>
             </ul>

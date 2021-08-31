@@ -1,5 +1,7 @@
  <?php
  	use App\Models\ProductImage;
+ 	use App\Models\Chat;
+ 	use App\Models\ChatRoom;
  	
  	if(!function_exists('emailSend')) {
 		// This function use  for email send 
@@ -67,5 +69,22 @@
 				return $response;
 			}
 		}
+	}
+
+	if (! function_exists('unreadMessageCounter')) {
+	    function unreadMessageCounter($senderId, $receiverId) {
+	        return Chat::where(['sender_id' => $receiverId, 'receiver_id' => $senderId])->whereNULL('read_by')->count();
+	    }
+	}
+
+
+	if (! function_exists('lastMessage')) {
+	    function lastMessage($unique_code) {
+
+	        return ChatRoom::where([
+	                                'unique_code' => $unique_code
+	                            ])
+	                            ->first();
+	    }
 	}
    
