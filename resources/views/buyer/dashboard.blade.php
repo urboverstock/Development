@@ -25,6 +25,7 @@
             </div>
             <h5 class="mb-0 f-600">Items Sold</h5>
           </div>-->
+          
           <div class="d-flex align-items-center me-3 mb-lg-0 mb-lg-0 mb-3">
             <div class="bg-white px-4 py-2 rounded-pill d-inline-block me-2">
               <h6 class="mb-0 f-600">{{$followers}}</h6>

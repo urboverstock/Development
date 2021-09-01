@@ -208,7 +208,6 @@ class LandingController extends Controller
 
             $followers = UserFollowers::where(['follower_id'=>$id])->count();
             $followings = UserFollowers::where(['user_id'=>$id])->count();
-
             $pro_sellers = User::Select('id','first_name','last_name','profile_pic')->where(['user_type'=>3])->get();
             return view('guest.pro_seller', compact('user','followers','followings','pro_sellers'));
         } else {

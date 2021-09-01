@@ -23,7 +23,6 @@ class BuyerController extends Controller
         return redirect()->route('signin')->with('error', 'You need to login first');
       }
       $user = User::find(Auth::user()->id);
-
       $followers = UserFollowers::where(['follower_id'=>Auth::user()->id])->count();
       $followings = UserFollowers::where(['user_id'=>Auth::user()->id])->count();
       return view('buyer.dashboard', compact('user','followers','followings'));

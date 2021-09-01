@@ -559,9 +559,9 @@
 		@endforeach	
 		</div>
 	@else
-	<div class="row text-center">
-		<h2>No pro seller here!</h2>
-	</div>
+		<div class="row text-center">
+			<h2>No pro seller here!</h2>
+		</div>
     @endif
 	</div>
 </section>
