@@ -36,17 +36,14 @@ $(document).ready(function() {
 				data: { user_id: user_id},
 				//async: false,
 			}).done(function(response) {
-					alert(response.message);
-					jQuery('.alert-danger').append(response.message);
-					return false;
-					if(response.status ==1) {
-						/* $(".loadmore-main").append(response.html);
-						pagecount = parseInt($(".productpagecount").val()) + 1;
-						$(".productpagecount").val(pagecount); */
+					if(response.status == 1) {
+						toastr.success(response.message, "Success");
+					}else{
+						toastr.error(response.message, "Error");
 					}
 			}).fail(function() {
 				ajaxrequestTime = false;
-			    alert( "Something went wrong!" );
+				toastr.error("Something went wrong!", "Error");
 			});
 	});
 
@@ -65,13 +62,13 @@ $(document).ready(function() {
 				//async: false,
 			}).done(function(response) {
 					if(response.status ==1) {
-						alert(response.message);
+						toastr.success(response.message, "Success");
 					}else{
-						alert(response.message);
+						toastr.error(response.message, "Error");
 					}
 			}).fail(function() {
 				ajaxrequestTime = false;
-			    alert( "Something went wrong!" );
+				toastr.error("Something went wrong!", "Error");
 			});
 	});
 	

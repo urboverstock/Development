@@ -16,6 +16,7 @@
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <!--<link rel="stylesheet" href="{{ asset('assets/stylesheet/css/main.min.css') }}">-->
         <link rel="stylesheet" href="{{ asset('assets/css/main.min.css') }}">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
          
@@ -45,6 +46,7 @@
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script type="text/javascript" src="{{ asset('assets/js/plugins/slick.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script src="{{ asset('assets/js/script/main.js') }}"></script>
         <script src="{{ asset('assets/js/script/custom.js') }}"></script>
       <!--<script src="../assets/js/discount.js"></script>-->
