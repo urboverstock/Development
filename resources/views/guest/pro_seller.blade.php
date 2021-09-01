@@ -558,7 +558,7 @@
 			</div>
 		@endforeach	
 		</div>
-	@else
+	@else	
 	<div class="row text-center">
 		<h2>No pro seller here!</h2>
 	</div>

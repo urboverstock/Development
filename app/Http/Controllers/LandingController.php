@@ -187,10 +187,33 @@ class LandingController extends Controller
     {
         $user = User::where(['id'=>$id,'user_type'=>4])->first();
         if (!empty($user)) {
-            return view('guest.profile', compact('user'));
+
+            $followers = UserFollowers::where(['follower_id'=>$id])->count();
+            $followings = UserFollowers::where(['user_id'=>$id])->count();
+
+            $pro_sellers = User::Select('id','first_name','last_name','profile_pic')->where(['user_type'=>3])->get();
+
+            return view('guest.profile', compact('user','followers','followings','pro_sellers'));
         } else {
             return redirect()->back()
             ->with('error', 'No buyer account')
+            ->withInput();
+        }
+    }
+
+    public function proSeller(Request $request,$id)
+    {
+        $user = User::where(['id'=>$id,'user_type'=>3])->first();
+        if (!empty($user)) {
+
+            $followers = UserFollowers::where(['follower_id'=>$id])->count();
+            $followings = UserFollowers::where(['user_id'=>$id])->count();
+
+            $pro_sellers = User::Select('id','first_name','last_name','profile_pic')->where(['user_type'=>3])->get();
+            return view('guest.pro_seller', compact('user','followers','followings','pro_sellers'));
+        } else {
+            return redirect()->back()
+            ->with('error', 'No pro seller account')
             ->withInput();
         }
     }

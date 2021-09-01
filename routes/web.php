@@ -99,5 +99,6 @@ Route::any('saveChat', [App\Http\Controllers\Chat\ChatController::class,'saveCha
 Route::get('unreadMessage', [App\Http\Controllers\Chat\ChatController::class,'unreadMessage'])->name('unreadMessage');
 
 Route::get('guest-buyer/{id}', [App\Http\Controllers\LandingController::class, 'guestBuyer'])->name('guest-buyer');
+Route::get('pro-seller/{id}', [App\Http\Controllers\LandingController::class, 'proSeller'])->name('pro-seller');
 Route::post('add-follow-user', [App\Http\Controllers\LandingController::class, 'addFollowUser'])->name('add-follow-user');
 Route::post('add-wishlist-product', [App\Http\Controllers\LandingController::class, 'addWishlistProduct'])->name('add-wishlist-product');

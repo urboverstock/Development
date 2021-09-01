@@ -18,6 +18,26 @@
       @endif
       <div class="small-line mb-2"></div>
       <p class="text-15 f-600"> Member Since - {{ date('d M, Y', strtotime($user->created_at)) }} </p>
+        <div class="my-3 d-flex flex-wrap mt-4">
+          <!--<div class="d-flex align-items-center me-3 mb-lg-0 mb-lg-0 mb-3">
+            <div class="bg-white px-4 py-2 rounded-pill d-inline-block me-2">
+              <h6 class="mb-0 f-600">5K+</h6>
+            </div>
+            <h5 class="mb-0 f-600">Items Sold</h5>
+          </div>-->
+          <div class="d-flex align-items-center me-3 mb-lg-0 mb-lg-0 mb-3">
+            <div class="bg-white px-4 py-2 rounded-pill d-inline-block me-2">
+              <h6 class="mb-0 f-600">{{$followers}}</h6>
+            </div>
+            <h5 class="mb-0 f-600">Followers</h5>
+          </div>
+          <div class="d-flex align-items-center me-3 mb-lg-0 mb-3">
+            <div class="bg-white px-4 py-2 rounded-pill d-inline-block me-2">
+              <h6 class="mb-0 f-600">{{$followings}}</h6>
+            </div>
+            <h5 class="mb-0 f-600">Following</h5>
+          </div>
+        </div>
     </div>
   </div>
   <!-- featured-select  -->

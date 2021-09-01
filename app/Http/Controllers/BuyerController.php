@@ -9,6 +9,7 @@ use App\Models\ProductCategory;
 use App\Models\ProductCompanies;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\UserFollowers;
 use Auth, Validator;
 
 class BuyerController extends Controller
@@ -22,7 +23,10 @@ class BuyerController extends Controller
         return redirect()->route('signin')->with('error', 'You need to login first');
       }
       $user = User::find(Auth::user()->id);
-      return view('buyer.dashboard', compact('user'));
+
+      $followers = UserFollowers::where(['follower_id'=>Auth::user()->id])->count();
+      $followings = UserFollowers::where(['user_id'=>Auth::user()->id])->count();
+      return view('buyer.dashboard', compact('user','followers','followings'));
     }
 
     public function edit_profile(Request $request){
