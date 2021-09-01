@@ -550,7 +550,7 @@
 			<div class="my-4 mx-4">
 				<a style="text-decoration: none;color: #212529;" href="{{ route('pro-seller', ['id' => $seller->id]) }}">
 				<div class="card border-0 shadow br-20">
-					<div class="card-body d-flex align-items-center flex-wrap p-5"> <img class="me-3" src="../{{$seller->profile_pic}}" alt=""><br>
+					<div class="card-body d-flex align-items-center flex-wrap p-5"> <img class="me-3" src="../assets/images/section-7/1.png" alt=""><br>
 						<div class="text-24 fw-bold">{{$seller->first_name}}</div>
 					</div>
 				</div>
