@@ -84,6 +84,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('dashboard', [App\Http\Controllers\BuyerController::class, 'dashboard'])->name('buyer.dashboard');
     Route::any('/edit-profile', [App\Http\Controllers\BuyerController::class, 'edit_profile'])->name('buyer.edit_profile');
     Route::any('/view-profile', [App\Http\Controllers\BuyerController::class, 'view_profile'])->name('buyer.view_profile');
+    Route::any('/followers', [App\Http\Controllers\BuyerController::class, 'get_followers'])->name('buyer.followers');
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');
 });
 
