@@ -5,7 +5,7 @@
   <div class="mt-96 inner-profile-header bg-primary-lighten-2 pb-3 "> <img class="logged-wave-img position-absolute" src="../assets/images/wave-logg-seller.png" alt="">
     <div class="header-big-avatar d-inline-flex mb-lg-0 mb-4"> <img class="img-fluid " data-aos="zoom-in-up" src="{{ $user['profile_img'] }}" alt="">
       <div class="d-inline-flex avatar-upload-wrapper">
-        <label for="avatar-file"> <span class="p-3 bg-dark rounded-circle cursor-pointer">
+        <label for="avatar-file"> <span class="p-3 bg-dark rounded-circle cursor-pointer" style="display: none !important">
                     <i class="fas fa-pencil-alt text-white"></i>
                   </span> </label>
         <input type="file" class="d-none" id="avatar-file"> </div>

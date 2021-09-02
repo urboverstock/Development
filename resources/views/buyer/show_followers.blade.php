@@ -158,9 +158,9 @@
                           </a>
                         </div>
                       </div>
-                      <button type="button" class="btn btn-outline-dark rounded-pill">
+                      <!--<button type="button" class="btn btn-outline-dark rounded-pill">
                         <h6 class="mb-0 text-14">Follow</h6>
-                      </button>
+                      </button>-->
                     </div>
                   @endforeach
                 @else	
@@ -201,9 +201,9 @@
                           </a>
                         </div>
                       </div>
-                      <button type="button" class="btn btn-outline-dark rounded-pill">
+                      <!--<button type="button" class="btn btn-outline-dark rounded-pill">
                         <h6 class="mb-0 text-14">Follow</h6>
-                      </button>
+                      </button>-->
                     </div>
                   @endforeach
                 @else	
