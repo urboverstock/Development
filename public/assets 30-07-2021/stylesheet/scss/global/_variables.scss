@@ -1,0 +1,28 @@
+$black: #000000;
+$white: #fff;
+$primary: #D9B950;
+$primary-light: lighten($primary, $amount: 20);
+$gray: #A09E9E;
+
+$colors: (
+  primary: #D9B950,
+  primary-lighten: lighten($primary, $amount: 20),
+  primary-darken: darken($primary, $amount: 20),
+  white: #ffffff,
+  gray-color: #AAAAAA,
+  black: #000000,
+  black-two: #222222,
+  gray-icon: #E5E5E5,
+  gray-one: $gray 
+);
+
+@each $name, $color in $colors {
+  .text--#{$name} {
+    color: $color !important;
+  }
+}
+@each $name, $color in $colors {
+  .bg--#{$name} {
+    background-color: $color;
+  }
+}

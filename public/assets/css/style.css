@@ -1,0 +1,35 @@
+.productImg {
+    height: 180px;
+    width: 80%;
+    border-radius: 12px;
+    object-fit: none;
+    object-position: top;
+    margin: 10%;
+}
+.transparent-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    padding-right: 20px;
+    background: transparent;
+    border: 0;
+}
+
+.latest-products .slick-track {
+    display: flex;
+}
+.latest-products .slick-slide {
+    display: flex;
+    height: auto;
+}
+
+
+@media screen and (max-width: 500px) {
+    .z-about {
+        padding-top: 0;
+    }
+    .meet-sellers {
+        padding-bottom: 30px;
+    }
+}

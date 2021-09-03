@@ -1,0 +1,88 @@
+$black: #000000;
+$white: #fff;
+$primary: #D9B950;
+$primary-light: lighten($primary, $amount: 20);
+$gray: #A09E9E;
+$green: #25AA6D;
+
+$colors: (
+  primary: #D9B950,
+  primary-lighten: #ebdba4,
+  primary-darken: darken($primary, $amount: 20),
+  white: #ffffff,
+  gray-color: #AAAAAA,
+  black: #000000,
+  black-two: #222222,
+  gray-icon: #E5E5E5,
+  gray-one: $gray 
+);
+
+@each $name, $color in $colors {
+  .text--#{$name} {
+    color: $color !important;
+  }
+}
+@each $name, $color in $colors {
+  .bg--#{$name} {
+    background-color: $color;
+  }
+} 
+
+.bg-primary-lighten-2 {
+  background-color: #d8bf6c;
+}
+
+.border-3-primary {
+  border: 3px solid $primary !important;
+}
+
+.bg-edit-buyer-profile {
+  background-color: rgba(217, 185, 80, 0.3);
+}
+.badge-primary-light {
+  background-color: rgba(212, 175, 55, 0.4);
+  
+}
+
+.text-green {
+  color: #008000;
+}
+.text-green-2 {
+  color: rgba(37, 170, 109, 1);
+}
+
+.bg-chat {
+  background-color: rgba(246, 239, 215, 1);
+}
+a.text-red-2 {
+  color: #E06A4B;
+  &:hover {
+    color: #000;
+  }
+}
+
+.badge-custom-primary {
+  color: rgba(66, 47, 138, 0.87);
+  background-color: #EFECF8;
+}
+.badge-custom-success {
+  color: rgba(35, 180, 128, 1);
+  background-color: #CCF5E6;
+}
+
+.pending-circle {
+  background-color: rgba(66, 47, 138, 0.87);
+} 
+
+.text-red {
+  color: #FF0000;
+}
+
+.bg-primary-2 {
+  background-color: #E1C773;
+}
+
+
+.text-footer-bottom {
+  color: #636262;
+}

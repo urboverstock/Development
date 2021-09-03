@@ -1,0 +1,116 @@
+.max-w-520 {
+  max-width: 520px;
+}
+
+.top-30 {
+  top: 30%;
+}
+.bottom-5 {
+  bottom: 5%;
+}
+.ml-2rem {
+  margin-left: 2rem;
+}
+.line-height-2 {
+  line-height: 2;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.br-4 {
+  border-radius: 4px;
+}
+.br-20 {
+  border-radius: 20px;
+}
+.br-30 {
+  border-radius: 30px;
+}
+.br-10 {
+  border-radius: 10px;
+}
+
+.br-12 {
+  border-radius: 12px;
+}
+
+.bg-secondary-two {
+  background-color: #E5E5E5;
+}
+
+.text-13 {
+  font-size: 13px;
+}
+
+.d-contents {
+  display: contents;
+}
+.half-dots-position {
+  right: 0;
+  top: -50px;
+}
+
+.online-active {
+  background-color: $green;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  z-index: 2;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    
+  }
+}
+
+.small-line {
+  width: 31px;
+  height: 4px;
+  background-color: #000;
+}
+
+.br-50 {
+  border-radius: 50%;
+}
+
+
+.flex-1 {
+  flex: 1;
+}
+
+.border-primary-1 {
+  border: 1px solid $primary;
+}
+
+.small-cancel-btn-15 {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.br-8 {
+  border-radius: 8px;
+}
+
+.br-16 {
+  border-radius: 16px;
+}
+
+.visa-footer-image {
+  height: 64px;
+  margin-top: 8px;
+}
+
+.border-dashed-gray {
+  border: 2px dashed $gray;
+}

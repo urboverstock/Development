@@ -1,0 +1,250 @@
+.text--primary {
+  color: #D9B950 !important;
+}
+
+.text--white {
+  color: #ffffff !important;
+}
+
+.text--black {
+  color: #000000 !important;
+}
+
+.text--gray-icon {
+  color: #E5E5E5 !important;
+}
+
+.bg--primary {
+  background-color: #D9B950;
+}
+
+.bg--white {
+  background-color: #ffffff;
+}
+
+.bg--black {
+  background-color: #000000;
+}
+
+.bg--gray-icon {
+  background-color: #E5E5E5;
+}
+
+.leading-7 {
+  line-height: 1.75rem;
+}
+
+.br-24 {
+  border-radius: 24px;
+}
+
+.mt-100 {
+  margin-top: 100px;
+}
+
+.py-100 {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.mb-190 {
+  margin-bottom: 190px;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+
+.mt-50 {
+  margin-bottom: 50px;
+}
+
+.-mb-42 {
+  margin-bottom: -42px;
+}
+
+.font-500 {
+  font-weight: 500;
+}
+
+.avatar-md {
+  height: 92px;
+  width: 92px;
+}
+
+.custom-form-group-search input {
+  min-width: 425px;
+  border-radius: 7px;
+  padding: 12px;
+}
+
+.custom-form-group-search i {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 0;
+  padding-right: 20px;
+}
+
+.max-w-520 {
+  max-width: 520px;
+}
+
+.top-30 {
+  top: 30%;
+}
+
+.btn--primary {
+  background-color: #D9B950;
+}
+
+.btn--primary:hover {
+  background-color: #d4b13b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+p,
+a {
+  font-family: "Inter", sans-serif;
+}
+
+.hamburger-menu {
+  width: 35px;
+  height: 30px;
+  position: relative;
+  z-index: 99;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.hamburger-menu .line {
+  width: 100%;
+  height: 3px;
+  background-color: #000000;
+  -webkit-transition: 0.3s ease-in;
+  transition: 0.3s ease-in;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.hamburger-menu .line-3 {
+  width: 70%;
+}
+
+.hamburger-menu-change .custom-navbar {
+  right: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.hamburger-menu-change .line-1 {
+  -webkit-transform: rotateZ(-45deg) translate(-5px, 6px);
+          transform: rotateZ(-45deg) translate(-5px, 6px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.hamburger-menu-change .line-3 {
+  -webkit-transform: rotateZ(45deg) translate(-5px, -6px);
+          transform: rotateZ(45deg) translate(-5px, -6px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: #000000;
+  -webkit-transition: 0.3s ease-in;
+  transition: 0.3s ease-in;
+}
+
+.custom-navbar {
+  position: fixed;
+  right: -300px;
+  top: 0;
+  background-color: #fff;
+  height: 100%;
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.custom-nav-item {
+  list-style: none;
+  margin: 25px;
+}
+
+.custom-nav-link {
+  text-decoration: none;
+  font-size: 22px;
+  color: #352f44 !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  padding: 4px 0;
+}
+
+.custom-nav-link:hover::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.custom-nav-link::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #D9B950;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.refat-test {
+  height: 400px;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,209 @@
+.custom-form-group-search {
+  
+  input {
+    min-width: 425px;
+    border-radius: 7px;
+    padding: 12px;
+  }
+  i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    padding-right: 20px;
+
+  }
+}
+
+
+.custom-urban-form {
+  position: relative;
+  &.input-group {
+    .input-group-text {
+      border: 2px solid $primary;
+      border-bottom-left-radius: 8px !important;
+      border-top-left-radius: 8px !important;
+      border-right: none;
+      &.--focus-urban-group-text {
+        border-left: 2px solid $black;
+        border-top: 2px solid $black;
+        border-bottom: 2px solid $black;
+
+      }
+    }
+    input {
+      border-bottom-right-radius: 8px !important;
+      border-top-right-radius: 8px !important;
+      &:focus {
+        + span {
+          border: 1px solid $black !important;
+        }
+       
+          
+      }
+    }
+    
+    
+  }
+  input , textarea {
+    &::placeholder {
+      font-weight: 600;
+    }
+    padding-top:20px ;
+    padding-bottom:20px ;
+    border-radius: 8px;
+    border: 2px solid $primary;
+    color: $black !important;
+    font-weight: 700;
+    &:placeholder {
+      color: rgba(160, 158, 158, 1);
+    }
+    &:focus {
+      border: 2px solid $black;
+      box-shadow: none;
+      + i {
+        color: $black !important;
+        z-index: 5;
+      }
+    }
+    
+  }
+  i.textarea-icon {
+    top: 30px;
+    right: 20px;
+    padding: 0;
+  }
+  i {
+    color: rgba(160, 158, 158, 1);
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    transform: translateY(-50%);
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 16px;
+    background-color: #fff;
+  
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    
+
+  }
+  .badge {
+    
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    
+  }
+}
+
+
+
+.footer-mail {
+  max-width: 400px;
+  margin-left: auto;
+  .mail-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+  }
+  input {
+    padding-left: 70px;
+  }
+  .arrow {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+// checkbox 
+.form-group-checkbox {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.form-group-checkbox input {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-bottom: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.form-group-checkbox label {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+}
+
+.form-group-checkbox label:before {
+  content:'';
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 2px solid #D9B950;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 8px;
+  border-radius: 4px;
+}
+
+.form-group-checkbox input:checked + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 9px;
+  width: 7px;
+  height: 14px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+
+  transform: rotate(45deg);
+}
+.form-group-checkbox input:checked + label::before {
+  background-color: #D9B950;
+} 
+
+
+
+// number input 
+
+// input[type="number"] {
+  
+
+ 
+//   position: relative;
+//   text-align: left;
+  
+//   outline: none;
+//   background-image: url('data:image/svg+xml;utf8,%3Csvg%20version%3D%221.1%22%20viewBox%3D%220%200%2050%2067%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20stroke-width%3D%222%22%3E%3Cline%20x1%3D%221%22%20x2%3D%2250%22%20y1%3D%2233.5%22%20y2%3D%2233.5%22%20stroke%3D%22%23D8D8D8%22%2F%3E%3Cpolyline%20transform%3D%22translate(25%2020)%20rotate(45)%20translate(-25%20-20)%22%20points%3D%2219%2026%2019%2014%2032%2014%22%20stroke%3D%22%23000%22%2F%3E%3Cpolyline%20transform%3D%22translate(25%2045)%20rotate(225)%20translate(-25%20-45)%22%20points%3D%2219%2052%2019%2039%2032%2039%22%20stroke%3D%22%23000%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+//   background-position: center right;
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   caret-color: transparent;
+// }
+
+// input[type="number"]::-webkit-inner-spin-button {
+//   -webkit-appearance: none !important;
+//   opacity: 0 !important;
+//   background: transparent !important;
+//   border-width: 0px;
+//   margin: 0;
+  
+//   height: 34px;
+//   width: 23px;
+//   cursor: pointer;
+// }
