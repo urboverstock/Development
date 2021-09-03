@@ -115,8 +115,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                   <div class="card product-item border-0 br-12 shadow mb-5">
                     <div class="card-body ">
-                      <a href="{{ route('sellerViewProduct',   \Illuminate\Support\Facades\Crypt::encrypt($product['id'])) }}"><img class="img-fluid mb-3 br-12" src="{{ !empty($product['product_image']) ? url('/') .$product['product_image'][0]['file'] : asset('assets/images/default.png') }}" alt="" style="height: 170px;"></a>
-                      <h5 class="fw-bold"><a href="{{ route('sellerViewProduct',   \Illuminate\Support\Facades\Crypt::encrypt($product['id'])) }}">{{ $product['name'] }}</a></h5>
+                      <a href="{{ route('sellerViewProduct',   \Illuminate\Support\Facades\Crypt::encrypt($product['id'])) }}"><img class="w-100 mb-3 br-12" src="{{ !empty($product['product_image']) ? url('/') .$product['product_image'][0]['file'] : asset('assets/images/default.png') }}" alt="" style="height: 170px;"></a>
+                      <h5 class="fw-bold "><a class="text-dark text-decoration-none" href="{{ route('sellerViewProduct',   \Illuminate\Support\Facades\Crypt::encrypt($product['id'])) }}">{{ $product['name'] }}</a></h5>
                       <div class="d-flex my-2">
                         <i class="fas fa-star me-2 text--primary text-13"></i>
                         <i class="fas fa-star me-2 text--primary text-13"></i>

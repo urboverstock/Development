@@ -67,7 +67,7 @@
                           <label for="exampleFormControlInput1" class="form-label">Start Date</label>
                           <div class="custom-urban-form">
                               <input class="form-control" type="date" placeholder="Start Date" name="start_date" value="{{ @$coupon->start_date ?: old('start_date') }}" id="start_date">
-                              <i class="fas fa-pen"></i>
+                              
                           </div>
                           <span class="error">{{ $errors->first('start_date') }}</span>
                       </div>
@@ -76,7 +76,7 @@
                           <label for="exampleFormControlInput1" class="form-label">End Date</label>
                           <div class="custom-urban-form">
                               <input class="form-control" type="date" placeholder="End Date" name="end_date" value="{{ @$coupon->end_date ?: old('end_date') }}">
-                              <i class="fas fa-pen"></i>
+                              
                           </div>
                           <span class="error">{{ $errors->first('end_date') }}</span>
                       </div>
