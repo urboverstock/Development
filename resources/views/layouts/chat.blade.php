@@ -58,7 +58,7 @@
     <script src="{{ asset('assets/js/script/form_validation.js') }}"></script>
 
     <script type="text/javascript"> var baseUrl = {!! json_encode(url('/')) !!};
-    var socketURL = '<?php echo env('APP_URL'); ?>';
+    var socketURL = '<?php echo env('SOCKET_URL'); ?>';
     </script>
 
 
