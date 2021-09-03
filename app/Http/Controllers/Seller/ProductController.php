@@ -291,6 +291,7 @@ class ProductController extends Controller
         return $returnHTML;
     }
 
+    //Save offer data in the notifcation and user offer table
     public function sendSuggestionNotifcation(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -318,7 +319,43 @@ class ProductController extends Controller
         $userOffer->description = $request->message;
         $userOffer->offer_percentage = $request->offerPercentage;
         $userOffer->save();
-        return back()->with('success', 'Offer send successfully');;
+
+        return response()->json(['success' => 'Offer send successfully']);
+    }
+
+    //Get listing of offers
+    public function offerListing($productId, Request $request)
+    {
+        $search = $request->search;
+        if(!empty($search))
+        {
+            $data['productId'] = $productId;
+            $data['offers'] = UserOffer::with('user', 'getProductDetails:id,name')
+            ->whereHas('user', function($query) use($search)
+            {
+                $query->where('first_name', 'LIKE', '%'.$search.'%')
+                    ->orWhere('last_name', 'LIKE', '%'.$search.'%');
+
+            })
+            ->whereHas('getProductDetails', function($query) use($search)
+            {
+                $query->orWhere('name', 'LIKE', '%'.$search.'%');
+
+            })
+            // ->orWhere('offer_percentage', 'LIKE', '%' . $search . '%')
+            // ->orWhere('description', 'LIKE', '%' . $search . '%')
+            ->where('product_id', $productId)->get()->toArray();
+            // print_r($data['offers']);die();
+        }
+        else
+        {
+            $productId = Crypt::decrypt($productId);
+            $data['productId'] = $productId;
+            $data['offers'] = UserOffer::with('user', 'getProductDetails:id,name')
+            ->where('product_id', $productId)->get()->toArray();
+        }
+        
+        return view('seller.product.offersList', $data);
     }
 
 }

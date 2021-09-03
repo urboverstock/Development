@@ -642,7 +642,7 @@ $(document).ready(function() {
 	    },
 	});
 
-	
+
 
 
 	jQuery.validator.addMethod("greaterThan", 
@@ -697,7 +697,7 @@ $(document).ready(function() {
 	});
 
 
-	$("#add_advertisement_form").validate({ 
+	$("#add_advertisement_form").validate({
 		errorElement: 'span',
 		rules: {
 			banner: {
@@ -706,7 +706,18 @@ $(document).ready(function() {
 		}
 	});
 
-
+	$(".sellerSendSuggestionNotifcation").validate({ 
+        errorElement: 'span',
+        rules: {
+          offerPercentage: {
+            required:true,
+            number: true
+          },
+          messages : {
+          	required : true
+          }
+        } 
+      });
 
 
 });

@@ -74,7 +74,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="" rows="5" name="description">{{ @$advertisement->description ?: old('description') }}</textarea>
                 <i class="fas fa-pen textarea-icon"></i>
               </div>
-              <span class="name-error">{{ $errors->first('description') }}</span>
+              <span class="name-error error">{{ $errors->first('description') }}</span>
             </div>
 
             <div class="col-lg-12">
@@ -84,10 +84,10 @@
           </div>
 
           <div class="col-lg-4">
-                <div class="card border-0 mb-5 shadow br-16">
-                    <img class="w-100 h-100"  src="{{ asset('assets/images/edit-seller-form-right.png') }}" alt="">
-                </div>                  
-              </div>
+            <div class="card border-0 mb-5 shadow br-16">
+                <img class="w-100 h-100"  src="{{ asset('assets/images/edit-seller-form-right.png') }}" alt="">
+            </div>
+          </div>
 
           
         </div>
@@ -95,28 +95,27 @@
     </div>
   </section>
 
-
-
   @endsection
+  
   @section('scripts')
 
   <script>
       
       //show image after upload file
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+      function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('.banner_image').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+              reader.onload = function (e) {
+                  $('.banner_image').attr('src', e.target.result);
+              }
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
 
-    jQuery("#urbanFile").change(function () {
-        readURL(this);
-    });
+      jQuery("#urbanFile").change(function () {
+          readURL(this);
+      });
   </script>
 
   @stop

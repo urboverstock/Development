@@ -18,17 +18,16 @@
                 <div class="bg-chat p-3">
                     <div class="d-flex justify-content-between flex-wrap">
                         <div class="custom-form-group-search position-relative col-lg-8 d-lg-block d-none ">
-                        	<form method="get" action="{{ route('sellerWishlistProduct') }}">
+                        	<form method="get" action="{{ route('sellerOfferListing', $productId) }}">
 	                            <input type="text" class="form-control" placeholder="Search Orders" name="search">
 	                            <button type="submit"><i class="fas fa-search text--primary"></i></button>
                             </form>
-                        </div>
-                        
+                        </div>                        
                     </div>
                 </div>
             </div>
 
-            @if(count($wishlists) > 0)
+            @if(count($offers) > 0)
             <div class="col-lg-12">
               <div class="table-responsive">
                 <table class="table table-borderless">
@@ -37,22 +36,22 @@
                       <th scope="col" class="fw-normal py-3">Sr No.</th>
                       <th scope="col" class="fw-normal py-3">User Name</th>
                       <th scope="col" class="fw-normal py-3">Product Name</th>
-                      <th scope="col" class="fw-normal py-3">Date</th>
-                      <th scope="col" class="fw-normal py-3">Action</th>
+                      <th scope="col" class="fw-normal py-3">Offer (Percentage)</th>
+                      <th scope="col" class="fw-normal py-3">Any Description</th>
+                      <th scope="col" class="fw-normal py-3">Created At</th>
                     </tr>
                   </thead>
                   <tbody>
                   	
-                  	@foreach($wishlists as $key => $wishlist)
+                  	@foreach($offers as $key => $offer)
                     <tr>
                       <th scope="row" class="py-3 align-middle f-400">{{ $key + 1  }}</th>
-                      <th scope="row" class="py-3 align-middle f-400">{{ $wishlist['get_user_detail']['full_name']}}</th>
-                      <td class="py-3 align-middle">{{ $wishlist['get_product_detail']['name'] }}</td>
-                      <td class="py-3 align-middle">{{ date('d M, Y', strtotime($wishlist['created_at']) ) }}</td>
-                      <td class="py-3 align-middle"><a data-bs-toggle="modal"  data-bs-target="#myModal" data-userId="{{ $wishlist['user_id'] }}" data-productId="{{ $wishlist['product_id'] }}"  class="productSuggestionModal" data-url="{{ route('sellerSuggestionModal', ['userId' => $wishlist['user_id'], 'productId' => $wishlist['product_id']]) }}">Suggest</a>
-                        <a href="{{ route('sellerOfferListing',  \Illuminate\Support\Facades\Crypt::encrypt($wishlist['product_id'])) }}">Offers</a>
-                      </td>
-
+                      <th scope="row" class="py-3 align-middle f-400">{{ $offer['user']['full_name']}}</th>
+                      <td class="py-3 align-middle">{{ $offer['get_product_details']['name'] }}</td>
+                      <td class="py-3 align-middle">{{ $offer['offer_percentage'] }}</td>
+                      <td class="py-3 align-middle">{{ $offer['description'] }}</td>
+                      <td class="py-3 align-middle">{{ date('d M, Y', strtotime($offer['created_at']) ) }}</td>
+                      
                     </tr>
                     @endforeach                    
                   </tbody>
@@ -101,53 +100,5 @@
 
 
 @section('scripts')
-  <script type="text/javascript">
-    $(document).ready(function () {
-      // $(document).on('click', '.productSuggestionModal', function(e)
-      // {
-      //   e.preventDefault();
-      //   var url = $(this).attr('data-url');
-
-      //   $('.SuggestionModalContent').html();
-
-      //   $.ajax({
-
-      //           type: "GET",
-
-      //           url: url,
-
-      //           dataType: 'html',
-
-      //           success: function(data)
-
-      //           {
-      //               $('.SuggestionModalContent').html(data);
-
-      //           }
-
-
-
-      //       });
-      // });
-
-      $(document).on('click', '.productSuggestionModal', function (e) {
-          e.preventDefault();
-          var url = $(this).data('url');
-          $.ajax({
-              url: url,
-              type: 'GET',
-              dataType: 'html'
-          })
-              .done(function (data) {
-                  $('#sellerSendSuggestionNotifcation').modal('show');
-                  $('.modal-body').html(data);
-
-              })
-              .fail(function () {
-                  alert('Something went wrong, Please try again...');
-              });
-          
-      });
-    });
-  </script>
+  
 @stop

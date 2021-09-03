@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'seller', 'as' => 'seller'],
     Route::any('product/wishlist', [App\Http\Controllers\Seller\ProductController::class, 'productWishlist'])->name('WishlistProduct');
     Route::any('suggestion-modal/{userId}/{productId}', [App\Http\Controllers\Seller\ProductController::class, 'suggestionModal'])->name('SuggestionModal');
     Route::any('send-suggestion-notifcation', [App\Http\Controllers\Seller\ProductController::class, 'sendSuggestionNotifcation'])->name('SendSuggestionNotifcation');
+    Route::get('offer-listing/{productId}', [App\Http\Controllers\Seller\ProductController::class, 'offerListing'])->name('OfferListing');
 
     Route::any('coupon', [App\Http\Controllers\Seller\CouponController::class, 'index'])->name('Coupon');
     Route::any('add-coupon', [App\Http\Controllers\Seller\CouponController::class, 'create'])->name('AddCoupon');
