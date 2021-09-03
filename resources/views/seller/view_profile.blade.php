@@ -4,7 +4,7 @@
 
   <div class="mt-96 inner-profile-header bg-primary-2 ">
     <img class="logged-wave-img position-absolute" src="{{ asset('assets/images/wave-logg-seller.png') }}" alt="">
-    <img class="img-fluid header-big-avatar rounded-circle"  data-aos="zoom-in-up" src="{{ $user['profile_img'] }}" alt="">
+    <img class="img-fluid header-big-avatar rounded-circle" style="max-width:300px; height: 300px;"  data-aos="zoom-in-up" src="{{ $user['profile_img'] }}" alt="">
     <div class="--right-line"></div>
     <!-- <div class="dropdown --dropdown">
       <button class="btn btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
