@@ -54,7 +54,10 @@
                       <th scope="row" class="py-3 align-middle f-400">{{ $wishlist['get_user_detail']['full_name']}}</th>
                       <td class="py-3 align-middle">{{ $wishlist['get_product_detail']['name'] }}</td>
                       <td class="py-3 align-middle">{{ date('d M, Y', strtotime($wishlist['created_at']) ) }}</td>
-                      <td class="py-3 align-middle"><a data-bs-toggle="modal"  data-bs-target="#myModal" data-userId="{{ $wishlist['user_id'] }}" data-productId="{{ $wishlist['product_id'] }}"  class="productSuggestionModal" data-url="{{ route('sellerSuggestionModal', ['userId' => $wishlist['user_id'], 'productId' => $wishlist['product_id']]) }}">Suggest</a></td>
+                      <td class="py-3 align-middle"><a data-bs-toggle="modal"  data-bs-target="#myModal" data-userId="{{ $wishlist['user_id'] }}" data-productId="{{ $wishlist['product_id'] }}"  class="productSuggestionModal" data-url="{{ route('sellerSuggestionModal', ['userId' => $wishlist['user_id'], 'productId' => $wishlist['product_id']]) }}">Suggest</a>
+                        <a href="{{ route('sellerOfferListing',  \Illuminate\Support\Facades\Crypt::encrypt($wishlist['product_id'])) }}">Offers</a>
+                      </td>
+
                     </tr>
                     @endforeach                    
                   </tbody>
@@ -76,12 +79,24 @@
         </div>
     </div>
 
-    <!-- Modal -->
+        <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
           <div class="modal-dialog">
         
             <!-- Modal content-->
-        <div class="SuggestionModalContent"></div>
+            
+              <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Send Offer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                <div class="modal-body">
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
 
             </div>
         </div>
@@ -93,46 +108,50 @@
 @section('scripts')
   <script type="text/javascript">
     $(document).ready(function () {
-      $(document).on('click', '.productSuggestionModal', function()
-      {
-        var url = $(this).attr('data-url');
+      // $(document).on('click', '.productSuggestionModal', function(e)
+      // {
+      //   e.preventDefault();
+      //   var url = $(this).attr('data-url');
 
-        $('.SuggestionModalContent').html();
+      //   $('.SuggestionModalContent').html();
 
-        $.ajax({
+      //   $.ajax({
 
-                method: "GET",
+      //           type: "GET",
 
-                url: url,
+      //           url: url,
 
-                contentType: false,
+      //           dataType: 'html',
 
-                cache: false,
+      //           success: function(data)
 
-                processData: false,
+      //           {
+      //               $('.SuggestionModalContent').html(data);
 
-                success: function(data)
-
-                {
-                    $('.SuggestionModalContent').html(data);
-
-                }
+      //           }
 
 
 
-            });
-      });
+      //       });
+      // });
 
+      $(document).on('click', '.productSuggestionModal', function (e) {
+          e.preventDefault();
+          var url = $(this).data('url');
+          $.ajax({
+              url: url,
+              type: 'GET',
+              dataType: 'html'
+          })
+              .done(function (data) {
+                  $('#sellerSendSuggestionNotifcation').modal('show');
+                  $('.modal-body').html(data);
 
-
-      $(".sellerSendSuggestionNotifcation").validate({ 
-        errorElement: 'span',
-        rules: {
-          offerPercentage: {
-            required:true,
-            number: true
-          }
-        } 
+              })
+              .fail(function () {
+                  alert('Something went wrong, Please try again...');
+              });
+          
       });
     });
   </script>

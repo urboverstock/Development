@@ -42,6 +42,7 @@
                <!-- fw-bold -->
               <li><a class="dropdown-item border-bottom" href="{{ route('buyer.edit_profile') }}">My Profile</a></li>
               <li><a class="dropdown-item border-bottom" href="{{ route('buyer.dashboard') }}">Dashboard</a></li>
+              <li><a class="dropdown-item border-bottom" href="{{ route('buyer.followers') }}">Followers</a></li>
               
               <li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li>
               <li><a class="dropdown-item border-bottom " href="#">My Orders</a></li>

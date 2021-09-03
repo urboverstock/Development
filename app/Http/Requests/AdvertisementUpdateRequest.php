@@ -24,7 +24,7 @@ class AdvertisementUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'banner' => 'required',
+            // 'banner' => 'required',
         ];
     }
 

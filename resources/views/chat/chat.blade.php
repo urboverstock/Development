@@ -139,8 +139,7 @@
             // $(function()
             // {
                 let ip_address = socketURL ;
-                let socket_port = '3000';
-                let socket = io(ip_address+':'+socket_port);
+                let socket = io(ip_address);
 
                 var socketId = '';
                 socket.on('connect', () => {

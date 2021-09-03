@@ -1,11 +1,9 @@
-
-  <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Send Offer</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-    <div class="modal-body">
-      <form method="post" action="{{ route('sellerSendSuggestionNotifcation') }}" id="sellerSendSuggestionNotifcation" class="sellerSendSuggestionNotifcation">
+<style type="text/css">
+    .error{
+        color: red;
+    }
+</style>
+<form method="post" action="{{ route('sellerSendSuggestionNotifcation') }}" id="sellerSendSuggestionNotifcation" class="sellerSendSuggestionNotifcation" name="sellerSendSuggestionNotifcation">
         @csrf
         <input type="hidden" name="user_id" class="user_id" value="{{ $data['userId'] }}">
         <input type="hidden" name="product_id" class="product_id" value="{{ $data['productId'] }}">
@@ -13,7 +11,7 @@
         <div class="mb-4">
             <label for="exampleFormControlInput1" class="form-label">Offer Percentage</label>
             <div class="custom-urban-form">
-                <input class="form-control " id="offerPercentage" placeholder="Offer Percentage" type="text" name="offerPercentage">
+                <input class="form-control" id="offerPercentage" placeholder="Offer Percentage" type="text" name="offerPercentage">
                 <i class="fas fa-pen"></i>
             </div>
             <span class="error">{{ $errors->first('offerPercentage') }}</span>
@@ -31,9 +29,41 @@
           <button type="submit" class="btn btn-dark px-5 py-3 rounded-pill">Save</button>
         </div>
       </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div>
-  </div>
-      
+
+
+      <script type="text/javascript">
+     $("form[name='sellerSendSuggestionNotifcation']").validate({
+        rules: {
+          offerPercentage: {
+            required:true,
+            number: true
+          },
+        },
+        messages: {
+          offerPercentage: {
+            required: "This field is required",
+          }
+        },
+        // Make sure the form is submitted to the destination defined
+        submitHandler: function(form, event) {
+        event.preventDefault();
+          $.ajax({
+            url: $(form).attr('action'),
+            type: 'POST',
+            data: $(form).serialize(),
+            success: function(res) {
+              
+                // var message = 'Success';
+                // $(this).modal('hide');
+                toastr.success(res.success);
+                location.reload();
+            },
+            error:function(){
+              console.log('error');
+              var message = 'Someting went wrong';
+                $("form[name='sellerSendSuggestionNotifcation']").trigger("reset")
+            }
+          });
+        }
+      });
+</script>
