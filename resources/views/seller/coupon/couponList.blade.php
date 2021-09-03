@@ -6,20 +6,20 @@
         <div class="row">
             <div class="col-lg-12 mb-5">
                 <span class="float-right">
-                	<a href="{{route('sellerAddCoupon')}}" class="btn btn-dark rounded-pill fw-bold px-5 py-3 mb-1 aos-init aos-animate" data-aos="fade-up">Add Coupon 
+                	<a href="{{route('sellerAddCoupon')}}" class="btn btn-dark mb-3 rounded-pill fw-bold px-5 py-3 mb-1 aos-init aos-animate" data-aos="fade-up">Add Coupon 
                   </a>
-                <h4 class="f-600">Coupons</h4>
+                  <h4 class="f-600 mb-0">Coupons</h4>
                 </span>
             </div>
 
             <div class="col-lg-12 mb-5">
-                <div class="bg-chat p-3">
-                    <div class="d-flex justify-content-between flex-wrap">
-                        <div class="custom-form-group-search position-relative col-lg-8 d-lg-block d-none ">
-                        	<form method="get" action="{{ route('sellerCoupon') }}">
-	                            <input type="text" class="form-control" placeholder="Search Orders" name="search">
-	                            <button type="submit"><i class="fas fa-search text--primary"></i></button>
-                            </form>
+                <div class="bg-chat p-3 br-12">
+                    <div class="d-flex justify-content-center flex-wrap">
+                        <div class="custom-form-group-search  position-relative col-12 ">
+                        	<form class="d-flex" method="get" action="{{ route('sellerCoupon') }}">
+	                            <input type="text" class="form-control mw-100" placeholder="Search Coupons" name="search">
+	                            <button type="submit" class="border-0"><i class="fas fa-search text--primary"></i></button>
+                          </form>
                         </div>
                         
                     </div>

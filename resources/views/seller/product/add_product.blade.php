@@ -43,7 +43,7 @@
                         <div class="mb-4">
                               <label for="exampleFormControlInput1" class="form-label">Category</label>
                               <div class="custom-urban-form">
-                                  <select class="form-control" name="category_id">
+                                  <select class="form-control " name="category_id">
                                     <option selected="" disabled="">Select</option>
                                     @if(count($product_categories) > 0)
                                     @foreach($product_categories as $key => $product_category)
@@ -260,7 +260,7 @@
                             <small class="text-mute">Add this Product to collection so it's find your store </small>
                           </div>
                       </div> -->
-                      <div class="card-footer bg-transparent">
+                      <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
                           <h3 class=" mb-0 fw-bold my-2">Tags</h3>
                           <!-- <a href="#" class="text--primary my-2">View All Tags</a> -->

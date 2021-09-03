@@ -3,9 +3,19 @@
 @section('content')
 
 <div class="mt-96 inner-profile-header bg-edit-buyer-profile  pb-3 ">
-  <img class="logged-wave-img position-absolute" src="{{ $user->profile_img }}" alt="" style="display:none;">
+  <img class="logged-wave-img  position-absolute" src="{{ $user->profile_img }}" alt="" style="display:none;">
+  
   <div class="header-big-avatar d-inline-flex mb-lg-0 mb-4">
-      <img class="img-fluid" data-aos="zoom-in-up" src="{{ $user->profile_img }}" alt="" style="max-width:300px; height: auto;">
+    <img class="img-fluid rounded-circle image_prev" data-aos="zoom-in-up" src="{{ $user->profile_img }}" alt="" style="max-width:300px; height: 300px;">
+      <div class="d-inline-flex avatar-upload-wrapper">
+        <label for="imageUpload">
+          <span class="p-3 bg-dark rounded-circle cursor-pointer">
+            <i class="fas fa-pencil-alt text-white"></i>
+          </span>
+        </label>
+        <input type="file" name="profile_pic" class="d-none" id="imageUpload" accept="image/*" />
+      </div>
+     
   </div>
   
   <div class="inner-profile-header-content --ver-2">
@@ -43,8 +53,11 @@
                             <i class="fas fa-pen text-white text-8"></i>
                           </div>
                         </div>
-                        <img class="avatar-80 mb-md-0 mb-4 image_prev" src="{{ $user->profile_img }}" alt="">
-                        <input type="file" name="profile_pic" id="imageUpload" accept="image/*"/>
+                        <!-- image-upload z-test  -->
+                        <div class="image-upload">
+                          <img style="height: 80px; width: 80px" class=" mb-md-0 rounded-circle mb-4 image_prev" src="{{ $user->profile_img }}" alt="">
+                          
+                        </div>
                       </div>
                     </div>
                     <div class="col-lg-6">

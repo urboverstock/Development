@@ -9,9 +9,7 @@
       <div class="col-lg-5 p-0 d-lg-block d-none ">
         <img class="img-fluid vh-100" src="{{ asset('assets/images/session.png') }}" alt="">
       </div>
-      <div class="col-lg-1">
-        <img class="d-none d-lg-block" src="{{ asset('assets/images/line2.png') }}" alt="">
-      </div>
+      
       <div class="col-lg-5">
         <form action="" method="post" id="register_form">
           {{ csrf_field() }}

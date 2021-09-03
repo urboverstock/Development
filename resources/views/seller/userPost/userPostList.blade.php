@@ -6,15 +6,15 @@
         <div class="row">
             <div class="col-lg-12 mb-5">
                 <span class="float-right">
-                	<a href="{{route('sellerAddUserPost')}}" class="btn btn-dark rounded-pill fw-bold px-5 py-3 mb-1 aos-init aos-animate" data-aos="fade-up">Add User Post
+                	<a href="{{route('sellerAddUserPost')}}" class="btn btn-dark rounded-pill mb-3 fw-bold px-5 py-3 mb-1 aos-init aos-animate" data-aos="fade-up">Add User Post
                   </a>
                 <h4 class="f-600">User Posts</h4>
                 </span>
             </div>
 
             <div class="col-lg-12 mb-5">
-                <div class="bg-chat p-3">
-                    <div class="d-flex justify-content-between flex-wrap">
+                <div class="bg-chat p-3 br-12">
+                    <!-- <div class="d-flex justify-content-between flex-wrap">
                         <div class="custom-form-group-search position-relative col-lg-8 d-lg-block d-none ">
                         	<form method="get" action="{{ route('sellerUserPost') }}">
 	                            <input type="text" class="form-control" placeholder="Search Post" name="search">
@@ -22,6 +22,12 @@
                             </form>
                         </div>
                         
+                    </div> -->
+                    <div class="custom-form-group-search  position-relative col-12 ">
+                      <form class="d-flex" method="get" action="{{ route('sellerUserPost') }}">
+                          <input type="text" class="form-control mw-100" placeholder="Search Post" name="search">
+                          <button type="submit" class="border-0"><i class="fas fa-search text--primary"></i></button>
+                      </form>
                     </div>
                 </div>
             </div>
