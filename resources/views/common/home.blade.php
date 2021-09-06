@@ -327,7 +327,7 @@
                 <div>
                     <div class="position-relative me-3">
                         <img class="w-100" src="{{ productDefaultImage($product->id)}}" alt="">
-                        <button type="button" class="btn btn-dark px-5 py-3 rounded-pill position-absolute bottom-0 start-50 translate-middle-x mb-4">Demo</button>
+                        <button type="button" class="btn btn-dark px-3 py-3 rounded-pill position-absolute bottom-0 start-50 translate-middle-x mb-4" style="display: inline-block;width: 180px; white-space: nowrap; overflow: hidden !important;    text-overflow: ellipsis;" title="{{ $product->name }}">{{ $product->name }}</button>
                     </div>
                 </div>
             @endforeach

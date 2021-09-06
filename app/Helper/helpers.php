@@ -33,13 +33,15 @@
 	if(!function_exists('productDefaultImage')) {
 		function productDefaultImage($productId) {			
 			$file = '/assets/images/section-4/1.png';
+			
 			$productImage = ProductImage::where('product_id', $productId)
 										->where('file_type', PRDOCUT_IMAGE_TYPE)
 										->orderBy('file_type', 'ASC')
 										->select('file')->first();
 			
+			$removeFirstSlash = ltrim($productImage->file, '/');
 			if($productImage) {
-				if(file_exists($productImage->file)) {
+				if(file_exists($removeFirstSlash)) {
 					$file = $productImage->file;					
 				} 
 			}
