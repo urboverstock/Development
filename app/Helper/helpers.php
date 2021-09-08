@@ -89,4 +89,22 @@
 	                            ->first();
 	    }
 	}
+
+	if (!function_exists('sendEmailNotification')) {
+	    function sendEmailNotification($to_emails, $strFromEmail, $strFromName, $viewContent, $subject)
+	    {
+	        try {
+	            return Mail::send([], [],
+	                function ($message) use ($to_emails, $strFromEmail, $strFromName, $viewContent, $subject) {
+	                    $message
+	                        ->from($strFromEmail, $strFromName)
+	                        ->to($to_emails)
+	                        ->subject($subject)
+	                        ->setBody($viewContent, 'text/html');
+	                });
+	        } catch (\Exception $e) {
+	            return $e->getMessage();
+	        }
+	    }
+	}
    

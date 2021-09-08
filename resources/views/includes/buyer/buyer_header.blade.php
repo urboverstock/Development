@@ -48,6 +48,7 @@
               <li><a class="dropdown-item border-bottom " href="#">My Orders</a></li>
               <li><a class="dropdown-item border-bottom " href="#">My Favourites</a></li>
               <li><a class="dropdown-item border-bottom " href="#">Shipping Address</a></li>
+              <li><a class="dropdown-item border-bottom " href="{{ route('buyerUserPost') }}">Posts</a></li>
               <li class="logout_btn"><a class="dropdown-item border-bottom" href="javascript:;">Logout</a></li>
             </ul>
           </div>

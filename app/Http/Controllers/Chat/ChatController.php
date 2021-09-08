@@ -15,46 +15,51 @@ class ChatController extends Controller
 {
     public function chat(Request $request)
     {
-        $data['users'] = User::where('id', '!=', Auth::user()->id)
-        ->whereNotIn('user_type', [1])
-        ->get();
-
-        $userId = '';
-
-        if(!empty($request->user_id))
+        if(Auth::check())
         {
-            $userId = Crypt::decrypt($request->user_id);
+            $data['users'] = User::where('id', '!=', Auth::user()->id)
+            ->whereNotIn('user_type', [1])
+            ->get();
+
+            $userId = '';
+
+            if(!empty($request->user_id))
+            {
+                $userId = Crypt::decrypt($request->user_id);
+            }
+            $userIds = array(Auth::user()->id, $userId);
+            sort($userIds);
+
+            $data['implodeId'] = implode('-', $userIds);
+        
+            $data['userId'] = $userId;
+            $receiver_profile_pic = User::find($data['userId']);
+            $data['receiver_profile_pic'] = isset($receiver_profile_pic->profile_pic) ? asset('/') . $receiver_profile_pic->profile_pic : '';
+
+            $data['messages'] = Chat::with('senderName:id,first_name,profile_pic,last_name')->where(['sender_id' => Auth::user()->id,
+                                    'receiver_id' => $data['userId']
+                                ])
+                                ->orWhere([
+                                    'sender_id' => $data['userId'],
+                                    'receiver_id' => Auth::user()->id
+                                ])
+                                ->get()
+                                ->toArray();
+                                // print_r($data['messages']);die();
+
+            $readByUsers = array(Auth::user()->id, $userId);
+            $readByImplode = implode(',', $readByUsers);        
+
+            $currentDate = date('Y-m-d H:i:s');
+
+            Chat::where(['sender_id' => Auth::user()->id,
+                        'receiver_id' => $data['userId']
+                    ])->update(['read_at' => $currentDate, 'read_by' => $readByImplode]);
+
+            return view('chat.chat', $data);
         }
-        $userIds = array(Auth::user()->id, $userId);
-        sort($userIds);
 
-        $data['implodeId'] = implode('-', $userIds);
-    
-        $data['userId'] = $userId;
-        $receiver_profile_pic = User::find($data['userId']);
-        $data['receiver_profile_pic'] = isset($receiver_profile_pic->profile_pic) ? asset('/') . $receiver_profile_pic->profile_pic : '';
-
-        $data['messages'] = Chat::with('senderName:id,first_name,profile_pic,last_name')->where(['sender_id' => Auth::user()->id,
-                                'receiver_id' => $data['userId']
-                            ])
-                            ->orWhere([
-                                'sender_id' => $data['userId'],
-                                'receiver_id' => Auth::user()->id
-                            ])
-                            ->get()
-                            ->toArray();
-                            // print_r($data['messages']);die();
-
-        $readByUsers = array(Auth::user()->id, $userId);
-        $readByImplode = implode(',', $readByUsers);        
-
-        $currentDate = date('Y-m-d H:i:s');
-
-        Chat::where(['sender_id' => Auth::user()->id,
-                    'receiver_id' => $data['userId']
-                ])->update(['read_at' => $currentDate, 'read_by' => $readByImplode]);
-
-        return view('chat.chat', $data);
+        return redirect()->to('/');
     }
 
     public function saveChat(Request $request)

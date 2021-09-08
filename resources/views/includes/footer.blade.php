@@ -29,7 +29,10 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
-          <input type="text" class="form-control py-3 border-0 mb-3" placeholder="Enter Email to Subscribe" />
+          <form method="post" action="{{ route('sendNewsLetter') }}">
+            @csrf
+            <input type="email" class="form-control py-3 border-0 mb-3" placeholder="Enter Email to Subscribe" name="email" />
+          </form>
           <div class="d-flex mb-3">
             <a href="#"><img class="img-fluid me-3" src="{{ asset('assets/images/playstore.png') }}" alt=""></a>
             

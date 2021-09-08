@@ -12,3 +12,7 @@ defined('ORDER_DECLINED') OR define('ORDER_DECLINED', 4);
 
 defined('LOGOUT') OR define('LOGOUT', 0);
 defined('LOGIN') OR define('LOGIN', 1);
+
+//UNSUBSCRIBED/ SUBSCRIBED STATUS
+defined('SUBSCRIBED') OR define('SUBSCRIBED', 1);
+defined('UNSUBSCRIBED') OR define('UNSUBSCRIBED', 0);

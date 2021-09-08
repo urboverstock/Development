@@ -87,6 +87,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('/view-profile', [App\Http\Controllers\BuyerController::class, 'view_profile'])->name('buyer.view_profile');
     Route::any('/followers', [App\Http\Controllers\BuyerController::class, 'get_followers'])->name('buyer.followers');
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');
+
+
+    Route::any('user-post', [App\Http\Controllers\UserPostController::class, 'index'])->name('buyerUserPost');
+    Route::any('add-user-post', [App\Http\Controllers\UserPostController::class, 'create'])->name('buyerAddUserPost');
+    Route::any('store-user-post', [App\Http\Controllers\UserPostController::class, 'store'])->name('buyerStoreUserPost');
+    Route::any('edit-user-post/{id}', [App\Http\Controllers\UserPostController::class, 'edit'])->name('buyerEditUserPost');
+    Route::any('update-user-post', [App\Http\Controllers\UserPostController::class, 'update'])->name('buyerUpdateUserPost');
+    Route::any('view-user-post/{id}', [App\Http\Controllers\UserPostController::class, 'show'])->name('buyerViewUserPost');
+    Route::any('delete-user-post/{id}', [App\Http\Controllers\UserPostController::class, 'destroy'])->name('buyerDeleteUserPost');
+    Route::any('delete-user-post-file/{id}', [App\Http\Controllers\UserPostController::class, 'deleteUserPostFile'])->name('buyerDeleteUserPostFile');
 });
 
 
@@ -104,3 +114,6 @@ Route::get('guest-buyer/{id}', [App\Http\Controllers\LandingController::class, '
 Route::get('pro-seller/{id}', [App\Http\Controllers\LandingController::class, 'proSeller'])->name('pro-seller');
 Route::post('add-follow-user', [App\Http\Controllers\LandingController::class, 'addFollowUser'])->name('add-follow-user');
 Route::post('add-wishlist-product', [App\Http\Controllers\LandingController::class, 'addWishlistProduct'])->name('add-wishlist-product');
+
+
+Route::any('newsletter', [App\Http\Controllers\NewsletterController::class, 'sendNewsLetter'])->name('sendNewsLetter');
