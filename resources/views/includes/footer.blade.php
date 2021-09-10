@@ -34,9 +34,9 @@
             <input type="email" class="form-control py-3 border-0 mb-3" placeholder="Enter Email to Subscribe" name="email" />
           </form>
           <div class="d-flex mb-3">
-            <a href="#"><img class="img-fluid me-3" src="{{ asset('assets/images/playstore.png') }}" alt=""></a>
+            <!-- <a href="#"><img class="img-fluid me-3" src="{{ asset('assets/images/playstore.png') }}" alt=""></a>
             
-            <a href="#"><img class="img-fluid mt-2" src="{{ asset('assets/images/applestore.png') }}" alt=""></a>
+            <a href="#"><img class="img-fluid mt-2" src="{{ asset('assets/images/applestore.png') }}" alt=""></a> -->
           </div>
           <div class="d-flex">
             <a href="#"></a>
