@@ -15,7 +15,7 @@ class NewsletterController extends Controller
 
         if(!empty($checkEmail))
         {
-            return redirect()->to('/')->with('success', 'Already subscribed');   
+            return redirect()->back()->with('success', 'Already subscribed');   
         }
 
 
@@ -32,7 +32,7 @@ class NewsletterController extends Controller
 
     	if($newsletter->save())
     	{
-    		return redirect()->to('/')->with('success', 'Successfully subscribed');
+    		return redirect()->back()->with('success', 'Successfully subscribed');
     	}
 
     	
