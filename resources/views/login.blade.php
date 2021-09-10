@@ -12,6 +12,11 @@
       </div>
       
       <div class="offset-lg-1 col-lg-5">
+        <div class="mb-5">
+          <a class="navbar-brand " href="{{url('/')}}">
+            <img class="img-fluid" src="{{ asset('assets/images/logo.png') }}" alt="">
+          </a>
+        </div>
         <form action="" method="post" id="login_form">
           {{ csrf_field() }}
           <input class="form-control form-control-lg mb-4 py-3" type="text" placeholder="Email@address.com" aria-label="Email@address.com" name="email" value="{{ old('email') }}">

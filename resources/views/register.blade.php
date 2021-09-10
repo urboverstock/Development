@@ -11,6 +11,11 @@
       </div>
       
       <div class="col-lg-5">
+        <div class="mb-5">
+          <a class="navbar-brand " href="{{url('/')}}">
+            <img class="img-fluid" src="{{ asset('assets/images/logo.png') }}" alt="">
+          </a>
+        </div>
         <form action="" method="post" id="register_form">
           {{ csrf_field() }}
           <div class="row">
