@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
 	    		'first_name' => 'Levis',
 	    		'email' => 'levis@yopmail.com',
 	    		'password' => Hash::make(12345678),
-	    		'user_type' => '3',
+	    		'user_type' => '4',
                 'profile_pic' => 'assets/images/section-7/1.png',
                 'about' => 'Irish artist surviving online ⁣ vintage, 
                             reworking & drawing a sad man ⁣⁣⁣ I made
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
                 'first_name' => 'Jack Jones',
                 'email' => 'jack@yopmail.com',
                 'password' => Hash::make(12345678),
-                'user_type' => '3',
+                'user_type' => '4',
                 'profile_pic' => 'assets/images/section-7/1.png',
                 'about' => 'Irish artist surviving online ⁣ vintage, 
                             reworking & drawing a sad man ⁣⁣⁣ I made
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
                 'first_name' => 'Jordan',
                 'email' => 'jordan@yopmail.com',
                 'password' => Hash::make(12345678),
-                'user_type' => '3',
+                'user_type' => '4',
                 'profile_pic' => 'assets/images/section-7/1.png',
                 'about' => 'Irish artist surviving online ⁣ vintage, 
                             reworking & drawing a sad man ⁣⁣⁣ I made

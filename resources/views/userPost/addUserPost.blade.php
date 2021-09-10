@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.buyer')
 @if(isset($userPost))
 @section('title','Edit User Post')
 @else

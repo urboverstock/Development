@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.buyer')
 @section('title','View User Post')
 
 @section('content')
