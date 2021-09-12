@@ -30,11 +30,7 @@
                   <a href="#" class="py-3 d-flex align-items-start text-decoration-none text-dark">
                     <img class="avatar-sm me-3" src="{{url($user->profile_pic)}}" alt="">
                     <div>
-                      <div class="d-flex mb-1 align-items-center">
-                        
-
-                        <i class="fas fa-circle text-10 {{ $user->login_status == 1 ? 'text-success' : 'text-secondary' }}"></i>
-                      </div>
+                    
 
                       @php
                         $userIds = array(Auth::user()->id, $user->id);
