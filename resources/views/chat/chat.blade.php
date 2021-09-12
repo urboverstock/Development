@@ -28,7 +28,11 @@
                 ?>
                 <div class="box-item {{$user->id == $userId ? 'active' : ''}}">
                   <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($user->id)) }}" class="py-3 d-flex align-items-start text-decoration-none text-dark">
-                    
+                  @if(@$user->profile_pic)  
+                    <img class="avatar-sm me-3" src="{{url($user->profile_pic)}}" alt="">
+                  @else
+                    <img class="avatar-sm me-3" src="{{ asset('assets/images/section-7/1.png') }}" alt="">
+                  @endif
                     <div>
                       <div class="d-flex mb-1 align-items-center">
                         <h6 class="fw-bold text-16 mb-0 me-2">{{ $user->full_name }} <span class="userUnreadCount1_{{$user->id}}">
