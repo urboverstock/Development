@@ -28,7 +28,7 @@
                 ?>
                 <div class="box-item {{$user->id == $userId ? 'active' : ''}}">
                   <a href="#" class="py-3 d-flex align-items-start text-decoration-none text-dark">
-                    <img class="avatar-sm me-3" src="{{url($user->profile_pic)}}" alt="">
+                    
                     <div>
                     
 
