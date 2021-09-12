@@ -31,7 +31,7 @@
                   @if(@$user->profile_pic)  
                     <img class="avatar-sm me-3" src="{{url($user->profile_pic)}}" alt="">
                   @else
-                    <img class="avatar-sm me-3" src="{{ asset('assets/images/section-7/1.png') }}" alt="">
+                    <img class="avatar-sm me-3" src="{{ asset('assets/images/default_profile_img.png') }}" alt="">
                   @endif
                     <div>
                       <div class="d-flex mb-1 align-items-center">
