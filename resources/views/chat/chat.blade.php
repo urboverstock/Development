@@ -85,7 +85,7 @@
                     <h6 class="mb-0 fw-bold">{{$message['sender_name']['full_name']}}</h6>
                     <p class="text-muted text-12 mb-0">{{ date('h:s:A', strtotime($message['created_at'])) }} | {{ date('d M Y', strtotime($message['created_at'])) }}</p>
                     <div class="mt-3 col-lg-12 bg-chat p-3 br-12 text-15">
-                      {{ $message['message'] }}
+                      {{ @$message['message'] }}
                     </div>
                   </div>        
                 </div>
@@ -97,7 +97,7 @@
                     <h6 class="mb-0 fw-bold">{{$message['sender_name']['full_name']}}</h6>
                     <p class="text-muted text-12 mb-0">{{ date('h:s:A', strtotime($message['created_at'])) }} | {{ date('d M Y', strtotime($message['created_at'])) }}</p>
                     <div class="mt-3 col-lg-12 bg-chat p-3 br-12 text-15">
-                      {{ $message['message'] }}
+                      {{ @$message['message'] }}
                     </div>
                   </div>        
                 </div>
