@@ -31,9 +31,7 @@
                     <img class="avatar-sm me-3" src="{{url($user->profile_pic)}}" alt="">
                     <div>
                       <div class="d-flex mb-1 align-items-center">
-                        <h6 class="fw-bold text-16 mb-0 me-2">{{ $user->full_name }} <span class="userUnreadCount1_{{$user->id}}">
-                                  
-                            </span></h6>
+                        
 
                         <i class="fas fa-circle text-10 {{ $user->login_status == 1 ? 'text-success' : 'text-secondary' }}"></i>
                       </div>
