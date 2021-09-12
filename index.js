@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
 // const http = require('http');
-const server = require('http').createServer(app);
+const server = require('https').createServer(app);
 
 
 const io = require('socket.io')(server, {
-  cors : { origin: "*" ,reconnect: true, rejectUnauthorized : false}
+  cors : { origin: "*" }
 });
 
 var usernames = [];
