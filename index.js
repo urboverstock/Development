@@ -9,6 +9,7 @@ const server = require('https').createServer(app);
 
 const io = require('socket.io')(server, {
   cors : { origins: ["*"],
+    credentials: true,
     handlePreflightRequest: (req, res) => {
       res.writeHead(200, {
         "Access-Control-Allow-Origin": "*",
