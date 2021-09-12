@@ -47,8 +47,10 @@
 
                         $implode = implode('-', $userIds);
                     @endphp
+                    @if($implode && isset(lastMessage($implode)['last_message']))
                       <p class="text-12 text-truncated-box-sidebar text-muted mb-0 last_message_{{$user->id}}">
-                      {{ lastMessage($implode)['last_message'] }}</p>
+                        {{ lastMessage($implode)['last_message'] }}</p>
+                    @endif
                       
                     </div>
                   </a>

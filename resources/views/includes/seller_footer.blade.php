@@ -45,8 +45,8 @@
             </div>
           </form>
           <div class="d-flex justify-content-end mb-3">
-            <!-- <a href="#"><img class="img-fluid me-3" src="../assets/images/playstore.png" alt=""></a>
-            <a href="#"><img class="img-fluid mt-2" src="../assets/images/applestore.png" alt=""></a> -->
+            <a href="#"><img class="img-fluid me-3" src="../assets/images/playstore.png" alt=""></a>
+            <a href="#"><img class="img-fluid mt-2" src="../assets/images/applestore.png" alt=""></a>
           </div>
           <div class="d-flex justify-content-end mb-3">
             <a href="#" class="text-dark h4 me-3">
