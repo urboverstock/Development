@@ -32,9 +32,7 @@
                     <div>
                       <div class="d-flex mb-1 align-items-center">
                         <h6 class="fw-bold text-16 mb-0 me-2">{{ $user->full_name }} <span class="userUnreadCount1_{{$user->id}}">
-                                    <!-- @if(isset($userId) && $user->id != $userId)
-                                        {{ $unreadMessageCounter != 0 ? $unreadMessageCounter : '' }}
-                                    @endif -->
+                                  
                             </span></h6>
 
                         <i class="fas fa-circle text-10 {{ $user->login_status == 1 ? 'text-success' : 'text-secondary' }}"></i>
@@ -47,7 +45,10 @@
 
                         $implode = implode('-', $userIds);
                     @endphp
-                 
+                    @if($implode && isset(lastMessage($implode)['last_message']))
+                      <p class="text-12 text-truncated-box-sidebar text-muted mb-0 last_message_{{$user->id}}">
+                        {{ lastMessage($implode)['last_message'] }}</p>
+                    @endif
                       
                     </div>
                   </a>
