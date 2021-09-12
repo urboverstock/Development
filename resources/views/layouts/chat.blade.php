@@ -51,7 +51,7 @@
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
-    <script type="text/javascript" src="http://112.196.117.52/bervor_app/public/admin/assets/plugins/sweet_alert/sweetalert.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/script/sweetalert.min.js') }}"></script>
     <script src="{{ asset('assets/js/script/apexChart.js') }}"></script>
     <script src="{{ asset('assets/js/script/main.js') }}"></script>
     <script src="{{ asset('assets/js/script/jquery.validate.js') }}"></script>
