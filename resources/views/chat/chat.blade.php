@@ -29,9 +29,9 @@
                 <div class="box-item {{$user->id == $userId ? 'active' : ''}}">
                   <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($user->id)) }}" class="py-3 d-flex align-items-start text-decoration-none text-dark">
                   @if(@$user->profile_pic)  
-                    <img class="avatar-sm me-3" src="{{url($user->profile_pic)}}" alt="">
+                    <img class="avatar-sm me-3" src="{{url($user->profile_pic)}}" alt="" style="cursor: pointer; border-radius: 50%">
                   @else
-                    <img class="avatar-sm me-3" src="{{ asset('assets/images/default_profile_img.png') }}" alt="">
+                    <img class="avatar-sm me-3" src="{{ asset('assets/images/default_profile_img.png') }}" alt="" style="cursor: pointer; border-radius: 50%">
                   @endif
                     <div>
                       <div class="d-flex mb-1 align-items-center">
