@@ -27,10 +27,18 @@
                     
                 ?>
                 <div class="box-item {{$user->id == $userId ? 'active' : ''}}">
-                  <a href="#" class="py-3 d-flex align-items-start text-decoration-none text-dark">
-                    
+                  <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($user->id)) }}" class="py-3 d-flex align-items-start text-decoration-none text-dark">
+                    <!-- <img class="avatar-sm me-3" src="{{url($user->profile_pic)}}" alt=""> -->
                     <div>
-                    
+                      <div class="d-flex mb-1 align-items-center">
+                        <h6 class="fw-bold text-16 mb-0 me-2">{{ $user->full_name }} <span class="userUnreadCount1_{{$user->id}}">
+                                    <!-- @if(isset($userId) && $user->id != $userId)
+                                        {{ $unreadMessageCounter != 0 ? $unreadMessageCounter : '' }}
+                                    @endif -->
+                            </span></h6>
+
+                        <i class="fas fa-circle text-10 {{ $user->login_status == 1 ? 'text-success' : 'text-secondary' }}"></i>
+                      </div>
 
                       @php
                         $userIds = array(Auth::user()->id, $user->id);
