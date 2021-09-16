@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             OrderTableDataSeeder::class,
             OrderDetailTableDataSeeder::class,
             ProductWishlistTableDataSeeder::class,
+            AdminRoleSeeder::class,
 	    ]);
     }
 }

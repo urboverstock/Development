@@ -99,6 +99,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('delete-user-post-file/{id}', [App\Http\Controllers\UserPostController::class, 'deleteUserPostFile'])->name('buyerDeleteUserPostFile');
 });
 
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
+    Route::any('dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('admin.logout');
+});
+
 
 Route::get('get-started', [App\Http\Controllers\ProductController::class, 'getStarted'])->name('get-started');
 Route::get('products', [App\Http\Controllers\ProductController::class, 'getProducts'])->name('products');
