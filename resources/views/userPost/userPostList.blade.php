@@ -13,12 +13,12 @@
             </div>
 
             <div class="col-lg-12 mb-5">
-                <div class="bg-chat p-3">
+                <div class="bg-chat br-10 p-3">
                     <div class="d-flex justify-content-between flex-wrap">
-                        <div class="custom-form-group-search position-relative col-lg-8 d-lg-block d-none ">
-                        	<form method="get" action="{{ route('buyerUserPost') }}">
-	                            <input type="text" class="form-control" placeholder="Search Post" name="search">
-	                            <button type="submit"><i class="fas fa-search text--primary"></i></button>
+                        <div class="custom-form-group-search position-relative col-12 ">
+                        	<form class="d-flex" method="get" action="{{ route('buyerUserPost') }}">
+	                            <input type="text" class="form-control mw-100" placeholder="Search Post" name="search">
+	                            <button type="submit" class="border-0"><i class="fas fa-search text--primary"></i></button>
                             </form>
                         </div>
                         

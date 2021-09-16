@@ -5,7 +5,7 @@
 <div class="mt-96 inner-profile-header bg-edit-buyer-profile  pb-3 ">
   <img class="logged-wave-img position-absolute" src="{{ $user->profile_img }}" alt="" style="display:none;">
   <div class="header-big-avatar d-inline-flex mb-lg-0 mb-4">
-      <img class="img-fluid" data-aos="zoom-in-up" src="{{ $user->profile_img }}" alt="" style="max-width:300px; height: auto;">
+      <img class="rounded-circle" data-aos="zoom-in-up" src="{{ $user->profile_img }}" alt="" style="max-width:300px; height: 300px;">
   </div>
   
   <div class="inner-profile-header-content --ver-2">

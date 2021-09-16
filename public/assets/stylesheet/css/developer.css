@@ -27,3 +27,11 @@ body {
     .bg-footer {
         background-color: #F0E3B9 !important;
     }
+
+    @media (max-width: 1200px){
+        .inner-profile-header .header-big-avatar {
+            top: 0;
+            left: -19px;
+        }
+    }
+

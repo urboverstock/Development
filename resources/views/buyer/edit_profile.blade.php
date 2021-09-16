@@ -6,7 +6,7 @@
   <img class="logged-wave-img position-absolute" src="{{ asset('assets/images/wave-primary.png') }}" alt="">
   <img class="logged-wave-img position-absolute" src="{{ $user->profile_img }}" alt="" style="display:none;">
   <div class="header-big-avatar d-inline-flex mb-lg-0 mb-4">
-      <img class="img-fluid" data-aos="zoom-in-up" src="{{ $user->profile_img }}" alt="" style="max-width:300px; height: auto;">
+      <img class="rounded-circle" data-aos="zoom-in-up" src="{{ $user->profile_img }}" alt="" style="max-width:300px; height: 300px;">
   </div>
   
   <div class="inner-profile-header-content --ver-2">
@@ -37,14 +37,19 @@
                   <div class="row">
                     <div class="col-lg-12">
                       <div class="d-flex justify-content-between flex-wrap align-items-center mb-5">
-                        <div class="d-flex align-items-center mb-md-0 mb-5">
-                          <h6 class="mb-0 text-18 font-500 me-3 text-mute-2">Edit Your Profile Image</h6>
-                          <div class="bg-dark d-flex p-2 br-50">
-                            <i class="fas fa-pen text-white text-8"></i>
-                          </div>
-                        </div>
-                        <img class="avatar-80 mb-md-0 mb-4 image_prev" src="{{ $user->profile_img }}" alt="">
-                        <input type="file" name="profile_pic" id="imageUpload" accept="image/*"/>
+                        <label for="imageUpload" class="d-flex align-items-center mb-md-0 mb-5 cursor-pointer">
+                          
+                            <h6 class="mb-0 text-18 font-500 me-3 text-mute-2">Edit Your Profile Image</h6>
+                            <div class="bg-dark d-flex p-2 br-50">
+                              <i class="fas fa-pen text-white text-8"></i>
+                            </div>
+                
+                        </label>
+                        <label for="imageUpload">
+                          <img class="avatar-80 rounded-circle cursor-pointer mb-md-0 mb-4 image_prev" src="{{ $user->profile_img }}" alt="">
+                          <input type="file" class="d-none" name="profile_pic" id="imageUpload" accept="image/*"/>
+                        </label>
+                        
                       </div>
                     </div>
                     <div class="col-lg-6">

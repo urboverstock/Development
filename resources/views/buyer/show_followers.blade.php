@@ -10,7 +10,8 @@
       />
       <div class="header-big-avatar d-inline-flex mb-lg-0 mb-4">
         <img
-          class="img-fluid"
+          class="rounded-circle"
+          style="max-width: 300px; height: 300px"
           data-aos="zoom-in-up"
           src="{{ $user['profile_img'] }}"
           alt=""

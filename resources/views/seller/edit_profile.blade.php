@@ -7,14 +7,14 @@
   
   <div class="header-big-avatar d-inline-flex mb-lg-0 mb-4">
     <img class="img-fluid rounded-circle image_prev" data-aos="zoom-in-up" src="{{ $user->profile_img }}" alt="" style="max-width:300px; height: 300px;">
-      <div class="d-inline-flex avatar-upload-wrapper">
+      <!-- <div class="d-inline-flex avatar-upload-wrapper">
         <label for="imageUpload">
           <span class="p-3 bg-dark rounded-circle cursor-pointer">
             <i class="fas fa-pencil-alt text-white"></i>
           </span>
         </label>
         <input type="file" name="profile_pic" class="d-none" id="imageUpload" accept="image/*" />
-      </div>
+      </div> -->
      
   </div>
   
@@ -47,17 +47,22 @@
                   <div class="row">
                     <div class="col-lg-12">
                       <div class="d-flex justify-content-between flex-wrap align-items-center mb-5">
-                        <div class="d-flex align-items-center mb-md-0 mb-5">
-                          <h6 class="mb-0 text-18 font-500 me-3 text-mute-2">Edit Your Profile Image</h6>
-                          <div class="bg-dark d-flex p-2 br-50">
-                            <i class="fas fa-pen text-white text-8"></i>
+                        <label for="imageUpload" class="cursor-pointer">
+                          <div class="d-flex align-items-center mb-md-0 mb-5">
+                            <h6 class="mb-0 text-18 font-500 me-3 text-mute-2">Edit Your Profile Image</h6>
+                            <div class="bg-dark d-flex p-2 br-50">
+                              <i class="fas fa-pen text-white text-8"></i>
+                            </div>
                           </div>
-                        </div>
+                        </label>
+                        
                         <!-- image-upload z-test  -->
-                        <div class="image-upload">
-                          <img style="height: 80px; width: 80px" class=" mb-md-0 rounded-circle mb-4 image_prev" src="{{ $user->profile_img }}" alt="">
-                          
-                        </div>
+                        <label for="imageUpload" class="cursor-pointer">
+                          <div class="image-upload">
+                            <img style="height: 80px; width: 80px" class=" mb-md-0 rounded-circle mb-4 image_prev" src="{{ $user->profile_img }}" alt="">
+                            <input type="file" name="profile_pic" class="d-none" id="imageUpload" accept="image/*" />
+                          </div>
+                        </label>
                       </div>
                     </div>
                     <div class="col-lg-6">
