@@ -313,6 +313,57 @@ $(document).ready(function() {
 	    }
 	});
 
+
+	$("#admin_add_product_form").validate({ 
+		errorElement: 'span',
+		rules: {
+			name:{
+				required:true
+			},
+			price:{
+				required:true,
+				digits: true,
+				minlength:1,
+				maxlength:10
+			},
+			// gender:{
+			// 	required:true
+			// },
+			category_id:{
+				required:true
+			},
+			// company_id:{
+			// 	required:true
+			// },
+			description:{
+				required:true
+			},
+			brand:{
+				required:true
+			},
+		},
+	    messages: {
+			name:{
+				required: 'Please enter product name'
+			},
+			category_id:{
+				required: 'Category field is required'
+			},
+			// company_id:{
+			// 	required: 'Company field is required'
+			// }
+	    },
+		errorPlacement: function(error, element) {
+	        if(element.attr("name") == "name") {
+	            error.appendTo($('.name-error'));
+	        }else if(element.attr("name") == "price"){
+				error.appendTo($('.price-error'));
+			}else{
+	            error.insertAfter(element);
+	        }
+	    }
+	});
+
 	$("#change_password_form").validate({ 
 		errorElement: 'span',
 		rules: {
