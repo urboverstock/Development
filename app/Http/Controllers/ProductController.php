@@ -30,9 +30,14 @@ class ProductController extends Controller
     {
         $request->request->add(['limit' => 8]);
         $products = Product::getProducts($request);
+        $brands = Product::select('brand')->whereNotNull('brand')->groupBy('brand')->get()->toArray();
+        // echo "<pre>";
+        // print_r($brands);die();
         $categories = ProductCategory::get();
         $search = $request->search;
-        return view('common.allproducts', compact('products','categories','search'));
+        $price = $request->price;
+        $filter_brand = $request->brand;
+        return view('common.allproducts', compact('products','categories','search','price', 'brands', 'filter_brand'));
     }
 
     public function paginationRecords(Request $request)
@@ -43,5 +48,13 @@ class ProductController extends Controller
         $response['html'] = View('ajax_view.products', compact('products'))->render();
         return response()->json($response);
         
+    }
+
+    public function productDetails($slug)
+    {
+        $product = Product::with('product_image')->where('id', $slug)->first();
+        $recent_products = Product::with('product_image')->where('id', '!=', $slug)->latest()->get()->toArray();
+      
+        return view('common.productDetail', compact('product', 'recent_products'));
     }
 }

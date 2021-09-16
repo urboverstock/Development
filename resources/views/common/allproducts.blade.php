@@ -25,44 +25,51 @@
                   <img class="me-2" src="assets/images/get-started/filter-icon.png" alt="">
                   <h6 class="mb-0 fw-bold">Filter By</h6>
               </div>
-              <div class="d-flex flex-grow-1 flex-wrap flex-lg-nowrap my-2">
-                <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example">
-                    <option selected class="">Product Type</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-                <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example">
-                    <option selected class="">Gender</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-                <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example">
-                    <option selected class="">Price</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-                <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example">
-                    <option class="" value="">Category</option>
-                    @foreach($categories as $category)
+                <form method="get" action="{{ route('products') }}">
+                  @csrf
+                  <div class="d-flex flex-grow-1 flex-wrap flex-lg-nowrap my-2">
+                    <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example" name="brand">
+                        <option selected class="">Brand</option>
 
-                    @php
-                      if($category->id == @$_GET['category']) {
-                        $selected = 'selected';
-                      } else {
-                        $selected = '';
-                      }
-                    @endphp
-                    
-                    <option value="{{$category->id}}" {{$selected}}>{{$category->name}}</option>
-                    @endforeach
-                </select>
-                <button type="button" class="btn btn-dark my-2">
-                    <i class="fas fa-search"></i>
-                </button>
-              </div>
+                        @if(isset($brands) && !empty($brands))
+                          @foreach($brands as $brand)
+                          <option value="{{ $brand['brand'] }}" {{ @$filter_brand == $brand['brand'] ? 'selected' : '' }}>{{ $brand['brand'] }}</option>
+                          @endforeach
+                        @endif
+
+                    </select>
+                    <!-- <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example" name="gender">
+                        <option selected class="">Gender</option>
+                        <option value="1" {{ (@$gender == '1') ? 'selected' : '' }}>Men</option>
+                        <option value="2" {{ (@$gender == '1') ? 'selected' : '' }}>Women</option>
+                    </select> -->
+                    <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example" name="price">
+                        <option selected class="">Price</option>
+                        <option value="0 - 100" {{ @$price == '0 - 100' ? 'selected' : '' }}>0 - 100</option>
+                        <option value="101 - 500" {{ @$price == '101 - 500' ? 'selected' : '' }}>101 - 500</option>
+                        <option value="501 - 1000" {{ @$price == '501 - 1000' ? 'selected' : '' }}>501 - 1000</option>
+                        <option value="1001" {{ @$price == '1001' ? 'selected' : '' }}>1001 > </option>
+                    </select>
+                    <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example" name="category">
+                        <option class="" value="">Category</option>
+                        @foreach($categories as $category)
+
+                        @php
+                          if($category->id == @$_GET['category']) {
+                            $selected = 'selected';
+                          } else {
+                            $selected = '';
+                          }
+                        @endphp
+                        
+                        <option value="{{$category->id}}" {{$selected}}>{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-dark my-2">
+                        <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </form>
           </div>
       </div>
   </div>
@@ -115,18 +122,18 @@
                             <div class="d-flex align-items-center">
                                 <a href="#"><i class="far fa-heart fs-5 me-2 mt-2 text-dark"></i></a>
                                 @if(Auth::check())
-                    <a href="#">
-                      <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19.2812 19.4219C19.2812 19.8965 18.8965 20.2812 18.4219 20.2812H17.5625V21.1406C17.5625 21.6153 17.1778 22 16.7031 22C16.2285 22 15.8438 21.6153 15.8438 21.1406V20.2812H14.9844C14.5097 20.2812 14.125 19.8965 14.125 19.4219C14.125 18.9472 14.5097 18.5625 14.9844 18.5625H15.8438V17.7031C15.8438 17.2285 16.2285 16.8438 16.7031 16.8438C17.1778 16.8438 17.5625 17.2285 17.5625 17.7031V18.5625H18.4219C18.8965 18.5625 19.2812 18.9472 19.2812 19.4219ZM19.2812 6.01562V14.2656C19.2812 14.7403 18.8965 15.125 18.4219 15.125C17.9472 15.125 17.5625 14.7403 17.5625 14.2656V6.875H15.8438V9.45312C15.8438 9.92776 15.459 10.3125 14.9844 10.3125C14.5097 10.3125 14.125 9.92776 14.125 9.45312V6.875H5.875V9.45312C5.875 9.92776 5.49026 10.3125 5.01562 10.3125C4.54099 10.3125 4.15625 9.92776 4.15625 9.45312V6.875H2.4375V20.2812H11.5469C12.0215 20.2812 12.4062 20.666 12.4062 21.1406C12.4062 21.6153 12.0215 22 11.5469 22H1.57812C1.10349 22 0.71875 21.6153 0.71875 21.1406V6.01562C0.71875 5.54099 1.10349 5.15625 1.57812 5.15625H4.1969C4.53829 2.25685 7.01036 0 10 0C12.9896 0 15.4617 2.25685 15.8031 5.15625H18.4219C18.8965 5.15625 19.2812 5.54099 19.2812 6.01562ZM14.0674 5.15625C13.7391 3.20783 12.0403 1.71875 10 1.71875C7.95971 1.71875 6.2609 3.20783 5.93262 5.15625H14.0674Z" fill="black"/>
-                      </svg>
-                    </a>
-                    @else
-                    <a href="{{ route('signin') }}">
-                      <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19.2812 19.4219C19.2812 19.8965 18.8965 20.2812 18.4219 20.2812H17.5625V21.1406C17.5625 21.6153 17.1778 22 16.7031 22C16.2285 22 15.8438 21.6153 15.8438 21.1406V20.2812H14.9844C14.5097 20.2812 14.125 19.8965 14.125 19.4219C14.125 18.9472 14.5097 18.5625 14.9844 18.5625H15.8438V17.7031C15.8438 17.2285 16.2285 16.8438 16.7031 16.8438C17.1778 16.8438 17.5625 17.2285 17.5625 17.7031V18.5625H18.4219C18.8965 18.5625 19.2812 18.9472 19.2812 19.4219ZM19.2812 6.01562V14.2656C19.2812 14.7403 18.8965 15.125 18.4219 15.125C17.9472 15.125 17.5625 14.7403 17.5625 14.2656V6.875H15.8438V9.45312C15.8438 9.92776 15.459 10.3125 14.9844 10.3125C14.5097 10.3125 14.125 9.92776 14.125 9.45312V6.875H5.875V9.45312C5.875 9.92776 5.49026 10.3125 5.01562 10.3125C4.54099 10.3125 4.15625 9.92776 4.15625 9.45312V6.875H2.4375V20.2812H11.5469C12.0215 20.2812 12.4062 20.666 12.4062 21.1406C12.4062 21.6153 12.0215 22 11.5469 22H1.57812C1.10349 22 0.71875 21.6153 0.71875 21.1406V6.01562C0.71875 5.54099 1.10349 5.15625 1.57812 5.15625H4.1969C4.53829 2.25685 7.01036 0 10 0C12.9896 0 15.4617 2.25685 15.8031 5.15625H18.4219C18.8965 5.15625 19.2812 5.54099 19.2812 6.01562ZM14.0674 5.15625C13.7391 3.20783 12.0403 1.71875 10 1.71875C7.95971 1.71875 6.2609 3.20783 5.93262 5.15625H14.0674Z" fill="black"/>
-                      </svg>
-                    </a>
-                    @endif
+                                <a href="javascript:void(0)" class="add-to-cart" id="add-to-cart" data-productid="{{ $product->id }}">
+                                  <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19.2812 19.4219C19.2812 19.8965 18.8965 20.2812 18.4219 20.2812H17.5625V21.1406C17.5625 21.6153 17.1778 22 16.7031 22C16.2285 22 15.8438 21.6153 15.8438 21.1406V20.2812H14.9844C14.5097 20.2812 14.125 19.8965 14.125 19.4219C14.125 18.9472 14.5097 18.5625 14.9844 18.5625H15.8438V17.7031C15.8438 17.2285 16.2285 16.8438 16.7031 16.8438C17.1778 16.8438 17.5625 17.2285 17.5625 17.7031V18.5625H18.4219C18.8965 18.5625 19.2812 18.9472 19.2812 19.4219ZM19.2812 6.01562V14.2656C19.2812 14.7403 18.8965 15.125 18.4219 15.125C17.9472 15.125 17.5625 14.7403 17.5625 14.2656V6.875H15.8438V9.45312C15.8438 9.92776 15.459 10.3125 14.9844 10.3125C14.5097 10.3125 14.125 9.92776 14.125 9.45312V6.875H5.875V9.45312C5.875 9.92776 5.49026 10.3125 5.01562 10.3125C4.54099 10.3125 4.15625 9.92776 4.15625 9.45312V6.875H2.4375V20.2812H11.5469C12.0215 20.2812 12.4062 20.666 12.4062 21.1406C12.4062 21.6153 12.0215 22 11.5469 22H1.57812C1.10349 22 0.71875 21.6153 0.71875 21.1406V6.01562C0.71875 5.54099 1.10349 5.15625 1.57812 5.15625H4.1969C4.53829 2.25685 7.01036 0 10 0C12.9896 0 15.4617 2.25685 15.8031 5.15625H18.4219C18.8965 5.15625 19.2812 5.54099 19.2812 6.01562ZM14.0674 5.15625C13.7391 3.20783 12.0403 1.71875 10 1.71875C7.95971 1.71875 6.2609 3.20783 5.93262 5.15625H14.0674Z" fill="black"/>
+                                  </svg>
+                                </a>
+                                @else
+                                <a href="{{ route('signin') }}">
+                                  <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19.2812 19.4219C19.2812 19.8965 18.8965 20.2812 18.4219 20.2812H17.5625V21.1406C17.5625 21.6153 17.1778 22 16.7031 22C16.2285 22 15.8438 21.6153 15.8438 21.1406V20.2812H14.9844C14.5097 20.2812 14.125 19.8965 14.125 19.4219C14.125 18.9472 14.5097 18.5625 14.9844 18.5625H15.8438V17.7031C15.8438 17.2285 16.2285 16.8438 16.7031 16.8438C17.1778 16.8438 17.5625 17.2285 17.5625 17.7031V18.5625H18.4219C18.8965 18.5625 19.2812 18.9472 19.2812 19.4219ZM19.2812 6.01562V14.2656C19.2812 14.7403 18.8965 15.125 18.4219 15.125C17.9472 15.125 17.5625 14.7403 17.5625 14.2656V6.875H15.8438V9.45312C15.8438 9.92776 15.459 10.3125 14.9844 10.3125C14.5097 10.3125 14.125 9.92776 14.125 9.45312V6.875H5.875V9.45312C5.875 9.92776 5.49026 10.3125 5.01562 10.3125C4.54099 10.3125 4.15625 9.92776 4.15625 9.45312V6.875H2.4375V20.2812H11.5469C12.0215 20.2812 12.4062 20.666 12.4062 21.1406C12.4062 21.6153 12.0215 22 11.5469 22H1.57812C1.10349 22 0.71875 21.6153 0.71875 21.1406V6.01562C0.71875 5.54099 1.10349 5.15625 1.57812 5.15625H4.1969C4.53829 2.25685 7.01036 0 10 0C12.9896 0 15.4617 2.25685 15.8031 5.15625H18.4219C18.8965 5.15625 19.2812 5.54099 19.2812 6.01562ZM14.0674 5.15625C13.7391 3.20783 12.0403 1.71875 10 1.71875C7.95971 1.71875 6.2609 3.20783 5.93262 5.15625H14.0674Z" fill="black"/>
+                                  </svg>
+                                </a>
+                                @endif
                             </div>
                         </div>
                         @if(Auth::check())

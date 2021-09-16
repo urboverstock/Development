@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'seller', 'as' => 'seller'],
 Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout']);
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
+    Route::any('/', [App\Http\Controllers\BuyerController::class, 'index'])->name('buyer.index');
     Route::any('dashboard', [App\Http\Controllers\BuyerController::class, 'dashboard'])->name('buyer.dashboard');
     Route::any('/edit-profile', [App\Http\Controllers\BuyerController::class, 'edit_profile'])->name('buyer.edit_profile');
     Route::any('/view-profile', [App\Http\Controllers\BuyerController::class, 'view_profile'])->name('buyer.view_profile');
@@ -109,6 +110,7 @@ Route::get('get-started', [App\Http\Controllers\ProductController::class, 'getSt
 Route::get('products', [App\Http\Controllers\ProductController::class, 'getProducts'])->name('products');
 Route::get('search-results', [App\Http\Controllers\ProductController::class, 'searchresults'])->name('search-products');
 Route::get('get-pagination-records', [App\Http\Controllers\ProductController::class, 'paginationRecords'])->name('pagination-records');
+Route::get('/{id}', [App\Http\Controllers\ProductController::class, 'productDetails'])->name('product-detail');
 
 
 Route::any('chat', [App\Http\Controllers\Chat\ChatController::class, 'chat'])->name('chat');
@@ -119,6 +121,7 @@ Route::get('guest-buyer/{id}', [App\Http\Controllers\LandingController::class, '
 Route::get('pro-seller/{id}', [App\Http\Controllers\LandingController::class, 'proSeller'])->name('pro-seller');
 Route::post('add-follow-user', [App\Http\Controllers\LandingController::class, 'addFollowUser'])->name('add-follow-user');
 Route::post('add-wishlist-product', [App\Http\Controllers\LandingController::class, 'addWishlistProduct'])->name('add-wishlist-product');
+Route::post('add-to-cart', [App\Http\Controllers\LandingController::class, 'addToCart'])->name('add-to-cart');
 
 
 Route::any('newsletter', [App\Http\Controllers\NewsletterController::class, 'sendNewsLetter'])->name('sendNewsLetter');

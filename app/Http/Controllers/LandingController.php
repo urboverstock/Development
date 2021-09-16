@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\UserRole;
+use App\Models\Cart;
 use App\Models\UserFollowers;
 use App\Models\ProductWishlist;
 use Auth, Validator, Hash;
@@ -246,6 +247,60 @@ class LandingController extends Controller
             }else{
                 $response["status"] = 0;
                 $response["message"] = "You have already wishlist";
+            }
+        }
+        return response()->json($response);
+    }
+
+    public function addToCart(Request $request)
+    {
+        if(!Auth::check()){
+            $response["status"] = 0;
+            $response["message"] = "Please login first";
+        }else{
+            $postData = $request->all();
+
+            $product = Product::find($postData['product_id']);
+
+            $check = Cart::where(['user_id'=> Auth::user()->id,'product_id'=>$postData['product_id']])->first();
+
+            if($product->quantity == 0)
+            {
+                $response["status"] = 0;
+                $response["message"] = "Product quantity is zero";
+                return response()->json($response);
+            }
+
+            if(empty($check)){
+                $cart = new Cart;
+                $cart->user_id = Auth::user()->id;
+                $cart->product_id = $postData['product_id'];
+                $cart->quantity = isset($postData['quantity']) ? $postData['quantity'] : 1;
+                if($cart->save()){
+                    $response["status"] = 1;
+                    $response["message"] = "Add to cart successfully";
+                }else{
+                    $response["status"] = 0;
+                    $response["message"] = "Something went wrong";
+                }
+            }else{
+
+                if($check->quantity >= $product->quantity)
+                {
+                    $response["status"] = 0;
+                    $response["message"] = "Product quantity is low";
+                    return response()->json($response);
+                }
+
+                $cart = Cart::find($check->id);
+                $cart->quantity = $check->quantity + 1;
+                if($cart->save()){
+                    $response["status"] = 1;
+                    $response["message"] = "Add to cart successfully";
+                }else{
+                    $response["status"] = 0;
+                    $response["message"] = "Something went wrong";
+                }
             }
         }
         return response()->json($response);

@@ -71,5 +71,30 @@ $(document).ready(function() {
 				toastr.error("Something went wrong!", "Error");
 			});
 	});
+
+	$(".add-to-cart").click(function() {
+		var quantity = $(".quantity").val();
+		var product_id = $(this).data('productid');
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+			$.ajax({
+				type : 'post',
+				url: base_url+"/add-to-cart",
+				data: { product_id: product_id, quantity : quantity},
+				//async: false,
+			}).done(function(response) {
+					if(response.status == 1) {
+						toastr.success(response.message, "Success");
+					}else{
+						toastr.error(response.message, "Error");
+					}
+			}).fail(function() {
+				ajaxrequestTime = false;
+				toastr.error("Something went wrong!", "Error");
+			});
+	});
 	
 });

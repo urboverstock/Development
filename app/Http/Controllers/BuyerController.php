@@ -16,6 +16,16 @@ class BuyerController extends Controller
 {
     public $uploadUserProfilePath = 'assets/images/users';
 
+    public function index(Request $request)
+    {
+        $request->request->add(['limit' => 6]);
+        $latestProducts = Product::getLatestProducts($request);
+        $request->request->add(['limit' => 3]);
+        $sellers = User::getSellers($request);
+        // echo "<pre>"; print_r($latestProducts); die;
+        return view('common.home', compact('latestProducts', 'sellers'));
+    }
+
     public function dashboard(Request $request)
     {
 

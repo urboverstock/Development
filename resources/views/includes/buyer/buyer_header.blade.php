@@ -52,6 +52,7 @@
               <li class="logout_btn"><a class="dropdown-item border-bottom" href="javascript:;">Logout</a></li>
             </ul>
           </div>
+          
           <div class="hamburger-menu">
             <div class="line line-1"> </div>
             <div class="line line-3"> </div>

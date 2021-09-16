@@ -31,7 +31,11 @@
    </head>
    <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-      @include('includes.header')
+      @if(Auth::check())
+        @include('includes.buyer.buyer_header')
+      @else
+        @include('includes.header')
+      @endif
 
       @yield('content')
 
@@ -49,7 +53,27 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script src="{{ asset('assets/js/script/main.js') }}"></script>
         <script src="{{ asset('assets/js/script/custom.js') }}"></script>
+        <script src="{{ asset('assets/js/script/productDetails.js') }}"></script>
       <!--<script src="../assets/js/discount.js"></script>-->
+
+      <script type="text/javascript">
+          $(document).ready(function(){
+              <?php if (\Session::has('success')){ ?>
+                  toastr.success("{{ \Session::get('success') }}", "Success");
+              <?php
+                  }elseif (\Session::has('error')) {
+              ?>
+                  toastr.error("{{ \Session::get('error') }}", "Error");
+              <?php
+                  }elseif (\Session::has('warning')) {
+              ?>
+                  toastr.warning("{{ \Session::get('warning') }}", "Warning");
+              <?php }elseif (\Session::has('info')) { ?>
+                  toastr.info("{{ \Session::get('info') }}", "Info");
+              <?php } ?>
+          });
+      </script>
+        
       @yield('after_footer')
 
    </body>

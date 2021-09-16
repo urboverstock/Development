@@ -62,6 +62,7 @@
                               </div>
                               <span class="error">{{ $errors->first('brand') }}</span>
                           </div>
+                          
                           <div class="mb-4">
                               <label for="exampleFormControlInput1" class="form-label">Title</label>
                               <div class="custom-urban-form">

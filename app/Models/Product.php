@@ -41,9 +41,31 @@ class Product extends Model
     			$q->where('name', 'LIKE', "%{$request->search}%"); 
     		});
     	}
+
 		if($request->category) {
 			$query->where('category_id', $request->category);
 		}
+
+        if($request->brand) {
+            $query->where('brand', $request->brand);
+        }
+
+        if($request->price) {
+            $explode = explode('-', $request->price);
+            
+            $from = $explode[0];
+            $to = isset($explode[1]) ? $explode[1] : NULL;
+            
+            if(empty($to))
+            {
+                $query->where('price', '>', $from);
+            }
+            else
+            {
+                $query->whereBetween('price', [$from, $to]);
+            }
+        }
+
 		if($request->orderBy) {
 			$query->orderBy('id', $request->orderBy);
 		}
