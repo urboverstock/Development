@@ -20,11 +20,13 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
-
+        //echo Auth::user()->user_type;die;
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 if (!Auth::guest() && Auth::user()->user_type == 4) {
                     return redirect()->route('buyer.dashboard');
+                }else if (!Auth::guest() && Auth::user()->user_type == 2) {
+                    return redirect()->route('admin.dashboard');
                 }else{
                     return redirect()->route('sellerDashboard');
                 }

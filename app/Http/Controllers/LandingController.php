@@ -122,9 +122,11 @@ class LandingController extends Controller
 
                 if (Auth::user()->user_type == 4) {
                     return redirect()->route('buyer.dashboard')->with('success', "Logged in successfully");
-                 }else{
+                }else if (Auth::user()->user_type == 2) {
+                    return redirect()->route('admin.dashboard')->with('success', "Logged in successfully");
+                }else{
                     return redirect()->route('sellerDashboard')->with('success', "Logged in successfully");
-                 }
+                }
             } else {
                 return redirect()->back()->with('error', 'Invalid email and password combination');
             }
