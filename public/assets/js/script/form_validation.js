@@ -341,6 +341,12 @@ $(document).ready(function() {
 			brand:{
 				required:true
 			},
+			sku:{
+				required:true
+			},
+			quantity:{
+				required:true
+			}
 		},
 	    messages: {
 			name:{

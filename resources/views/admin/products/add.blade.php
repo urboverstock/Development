@@ -22,7 +22,7 @@
 
 <section class="admin-body pb-0">
   <div class="container">
-    <form method="post" action="{{ route('adminAddProduct') }}" enctype="multipart/form-data" id="admin_add_product_form">
+    <form method="post" action="{{ route('adminAddProduct') }}" enctype="multipart/form-data" id="admin_add_product_form1">
       {{ csrf_field() }}
       <div class="card border-0 shadow-sm br-20 mb-4">
         <div class="card-body py-4">
@@ -55,7 +55,9 @@
                   id="exampleFormControlInput1" name="name"
                   placeholder="Name"
                 />
-                <span class="error">{{ $errors->first('name') }}</span>
+                @if ($errors->has('name'))
+                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                @endif
               </div>
             </div>
           </div>
@@ -103,8 +105,10 @@
                     @endforeach
                     @endif
                   </select>
-                  <span class="error">{{ $errors->first('category_id') }}</span>
                 </div>
+                @if ($errors->has('category_id'))
+                    <span class="text-danger">{{ $errors->first('category_id') }}</span>
+                @endif
               </div>
             </div>
           </div>
@@ -132,7 +136,9 @@
                 <small class="text--primary"
                   >Add Wholesale Price (optional)</small
                 >
-                <span class="error">{{ $errors->first('price') }}</span>
+                @if ($errors->has('price'))
+                    <span class="text-danger">{{ $errors->first('price') }}</span>
+                @endif
               </div>
             </div>
             <div class="col-lg-6">
@@ -257,6 +263,9 @@
                 </button>
               </div>
               <small>item with 0 stock will automatically set to be "Not for Sale”</small>
+              @if ($errors->has('quantity'))
+                  <span class="text-danger">{{ $errors->first('quantity') }}</span>
+              @endif
             </div>
             <div class="col-lg-6 mb-4">
               <p class="mb-0 f-600 text-12 mb-3">Imported Item (optional)</p>
@@ -314,9 +323,9 @@
                     </div>
                 
 
-                  <input type="file" class="d-none" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                  <input type="file" class="d-none" id="urbanFile" name="avatar" accept="image/png, image/jpeg">
                   
-              
+                  <output id="result" />
               </label>
             </div>
             <div class="col-lg-4 mb-4">
@@ -348,7 +357,9 @@
                 <div class="card-body">
                   <h6 class="fw-bold mb-3">Product Description</h6>
                   <textarea id="editor" class="form-control" id="exampleFormControlTextarea1" placeholder="" rows="5" name="description"></textarea>
-                  
+                  @if ($errors->has('description'))
+                    <span class="text-danger">{{ $errors->first('description') }}</span>
+                  @endif
                 </div>
               </div>
             </div>
@@ -365,6 +376,9 @@
                       <option value="3">Three</option>
                     </select-->
                     <input class="form-control border-primary-1 br-10" type="text" placeholder="Brand" name="brand">
+                    @if ($errors->has('brand'))
+                      <span class="text-danger">{{ $errors->first('brand') }}</span>
+                    @endif
                   </div>
                   <div class="mb-3">
                     <p class="mb-2 text-12 f-600">Tags</p>
@@ -385,6 +399,9 @@
                       <option value="3">Three</option>
                     </select-->
                     <input type="text" class="form-control border-primary-1 br-10" placeholder="" name="sku">
+                    @if ($errors->has('sku'))
+                      <span class="text-danger">{{ $errors->first('sku') }}</span>
+                    @endif
                   </div>
                 </div>
               </div>
@@ -400,3 +417,91 @@
 </section>
 
 @endsection
+
+
+@section('scripts')
+
+<script>
+  function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('.image_prev').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	$("#imageUpload").change(function() {
+
+    var filepath = this.value;
+    var m = filepath.match(/([^\/\\]+)$/);
+    var filename = m[1];
+
+    if(filename != '' && filename != null)
+    {
+      var img_arr = filename.split('.');
+      var ext = img_arr.pop();
+      ext = ext.toLowerCase();
+
+      if(ext == 'jpeg' || ext == 'jpg' || ext == 'png')
+      {
+        readURL(this);
+      }else{
+        $(this).val('');
+        alert("Please select .png, .jpg or .jpeg file");
+      }
+    }
+	});
+
+  //Preview Mutliple Images
+window.onload = function(){
+        
+    //Check File API support
+    if(window.File && window.FileList && window.FileReader)
+    {
+        var filesInput = document.getElementById("urbanFile");
+        
+        filesInput.addEventListener("change", function(event){
+            
+           
+            var files = event.target.files; //FileList object
+            var output = document.getElementById("result");
+            
+            for(var i = 0; i< files.length; i++)
+            {
+                var file = files[i];
+                
+                //Only pics
+                if(!file.type.match('image'))
+                  continue;
+                
+                var picReader = new FileReader();
+                
+                picReader.addEventListener("load",function(event){
+                    
+                    var picFile = event.target;
+                    
+                    var div = document.createElement("div");
+                    
+                    div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                            "title='" + picFile.name + "'/>";
+                    
+                    output.insertBefore(div,null);            
+                
+                });
+                
+                 //Read the image
+                picReader.readAsDataURL(file);
+            }                               
+           
+        });
+    }
+    else
+    {
+        console.log("Your browser does not support File API");
+    }
+}
+
+</script>
+
+@stop

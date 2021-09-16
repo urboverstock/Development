@@ -49,7 +49,7 @@ class AdminController extends Controller
             ->withErrors($validator)
             ->withInput();
         }
-        echo $request->name;die;
+
         $product                = new Product;
         $product->user_id       = Auth::id();
         $product->name          = $request->name;
@@ -96,7 +96,7 @@ class AdminController extends Controller
                 }
             }
 
-            return redirect()->route('sellerView_profile')->with('success', 'Product added successfully');
+            return redirect()->route('admin.dashboard')->with('success', 'Product added successfully');
         }else{
             return redirect()->back()->with('error', COMMON_ERROR);
         }
