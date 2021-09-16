@@ -9,3 +9,21 @@ span.error {
     color: #000 !important;
     font-weight: 700;
 }
+
+html {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+    
+
+    footer {
+        background-color: transparent !important;
+        margin-top: auto;
+    }
+    .bg-footer {
+        background-color: #F0E3B9 !important;
+    }

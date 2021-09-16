@@ -36,7 +36,7 @@
           <a href="javascript:;" class="text-dark me-4 fw-bold text-decoration-none d-none d-lg-block" style="cursor: text;"><span class="text--primary">Welcome</span> {{ $user->first_name}}</a>
           <div class="dropdown ">
             <div class="me-4 " data-bs-toggle="dropdown" aria-expanded="false">
-              <img class="avatar-50 rounded-cricle " src="{{ $user->profile_img }}" alt="" style="cursor: pointer; border-radius: 50%">
+              <img class="avatar-50 rounded-cricle " src="{{ $user->profile_img }}" alt="" style="cursor: pointer; border-radius: 50%; height: 50px">
             </div>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                <!-- fw-bold -->
