@@ -18,10 +18,14 @@ class AdminController extends Controller
 
     public function dashboard(Request $request)
     {
-
       if(!Auth::check()){
         return redirect()->route('signin')->with('error', 'You need to login first');
       }
       return view('admin.dashboard');
+    }
+
+    public function add_product(Request $request)
+    {
+      return view('admin.products.add');
     }
 }

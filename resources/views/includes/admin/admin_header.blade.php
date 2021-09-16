@@ -12,8 +12,8 @@
     "
   >
     <div class="container px-0">
-      <a class="navbar-brand" href="#">
-        <img src="../assets/images/logo.png" alt="" />
+      <a class="navbar-brand" href="{{url('/')}}">
+        <img src="{{ asset('assets/images/logo.png') }}" alt="" />
       </a>
       <button
         class="navbar-toggler"
@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav admin-dashboard-navbar ms-auto mb-2 mb-lg-0">
           <li class="nav-item me-4">
-            <a class="nav-link active" aria-current="page" href="#"
+            <a class="nav-link active" aria-current="page" href="{{ route('admin.dashboard') }}"
               >DASHBOARD</a
             >
           </li>
@@ -37,7 +37,7 @@
             <a class="nav-link" href="#">ORDERS</a>
           </li>
           <li class="nav-item me-4">
-            <a class="nav-link" href="#">PRODUCTS</a>
+            <a class="nav-link" href="{{ route('admin.dashboard') }}">PRODUCTS</a>
           </li>
           <li class="nav-item me-4">
             <a class="nav-link" href="#">CHAT</a>
@@ -120,7 +120,7 @@
             >
               <img
                 class="avatar-56 admin-header-button"
-                src="../assets/images/square-img.png"
+                src="{{ asset('assets/images/square-img.png') }}"
                 alt=""
               />
               <svg

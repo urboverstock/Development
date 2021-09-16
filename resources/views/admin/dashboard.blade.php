@@ -174,7 +174,7 @@
                   </ul>
                 </div>
                 <button type="button" class="btn btn--primary">
-                  <span class="text-white d-flex align-items-center"
+                  <a href="{{ route('adminAddProduct') }}" style="text-decoration:none;"><span class="text-white d-flex align-items-center"
                     ><svg
                       width="14"
                       class="me-2"
@@ -191,7 +191,7 @@
                       />
                     </svg>
                     New Products</span
-                  >
+                  ></a>
                 </button>
               </div>
             </div>
@@ -283,7 +283,7 @@
                         >
                           <img
                             class="avatar-sm br-10"
-                            src="../assets/images/admin-dashboard/64.png"
+                            src="{{ asset('assets/images/admin-dashboard/64.png') }}"
                             alt=""
                           />
                           <span class="text-dark-admin"

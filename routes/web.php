@@ -102,6 +102,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::any('dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::any('add-product', [App\Http\Controllers\AdminController::class, 'add_product'])->name('adminAddProduct');
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('admin.logout');
 });
 

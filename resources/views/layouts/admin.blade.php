@@ -52,7 +52,9 @@
 
     <!--<script src="{{ asset('assets/js/script/apexChart.js') }}"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
     <script src="{{ asset('assets/js/script/main.js') }}"></script>
+    <script src="{{ asset('assets/js/script/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/js/script/jquery.validate.js') }}"></script>
     <script src="{{ asset('assets/js/script/form_validation.js') }}"></script>
 
@@ -71,20 +73,6 @@
             <?php }elseif (\Session::has('info')) { ?>
                 toastr.info("{{ \Session::get('info') }}", "Info");
             <?php } ?>
-        });
-    </script>
-
-    <script>
-        $(document).on('click', '.logout_btn', function(){
-            $('.logout-screen').show();
-        });
-
-        $(document).on('click', '.cancel_logout_btn', function(){
-            $('.logout-screen').hide();
-        });
-
-        $(document).on('click', '.confirm_logout_btn', function(){
-            window.location.href = "{{ route('logout') }}";
         });
     </script>
 
