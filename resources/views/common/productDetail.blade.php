@@ -82,8 +82,8 @@
           </div>
         </div>
         <div class="col-lg-7">
-          <h2 class="fw-bold mb-4">{{ $product->name }}</h2>
-          <h5 class="f-600">{{ $product->brand }}</h5>
+          <h2 class="fw-bold mb-4">{{ @$product->name }}</h2>
+          <h5 class="f-600">{{ @$product->brand }}</h5>
           <div class="d-flex flex-wrap mb-4">
             <div class="d-flex">
               <span class="text--primary f-600 me-2 ">4.0 
@@ -122,7 +122,7 @@
             <h4 class="mb-0 text-decoration-line-through text-mute">{{ $product->compare_price }}</h4>
           </div>
 
-          <h5 class="mb-4">{{ $product->description }}</h5>
+          <h5 class="mb-4">{{ @$product->description }}</h5>
 
           <!-- <div class="d-flex align-items-center flex-wrap mb-3">
             <h5 class="fw-bold me-5 mb-3">Shoe Size</h5>
@@ -230,7 +230,7 @@
             <div class="card product-item border-0 shadow br-12 mb-5">
               <div class="card-body ">
                 <img class="img-fluid br-12 mb-3" src="{{ productDefaultImage($recent_product['id'])}}" alt="">
-               <h5 class="fw-bold">{{ $recent_product['name'] }}</h5>
+               <h5 class="fw-bold">{{ @$recent_product['name'] }}</h5>
                <div class="d-flex align-items-center justify-content-between flex-wrap">
                  <!-- <div class="bg-text rounded-pill px-3 py-2">
                     <h6 class="mb-0 f-600">Jhonathan Doe</h6>
@@ -247,7 +247,7 @@
               </div>
               <div class="card-footer bg-transparent">
                 <div class="d-flex justify-content-between flex-wrap py-2">
-                  <h5 class="mb-0">${{ $recent_product['price'] }} </h5>
+                  <h5 class="mb-0">${{ @$recent_product['price'] }} </h5>
                   <div class="d-flex align-items-center">
                    
                     <a href="#" class="mr-13 link-primary-hover">
