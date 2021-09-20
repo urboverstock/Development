@@ -111,7 +111,6 @@ Route::get('get-started', [App\Http\Controllers\ProductController::class, 'getSt
 Route::get('products', [App\Http\Controllers\ProductController::class, 'getProducts'])->name('products');
 Route::get('search-results', [App\Http\Controllers\ProductController::class, 'searchresults'])->name('search-products');
 Route::get('get-pagination-records', [App\Http\Controllers\ProductController::class, 'paginationRecords'])->name('pagination-records');
-Route::get('/{id}', [App\Http\Controllers\ProductController::class, 'productDetails'])->name('product-detail');
 
 
 Route::any('chat', [App\Http\Controllers\Chat\ChatController::class, 'chat'])->name('chat');
@@ -126,3 +125,7 @@ Route::post('add-to-cart', [App\Http\Controllers\LandingController::class, 'addT
 
 
 Route::any('newsletter', [App\Http\Controllers\NewsletterController::class, 'sendNewsLetter'])->name('sendNewsLetter');
+
+
+
+Route::get('/{id}', [App\Http\Controllers\ProductController::class, 'productDetails'])->name('product-detail');
