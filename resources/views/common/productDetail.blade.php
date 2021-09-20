@@ -19,7 +19,7 @@
             	@endforeach
             	@endif
               <!-- <div>
-                <img class="avatar-slider mx-auto br-10" src="{{ asset( $product->product_image[0]->file) }}" alt="">
+                <img class="avatar-slider mx-auto br-10" src="{{ asset( @$product->product_image[0]->file) }}" alt="">
               </div>
 
               <div>
