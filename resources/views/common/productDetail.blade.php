@@ -118,8 +118,8 @@
             </div>
           </div>
           <div class="d-flex align-items-center border-bottom pb-4 mb-4">
-            <h2 class="text--primary f-600 mb-0 me-3">${{ $product->price }}</h2>
-            <h4 class="mb-0 text-decoration-line-through text-mute">{{ $product->compare_price }}</h4>
+            <h2 class="text--primary f-600 mb-0 me-3">${{ @$product->price }}</h2>
+            <h4 class="mb-0 text-decoration-line-through text-mute">{{ @$product->compare_price }}</h4>
           </div>
 
           <h5 class="mb-4">{{ @$product->description }}</h5>
