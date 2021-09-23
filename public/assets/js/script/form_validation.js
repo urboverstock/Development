@@ -753,6 +753,30 @@ $(document).ready(function() {
 		} 
 	});
 
+	$("#add_address_form").validate({ 
+		errorElement: 'span',
+		rules: {
+			city: {
+				required:true,
+			},			
+			state:{
+				required:true,
+			},
+			country:{
+				required:true,
+			},
+			pincode:{
+				required:true,
+				digits: true,
+				minlength:1,
+				maxlength:6
+			}
+		},
+	    messages: {
+
+	    },
+	});
+
 
 	$("#add_advertisement_form").validate({
 		errorElement: 'span',

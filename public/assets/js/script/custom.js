@@ -72,6 +72,31 @@ $(document).ready(function() {
 			});
 	});
 
+	$(".add-favourite-product").click(function() {
+		//var user_id = $(".userId").val();
+		var product_id = $(this).data('productid');
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+			$.ajax({
+				type : 'post',
+				url: base_url+"/add-favourite-product",
+				data: { product_id: product_id},
+				//async: false,
+			}).done(function(response) {
+					if(response.status ==1) {
+						toastr.success(response.message, "Success");
+					}else{
+						toastr.error(response.message, "Error");
+					}
+			}).fail(function() {
+				ajaxrequestTime = false;
+				toastr.error("Something went wrong!", "Error");
+			});
+	});
+
 	$(".add-to-cart").click(function() {
 		var quantity = $(".quantity").val();
 		var product_id = $(this).data('productid');

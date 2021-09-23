@@ -159,9 +159,12 @@
                           </a>
                         </div>
                       </div>
-                      <!--<button type="button" class="btn btn-outline-dark rounded-pill">
+                      <!--button type="button" class="btn btn-outline-dark rounded-pill">
                         <h6 class="mb-0 text-14">Follow</h6>
-                      </button>-->
+                      </button-->
+                      <a class="btn btn-outline-dark rounded-pill" href="{{ route('buyerDeleteFollower',  \Illuminate\Support\Facades\Crypt::encrypt($follower->id)) }}">
+                        <h6 class="mb-0 text-14">Unfollow</h6>
+                      </a>
                     </div>
                   @endforeach
                 @else	
@@ -202,9 +205,9 @@
                           </a>
                         </div>
                       </div>
-                      <!--<button type="button" class="btn btn-outline-dark rounded-pill">
-                        <h6 class="mb-0 text-14">Follow</h6>
-                      </button>-->
+                      <a class="btn btn-outline-dark rounded-pill" href="{{ route('buyerDeleteFollower',  \Illuminate\Support\Facades\Crypt::encrypt($following->id)) }}">
+                        <h6 class="mb-0 text-14">Unfollowing</h6>
+                      </a>
                     </div>
                   @endforeach
                 @else	

@@ -44,10 +44,10 @@
               <li><a class="dropdown-item border-bottom" href="{{ route('buyer.dashboard') }}">Dashboard</a></li>
               <li><a class="dropdown-item border-bottom" href="{{ route('buyer.followers') }}">Followers</a></li>
               
-              <li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li>
-              <li><a class="dropdown-item border-bottom " href="#">My Orders</a></li>
-              <li><a class="dropdown-item border-bottom " href="#">My Favourites</a></li>
-              <li><a class="dropdown-item border-bottom " href="#">Shipping Address</a></li>
+              <!--li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li-->
+              <li><a class="dropdown-item border-bottom " href="{{ route('buyerOrderList') }}">My Orders</a></li>
+              <li><a class="dropdown-item border-bottom " href="{{ route('buyerFavouriteProduct') }}">My Favourites</a></li>
+              <li><a class="dropdown-item border-bottom " href="{{ route('buyerAddress') }}">Shipping Address</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerUserPost') }}">Posts</a></li>
               <li class="logout_btn"><a class="dropdown-item border-bottom" href="javascript:;">Logout</a></li>
             </ul>

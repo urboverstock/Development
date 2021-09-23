@@ -8,6 +8,7 @@ use App\Models\UserRole;
 use App\Models\Cart;
 use App\Models\UserFollowers;
 use App\Models\ProductWishlist;
+use App\Models\ProductFavourite;
 use Auth, Validator, Hash;
 
 class LandingController extends Controller
@@ -190,7 +191,26 @@ class LandingController extends Controller
     {
         $user = User::where(['id'=>$id,'user_type'=>4])->first();
         if (!empty($user)) {
-            return view('guest.profile', compact('user'));
+            $followers = UserFollowers::where(['follower_id'=>$id])->count();
+            $followings = UserFollowers::where(['user_id'=>$id])->count();
+            $pro_sellers = User::where(['user_type'=>1])->get();
+
+            return view('guest.profile', compact('user','followers','followings','pro_sellers'));
+        } else {
+            return redirect()->back()
+            ->with('error', 'No buyer account')
+            ->withInput();
+        }
+    }
+
+    public function proSeller(Request $request,$id)
+    {
+        $user = User::where(['id'=>$id,'user_type'=>1])->first();
+        if (!empty($user)) {
+            $followers = UserFollowers::where(['follower_id'=>$id])->count();
+            $followings = UserFollowers::where(['user_id'=>$id])->count();
+            $pro_sellers = User::where(['user_type'=>1])->get();
+            return view('guest.pro_seller', compact('user','followers','followings','pro_sellers'));
         } else {
             return redirect()->back()
             ->with('error', 'No buyer account')
@@ -247,6 +267,33 @@ class LandingController extends Controller
             }else{
                 $response["status"] = 0;
                 $response["message"] = "You have already wishlist";
+            }
+        }
+        return response()->json($response);
+    }
+
+    public function addFavouriteProduct(Request $request)
+    {
+        if(!Auth::check()){
+            $response["status"] = 0;
+            $response["message"] = "Please login first";
+        }else{
+            $postData = $request->all();
+            $check = ProductFavourite::where(['user_id'=> Auth::user()->id,'product_id'=>$postData['product_id']])->first();
+            if(empty($check)){
+                $favourite                = new ProductFavourite;
+                $favourite->user_id       = Auth::user()->id;
+                $favourite->product_id    = $postData['product_id'];
+                if($favourite->save()){
+                    $response["status"] = 1;
+                    $response["message"] = "You have favourite successfully";
+                }else{
+                    $response["status"] = 0;
+                    $response["message"] = "Something went wrong";
+                }
+            }else{
+                $response["status"] = 0;
+                $response["message"] = "You have already favourite";
             }
         }
         return response()->json($response);

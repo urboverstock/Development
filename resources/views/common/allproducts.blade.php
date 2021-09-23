@@ -120,7 +120,11 @@
                             <div class="d-flex justify-content-between flex-wrap py-2">
                             <h5 class="mb-0">${{number_format($product->price,2)}}</h5>
                             <div class="d-flex align-items-center">
-                                <a href="#"><i class="far fa-heart fs-5 me-2 mt-2 text-dark"></i></a>
+                                @if(Auth::check())
+                                <a href="javascript:void(0)" class="add-favourite-product" data-productid="{{$product->id }}"><i class="far fa-heart fs-5 me-2 mt-2 text-dark"></i></a>
+                                @else
+                                <a href="{{ route('signin') }}"><i class="far fa-heart fs-5 me-2 mt-2 text-dark"></i></a>
+                                @endif
                                 @if(Auth::check())
                                 <a href="javascript:void(0)" class="add-to-cart" id="add-to-cart" data-productid="{{ $product->id }}">
                                   <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">

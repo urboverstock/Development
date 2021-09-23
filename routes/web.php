@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('/edit-profile', [App\Http\Controllers\BuyerController::class, 'edit_profile'])->name('buyer.edit_profile');
     Route::any('/view-profile', [App\Http\Controllers\BuyerController::class, 'view_profile'])->name('buyer.view_profile');
     Route::any('/followers', [App\Http\Controllers\BuyerController::class, 'get_followers'])->name('buyer.followers');
+    Route::any('/followers/delete/{id}', [App\Http\Controllers\BuyerController::class, 'delete_followers'])->name('buyerDeleteFollower');
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');
 
 
@@ -98,6 +99,19 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('view-user-post/{id}', [App\Http\Controllers\UserPostController::class, 'show'])->name('buyerViewUserPost');
     Route::any('delete-user-post/{id}', [App\Http\Controllers\UserPostController::class, 'destroy'])->name('buyerDeleteUserPost');
     Route::any('delete-user-post-file/{id}', [App\Http\Controllers\UserPostController::class, 'deleteUserPostFile'])->name('buyerDeleteUserPostFile');
+
+    Route::any('address', [App\Http\Controllers\Buyer\AddressController::class, 'index'])->name('buyerAddress');
+    Route::any('add-address', [App\Http\Controllers\Buyer\AddressController::class, 'create'])->name('buyerAddAddress');
+    Route::any('store-address', [App\Http\Controllers\Buyer\AddressController::class, 'store'])->name('buyerStoreAddress');
+    Route::any('edit-address/{id}', [App\Http\Controllers\Buyer\AddressController::class, 'editAddress'])->name('buyerEditAddress');
+    Route::any('update-address', [App\Http\Controllers\Buyer\AddressController::class, 'update'])->name('buyerUpdateAddress');
+    Route::any('view-address/{id}', [App\Http\Controllers\Buyer\AddressController::class, 'show'])->name('ViewAddress');
+    Route::any('delete-address/{id}', [App\Http\Controllers\Buyer\AddressController::class, 'delete'])->name('buyerDeleteAddress');
+
+    Route::any('product/favourite', [App\Http\Controllers\Buyer\ProductController::class, 'productFavourite'])->name('buyerFavouriteProduct');
+    Route::any('product/favourite/delete/{id}', [App\Http\Controllers\Buyer\ProductController::class, 'delete_favourite'])->name('buyerDeleteFavourite');
+    Route::any('orders', [App\Http\Controllers\Buyer\OrderController::class, 'orderList'])->name('buyerOrderList');
+    Route::any('order/{id}', [App\Http\Controllers\Buyer\OrderController::class, 'viewOrder'])->name('buyerViewOrder');
 });
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
@@ -121,6 +135,7 @@ Route::get('guest-buyer/{id}', [App\Http\Controllers\LandingController::class, '
 Route::get('pro-seller/{id}', [App\Http\Controllers\LandingController::class, 'proSeller'])->name('pro-seller');
 Route::post('add-follow-user', [App\Http\Controllers\LandingController::class, 'addFollowUser'])->name('add-follow-user');
 Route::post('add-wishlist-product', [App\Http\Controllers\LandingController::class, 'addWishlistProduct'])->name('add-wishlist-product');
+Route::post('add-favourite-product', [App\Http\Controllers\LandingController::class, 'addFavouriteProduct'])->name('add-favourite-product');
 Route::post('add-to-cart', [App\Http\Controllers\LandingController::class, 'addToCart'])->name('add-to-cart');
 
 

@@ -10,6 +10,7 @@ use App\Models\ProductCompanies;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\UserFollowers;
+use Illuminate\Support\Facades\Crypt;
 use Auth, Validator, DB;
 
 class BuyerController extends Controller
@@ -110,7 +111,7 @@ class BuyerController extends Controller
 
         $get_followers = DB::table('user_followers')
                     ->distinct()
-                    ->select("users.id","users.first_name","users.profile_pic","user_followers.user_id","user_followers.follower_id")
+                    ->select("users.id","users.first_name","users.profile_pic","user_followers.id","user_followers.user_id","user_followers.follower_id")
                     ->leftJoin('users', function ($join) {
                         $join->on('user_followers.user_id', '=', 'users.id');
                     })
@@ -119,7 +120,7 @@ class BuyerController extends Controller
 
         $get_followings = DB::table('user_followers')
                     ->distinct()
-                    ->select("users.id","users.first_name","users.profile_pic","user_followers.user_id","user_followers.follower_id")
+                    ->select("users.id","users.first_name","users.profile_pic","user_followers.id","user_followers.user_id","user_followers.follower_id")
                     ->leftJoin('users', function ($join) {
                         $join->on('user_followers.follower_id', '=', 'users.id');
                     })
@@ -128,5 +129,17 @@ class BuyerController extends Controller
 
         //echo "<pre>";print_r($get_followings);die;
         return view('buyer.show_followers', compact('user','followers','followings','get_followers','get_followings'));
+    }
+
+    public function delete_followers($id)
+    {
+        $id = Crypt::decrypt($id);
+        $follower = UserFollowers::find($id);
+        if($follower->delete())
+        {
+            return redirect()->route('buyer.followers')->with('success', 'Follower removed successfully');
+        }else{
+            return redirect()->back()->with('error', COMMON_ERROR);
+        }
     }
 }

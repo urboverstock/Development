@@ -12,7 +12,11 @@
         <input type="file" class="d-none" id="avatar-file"> </div>
     </div>
     <div class="inner-profile-header-content --ver-2">
-      <h1 class="display-5 f-600 me-3">{{ $user['full_name'] }}</h1>
+      <h1 class="display-5 f-600 me-3">
+        <a style="text-decoration: none;color: #212529;" href="{{ route('guest-buyer', ['id' => $user['id']]) }}">
+				{{ $user['full_name'] }}
+        </a>
+      </h1>
 
       @if(!empty($user['about']))
         <h6 class="f-600 mb-2" data-aos="fade-up">Bio : {{ $user['about'] }}</h6>
