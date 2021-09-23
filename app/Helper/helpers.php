@@ -39,12 +39,12 @@
 										->orderBy('file_type', 'ASC')
 										->select('file')->first();
 			
-			/* $removeFirstSlash = ltrim($productImage->file, '/');
+			$removeFirstSlash = ltrim($productImage->file, '/');
 			if($productImage) {
 				if(file_exists($removeFirstSlash)) {
 					$file = $productImage->file;					
 				} 
-			} */
+			}
 			return asset($file);
 		}
 	}
