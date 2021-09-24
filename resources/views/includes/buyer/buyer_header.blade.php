@@ -15,7 +15,7 @@
           <i class="fas fa-search text--primary"></i>
         </div>
         <div class="d-flex align-items-center">
-          <a href="#" class="text-dark me-4 fw-bold text-decoration-none  d-none d-lg-block">
+          <a href="{{ route('carts') }}" class="text-dark me-4 fw-bold text-decoration-none d-none d-lg-block">
             <div class="d-flex align-items-start">
               <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0)">
@@ -67,7 +67,7 @@
               <a href="#z-about" class="custom-nav-link">About Us</a>
             </li>
             <li class="custom-nav-item">
-              <a href="#z-products" class="custom-nav-link">Product</a>
+              <a href="{{ route('products') }}" class="custom-nav-link">Product</a>
             </li>
             <li class="custom-nav-item">
               <a href="#z-contact" class="custom-nav-link">Contact Us</a>

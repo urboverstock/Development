@@ -123,12 +123,10 @@ class LandingController extends Controller
                 User::where('id', Auth::user()->id)->update(['login_status' => LOGIN]);
 
                 if (Auth::user()->user_type == 4) {
-                    return redirect()->route('buyer.dashboard')->with('success', "Logged in successfully");
-                }else if (Auth::user()->user_type == 2) {
-                    return redirect()->route('admin.dashboard')->with('success', "Logged in successfully");
-                }else{
+                    return redirect()->route('buyer.index')->with('success', "Logged in successfully");
+                 }else{
                     return redirect()->route('sellerDashboard')->with('success', "Logged in successfully");
-                }
+                 }
             } else {
                 return redirect()->back()->with('error', 'Invalid email and password combination');
             }
@@ -272,6 +270,50 @@ class LandingController extends Controller
         return response()->json($response);
     }
 
+    public function carts(Request $request)
+    {
+        if(!Auth::check()){
+            return redirect()->route('signin')->with('error', 'Please login first');
+        }
+
+        $carts = Cart::with('product')->where('user_id', Auth::user()->id)->get()->toArray();
+        if(count($carts) > 0)
+        {
+            foreach ($carts as $key => $cart)
+            {
+                $carts[$key]['p_price'] = $cart['product']['price'];
+                $carts[$key]['p_total_price'] = $cart['product']['price'] * $cart['quantity'];
+                $carts[$key]['p_ids'] = $cart['product']['id'];
+                
+            }
+        }
+
+        $p_total_price_column = array_column($carts, 'p_total_price');
+        $total_price = array_sum($p_total_price_column);
+
+        $product_ids = array_column($carts, 'p_ids');
+        
+        $recent_products = Product::with('product_image')->whereNotIn('id', $product_ids)->latest()->take(4)->get()->toArray();
+
+        return view('buyer.cart', compact('carts', 'total_price', 'recent_products'));
+    }
+
+    public function increaseOrDecreaseCart(Request $request)
+    {
+        $cart = Cart::find($request->cart_id);
+        $cart->quantity = $request->quantity;
+        if($cart->save())
+        {
+            $product = Product::find($cart->product_id);
+            $product_price = $product->price;
+
+            $p_total_price = $cart->quantity * $product_price;
+            $response["status"] = 1;
+            $response["p_total_price"] = $p_total_price;
+        }
+        return response()->json($response);
+    }
+
     public function addFavouriteProduct(Request $request)
     {
         if(!Auth::check()){
@@ -301,6 +343,7 @@ class LandingController extends Controller
 
     public function addToCart(Request $request)
     {
+        // print_r($request->all());die();
         if(!Auth::check()){
             $response["status"] = 0;
             $response["message"] = "Please login first";
@@ -350,6 +393,70 @@ class LandingController extends Controller
                 }
             }
         }
+        return response()->json($response);
+    }
+
+    public function buyNow($product_id)
+    {
+        if(!Auth::check())
+        {
+            return redirect()->back()->with('error', "Please login first");
+        }
+
+        $user_id = Auth::user()->id;
+
+        $product = Product::find($product_id);
+        if($product->quantity == 0)
+        {
+            return redirect()->back()->with('error', "Product quantity is low");
+        }
+
+        $check = Cart::where(['user_id'=> $user_id,'product_id'=> $product_id])->first();
+
+        if(empty($check))
+        {
+            $cart = new Cart;
+            $cart->user_id = $user_id;
+            $cart->product_id = $product_id;
+            $cart->quantity = 1;
+            $cart->save();
+        }
+        else
+        {
+            $cart = Cart::find($check->id);
+            $cart->quantity = $check->quantity + 1;
+            if($cart->save())
+            {
+                if($check->quantity >= $product->quantity)
+                {
+                    return redirect()->back()->with('error', "Product quantity is low");
+                }
+            }
+        }
+
+        return redirect()->route('carts');
+    }
+
+    public function removeCart($cart_id)
+    {
+        $cart = Cart::find($cart_id);
+        if($cart->delete())
+        {
+            $response["status"] = 1;
+            $response["message"] = "Cart remove successfully";
+        }else{
+            $response["status"] = 0;
+            $response["message"] = "Something went wrong";
+        }
+
+        return response()->json($response);
+    }
+
+    public function removeAllCart(Request $request)
+    {
+        $cart = Cart::whereIn('id',$request->deleteids_arr)->delete();
+        $response["status"] = 1;
+        $response["message"] = "Cart remove successfully";
         return response()->json($response);
     }
 }

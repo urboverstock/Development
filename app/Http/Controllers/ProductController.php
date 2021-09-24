@@ -52,9 +52,9 @@ class ProductController extends Controller
 
     public function productDetails($slug)
     {
-        $product = Product::with('product_image')->where('id', $slug)->first();
-        $recent_products = Product::with('product_image')->where('id', '!=', $slug)->latest()->get()->toArray();
-      
-        return view('common.productDetail', compact('product', 'recent_products'));
+        $product_details = Product::with('product_image')->where('sku', $slug)->first();
+        $recent_products = Product::with('product_image')->where('sku', '!=', $slug)->latest()->take(4)->get()->toArray();
+        
+        return view('common.productDetail', compact('product_details', 'recent_products'));
     }
 }

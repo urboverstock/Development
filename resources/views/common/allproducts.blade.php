@@ -104,7 +104,7 @@
                     <div class="card product-item border-0 shadow-sm mb-5">
                         <div class="card-body ">
                             <img class="img-fluid productImg" src="{{ productDefaultImage($product->id)}}" alt="">
-                            <h5 class="fw-bold">{{$product->name }}</h5>
+                            <a href="{{ route('product-detail', $product->sku) }}"><h5 class="fw-bold">{{$product->name }}</h5></a>
                             <div class="d-flex flex-wrap justify-content-between align-items-center">
                                 <span class="badge rounded-pill bg-secondary-two text-dark px-3 py-2 my-2">{{@$product->user->name }}</span>
                                 <div class="d-flex my-2">

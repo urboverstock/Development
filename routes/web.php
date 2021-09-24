@@ -87,6 +87,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('/edit-profile', [App\Http\Controllers\BuyerController::class, 'edit_profile'])->name('buyer.edit_profile');
     Route::any('/view-profile', [App\Http\Controllers\BuyerController::class, 'view_profile'])->name('buyer.view_profile');
     Route::any('/followers', [App\Http\Controllers\BuyerController::class, 'get_followers'])->name('buyer.followers');
+    Route::any('/checkout', [App\Http\Controllers\BuyerController::class, 'checkout'])->name('buyer.checkout');
+    Route::any('/save-order', [App\Http\Controllers\BuyerController::class, 'saveOrder'])->name('save.order');
+
     Route::any('/followers/delete/{id}', [App\Http\Controllers\BuyerController::class, 'delete_followers'])->name('buyerDeleteFollower');
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');
 
@@ -114,6 +117,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('order/{id}', [App\Http\Controllers\Buyer\OrderController::class, 'viewOrder'])->name('buyerViewOrder');
 });
 
+
+Route::get('carts', [App\Http\Controllers\LandingController::class, 'carts'])->name('carts');
+Route::get('increase-decrease-cart/{cart_id}', [App\Http\Controllers\LandingController::class, 'increaseOrDecreaseCart'])->name('increase-decrease-cart');
+Route::get('remove-cart/{cart_id}', [App\Http\Controllers\LandingController::class, 'removeCart'])->name('remove-cart');
+Route::get('remove-all-cart', [App\Http\Controllers\LandingController::class, 'removeAllCart'])->name('remove-all-cart');
+
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::any('dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::any('add-product', [App\Http\Controllers\AdminController::class, 'add_product'])->name('adminAddProduct');
@@ -121,9 +130,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 });
 
 
+
 Route::get('get-started', [App\Http\Controllers\ProductController::class, 'getStarted'])->name('get-started');
 Route::get('products', [App\Http\Controllers\ProductController::class, 'getProducts'])->name('products');
 Route::get('search-results', [App\Http\Controllers\ProductController::class, 'searchresults'])->name('search-products');
+
+Route::post('get-pagination-records', [App\Http\Controllers\ProductController::class, 'paginationRecords'])->name('pagination-records');
+Route::get('/{sku}', [App\Http\Controllers\ProductController::class, 'productDetails'])->name('product-detail');
+
 Route::get('get-pagination-records', [App\Http\Controllers\ProductController::class, 'paginationRecords'])->name('pagination-records');
 
 
@@ -137,6 +151,7 @@ Route::post('add-follow-user', [App\Http\Controllers\LandingController::class, '
 Route::post('add-wishlist-product', [App\Http\Controllers\LandingController::class, 'addWishlistProduct'])->name('add-wishlist-product');
 Route::post('add-favourite-product', [App\Http\Controllers\LandingController::class, 'addFavouriteProduct'])->name('add-favourite-product');
 Route::post('add-to-cart', [App\Http\Controllers\LandingController::class, 'addToCart'])->name('add-to-cart');
+Route::get('buy-now/{product_id}', [App\Http\Controllers\LandingController::class, 'buyNow'])->name('buy-now');
 
 
 Route::any('newsletter', [App\Http\Controllers\NewsletterController::class, 'sendNewsLetter'])->name('sendNewsLetter');

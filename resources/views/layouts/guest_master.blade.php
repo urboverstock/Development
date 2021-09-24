@@ -29,21 +29,21 @@
         <script src="{{ asset('assets/js/script/form_validation.js') }}"></script>
 
         <script type="text/javascript">
-            $(document).ready(function(){
-                <?php if (\Session::has('success')){ ?>
-                    toastr.success("{{ \Session::get('success') }}", "Success");
-                <?php
-                    }elseif (\Session::has('error')) {
-                ?>
-                    toastr.error("{{ \Session::get('error') }}", "Error");
-                <?php
-                    }elseif (\Session::has('warning')) {
-                ?>
-                    toastr.warning("{{ \Session::get('warning') }}", "Warning");
-                <?php }elseif (\Session::has('info')) { ?>
-                    toastr.info("{{ \Session::get('info') }}", "Info");
-                <?php } ?>
-            });
-        </script>
+          $(document).ready(function(){
+              <?php if (\Session::has('success')){ ?>
+                  toastr.success("{{ \Session::get('success') }}", "Success");
+              <?php
+                  }elseif (\Session::has('error')) {
+              ?>
+                  toastr.error("{{ \Session::get('error') }}", "Error");
+              <?php
+                  }elseif (\Session::has('warning')) {
+              ?>
+                  toastr.warning("{{ \Session::get('warning') }}", "Warning");
+              <?php }elseif (\Session::has('info')) { ?>
+                  toastr.info("{{ \Session::get('info') }}", "Info");
+              <?php } ?>
+          });
+      </script>
     </body>
 </html>

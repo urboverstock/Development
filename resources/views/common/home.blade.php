@@ -328,7 +328,7 @@
                     <div class="position-relative me-3">
                         <img class="w-100" src="{{ productDefaultImage($product->id)}}" alt="">
                         <button type="button" class="btn btn-dark px-3 py-3 rounded-pill position-absolute bottom-0 start-50 translate-middle-x mb-4" style="display: inline-block;width: 180px; white-space: nowrap; overflow: hidden !important;    text-overflow: ellipsis;" title="{{ $product->name }}">
-                          <a href="{{ route('product-detail', $product->id) }}">{{ $product->name }}</a>
+                          <a href="{{ route('product-detail', $product->sku) }}">{{ $product->name }}</a>
                         </button>
                     </div>
                 </div>

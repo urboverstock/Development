@@ -12,9 +12,15 @@
             </form>
         </div>
         <div class="d-flex align-items-center">
-          <a href="#" class="text-dark me-4 fw-bold text-decoration-none  d-none d-lg-block">
+          @if(Auth::check())
+          <a href="{{ route('carts') }}" class="text-dark me-4 fw-bold text-decoration-none  d-none d-lg-block">
             <i class="fas fa-shopping-bag fs-4"></i>
           </a>
+          @else
+            <a href="{{ route('signin') }}" class="text-dark me-4 fw-bold text-decoration-none  d-none d-lg-block">
+            <i class="fas fa-shopping-bag fs-4"></i>
+          </a>
+          @endif
           <a href="{{ route('signin') }}" class="text-dark me-4 fw-bold text-decoration-none d-none d-lg-block">Login</a>
           <div class="hamburger-menu">
             <div class="line line-1"> </div>

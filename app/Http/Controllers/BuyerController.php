@@ -8,10 +8,15 @@ use App\Models\UserDocument;
 use App\Models\ProductCategory;
 use App\Models\ProductCompanies;
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Address;
 use App\Models\ProductImage;
 use App\Models\UserFollowers;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Crypt;
 use Auth, Validator, DB;
+use Illuminate\Support\Str;
 
 class BuyerController extends Controller
 {
@@ -131,6 +136,55 @@ class BuyerController extends Controller
         return view('buyer.show_followers', compact('user','followers','followings','get_followers','get_followings'));
     }
 
+    public function checkout()
+    {
+        $user_id = Auth::user()->id;
+        $c_total_quantity = Cart::where('user_id', $user_id)->sum('quantity');
+        $carts = Cart::with('product')->where('user_id', $user_id)->get()->toArray();
+        $addresses = Address::where('user_id', $user_id)->get()->toArray();
+
+        if(count($carts) > 0)
+        {
+            foreach ($carts as $key => $cart)
+            {
+                $carts[$key]['p_price'] = $cart['product']['price'];
+                $carts[$key]['p_total_price'] = $cart['product']['price'] * $cart['quantity'];
+            }
+        }
+
+        $p_total_price_column = array_column($carts, 'p_total_price');
+        $total_price = array_sum($p_total_price_column);
+
+        return view('buyer.checkout', compact('addresses', 'carts', 'c_total_quantity', 'total_price'));
+    }
+
+    public function saveOrder(Request $request)
+    {
+        $carts = Cart::with('product')->where('user_id', Auth::user()->id)->get()->toArray();
+
+        $order = new Order;
+        $order->user_id = Auth::user()->id;
+        $order->address_id = $request->address;
+        $order->price = $request->total_price;
+        $order->total_quantity = $request->total_quantity;
+        $order->order_number = Str::random(4).time();
+        $order->save();
+
+        foreach ($carts as $key => $cart)
+        {
+            $order_details = new OrderDetail;
+            $order_details->order_id = $order->id;   
+            $order_details->product_id = $cart['product']['id'];
+            $order_details->product_quantity = $cart['quantity'];
+            $order_details->product_price = $cart['product']['price'];
+            $order_details->save();
+        }
+
+        Cart::where('user_id', Auth::user()->id)->delete();
+
+        return redirect()->route('buyer.index')->with('success', 'Order placed successfully.');
+    }
+    
     public function delete_followers($id)
     {
         $id = Crypt::decrypt($id);

@@ -98,7 +98,9 @@ $(document).ready(function() {
 	});
 
 	$(".add-to-cart").click(function() {
-		var quantity = $(".quantity").val();
+		var quantity = $(".quantity").html();
+		console.log(quantity);
+		
 		var product_id = $(this).data('productid');
 			$.ajaxSetup({
 				headers: {

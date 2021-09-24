@@ -33,7 +33,8 @@ class ProductController extends Controller
             $validator = Validator::make($request->all(), [
                 'category_id' => 'required',
                 'brand' => 'required',
-                'name' => 'required|unique:products,name,NULL,id,deleted_at,NULL',
+                // 'name' => 'required|unique:products,name,NULL,id,deleted_at,NULL',
+                'name' => 'required',
                 'sku' => 'unique:products,sku,NULL,id,deleted_at,NULL',
                 'price' => 'required|digits_between:1,10',
                 // 'gender' => 'required|in:M,F',
@@ -122,7 +123,8 @@ class ProductController extends Controller
             $validator = Validator::make($request->all(), [
                 'category_id' => 'required',
                 'brand' => 'required',
-                'name' => 'required|unique:products,name,NULL,id,deleted_at,'.$product_id,
+                // 'name' => 'required|unique:products,name,NULL,id,deleted_at,'.$product_id,
+                'name' => 'required',
                 'sku' => 'unique:products,sku,NULL,id,deleted_at,'.$product_id,
                 'price' => 'required|digits_between:1,10',
                 // 'gender' => 'required|in:M,F',

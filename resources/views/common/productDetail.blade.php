@@ -1,89 +1,36 @@
 @extends('layouts.guest')
-@section('title','Home')
+@section('title', $product_details->name)
 @section('content')
-
-	<section class="mt-96   pb-3 ">
+ <section class="mt-96   pb-3 ">
     <div class="container pt-4">
       <div class="row">
         <div class="col-lg-5 mb-4">
-          <!-- item-slider  -->
-          
-          
+          <!-- item-slider  -->          
           <div class="cart-slider">
-            <div class="slider slider-for mb-4">
-            	@if(isset($product->product_image))
-            	@foreach($product->product_image as $image)
-            		<div>
-		                <img class="avatar-slider mx-auto br-10" src="{{ asset( @$image->file) }}" alt="" height="200">
-		              </div>
-            	@endforeach
-            	@endif
-              <!-- <div>
-                <img class="avatar-slider mx-auto br-10" src="{{ asset( @$product->product_image[0]->file) }}" alt="">
-              </div>
-
-              <div>
-                <img class="avatar-slider mx-auto br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div>
-              <div>
-               <img class="avatar-slider mx-auto br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div>
-              <div>
-                <img class="avatar-slider mx-auto br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div>
-              <div>
-                <img class="avatar-slider mx-auto br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div>
-              <div>
-                <img class="avatar-slider mx-auto br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div>
-              <div>
-               <img class="avatar-slider mx-auto br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div>
-              <div>
-                <img class="avatar-slider mx-auto br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div>
-             
- -->              
+               <div class="slider slider-for mb-4">
+                  @if(isset($product_details->product_image))
+                  @foreach($product_details->product_image as $image)
+                  <div>
+                     <img class="avatar-slider mx-auto br-10" src="{{ asset( $image->file) }}" alt="" height="200">
+                  </div>
+                  @endforeach
+                  @endif
+               </div>
+               <div class="slider slider-nav">
+                  @if(isset($product_details->product_image))
+                  @foreach($product_details->product_image as $image)
+                  <div class="me-3">
+                     <img class="avatar-80 br-10" src="{{ asset($image->file) }}" alt="">
+                  </div>
+                  @endforeach
+                  @endif
+               </div>
             </div>
-            <div class="slider slider-nav">
-
-            	@if(isset($product->product_image))
-            	@foreach($product->product_image as $product)
-            		<div class="me-3">
-		               <img class="avatar-80 br-10" src="{{ asset(@$product->file) }}" alt="">
-		              </div>
-            	@endforeach
-            	@endif
-              
-              <!-- <div class="me-3">
-                <img class="avatar-80 br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div class="me-3">
-              <div class="me-3">
-               <img class="avatar-80 br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div >
-              <div class="me-3">
-                <img class="avatar-80 br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div>
-              <div class="me-3">
-               <img class="avatar-80 br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div>
-              <div class="me-3">
-                <img class="avatar-80 br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div class="me-3">
-              <div class="me-3">
-               <img class="avatar-80 br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div >
-              <div class="me-3">
-                <img class="avatar-80 br-10" src="../assets/images/cart-slider/1.png" alt="">
-              </div>
- -->              
-            </div>
-          </div>
         </div>
+
         <div class="col-lg-7">
-          <h2 class="fw-bold mb-4">{{ @$product->name }}</h2>
-          <h5 class="f-600">{{ @$product->brand }}</h5>
+          <h2 class="fw-bold mb-4"><?php echo $product_details->name; ?></h2>
+            <h5 class="f-600">{{ $product_details->brand }}</h5>
           <div class="d-flex flex-wrap mb-4">
             <div class="d-flex">
               <span class="text--primary f-600 me-2 ">4.0 
@@ -117,12 +64,13 @@
               <a href="#" class="text--primary text-decoration-none">Add To wishlist</a>
             </div>
           </div>
+
           <div class="d-flex align-items-center border-bottom pb-4 mb-4">
-            <h2 class="text--primary f-600 mb-0 me-3">${{ @$product->price }}</h2>
-            <h4 class="mb-0 text-decoration-line-through text-mute">{{ @$product->compare_price }}</h4>
+            <h2 class="text--primary f-600 mb-0 me-3">${{ @$product_details->price }}</h2>
+            <h4 class="mb-0 text-decoration-line-through text-mute">{{ @$product_details->compare_price }}</h4>
           </div>
 
-          <h5 class="mb-4">{{ @$product->description }}</h5>
+          <h5 class="mb-4">{{ @$product_details->description }}</h5>
 
           <!-- <div class="d-flex align-items-center flex-wrap mb-3">
             <h5 class="fw-bold me-5 mb-3">Shoe Size</h5>
@@ -142,7 +90,7 @@
                 </svg>
                   
               </button>
-                <div class="number text-dark fs-5 f-600 quantity">0</div>
+                <div class="number text-dark fs-5 f-600 quantity">1</div>
               <button 
                 class="btn value-button increase-button" 
                 onclick="increaseValue(this, 5)"
@@ -154,69 +102,66 @@
                 
               </button>
             </div>
-            <button type="button" class="btn btn--primary z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3">Buy Now</button>
+            <a href="{{ route('buy-now', $product_details->id) }}" class="btn btn--primary z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3">Buy Now</button>
             @if(Auth::check())
-            <a href="javascript:void(0)" class="add-to-cart btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3" id="add-to-cart" data-productid="{{ @$product->id }}">Add to Cart</a>
+            <a href="javascript:void(0)" class="add-to-cart btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3" id="add-to-cart" data-productid="{{ @$product_details->id }}">Add to Cart</a>
             @else
             <a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3">Add to Cart</a>
             @endif
-            
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="pb-5">
-    <div class="container">
+<section class="pb-5">
+   <div class="container">
       <div class="row">
-        <div class="col-lg-12">
-          <nav class="mb-5">
-            <div class="nav nav-tabs product-nav-tabs border-0  px-4" id="nav-tab" role="tablist">
-              <button class="nav-link active  py-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
-              <button class="nav-link  py-3" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Specification</button>
-              <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Discussion</button>
-              <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews (223)</button>
+         <div class="col-lg-12">
+            <nav class="mb-5">
+               <div class="nav nav-tabs product-nav-tabs border-0  px-4" id="nav-tab" role="tablist">
+                  <button class="nav-link active  py-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
+                  <button class="nav-link  py-3" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Specification</button>
+                  <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Discussion</button>
+                  <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews (223)</button>
+               </div>
+            </nav>
+            <div class="tab-content px-4" id="nav-tabContent">
+               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                  <h2 class="fw-bold mb-3">See the best picture no matter where you sit</h2>
+                  <p class="text-mute">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+               </div>
+               <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                  Specification
+               </div>
+               <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                  Discussion
+               </div>
+               <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-contact-tab">
+                  Reviews
+               </div>
             </div>
-          </nav>
-          <div class="tab-content px-4" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-              <h2 class="fw-bold mb-3">See the best picture no matter where you sit</h2>
-              <p class="text-mute">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-            </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-              Specification
-            </div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-              Discussion
-            </div>
-            <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-contact-tab">
-              Reviews
-            </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-  </section>
-  
-  <section class="pb-5 pt-0">
-    <div class="container-xl">
-      <div class="row">
-        <div class="col-lg-12 mb-5" data-aos="fade-up">
-          <div class="d-flex justify-content-between align-items-center flex-wrap">
+   </div>
+</section>
+
+<section class="pb-5 pt-0">
+   <div class="container-xl">
+   <div class="row">
+      <div class="col-lg-12 mb-5" data-aos="fade-up">
+         <div class="d-flex justify-content-between align-items-center flex-wrap">
             <div>
-              <div class="urban-title text--primary position-relative mb-2">
-                <p class="mb-0">Find Your Style</p>
-              </div>
-              <div class="urban-sub-title ust-100 mb-4">
-                <p class="mb-0 pe-4">Recent Products</p>
-              </div>
+               <div class="urban-title text--primary position-relative mb-2">
+                  <p class="mb-0">Find Your Style</p>
+               </div>
+               <div class="urban-sub-title ust-100 mb-4">
+                  <p class="mb-0 pe-4">Recent Products</p>
+               </div>
             </div>
-           
-          </div>
-         
-        </div>
+         </div>
       </div>
+
 
       <!-- loadmore started  -->
       <div class="row loadmore">
@@ -241,7 +186,6 @@
                   <i class="fas fa-star me-2 text--primary text-13"></i>
                   <i class="fas fa-star me-2 text--primary text-13"></i>
                   <i class="fas fa-star text--primary text-13"></i>
-                </div>
                </div>
                 
               </div>
@@ -254,172 +198,33 @@
                       <i class="far fa-heart text-20 text-muted"></i> 
                     </a>
                     @if(Auth::check())
-                    <a href="javascript:void(0)" class="add-to-cart" id="add-to-cart" data-productid="{{ @$product->id }}">
+                    <a href="javascript:void(0)" class="add-to-cart" id="add-to-cart" data-productid="{{ @$recent_product['id'] }}">
                       <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19.2812 19.4219C19.2812 19.8965 18.8965 20.2812 18.4219 20.2812H17.5625V21.1406C17.5625 21.6153 17.1778 22 16.7031 22C16.2285 22 15.8438 21.6153 15.8438 21.1406V20.2812H14.9844C14.5097 20.2812 14.125 19.8965 14.125 19.4219C14.125 18.9472 14.5097 18.5625 14.9844 18.5625H15.8438V17.7031C15.8438 17.2285 16.2285 16.8438 16.7031 16.8438C17.1778 16.8438 17.5625 17.2285 17.5625 17.7031V18.5625H18.4219C18.8965 18.5625 19.2812 18.9472 19.2812 19.4219ZM19.2812 6.01562V14.2656C19.2812 14.7403 18.8965 15.125 18.4219 15.125C17.9472 15.125 17.5625 14.7403 17.5625 14.2656V6.875H15.8438V9.45312C15.8438 9.92776 15.459 10.3125 14.9844 10.3125C14.5097 10.3125 14.125 9.92776 14.125 9.45312V6.875H5.875V9.45312C5.875 9.92776 5.49026 10.3125 5.01562 10.3125C4.54099 10.3125 4.15625 9.92776 4.15625 9.45312V6.875H2.4375V20.2812H11.5469C12.0215 20.2812 12.4062 20.666 12.4062 21.1406C12.4062 21.6153 12.0215 22 11.5469 22H1.57812C1.10349 22 0.71875 21.6153 0.71875 21.1406V6.01562C0.71875 5.54099 1.10349 5.15625 1.57812 5.15625H4.1969C4.53829 2.25685 7.01036 0 10 0C12.9896 0 15.4617 2.25685 15.8031 5.15625H18.4219C18.8965 5.15625 19.2812 5.54099 19.2812 6.01562ZM14.0674 5.15625C13.7391 3.20783 12.0403 1.71875 10 1.71875C7.95971 1.71875 6.2609 3.20783 5.93262 5.15625H14.0674Z" fill="black"/>
-                      </svg>
-                    </a>
-                    @else
-                    <a href="{{ route('signin') }}">
-                      <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     </svg>
+                  </a>
+                  @else
+                  <a href="{{ route('signin') }}">
+                     <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19.2812 19.4219C19.2812 19.8965 18.8965 20.2812 18.4219 20.2812H17.5625V21.1406C17.5625 21.6153 17.1778 22 16.7031 22C16.2285 22 15.8438 21.6153 15.8438 21.1406V20.2812H14.9844C14.5097 20.2812 14.125 19.8965 14.125 19.4219C14.125 18.9472 14.5097 18.5625 14.9844 18.5625H15.8438V17.7031C15.8438 17.2285 16.2285 16.8438 16.7031 16.8438C17.1778 16.8438 17.5625 17.2285 17.5625 17.7031V18.5625H18.4219C18.8965 18.5625 19.2812 18.9472 19.2812 19.4219ZM19.2812 6.01562V14.2656C19.2812 14.7403 18.8965 15.125 18.4219 15.125C17.9472 15.125 17.5625 14.7403 17.5625 14.2656V6.875H15.8438V9.45312C15.8438 9.92776 15.459 10.3125 14.9844 10.3125C14.5097 10.3125 14.125 9.92776 14.125 9.45312V6.875H5.875V9.45312C5.875 9.92776 5.49026 10.3125 5.01562 10.3125C4.54099 10.3125 4.15625 9.92776 4.15625 9.45312V6.875H2.4375V20.2812H11.5469C12.0215 20.2812 12.4062 20.666 12.4062 21.1406C12.4062 21.6153 12.0215 22 11.5469 22H1.57812C1.10349 22 0.71875 21.6153 0.71875 21.1406V6.01562C0.71875 5.54099 1.10349 5.15625 1.57812 5.15625H4.1969C4.53829 2.25685 7.01036 0 10 0C12.9896 0 15.4617 2.25685 15.8031 5.15625H18.4219C18.8965 5.15625 19.2812 5.54099 19.2812 6.01562ZM14.0674 5.15625C13.7391 3.20783 12.0403 1.71875 10 1.71875C7.95971 1.71875 6.2609 3.20783 5.93262 5.15625H14.0674Z" fill="black"/>
-                      </svg>
-                    </a>
-                    @endif
-                      
-                  </div>
-                </div>
-                @if(Auth::check())
-                <div class="product-wishlist position-absolute end-0 pe-3">
-                  <button type="button" class="btn btn--primary btn-sm fw-bold">Add to Wishlist</button>
-                </div>
-                @endif
-              </div>
-            </div>
-          
-        </div>
-        @endforeach
-        @endif
-        
-        <!-- <div class="col-lg-3 col-md-6 col-sm-6">
-                 
-            <div class="card product-item border-0 shadow br-12 mb-5">
-              <div class="card-body ">
-                <img class="img-fluid br-12 mb-3" src="../assets/images/garbage/1.png" alt="">
-               <h5 class="fw-bold">Peachy Umbrella</h5>
-               <div class="d-flex align-items-center justify-content-between flex-wrap">
-                 <div class="bg-text rounded-pill px-3 py-2">
-                    <h6 class="mb-0 f-600">Jhonathan Doe</h6>
-                 </div>
-                <div class="d-flex my-2">
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star text--primary text-13"></i>
-                </div>
+                     </svg>
+                  </a>
+                  @endif
                </div>
-                
-              </div>
-              <div class="card-footer bg-transparent">
-                <div class="d-flex justify-content-between flex-wrap py-2">
-                  <h5 class="mb-0">$150.00</h5>
-                  <div class="d-flex align-items-center">
-                   
-                    <a href="#" class="mr-13 link-primary-hover">
-                      <i class="far fa-heart text-20 text-muted"></i> 
-                    </a>
-                    <a href="#" class=" mb-2 link-primary-hover">
-                      <svg width="20" height="20" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.2812 19.4219C20.2812 19.8965 19.8965 20.2812 19.4219 20.2812H18.5625V21.1406C18.5625 21.6153 18.1778 22 17.7031 22C17.2285 22 16.8438 21.6153 16.8438 21.1406V20.2812H15.9844C15.5097 20.2812 15.125 19.8965 15.125 19.4219C15.125 18.9472 15.5097 18.5625 15.9844 18.5625H16.8438V17.7031C16.8438 17.2285 17.2285 16.8438 17.7031 16.8438C18.1778 16.8438 18.5625 17.2285 18.5625 17.7031V18.5625H19.4219C19.8965 18.5625 20.2812 18.9472 20.2812 19.4219ZM20.2812 6.01562V14.2656C20.2812 14.7403 19.8965 15.125 19.4219 15.125C18.9472 15.125 18.5625 14.7403 18.5625 14.2656V6.875H16.8438V9.45312C16.8438 9.92776 16.459 10.3125 15.9844 10.3125C15.5097 10.3125 15.125 9.92776 15.125 9.45312V6.875H6.875V9.45312C6.875 9.92776 6.49026 10.3125 6.01562 10.3125C5.54099 10.3125 5.15625 9.92776 5.15625 9.45312V6.875H3.4375V20.2812H12.5469C13.0215 20.2812 13.4062 20.666 13.4062 21.1406C13.4062 21.6153 13.0215 22 12.5469 22H2.57812C2.10349 22 1.71875 21.6153 1.71875 21.1406V6.01562C1.71875 5.54099 2.10349 5.15625 2.57812 5.15625H5.1969C5.53829 2.25685 8.01036 0 11 0C13.9896 0 16.4617 2.25685 16.8031 5.15625H19.4219C19.8965 5.15625 20.2812 5.54099 20.2812 6.01562ZM15.0674 5.15625C14.7391 3.20783 13.0403 1.71875 11 1.71875C8.95971 1.71875 7.2609 3.20783 6.93262 5.15625H15.0674Z" fill="black"/>
-                        </svg>
-                        
-                    </a>
-                      
-                  </div>
-                </div>
-                <div class="product-wishlist position-absolute end-0 pe-3">
-                  <button type="button" class="btn btn--primary btn-sm fw-bold">Add to Wishlist</button>
-                </div>
-              </div>
             </div>
-          
-        </div>
-        
-        <div class="col-lg-3 col-md-6 col-sm-6">
-                 
-            <div class="card product-item border-0 shadow br-12 mb-5">
-              <div class="card-body ">
-                <img class="img-fluid br-12 mb-3" src="../assets/images/garbage/1.png" alt="">
-               <h5 class="fw-bold">Peachy Umbrella</h5>
-               <div class="d-flex align-items-center justify-content-between flex-wrap">
-                 <div class="bg-text rounded-pill px-3 py-2">
-                    <h6 class="mb-0 f-600">Jhonathan Doe</h6>
-                 </div>
-                <div class="d-flex my-2">
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star text--primary text-13"></i>
-                </div>
-               </div>
-                
-              </div>
-              <div class="card-footer bg-transparent">
-                <div class="d-flex justify-content-between flex-wrap py-2">
-                  <h5 class="mb-0">$150.00</h5>
-                  <div class="d-flex align-items-center">
-                   
-                    <a href="#" class="mr-13 link-primary-hover">
-                      <i class="far fa-heart text-20 text-muted"></i> 
-                    </a>
-                    <a href="#" class=" mb-2 link-primary-hover">
-                      <svg width="20" height="20" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.2812 19.4219C20.2812 19.8965 19.8965 20.2812 19.4219 20.2812H18.5625V21.1406C18.5625 21.6153 18.1778 22 17.7031 22C17.2285 22 16.8438 21.6153 16.8438 21.1406V20.2812H15.9844C15.5097 20.2812 15.125 19.8965 15.125 19.4219C15.125 18.9472 15.5097 18.5625 15.9844 18.5625H16.8438V17.7031C16.8438 17.2285 17.2285 16.8438 17.7031 16.8438C18.1778 16.8438 18.5625 17.2285 18.5625 17.7031V18.5625H19.4219C19.8965 18.5625 20.2812 18.9472 20.2812 19.4219ZM20.2812 6.01562V14.2656C20.2812 14.7403 19.8965 15.125 19.4219 15.125C18.9472 15.125 18.5625 14.7403 18.5625 14.2656V6.875H16.8438V9.45312C16.8438 9.92776 16.459 10.3125 15.9844 10.3125C15.5097 10.3125 15.125 9.92776 15.125 9.45312V6.875H6.875V9.45312C6.875 9.92776 6.49026 10.3125 6.01562 10.3125C5.54099 10.3125 5.15625 9.92776 5.15625 9.45312V6.875H3.4375V20.2812H12.5469C13.0215 20.2812 13.4062 20.666 13.4062 21.1406C13.4062 21.6153 13.0215 22 12.5469 22H2.57812C2.10349 22 1.71875 21.6153 1.71875 21.1406V6.01562C1.71875 5.54099 2.10349 5.15625 2.57812 5.15625H5.1969C5.53829 2.25685 8.01036 0 11 0C13.9896 0 16.4617 2.25685 16.8031 5.15625H19.4219C19.8965 5.15625 20.2812 5.54099 20.2812 6.01562ZM15.0674 5.15625C14.7391 3.20783 13.0403 1.71875 11 1.71875C8.95971 1.71875 7.2609 3.20783 6.93262 5.15625H15.0674Z" fill="black"/>
-                        </svg>
-                        
-                    </a>
-                      
-                  </div>
-                </div>
-                <div class="product-wishlist position-absolute end-0 pe-3">
-                  <button type="button" class="btn btn--primary btn-sm fw-bold">Add to Wishlist</button>
-                </div>
-              </div>
+            @if(Auth::check())
+            <div class="product-wishlist position-absolute end-0 pe-3">
+               <button type="button" class="btn btn--primary btn-sm fw-bold">Add to Wishlist</button>
             </div>
-          
-        </div>
-        
-        <div class="col-lg-3 col-md-6 col-sm-6">
-                 
-            <div class="card product-item border-0 shadow br-12 mb-5">
-              <div class="card-body ">
-                <img class="img-fluid br-12 mb-3" src="../assets/images/garbage/1.png" alt="">
-               <h5 class="fw-bold">Peachy Umbrella</h5>
-               <div class="d-flex align-items-center justify-content-between flex-wrap">
-                 <div class="bg-text rounded-pill px-3 py-2">
-                    <h6 class="mb-0 f-600">Jhonathan Doe</h6>
-                 </div>
-                <div class="d-flex my-2">
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star me-2 text--primary text-13"></i>
-                  <i class="fas fa-star text--primary text-13"></i>
-                </div>
-               </div>
-                
-              </div>
-              <div class="card-footer bg-transparent">
-                <div class="d-flex justify-content-between flex-wrap py-2">
-                  <h5 class="mb-0">$150.00</h5>
-                  <div class="d-flex align-items-center">
-                   
-                    <a href="#" class="mr-13 link-primary-hover">
-                      <i class="far fa-heart text-20 text-muted"></i> 
-                    </a>
-                    <a href="#" class=" mb-2 link-primary-hover">
-                      <svg width="20" height="20" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.2812 19.4219C20.2812 19.8965 19.8965 20.2812 19.4219 20.2812H18.5625V21.1406C18.5625 21.6153 18.1778 22 17.7031 22C17.2285 22 16.8438 21.6153 16.8438 21.1406V20.2812H15.9844C15.5097 20.2812 15.125 19.8965 15.125 19.4219C15.125 18.9472 15.5097 18.5625 15.9844 18.5625H16.8438V17.7031C16.8438 17.2285 17.2285 16.8438 17.7031 16.8438C18.1778 16.8438 18.5625 17.2285 18.5625 17.7031V18.5625H19.4219C19.8965 18.5625 20.2812 18.9472 20.2812 19.4219ZM20.2812 6.01562V14.2656C20.2812 14.7403 19.8965 15.125 19.4219 15.125C18.9472 15.125 18.5625 14.7403 18.5625 14.2656V6.875H16.8438V9.45312C16.8438 9.92776 16.459 10.3125 15.9844 10.3125C15.5097 10.3125 15.125 9.92776 15.125 9.45312V6.875H6.875V9.45312C6.875 9.92776 6.49026 10.3125 6.01562 10.3125C5.54099 10.3125 5.15625 9.92776 5.15625 9.45312V6.875H3.4375V20.2812H12.5469C13.0215 20.2812 13.4062 20.666 13.4062 21.1406C13.4062 21.6153 13.0215 22 12.5469 22H2.57812C2.10349 22 1.71875 21.6153 1.71875 21.1406V6.01562C1.71875 5.54099 2.10349 5.15625 2.57812 5.15625H5.1969C5.53829 2.25685 8.01036 0 11 0C13.9896 0 16.4617 2.25685 16.8031 5.15625H19.4219C19.8965 5.15625 20.2812 5.54099 20.2812 6.01562ZM15.0674 5.15625C14.7391 3.20783 13.0403 1.71875 11 1.71875C8.95971 1.71875 7.2609 3.20783 6.93262 5.15625H15.0674Z" fill="black"/>
-                        </svg>
-                        
-                    </a>
-                      
-                  </div>
-                </div>
-                <div class="product-wishlist position-absolute end-0 pe-3">
-                  <button type="button" class="btn btn--primary btn-sm fw-bold">Add to Wishlist</button>
-                </div>
-              </div>
-            </div>
-          
-        </div>
-         -->
-       
-                 
- 
-      </row>
-    </section>
-
+            @endif
+         </div>
+      </div>
+   </div>
+   </div>
+   @endforeach
+   @endif
+   
+	</div>
+</section>
 @endsection
+
