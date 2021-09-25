@@ -50,11 +50,15 @@ class ProductController extends Controller
         
     }
 
-    public function productDetails($slug)
+    public function productDetails($slug = null)
     {
-        $product_details = Product::with('product_image')->where('sku', $slug)->first();
-        $recent_products = Product::with('product_image')->where('sku', '!=', $slug)->latest()->take(4)->get()->toArray();
-        
-        return view('common.productDetail', compact('product_details', 'recent_products'));
+        if($slug) {
+            $product_details = Product::with('product_image')->where('sku', $slug)->first();
+            $recent_products = Product::with('product_image')->where('sku', '!=', $slug)->latest()->take(4)->get()->toArray();
+            
+            return view('common.productDetail', compact('product_details', 'recent_products'));
+        } else {
+            return redirect('/');
+        }
     }
 }

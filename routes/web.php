@@ -136,7 +136,7 @@ Route::get('products', [App\Http\Controllers\ProductController::class, 'getProdu
 Route::get('search-results', [App\Http\Controllers\ProductController::class, 'searchresults'])->name('search-products');
 
 Route::post('get-pagination-records', [App\Http\Controllers\ProductController::class, 'paginationRecords'])->name('pagination-records');
-Route::get('/{sku}', [App\Http\Controllers\ProductController::class, 'productDetails'])->name('product-detail');
+Route::get('/products/{sku?}', [App\Http\Controllers\ProductController::class, 'productDetails'])->name('product-detail');
 
 Route::get('get-pagination-records', [App\Http\Controllers\ProductController::class, 'paginationRecords'])->name('pagination-records');
 
@@ -157,5 +157,3 @@ Route::get('buy-now/{product_id}', [App\Http\Controllers\LandingController::clas
 Route::any('newsletter', [App\Http\Controllers\NewsletterController::class, 'sendNewsLetter'])->name('sendNewsLetter');
 
 
-
-Route::get('/{id}', [App\Http\Controllers\ProductController::class, 'productDetails'])->name('product-detail');
