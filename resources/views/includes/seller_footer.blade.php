@@ -1,3 +1,8 @@
+<style type="text/css">
+  .footer-mail{
+    max-width: 100%;
+  }
+</style>
 <footer id="z-contact" class=" ">
     <div class="bg-footer py-5">
       <div class="container">
@@ -45,18 +50,18 @@
               </button>
               </div>
             </form>
-            <div class="d-flex justify-content-end mb-3">
-              <!-- <a href="#"><img class="img-fluid me-3" src="../assets/images/playstore.png" alt=""></a>
-              <a href="#"><img class="img-fluid mt-2" src="../assets/images/applestore.png" alt=""></a> -->
+            <div class="d-flex justify-content-start mb-3">
+              <a href="#"><img class="img-fluid me-3" src="../assets/images/playstore.png" alt=""></a>
+              <a href="#"><img class="img-fluid mt-2" src="../assets/images/applestore.png" alt=""></a>
             </div>
-            <div class="d-flex justify-content-end mb-3">
+            <!-- <div class="d-flex justify-content-end mb-3">
               <a href="#" class="text-dark h4 me-3">
                 <i class="fab fa-twitter"></i>
               </a>
               <a href="#" class="text-dark h4">
                 <i class="fab fa-linkedin-in"></i>
               </a>
-            </div>
+            </div> -->
             <div class="d-flex">
               <a href="#"></a>
             </div>

@@ -800,6 +800,50 @@ $(document).ready(function() {
         } 
       });
 
+	$("#address").validate({ 
+		errorElement: 'span',
+		rules: {
+			country: {
+					required:true,
+			},			
+			state:{
+					required:true,
+			},
+			city:{
+				required:true,
+			},
+			pincode:{
+				required:true,
+				number:true
+			},
+			address:{
+				required:true
+			}
+		},
+	    messages: { 
+	    	 
+	    },
+	    submitHandler: function(form, event) {
+		    $.ajax({
+		        url: base_url + '/buyer/add-new-address',
+		        type: "POST",
+		        data: $(form).serialize(),
+		        success: function(response) {
+		            if(response.status == 1) {
+						toastr.success(response.message, "Success");
+					}else{
+						toastr.error(response.message, "Error");
+					}
 
+					location.reload();
+		        },
+		        error:function(){
+                       alert("failure");
+                        // $("#result").html('There is error while submit');
+                    }             
+		    });
+		    // $form.submit();
+		}
+	});
 });
 

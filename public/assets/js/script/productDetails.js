@@ -32,8 +32,6 @@ $('.slider-for').slick({
 
 });
 
-
-
   // button add to cart
   function increaseValue(button, limit) {
     const numberInput = button.parentElement.querySelector('.number');
@@ -137,7 +135,16 @@ $('.slider-for').slick({
   {
     var url = $(this).data('url');
     var cart_id = $(this).data('cart');
+    // var cart_count = $('.cart_count').data('cart_count');
     var p_total_price = $("#p_total_price"+cart_id).html();
+
+    // cart_count = parseInt(cart_count) - 1;
+
+    // console.log(cart_count);
+
+    var cart_count = $('.cart_count').val() - 1;
+    $('.cart_count').val(cart_count);
+
 
       $.ajaxSetup({
         headers: {
@@ -151,6 +158,11 @@ $('.slider-for').slick({
         //async: false,
       }).done(function(response) {
         if(response.status == 1) {
+            if(parseInt(cart_count) == 0)
+            {
+              $('.cart_main').remove();
+              location.reload();
+            }
             var total_price = $('.total_price').html();
             var parse_total_price = parseFloat(total_price) - parseFloat(p_total_price);
             
@@ -168,14 +180,16 @@ $('.slider-for').slick({
   });
 
   // Check all 
-$('#checkall').click(function(){
-  if($(this).is(':checked')){
-     $('.delete_check').prop('checked', true);
-  }else{
-     $('.delete_check').prop('checked', false);
-  }
-});
+  $('#checkall').click(function(){
+    if($(this).is(':checked')){
+       $('.delete_check').prop('checked', true);
+    }else{
+       $('.delete_check').prop('checked', false);
+    }
+  });
 
+
+  //Delete All Cart
   $('#delete_all_cart').click(function(){
 
   var deleteids_arr = [];

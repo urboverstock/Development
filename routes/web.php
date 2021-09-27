@@ -89,6 +89,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('/followers', [App\Http\Controllers\BuyerController::class, 'get_followers'])->name('buyer.followers');
     Route::any('/checkout', [App\Http\Controllers\BuyerController::class, 'checkout'])->name('buyer.checkout');
     Route::any('/save-order', [App\Http\Controllers\BuyerController::class, 'saveOrder'])->name('save.order');
+    Route::any('/add-new-address', [App\Http\Controllers\BuyerController::class, 'address'])->name('buyer.address');
 
     Route::any('/followers/delete/{id}', [App\Http\Controllers\BuyerController::class, 'delete_followers'])->name('buyerDeleteFollower');
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');
@@ -155,5 +156,3 @@ Route::get('buy-now/{product_id}', [App\Http\Controllers\LandingController::clas
 
 
 Route::any('newsletter', [App\Http\Controllers\NewsletterController::class, 'sendNewsLetter'])->name('sendNewsLetter');
-
-

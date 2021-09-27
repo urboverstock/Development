@@ -3,8 +3,9 @@
 @section('content')
 <section class="mt-96   pb-5 ">
     <div class="container pt-4">
-      <div class="row">
-        @if(count($carts) > 0)
+      @if(count($carts) > 0)
+      <div class="row cart_main" data-cart_count="{{ count($carts) }}">
+        <input type="hidden" name="" value="{{ count($carts) }}" class="cart_count">
           <div class="col-lg-8">
             <div class="d-flex flex-wrap border justify-content-between px-3 py-3 br-10 mb-4">
                 <div class="form-check mb-3 mb-sm-0">
@@ -77,7 +78,6 @@
             
           </div>
 
-
           <div class="col-lg-4">
                
             <a href="#" class="text-decoration-none">
@@ -112,15 +112,18 @@
                 </div>
             </div>
           </div>
+
+
         @else
           <div class="d-flex justify-content-center align-items-center">
             <div class="text-center">
               <img class="img-fluid" src="{{ asset('assets/images/no-data.png') }}" alt="">
               <h2 class="fw-bold mb-3">No product found in the cart</h2>
+              <a href="{{ route('products') }}" class=""><h3 class="fw-bold">Shop</h3></a>
             </div>
           </div>
-        @endif
       </div>
+      @endif
     </div>
 </section>
 

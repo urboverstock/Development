@@ -136,6 +136,7 @@ class BuyerController extends Controller
         return view('buyer.show_followers', compact('user','followers','followings','get_followers','get_followings'));
     }
 
+    // Checkout functionality
     public function checkout()
     {
         $user_id = Auth::user()->id;
@@ -158,26 +159,48 @@ class BuyerController extends Controller
         return view('buyer.checkout', compact('addresses', 'carts', 'c_total_quantity', 'total_price'));
     }
 
+    // Save order in order and order details tables and also decrement the product table quantity
     public function saveOrder(Request $request)
     {
         $carts = Cart::with('product')->where('user_id', Auth::user()->id)->get()->toArray();
 
-        $order = new Order;
-        $order->user_id = Auth::user()->id;
-        $order->address_id = $request->address;
-        $order->price = $request->total_price;
-        $order->total_quantity = $request->total_quantity;
-        $order->order_number = Str::random(4).time();
-        $order->save();
-
-        foreach ($carts as $key => $cart)
+        DB::beginTransaction();
+        try
         {
-            $order_details = new OrderDetail;
-            $order_details->order_id = $order->id;   
-            $order_details->product_id = $cart['product']['id'];
-            $order_details->product_quantity = $cart['quantity'];
-            $order_details->product_price = $cart['product']['price'];
-            $order_details->save();
+            $order = new Order;
+            $order->user_id = Auth::user()->id;
+            $order->address_id = $request->address;
+            $order->price = $request->total_price;
+            $order->total_quantity = $request->total_quantity;
+            $order->order_number = Str::random(4).time();
+            $order->save();
+
+            foreach ($carts as $key => $cart)
+            {
+                $getProduct = Product::find($cart['product']['id']);
+
+                $order_details = new OrderDetail;
+                $order_details->order_id = $order->id;   
+                $order_details->product_id = $cart['product']['id'];
+                $order_details->product_quantity = $cart['quantity'];
+                $order_details->product_price = $cart['product']['price'];
+                $order_details->save();
+
+                if((int)$getProduct->quantity != 0)
+                {
+                    $productUpdate = Product::where('id', $cart['product']['id'])
+                    ->decrement('quantity' , $cart['quantity']);
+                }
+            }
+
+            Cart::where('user_id', Auth::user()->id)->delete();
+
+            DB::commit();
+        }
+        catch (\Throwable $e)
+        {
+            DB::rollback();
+            throw $e;
         }
 
         Cart::where('user_id', Auth::user()->id)->delete();
@@ -195,5 +218,25 @@ class BuyerController extends Controller
         }else{
             return redirect()->back()->with('error', COMMON_ERROR);
         }
+    }
+
+    // Buyer New Address
+    public function address(Request $request)
+    {
+        $address = New Address;
+        $address->user_id = Auth::user()->id;
+        $address->country = $request->country;
+        $address->state = $request->state;
+        $address->city = $request->city;
+        $address->pincode = $request->pincode;
+        $address->address = $request->address;
+        if($address->save()){
+            $response["status"] = 1;
+            $response["message"] = "New address added successfully";
+        }else{
+            $response["status"] = 0;
+            $response["message"] = "Something went wrong";
+        }
+        return response()->json($response);
     }
 }
