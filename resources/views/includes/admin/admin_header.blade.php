@@ -29,21 +29,23 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav admin-dashboard-navbar ms-auto mb-2 mb-lg-0">
           <li class="nav-item me-4">
-            <a class="nav-link active" aria-current="page" href="{{ route('admin.dashboard') }}"
+            <a class="nav-link {{ (request()->segment(2) == 'dashboard') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.dashboard') }}"
               >DASHBOARD</a
             >
           </li>
-          <li class="nav-item me-4">
+          <!--li class="nav-item me-4">
             <a class="nav-link" href="#">ORDERS</a>
-          </li>
+          </li-->
           <li class="nav-item me-4">
             <a class="nav-link" href="{{ route('admin.dashboard') }}">PRODUCTS</a>
           </li>
           <li class="nav-item me-4">
-            <a class="nav-link" href="#">CHAT</a>
+            <!--a class="nav-link" href="#">CHAT</a-->
+            <a class="nav-link {{ (request()->segment(2) == 'buyers') ? 'active' : '' }}" href="{{ route('admin.buyers') }}">BUYERS</a>
           </li>
           <li class="nav-item me-4">
-            <a class="nav-link" href="#">ACCOUNT</a>
+            <!--a class="nav-link" href="#">ACCOUNT</a-->
+            <a class="nav-link {{ (request()->segment(2) == 'sellers') ? 'active' : '' }}" href="{{ route('admin.sellers') }}">SELLERS</a>
           </li>
           <li class="nav-item me-4">
             <a class="nav-link" href="#">SETTINGS</a>

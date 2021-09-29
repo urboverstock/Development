@@ -62,7 +62,7 @@
             <div class="col-lg-12">
                 <select class="form-select mb-4 py-3 form-select-lg mb-3" aria-label=".form-select-lg example" name="user_type">
                   <option class="us-selected" value="">Select Role</option>
-                  <option value="1">Seller</option>
+                  <option value="3">Seller</option>
                   <option value="4">Buyer</option>
                 </select>
                 <span class="error">{{ $errors->first('user_type') }}</span>

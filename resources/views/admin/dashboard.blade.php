@@ -119,352 +119,193 @@
             <div class="d-flex justify-content-between flex-wrap mb-3">
               <div class="d-flex align-items-center flex-wrap">
                 <h4 class="mb-0 me-4">Product List</h4>
-                <h6 class="text-muted mb-0">Show:</h6>
-                <div class="dropdown">
-                  <button
-                    class="btn dropdown-toggle fw-bold"
-                    type="button"
-                    id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    All Products
-                  </button>
-                  <ul
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton1"
-                  >
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#"
-                        >Something else here</a
-                      >
-                    </li>
-                  </ul>
-                </div>
+                
               </div>
-              <div class="d-flex align-items-center flex-wrap">
-                <h6 class="text-muted mb-0">Sort By:</h6>
-                <div class="dropdown">
-                  <button
-                    class="btn dropdown-toggle fw-bold"
-                    type="button"
-                    id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Default
-                  </button>
-                  <ul
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton1"
-                  >
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#"
-                        >Something else here</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-                <button type="button" class="btn btn--primary">
-                  <a href="{{ route('adminAddProduct') }}" style="text-decoration:none;"><span class="text-white d-flex align-items-center"
-                    ><svg
-                      width="14"
-                      class="me-2"
-                      height="14"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M10 8H17C17.5523 8 18 8.44771 18 9C18 9.55229 17.5523 10 17 10H10V17C10 17.5523 9.55229 18 9 18C8.44771 18 8 17.5523 8 17V10H1C0.447715 10 0 9.55229 0 9C0 8.44771 0.447715 8 1 8H8V1C8 0.447715 8.44771 0 9 0C9.55229 0 10 0.447715 10 1V8Z"
-                        fill="white"
+              
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-10 mb-3">
+                    <div class="position-relative me-4">
+                      <input
+                        type="text"
+                        class="form-control br-10 ps-5"
+                        id="myInputTextField"
+                        placeholder="Search by Name, Brand, Varian etc…"
                       />
-                    </svg>
-                    New Products</span
-                  ></a>
-                </button>
-              </div>
-            </div>
-            <div class="row mb-4">
-              <div class="col-lg-10 mb-3">
-                <div class="position-relative me-4">
-                  <input
-                    type="text"
-                    class="form-control br-10 ps-5"
-                    id=""
-                    placeholder="Search by Name, Brand, Varian etc…"
-                  />
-                  <svg
-                    class="
-                      position-absolute
-                      top-50
-                      start-0
-                      ms-2
-                      translate-middle-y
-                    "
-                    width="25"
-                    height="25"
-                    viewBox="0 0 25 25"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M4.69047 18.4442C1.11327 14.867 1.11327 9.06717 4.69047 5.48997C8.26767 1.91277 14.0675 1.91277 17.6447 5.48997C20.9144 8.75972 21.1954 13.8864 18.4877 17.4754L22.1019 21.0895C23.0447 22.0324 21.6305 23.4466 20.6877 22.5038L17.1167 18.9328C13.5179 22.0132 8.09661 21.8503 4.69047 18.4442ZM16.2305 6.90418C13.4343 4.10803 8.90084 4.10803 6.10468 6.90418C3.30853 9.70034 3.30853 14.2338 6.10468 17.03C8.90084 19.8261 13.4343 19.8261 16.2305 17.03C19.0266 14.2338 19.0266 9.70034 16.2305 6.90418Z"
-                      fill="#92929D"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div class="col-lg-2 mb-3">
-                <select
-                  class="form-select br-10"
-                  aria-label="Default select example"
-                >
-                  <option selected>Action</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-            </div>
-            <div class="table-responsive admin-dashboard-table-responsive">
-              <table class="table table-borderless admin-dashboard-table">
-                <thead>
-                  <tr>
-                    <th scope="col">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
+                      <svg
+                        class="
+                          position-absolute
+                          top-50
+                          start-0
+                          ms-2
+                          translate-middle-y
+                        "
+                        width="25"
+                        height="25"
+                        viewBox="0 0 25 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M4.69047 18.4442C1.11327 14.867 1.11327 9.06717 4.69047 5.48997C8.26767 1.91277 14.0675 1.91277 17.6447 5.48997C20.9144 8.75972 21.1954 13.8864 18.4877 17.4754L22.1019 21.0895C23.0447 22.0324 21.6305 23.4466 20.6877 22.5038L17.1167 18.9328C13.5179 22.0132 8.09661 21.8503 4.69047 18.4442ZM16.2305 6.90418C13.4343 4.10803 8.90084 4.10803 6.10468 6.90418C3.30853 9.70034 3.30853 14.2338 6.10468 17.03C8.90084 19.8261 13.4343 19.8261 16.2305 17.03C19.0266 14.2338 19.0266 9.70034 16.2305 6.90418Z"
+                          fill="#92929D"
                         />
-                        <label
-                          class="form-check-label fw-normal text-muted"
-                          for="flexCheckDefault"
-                        >
-                          PAYMENT NUMBER
-                        </label>
-                      </div>
-                    </th>
-                    <th scope="col" class="fw-normal">BRAND</th>
-                    <th scope="col" class="fw-normal">#ID</th>
-                    <th scope="col" class="fw-normal">STOCK</th>
-                    <th scope="col" class="fw-normal">VAR</th>
-                    <th scope="col" class="fw-normal">PRICE</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="align-middle">
-                    <th scope="row">
-                      <div class="form-check d-flex align-items-center">
-                        <input
-                          class="form-check-input me-2 flex-shrink-0"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault2"
-                        />
-                        <label
-                          class="form-check-label fw-normal text-muted"
-                          for="flexCheckDefault2"
-                        >
-                          <img
-                            class="avatar-sm br-10"
-                            src="{{ asset('assets/images/admin-dashboard/64.png') }}"
-                            alt=""
-                          />
-                          <span class="text-dark-admin"
-                            >Salvo Toge Bag Brown</span
-                          >
-                        </label>
-                      </div>
-                    </th>
-                    <td>Uniqlo</td>
-                    <td>#132456</td>
-                    <td>98</td>
-                    <td>2</td>
-                    <td>$89.00</td>
-                    <td>
-                      <div class="dropdown admin-btn-dropdown">
-                        <button
-                          class="btn"
-                          type="button"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                        >
-                          <svg
-                            width="20"
-                            height="5"
-                            viewBox="0 0 20 5"
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 text-start text-sm-end">
+                    <button type="button" class="btn btn--primary">
+                      <a href="{{ route('adminAddProduct') }}" style="text-decoration:none;"><span class="text-white d-flex align-items-center"
+                          ><svg
+                            width="14"
+                            class="me-2"
+                            height="14"
+                            viewBox="0 0 18 18"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
                               fill-rule="evenodd"
                               clip-rule="evenodd"
-                              d="M2.72053 0.64153C3.89903 0.64153 4.85439 1.59689 4.85439 2.77539C4.85439 3.95389 3.89903 4.90925 2.72053 4.90925C1.54203 4.90925 0.58667 3.95389 0.58667 2.77539C0.58667 1.59689 1.54203 0.64153 2.72053 0.64153ZM10.1887 0.641555C11.3672 0.641555 12.3226 1.59692 12.3226 2.77541C12.3226 3.95391 11.3672 4.90927 10.1887 4.90927C9.01023 4.90927 8.05487 3.95391 8.05487 2.77541C8.05487 1.59692 9.01023 0.641555 10.1887 0.641555ZM19.7911 2.77541C19.7911 1.59692 18.8357 0.641555 17.6572 0.641555C16.4787 0.641555 15.5234 1.59692 15.5234 2.77541C15.5234 3.95391 16.4787 4.90927 17.6572 4.90927C18.8357 4.90927 19.7911 3.95391 19.7911 2.77541Z"
-                              fill="#92929D"
+                              d="M10 8H17C17.5523 8 18 8.44771 18 9C18 9.55229 17.5523 10 17 10H10V17C10 17.5523 9.55229 18 9 18C8.44771 18 8 17.5523 8 17V10H1C0.447715 10 0 9.55229 0 9C0 8.44771 0.447715 8 1 8H8V1C8 0.447715 8.44771 0 9 0C9.55229 0 10 0.447715 10 1V8Z"
+                              fill="white"
                             />
                           </svg>
-                        </button>
-                        <ul
-                          class="
-                            dropdown-menu
-                            border-0
-                            br-10
-                            table-dropdown
-                          "
-                          aria-labelledby="dropdownMenuButton1"
-                        >
-                          <li>
-                            <a class="dropdown-item" href="#">
+                          New Products</span
+                        ></a>
+                      </button>
+                  </div>
+            </div>
+            <div class="table-responsivessss">
+              <table id="myTable" class="display product-table" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                          <input id="MyTableCheckAllButton" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        </th>
+                        <th>
+                          <label class="form-check-label fw-normal text-muted" for="flexCheckDefault">
+                            PAYMENT NUMBER
+                          </label>
+                        </th>
+                        <th class="fw-normal">BRAND</th>
+                        <th class="fw-normal">#ID</th>
+                        <th class="fw-normal">STOCK</th>
+                        <th class="fw-normal">SKU</th>
+                        <th class="fw-normal">PRICE</th>
+                        <!--th></th-->
+                    </tr>
+                </thead>
+                <tbody>
+                  @if(count($products) > 0)
+                    @foreach($products as $key => $product)
+                    <tr>
+                        <td>
+                          
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img class="avatar-sm br-10 me-2" src="../assets/images/admin-dashboard/64.png" alt="">
+                            <span class="text-dark-admin text-truncate product-list-text">{{ $product['name'] }}</span>
+                          </div>
+                        </td>
+                        <td>{{ $product['category']['name'] }}</td>
+                        <td>#{{ $product['id'] }}</td>
+                        <td>{{ $product['quantity'] }}</td>
+                        <td>{{ $product['sku'] }}</td>
+                        <td>${{ $product['price'] }}</td>
+                        <!--td>
+                          <div class="dropdown admin-btn-dropdown">
+                            <button
+                              class="btn"
+                              type="button"
+                              id="dropdownMenuButton1"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
                               <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 12 12"
+                                width="20"
+                                height="5"
+                                viewBox="0 0 20 5"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path
                                   fill-rule="evenodd"
                                   clip-rule="evenodd"
-                                  d="M5.99999 9.63075L3.02528 11.1838C2.59709 11.4073 2.09828 11.0434 2.18049 10.5674L2.74768 7.28342L0.344274 4.95697C-0.00398681 4.61986 0.186951 4.0297 0.666677 3.96048L3.99146 3.48072L5.47761 0.490391C5.69212 0.0587652 6.30785 0.0587652 6.52237 0.490391L8.00851 3.48072L11.3333 3.96048C11.813 4.0297 12.004 4.61986 11.6557 4.95697L9.2523 7.28342L9.81949 10.5674C9.9017 11.0434 9.40289 11.4073 8.9747 11.1838L5.99999 9.63075ZM5.73002 8.4556C5.89917 8.36729 6.10081 8.36729 6.26996 8.4556L8.46911 9.60373L8.05017 7.17807C8.01733 6.98793 8.08063 6.79385 8.21927 6.65965L9.9902 4.94543L7.53902 4.59172C7.34936 4.56436 7.18523 4.44558 7.09995 4.27398L5.99999 2.06071L4.90003 4.27398C4.81474 4.44558 4.65062 4.56436 4.46096 4.59172L2.00977 4.94543L3.7807 6.65965C3.91934 6.79385 3.98265 6.98793 3.94981 7.17807L3.53087 9.60373L5.73002 8.4556Z"
-                                  fill="currentColor"
+                                  d="M2.72053 0.64153C3.89903 0.64153 4.85439 1.59689 4.85439 2.77539C4.85439 3.95389 3.89903 4.90925 2.72053 4.90925C1.54203 4.90925 0.58667 3.95389 0.58667 2.77539C0.58667 1.59689 1.54203 0.64153 2.72053 0.64153ZM10.1887 0.641555C11.3672 0.641555 12.3226 1.59692 12.3226 2.77541C12.3226 3.95391 11.3672 4.90927 10.1887 4.90927C9.01023 4.90927 8.05487 3.95391 8.05487 2.77541C8.05487 1.59692 9.01023 0.641555 10.1887 0.641555ZM19.7911 2.77541C19.7911 1.59692 18.8357 0.641555 17.6572 0.641555C16.4787 0.641555 15.5234 1.59692 15.5234 2.77541C15.5234 3.95391 16.4787 4.90927 17.6572 4.90927C18.8357 4.90927 19.7911 3.95391 19.7911 2.77541Z"
+                                  fill="#92929D"
                                 />
                               </svg>
-
-                              Wishlist this Product</a
+                            </button>
+                            <ul
+                              class="
+                                dropdown-menu
+                                border-0
+                                br-10
+                                table-dropdown
+                              "
+                              aria-labelledby="dropdownMenuButton1"
                             >
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="#">
-                              <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 12 12"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M6.58333 5.41667H10.6667C10.9888 5.41667 11.25 5.67783 11.25 6C11.25 6.32217 10.9888 6.58333 10.6667 6.58333H6.58333V10.6667C6.58333 10.9888 6.32217 11.25 6 11.25C5.67783 11.25 5.41667 10.9888 5.41667 10.6667V6.58333H1.33333C1.01117 6.58333 0.75 6.32217 0.75 6C0.75 5.67783 1.01117 5.41667 1.33333 5.41667H5.41667V1.33333C5.41667 1.01117 5.67783 0.75 6 0.75C6.32217 0.75 6.58333 1.01117 6.58333 1.33333V5.41667Z"
-                                  fill="currentColor"
-                                />
-                              </svg>
+                              <li>
+                                <a class="dropdown-item" href="#">
+                                  <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 12 12"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      clip-rule="evenodd"
+                                      d="M5.99999 9.63075L3.02528 11.1838C2.59709 11.4073 2.09828 11.0434 2.18049 10.5674L2.74768 7.28342L0.344274 4.95697C-0.00398681 4.61986 0.186951 4.0297 0.666677 3.96048L3.99146 3.48072L5.47761 0.490391C5.69212 0.0587652 6.30785 0.0587652 6.52237 0.490391L8.00851 3.48072L11.3333 3.96048C11.813 4.0297 12.004 4.61986 11.6557 4.95697L9.2523 7.28342L9.81949 10.5674C9.9017 11.0434 9.40289 11.4073 8.9747 11.1838L5.99999 9.63075ZM5.73002 8.4556C5.89917 8.36729 6.10081 8.36729 6.26996 8.4556L8.46911 9.60373L8.05017 7.17807C8.01733 6.98793 8.08063 6.79385 8.21927 6.65965L9.9902 4.94543L7.53902 4.59172C7.34936 4.56436 7.18523 4.44558 7.09995 4.27398L5.99999 2.06071L4.90003 4.27398C4.81474 4.44558 4.65062 4.56436 4.46096 4.59172L2.00977 4.94543L3.7807 6.65965C3.91934 6.79385 3.98265 6.98793 3.94981 7.17807L3.53087 9.60373L5.73002 8.4556Z"
+                                      fill="currentColor"
+                                    />
+                                  </svg>
 
-                              Add to Basket</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </td>
-                  </tr>
+                                  Wishlist this Product</a
+                                >
+                              </li>
+                              <li>
+                                <a class="dropdown-item" href="#">
+                                  <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 12 12"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      clip-rule="evenodd"
+                                      d="M6.58333 5.41667H10.6667C10.9888 5.41667 11.25 5.67783 11.25 6C11.25 6.32217 10.9888 6.58333 10.6667 6.58333H6.58333V10.6667C6.58333 10.9888 6.32217 11.25 6 11.25C5.67783 11.25 5.41667 10.9888 5.41667 10.6667V6.58333H1.33333C1.01117 6.58333 0.75 6.32217 0.75 6C0.75 5.67783 1.01117 5.41667 1.33333 5.41667H5.41667V1.33333C5.41667 1.01117 5.67783 0.75 6 0.75C6.32217 0.75 6.58333 1.01117 6.58333 1.33333V5.41667Z"
+                                      fill="currentColor"
+                                    />
+                                  </svg>
+
+                                  Add to Basket</a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </td-->
+                    </tr>
+                    @endforeach
+                    @else
+                    <tr>No data
+                    </tr>
+                    @endif
+                    
                 </tbody>
-              </table>
+                
+            </table>
             </div>
+            
           </div>
-          <div
-            class="
-              card-footer
-              d-flex
-              flex-wrap
-              justify-content-between
-              align-items-center
-              bg-transparent
-              py-3
-            "
-          >
-            <div class="text-muted">1-10 of 195 items</div>
-            <div class="d-flex align-items-center">
-              <nav aria-label="Page navigation example" class="me-2">
-                <ul class="pagination urban-table-pagintaion mb-0">
-                  <li class="page-item">
-                    <a
-                      class="page-link arrow"
-                      href="#"
-                      aria-label="Previous"
-                    >
-                      <span aria-hidden="true">
-                        <svg
-                          width="8"
-                          height="14"
-                          viewBox="0 0 8 14"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M3.00109 6.63384L7.5813 11.2141C7.99796 11.6307 7.99796 12.3063 7.5813 12.7229C7.16464 13.1396 6.4891 13.1396 6.07243 12.7229L0.737789 7.38828C0.321128 6.97161 0.321128 6.29607 0.737789 5.87941L6.07243 0.544766C6.4891 0.128104 7.16464 0.128104 7.5813 0.544766C7.99796 0.961427 7.99796 1.63697 7.5813 2.05363L3.00109 6.63384Z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </span>
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link active" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#"> .... </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#"> 16 </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link arrow" href="#" aria-label="Next">
-                      <span aria-hidden="true">
-                        <svg
-                          width="9"
-                          height="14"
-                          viewBox="0 0 9 14"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M5.52674 6.63373L0.94653 2.05352C0.529868 1.63686 0.529868 0.961318 0.94653 0.544656C1.36319 0.127995 2.03873 0.127995 2.4554 0.544656L7.79004 5.8793C8.2067 6.29596 8.2067 6.97151 7.79004 7.38817L2.4554 12.7228C2.03873 13.1395 1.36319 13.1395 0.94653 12.7228C0.529868 12.3062 0.529868 11.6306 0.94653 11.2139L5.52674 6.63373Z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-              <select
-                class="form-select br-10"
-                aria-label="Default select example"
-              >
-                <option selected>10</option>
-                <option value="1">5</option>
-                <option value="2">10</option>
-                <option value="3">25</option>
-              </select>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>

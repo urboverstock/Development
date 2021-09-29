@@ -21,7 +21,38 @@ class AdminController extends Controller
       if(!Auth::check()){
         return redirect()->route('signin')->with('error', 'You need to login first');
       }
-      return view('admin.dashboard');
+      $products = Product::with('category:id,name',
+    						 'user:id,first_name')
+                ->where('status', ACTIVE_STATUS)->orderBy('id', 'DESC')->get();
+      $products = $products->toArray();  
+      //echo "<pre>";print_r($products);die;       
+      return view('admin.dashboard', compact('products'));
+    }
+
+    public function buyers(Request $request)
+    {
+      $buyers = User::with(['role' => function($q) {
+        $q->select('id', 'name');
+        $q->where('name', 'Customer');
+        }])
+        ->wherehas('role', function($q) {
+            $q->where('name', 'Customer');
+        })->orderBy('id', 'DESC')->get();
+      $buyers = $buyers->toArray();
+      return view('admin.buyers.list', compact('buyers'));
+    }
+
+    public function sellers(Request $request)
+    {
+      $sellers = User::with(['role' => function($q) {
+        $q->select('id', 'name');
+        $q->where('name', 'Seller');
+        }])
+        ->wherehas('role', function($q) {
+            $q->where('name', 'Seller');
+        })->orderBy('id', 'DESC')->get();
+      $sellers = $sellers->toArray();
+      return view('admin.sellers.list', compact('sellers'));
     }
 
     public function add_product(Request $request)

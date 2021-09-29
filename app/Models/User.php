@@ -44,7 +44,7 @@ class User extends Authenticatable
     public $appends = ['profile_img', 'full_name'];
 
     public function getProfileImgAttribute($value){
-        if($this->attributes['profile_pic'] != null){
+        if(isset($this->attributes['profile_pic']) && $this->attributes['profile_pic'] != null){
             return asset($this->attributes['profile_pic']);
         }else{
             return asset('assets/images/default_profile_img.png');
@@ -52,7 +52,11 @@ class User extends Authenticatable
     }
 
     public function getFullNameAttribute($value){
-        return $this->attributes['first_name'].' '.$this->attributes['last_name'];
+        if(isset($this->attributes['last_name'])){
+            return $this->attributes['first_name'].' '.$this->attributes['last_name'];
+        }else{
+            return $this->attributes['first_name'];
+        }
     }
 
     public function role() {
