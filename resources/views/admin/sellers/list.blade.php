@@ -30,7 +30,8 @@
                         <th class="fw-normal">Email</th>
                         <th class="fw-normal">Phone number</th>
                         <th class="fw-normal">Gender</th>
-                        <!--th></th-->
+                        <th class="fw-normal">Status</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,7 +50,8 @@
                         <td>{{ $seller['email'] }}</td>
                         <td>{{ $seller['phone_number'] }}</td>
                         <td>{{ $seller['gender'] == '1' ? 'Male' : 'Female' }}</td>
-                        <!--td>
+                        <td>{{ $seller['status'] == 1 ? 'Active' : 'Inactive' }}</td>
+                        <td>
                           <div class="dropdown admin-btn-dropdown">
                             <button
                               class="btn"
@@ -82,7 +84,7 @@
                               "
                               aria-labelledby="dropdownMenuButton1"
                             >
-                              <li>
+                              <!--li>
                                 <a class="dropdown-item" href="#">
                                   <svg
                                     width="12"
@@ -101,30 +103,17 @@
 
                                   Activate</a
                                 >
-                              </li>
-                              <li>
-                                <a class="dropdown-item" href="#">
-                                  <svg
-                                    width="12"
-                                    height="12"
-                                    viewBox="0 0 12 12"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <path
-                                      fill-rule="evenodd"
-                                      clip-rule="evenodd"
-                                      d="M6.58333 5.41667H10.6667C10.9888 5.41667 11.25 5.67783 11.25 6C11.25 6.32217 10.9888 6.58333 10.6667 6.58333H6.58333V10.6667C6.58333 10.9888 6.32217 11.25 6 11.25C5.67783 11.25 5.41667 10.9888 5.41667 10.6667V6.58333H1.33333C1.01117 6.58333 0.75 6.32217 0.75 6C0.75 5.67783 1.01117 5.41667 1.33333 5.41667H5.41667V1.33333C5.41667 1.01117 5.67783 0.75 6 0.75C6.32217 0.75 6.58333 1.01117 6.58333 1.33333V5.41667Z"
-                                      fill="currentColor"
-                                    />
-                                  </svg>
-
-                                  Deactivate</a
-                                >
-                              </li>
+                              </li-->
+                              @if($seller['status'] == 1)
+                                <li>
+                                  <a class="dropdown-item" href="{{route('admin.buyer.status',[base64_encode($seller['id']), base64_encode(0)])}}" onClick="return confirm('Are you sure you want to deactivate this user?')">Deactivate</a>
+                                </li>
+                              @else
+                                <li><a class="dropdown-item" href="{{route('admin.buyer.status',[base64_encode($seller['id']), base64_encode(1)])}}" onClick="return confirm('Are you sure you want to activate this user?')">Activate</a></li>
+                              @endif
                             </ul>
                           </div>
-                        </td-->
+                        </td>
                     </tr>
                     @endforeach
                     @else

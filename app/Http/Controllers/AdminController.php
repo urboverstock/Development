@@ -10,7 +10,7 @@ use App\Models\ProductCompanies;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\UserFollowers;
-use Auth, Validator, DB;
+use Auth, Validator, DB, Redirect;
 
 class AdminController extends Controller
 {
@@ -134,5 +134,29 @@ class AdminController extends Controller
       }
 
       return view('admin.products.add', compact('product_categories','product_companies'));
+    }
+
+    public function buyerStatusUpdate($id, $status)
+    {
+      if($id && $status) {
+          $user = User::find(base64_decode($id));
+          $user->status = base64_decode($status);
+          if($user->save()) {
+            if(base64_decode($status) == 1) {
+                if($user->user_type == 3) {
+                  return redirect::back()->with('success', 'Account has been activated successfully');
+                } else {
+                  return redirect::back()->with('success', 'Account has been activated successfully');
+                }
+            } else {
+                if($user->user_type == 3) {
+                  return redirect::back()->with('success', 'Account has been deactivated successfully.');
+                } else {
+                  return redirect::back()->with('success', 'Account has been deactivated successfully.');
+                }
+            }
+          }
+      }
+      return redirect::back()->with('error', 'Failed to update user account status.');
     }
 }

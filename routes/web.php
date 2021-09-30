@@ -131,6 +131,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     Route::any('buyers', [App\Http\Controllers\AdminController::class, 'buyers'])->name('admin.buyers');
     Route::any('sellers', [App\Http\Controllers\AdminController::class, 'sellers'])->name('admin.sellers');
+
+    Route::get('/buyers/{id}/{status}', [App\Http\Controllers\AdminController::class, 'buyerStatusUpdate'])->name('admin.buyer.status');
 });
 
 

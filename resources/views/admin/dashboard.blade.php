@@ -121,9 +121,32 @@
                 <h4 class="mb-0 me-4">Product List</h4>
                 
               </div>
+
+              <div class="col-lg-2 text-start text-sm-end">
+                <button type="button" class="btn btn--primary">
+                  <a href="{{ route('adminAddProduct') }}" style="text-decoration:none;"><span class="text-white d-flex align-items-center"
+                      ><svg
+                        width="14"
+                        class="me-2"
+                        height="14"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M10 8H17C17.5523 8 18 8.44771 18 9C18 9.55229 17.5523 10 17 10H10V17C10 17.5523 9.55229 18 9 18C8.44771 18 8 17.5523 8 17V10H1C0.447715 10 0 9.55229 0 9C0 8.44771 0.447715 8 1 8H8V1C8 0.447715 8.44771 0 9 0C9.55229 0 10 0.447715 10 1V8Z"
+                          fill="white"
+                        />
+                      </svg>
+                      New Products</span
+                    ></a>
+                  </button>
+              </div>
               
             </div>
-            <div class="row mb-3">
+            <!--div class="row mb-3">
                 <div class="col-lg-10 mb-3">
                     <div class="position-relative me-4">
                       <input
@@ -177,7 +200,7 @@
                         ></a>
                       </button>
                   </div>
-            </div>
+            </div-->
             <div class="table-responsivessss">
               <table id="myTable" class="display product-table" style="width:100%">
                 <thead>
