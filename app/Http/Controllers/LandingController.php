@@ -194,7 +194,7 @@ class LandingController extends Controller
         if (!empty($user)) {
             $followers = UserFollowers::where(['follower_id'=>$id])->count();
             $followings = UserFollowers::where(['user_id'=>$id])->count();
-            $pro_sellers = User::where(['user_type'=>1])->get();
+            $pro_sellers = User::where(['user_type'=>3])->get();
             $categories = ProductCategory::get();
 
             return view('guest.profile', compact('user','followers','followings','pro_sellers','categories'));
@@ -207,15 +207,17 @@ class LandingController extends Controller
 
     public function proSeller(Request $request,$id)
     {
-        $user = User::where(['id'=>$id,'user_type'=>1])->first();
+        $user = User::where(['id'=>$id,'user_type'=>3])->first();
         if (!empty($user)) {
             $followers = UserFollowers::where(['follower_id'=>$id])->count();
             $followings = UserFollowers::where(['user_id'=>$id])->count();
-            $pro_sellers = User::where(['user_type'=>1])->get();
-            return view('guest.pro_seller', compact('user','followers','followings','pro_sellers'));
+            $pro_sellers = User::where(['user_type'=>3])->get();
+            $categories = ProductCategory::get();
+
+            return view('guest.pro_seller', compact('user','followers','followings','pro_sellers','categories'));
         } else {
             return redirect()->back()
-            ->with('error', 'No buyer account')
+            ->with('error', 'No sellet account')
             ->withInput();
         }
     }
