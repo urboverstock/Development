@@ -139,6 +139,8 @@ Route::get('get-started', [App\Http\Controllers\ProductController::class, 'getSt
 Route::get('products', [App\Http\Controllers\ProductController::class, 'getProducts'])->name('products');
 Route::get('search-results', [App\Http\Controllers\ProductController::class, 'searchresults'])->name('search-products');
 
+Route::get('collection/{id}/products', [App\Http\Controllers\ProductController::class, 'getCollectionProducts'])->name('get-collectionproducts');
+
 Route::post('get-pagination-records', [App\Http\Controllers\ProductController::class, 'paginationRecords'])->name('pagination-records');
 Route::get('/products/{sku?}', [App\Http\Controllers\ProductController::class, 'productDetails'])->name('product-detail');
 

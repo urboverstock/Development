@@ -9,6 +9,7 @@ use App\Models\Cart;
 use App\Models\UserFollowers;
 use App\Models\ProductWishlist;
 use App\Models\ProductFavourite;
+use App\Models\ProductCategory;
 use Auth, Validator, Hash;
 
 class LandingController extends Controller
@@ -194,8 +195,9 @@ class LandingController extends Controller
             $followers = UserFollowers::where(['follower_id'=>$id])->count();
             $followings = UserFollowers::where(['user_id'=>$id])->count();
             $pro_sellers = User::where(['user_type'=>1])->get();
+            $categories = ProductCategory::get();
 
-            return view('guest.profile', compact('user','followers','followings','pro_sellers'));
+            return view('guest.profile', compact('user','followers','followings','pro_sellers','categories'));
         } else {
             return redirect()->back()
             ->with('error', 'No buyer account')

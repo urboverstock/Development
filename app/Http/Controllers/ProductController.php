@@ -40,6 +40,24 @@ class ProductController extends Controller
         return view('common.allproducts', compact('products','categories','search','price', 'brands', 'filter_brand'));
     }
 
+    public function getCollectionProducts(Request $request, $id)
+    {
+        $request->request->add(['limit' => 8]);
+        //$products = Product::getProducts($request);
+        $products = Product::with('category:id,name',
+    						 'images:id,product_id,file,file_type',
+    						 'user:id,first_name')->where('category_id', $id)
+                            ->where('status', ACTIVE_STATUS)->orderBy('id', 'DESC')->get();          
+        $brands = Product::select('brand')->where('category_id', $id)->whereNotNull('brand')->groupBy('brand')->get()->toArray();
+        // echo "<pre>";
+        // print_r($products);die();
+        $categories = ProductCategory::get();
+        $search = $request->search;
+        $price = $request->price;
+        $filter_brand = $request->brand;
+        return view('common.collectionproducts', compact('products','categories','search','price', 'brands', 'filter_brand'));
+    }
+
     public function paginationRecords(Request $request)
     {
         $request->request->add(['limit' => 8]);
