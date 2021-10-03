@@ -131,14 +131,31 @@ Route::get('remove-cart/{cart_id}', [App\Http\Controllers\LandingController::cla
 Route::get('remove-all-cart', [App\Http\Controllers\LandingController::class, 'removeAllCart'])->name('remove-all-cart');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
-    Route::any('dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::any('dashboard', [App\Http\Controllers\AdminController::class, 'orders'])->name('admin.dashboard');
+    //Route::any('dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
+    
+    Route::any('products', [App\Http\Controllers\AdminController::class, 'products'])->name('admin.products');
     Route::any('add-product', [App\Http\Controllers\AdminController::class, 'add_product'])->name('adminAddProduct');
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('admin.logout');
 
     Route::any('buyers', [App\Http\Controllers\AdminController::class, 'buyers'])->name('admin.buyers');
     Route::any('sellers', [App\Http\Controllers\AdminController::class, 'sellers'])->name('admin.sellers');
+    Route::any('advertisements', [App\Http\Controllers\AdminController::class, 'advertisements'])->name('admin.advertisements');
+    Route::any('orders', [App\Http\Controllers\AdminController::class, 'orders'])->name('admin.orders');
+    Route::any('order/{id}', [App\Http\Controllers\AdminController::class, 'viewOrder'])->name('adminViewOrder');
+
+    Route::any('/edit-profile', [App\Http\Controllers\AdminController::class, 'edit_profile'])->name('admin.edit_profile');
+
+    Route::any('faq', [App\Http\Controllers\Admin\FaqController::class, 'index'])->name('adminFaq');
+    Route::any('add-faq', [App\Http\Controllers\Admin\FaqController::class, 'create'])->name('adminAddFaq');
+    Route::any('store-faq', [App\Http\Controllers\Admin\FaqController::class, 'store'])->name('adminStoreFaq');
+    Route::any('edit-faq/{id}', [App\Http\Controllers\Admin\FaqController::class, 'editFaq'])->name('adminEditFaq');
+    Route::any('update-faq', [App\Http\Controllers\Admin\FaqController::class, 'update'])->name('adminUpdateFaq');
+    Route::any('view-faq/{id}', [App\Http\Controllers\Admin\FaqController::class, 'show'])->name('ViewFaq');
+    Route::any('delete-faq/{id}', [App\Http\Controllers\Admin\FaqController::class, 'delete'])->name('adminDeleteFaq');
 
     Route::get('/buyers/{id}/{status}', [App\Http\Controllers\AdminController::class, 'buyerStatusUpdate'])->name('admin.buyer.status');
+    Route::get('/advertisements/{id}/{status}', [App\Http\Controllers\AdminController::class, 'advertisementStatusUpdate'])->name('admin.advertisement.status');
 });
 
 

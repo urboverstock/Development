@@ -5,7 +5,7 @@
 <section class="admin-body">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 mb-3">
+      <!--div class="col-lg-3 mb-3">
         <div class="card border-0 shadow-sm br-10 h-100">
           <div class="card-body h-100">
             <div class="d-flex align-items-center justify-content-between">
@@ -112,7 +112,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div-->
       <div class="col-lg-12 mt-3">
         <div class="card border-0 shadow-sm br-10">
           <div class="card-body">
@@ -210,7 +210,7 @@
                         </th>
                         <th>
                           <label class="form-check-label fw-normal text-muted" for="flexCheckDefault">
-                            PAYMENT NUMBER
+                            PRODUCT NAME
                           </label>
                         </th>
                         <th class="fw-normal">BRAND</th>

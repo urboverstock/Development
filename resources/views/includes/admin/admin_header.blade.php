@@ -33,11 +33,15 @@
               >DASHBOARD</a
             >
           </li>
-          <!--li class="nav-item me-4">
-            <a class="nav-link" href="#">ORDERS</a>
-          </li-->
           <li class="nav-item me-4">
-            <a class="nav-link" href="{{ route('admin.dashboard') }}">PRODUCTS</a>
+            <a class="nav-link {{ (request()->segment(2) == 'products') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.products') }}"
+              >PRODUCTS</a
+            >
+          </li>
+          <li class="nav-item me-4">
+            <a class="nav-link {{ (request()->segment(2) == 'orders') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.dashboard') }}"
+              >ORDERS</a
+            >
           </li>
           <li class="nav-item me-4">
             <!--a class="nav-link" href="#">CHAT</a-->
@@ -48,7 +52,10 @@
             <a class="nav-link {{ (request()->segment(2) == 'sellers') ? 'active' : '' }}" href="{{ route('admin.sellers') }}">SELLERS</a>
           </li>
           <li class="nav-item me-4">
-            <a class="nav-link" href="#">SETTINGS</a>
+            <a class="nav-link {{ (request()->segment(2) == 'advertisements') ? 'active' : '' }}" href="{{ route('admin.advertisements') }}">Advertisements</a>
+          </li>
+          <li class="nav-item me-4">
+            <a class="nav-link {{ (request()->segment(2) == 'faq') ? 'active' : '' }}" href="{{ route('adminFaq') }}">Faqs</a>
           </li>
           <li class="nav-item me-4">
             <a class="nav-link" href="{{ route('admin.logout') }}">Logout</a>
@@ -102,12 +109,11 @@
                 class="dropdown-menu"
                 aria-labelledby="dropdownMenuButton1"
               >
-                <li><a class="dropdown-item" href="#">Action</a></li>
                 <li>
-                  <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="{{ route('admin.edit_profile') }}">SETTINGS</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
                 </li>
               </ul>
             </div>
@@ -120,11 +126,19 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <img
-                class="avatar-56 admin-header-button"
-                src="{{ asset('assets/images/square-img.png') }}"
-                alt=""
-              />
+              @if($user->profile_img != null)
+                <img
+                  class="avatar-56 admin-header-button"
+                  src="{{ $user->profile_img }}"
+                  alt=""
+                />
+              @else
+                <img
+                  class="avatar-56 admin-header-button"
+                  src="{{ asset('assets/images/square-img.png') }}"
+                  alt=""
+                />
+              @endif
               <svg
                 width="17"
                 height="10"
@@ -139,12 +153,11 @@
               </svg>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Action</a></li>
               <li>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="{{ route('admin.edit_profile') }}">SETTINGS</a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
               </li>
             </ul>
           </div>

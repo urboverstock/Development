@@ -8,15 +8,18 @@ use App\Models\UserDocument;
 use App\Models\ProductCategory;
 use App\Models\ProductCompanies;
 use App\Models\Product;
+use App\Models\Order;
 use App\Models\ProductImage;
 use App\Models\UserFollowers;
+use App\Models\Advertisement;
+use Illuminate\Support\Facades\Crypt;
 use Auth, Validator, DB, Redirect;
 
 class AdminController extends Controller
 {
     public $uploadUserProfilePath = 'assets/images/users';
 
-    public function dashboard(Request $request)
+    public function products(Request $request)
     {
       if(!Auth::check()){
         return redirect()->route('signin')->with('error', 'You need to login first');
@@ -26,7 +29,7 @@ class AdminController extends Controller
                 ->where('status', ACTIVE_STATUS)->orderBy('id', 'DESC')->get();
       $products = $products->toArray();  
       //echo "<pre>";print_r($products);die;       
-      return view('admin.dashboard', compact('products'));
+      return view('admin.products.list', compact('products'));
     }
 
     public function buyers(Request $request)
@@ -158,5 +161,102 @@ class AdminController extends Controller
           }
       }
       return redirect::back()->with('error', 'Failed to update user account status.');
+    }
+
+
+    public function advertisements(Request $request)
+    {
+      //$advertisements = Advertisement::where('seller_id', Auth::user()->id)->get()->toArray();
+      /* $advertisements = Advertisement::with(['getUserDetail' => function($q)
+      {
+          $q->select('id', 'first_name', 'profile_pic', 'last_name');
+      }]); */
+
+      $advertisements = Advertisement::with('getUserDetail');
+      $advertisements = $advertisements->get()->toArray();
+
+      //echo "<pre>";print_r($advertisements);die;
+      return view('admin.advertisements.list', compact('advertisements'));
+    }
+
+    public function advertisementStatusUpdate($id, $status)
+    {
+      if($id && $status) {
+          $user = Advertisement::find(base64_decode($id));
+          $user->status = base64_decode($status);
+          if($user->save()) {
+            if(base64_decode($status) == 1) {
+              return redirect::back()->with('success', 'Advertisement has been activated successfully');
+            } else {
+              return redirect::back()->with('success', 'Advertisement has been deactivated successfully.');
+            }
+          }
+      }
+      return redirect::back()->with('error', 'Failed to update advertisement status.');
+    }
+
+    public function orders(Request $request)
+    {
+      $orders = Order::with('getUserDetail');
+      $orders = $orders->get()->toArray();
+
+      return view('admin.orders.list', compact('orders'));
+    }
+
+    public function viewOrder($id)
+    {
+      $id = Crypt::decrypt($id);
+    	$order = Order::with('getOrderDetail.getProductDetails', 'getUserAddress.getUserDetail')->find($id);
+      return view('admin.orders.orderDetail', compact('order'));
+    }
+
+    public function edit_profile(Request $request){
+
+      $user = User::find(Auth::user()->id);
+
+      if($request->isMethod('post')){
+          $postData = $request->all();
+          $validator = Validator::make($postData, [
+              'first_name' => 'required',
+              'last_name' => 'required',
+              'isd_code' => 'required|digits_between:2,3',
+              'phone_number' => 'required|digits:10,10',
+              // 'email' => 'required|email|unique:users',
+              'location' => 'required',
+              'billing_address' => 'required',
+              'about' => 'required',
+              // 'gender' => 'required'
+          ],[
+              'about.required' => 'The bio field is required'
+          ]);
+  
+          if ($validator->fails()) {
+              return redirect()->back()
+                      ->withErrors($validator)
+                      ->withInput();
+          }
+
+          $user->first_name       = $postData['first_name'];
+          $user->last_name        = $postData['last_name'];
+          $user->isd_code         = $postData['isd_code'];
+          $user->phone_number     = $postData['phone_number'];
+          $user->location         = $postData['location'];
+          $user->billing_address  = $postData['billing_address'];
+          $user->about            = $postData['about'];
+
+          if(isset($postData['profile_pic']) && !empty($postData['profile_pic'])){
+              $user->profile_pic = UploadImage($postData['profile_pic'], $this->uploadUserProfilePath);
+          }
+          
+
+          if($user->save()){
+              //return redirect()->route('admin.edit_profile');
+              return redirect::back()->with('success', 'Profile has been update successfully.');
+          }else{
+              return redirect()->back()->with('error', COMMON_ERROR);
+          }
+      }
+
+      return view('admin.edit_profile', compact('user'));
     }
 }

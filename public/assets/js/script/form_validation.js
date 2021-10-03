@@ -863,6 +863,21 @@ $(document).ready(function() {
           		required : true
           	}
         } 
-      });
+	  });
+	  
+	$("#add_faq_form").validate({ 
+		errorElement: 'span',
+		rules: {
+			question: {
+				required:true,
+			},			
+			answer:{
+				required:true,
+			}
+		},
+	    messages: {
+
+	    },
+	});
 });
 
