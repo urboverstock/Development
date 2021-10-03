@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 @section('title', 'Cart')
 @section('content')
-<section class="mt-96   pb-5 ">
+<section class="mt-96 pb-5 ">
     <div class="container pt-4">
       @if(count($carts) > 0)
       <div class="row cart_main" data-cart_count="{{ count($carts) }}">
@@ -122,8 +122,8 @@
               <a href="{{ route('products') }}" class=""><h3 class="fw-bold">Shop</h3></a>
             </div>
           </div>
-      </div>
       @endif
+      </div>
     </div>
 </section>
 

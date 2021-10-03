@@ -27,6 +27,7 @@
       <!--script src="{{ asset('assets/js/jquery.min.js') }}"></script-->
       <script>
          var base_url = "{{ URL::to('/') }}";
+         var socketURL = '<?php echo env('SOCKET_URL'); ?>';
       </script>
 
        

@@ -83,4 +83,9 @@ class User extends Authenticatable
 
         return  $query->paginate($request->limit);
     }
+
+    public function storeDetail()
+    {
+        return $this->hasOne('App\Models\SellerStore', 'user_id', 'id');
+    }
 }

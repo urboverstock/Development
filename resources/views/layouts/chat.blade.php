@@ -24,7 +24,7 @@
 
     @include('includes.seller_header')
     @yield('content')
-    <!-- @include('includes.seller_footer') -->
+    
 
     <div class="logout-screen" style="display: none;">
         <div class="container">
@@ -57,8 +57,9 @@
     <script src="{{ asset('assets/js/script/jquery.validate.js') }}"></script>
     <script src="{{ asset('assets/js/script/form_validation.js') }}"></script>
 
-    <script type="text/javascript"> var baseUrl = {!! json_encode(url('/')) !!};
-    var socketURL = '<?php echo env('SOCKET_URL'); ?>';
+    <script type="text/javascript">
+        var baseUrl = {!! json_encode(url('/')) !!};
+        var socketURL = '<?php echo env('SOCKET_URL'); ?>';
     </script>
 
 

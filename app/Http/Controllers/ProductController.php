@@ -72,9 +72,10 @@ class ProductController extends Controller
     {
         if($slug) {
             $product_details = Product::with('product_image')->where('sku', $slug)->first();
+            $store_user_details = User::with('storeDetail')->find($product_details->user_id);
             $recent_products = Product::with('product_image')->where('sku', '!=', $slug)->latest()->take(4)->get()->toArray();
             
-            return view('common.productDetail', compact('product_details', 'recent_products'));
+            return view('common.productDetail', compact('product_details', 'recent_products', 'store_user_details'));
         } else {
             return redirect('/');
         }

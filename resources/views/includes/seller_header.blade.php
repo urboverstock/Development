@@ -41,6 +41,7 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                <!-- fw-bold -->
               <li><a class="dropdown-item border-bottom" href="{{ route('sellerView_profile') }}">My Profile</a></li>
+              <li><a class="dropdown-item border-bottom" href="{{ route('sellerStore') }}">My Store</a></li>
               <li><a class="dropdown-item border-bottom" href="{{ route('sellerDashboard') }}">Dashboard</a></li>
 
               <li><a class="dropdown-item border-bottom" href="{{ route('sellerAddProduct') }}

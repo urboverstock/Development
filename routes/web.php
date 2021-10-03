@@ -28,7 +28,7 @@ Route::group(['middleware' => ['guest']], function () {
     Route::any('/forgot-password', [App\Http\Controllers\LandingController::class, 'forgot_password'])->name('forgot_password');
 });
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'seller', 'as' => 'seller'], function ()
+Route::group(['middleware' => ['auth', 'checksellerstore'], 'prefix' => 'seller', 'as' => 'seller'], function ()
 {
     Route::any('/dashboard', [App\Http\Controllers\SellerController::class, 'dashboard'])->name('Dashboard');
     Route::any('/edit-profile', [App\Http\Controllers\SellerController::class, 'edit_profile'])->name('Edit_profile');
@@ -77,6 +77,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'seller', 'as' => 'seller'],
     Route::get('/advertisement', [App\Http\Controllers\Seller\AdvertisementController::class,'index'])->name('ListAdvertisement');
     Route::get('/delete-advertisement/{id}', [App\Http\Controllers\Seller\AdvertisementController::class,'destroy'])->name('DeleteAdvertisement');
     
+});
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'seller', 'as' => 'seller'], function ()
+{
+    // Route::any('add-store', [App\Http\Controllers\Seller\SellerStoreController::class, 'create'])->name('AddStore');
+    Route::any('add-store', [App\Http\Controllers\Seller\SellerStoreController::class, 'store'])->name('Store');
 });
 
 Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout']);

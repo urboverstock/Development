@@ -845,5 +845,24 @@ $(document).ready(function() {
 		    // $form.submit();
 		}
 	});
+
+	$("#seller_store").validate({ 
+        errorElement: 'span',
+        rules: {
+        	name : {
+          		required : true
+          	},          	
+          	phone_number: {
+            	required:true,
+            	number: true
+          	},
+          	description : {
+          		required : true
+          	},
+          	address : {
+          		required : true
+          	}
+        } 
+      });
 });
 

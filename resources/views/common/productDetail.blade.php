@@ -104,9 +104,15 @@
             </div>
             <a href="{{ route('buy-now', $product_details->id) }}" class="btn btn--primary z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3">Buy Now</button>
             @if(Auth::check())
-            <a href="javascript:void(0)" class="add-to-cart btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3" id="add-to-cart" data-productid="{{ @$product_details->id }}">Add to Cart</a>
+            <a href="javascript:void(0)" class="add-to-cart btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3" id="add-to-cart" data-productid="{{ @$product_details->id }}">Add to Cart</a>
             @else
-            <a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3">Add to Cart</a>
+            <a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3">Add to Cart</a>
+            @endif
+
+            @if(Auth::check())
+            <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($store_user_details->id)) }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3" id="add-to-cart" data-productid="{{ @$product_details->id }}"><i class="far fa-comments"></i></a>
+            @else
+            <a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3"><i class="far fa-comments"></i></a>
             @endif
           </div>
         </div>
@@ -124,6 +130,7 @@
                   <button class="nav-link  py-3" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Specification</button>
                   <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Discussion</button>
                   <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews (223)</button>
+                  <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-store" type="button" role="tab" aria-controls="nav-store" aria-selected="false">Store</button>
                </div>
             </nav>
             <div class="tab-content px-4" id="nav-tabContent">
@@ -139,6 +146,25 @@
                </div>
                <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-contact-tab">
                   Reviews
+               </div>
+               <div class="tab-pane fade" id="nav-store" role="tabpanel" aria-labelledby="nav-contact-tab">
+                  <h3 class="f-600 mb-0 me-3">{{ $store_user_details->full_name }}</h3>
+
+                  @if($store_user_details->storeDetail->name)
+                  <p>Store Name : {{ $store_user_details->storeDetail->name }}</p>
+                  @endif
+
+                  @if($store_user_details->storeDetail->phone_number)
+                  <p>Phone No. : {{ $store_user_details->storeDetail->phone_number }}</p>
+                  @endif
+
+                  @if($store_user_details->storeDetail->description)
+                  <p>Description : {{ $store_user_details->storeDetail->description }}</p>
+                  @endif
+
+                  @if($store_user_details->storeDetail->address)
+                  <p>Address : {{ $store_user_details->storeDetail->address }}</p>
+                  @endif
                </div>
             </div>
          </div>
@@ -175,7 +201,7 @@
             <div class="card product-item border-0 shadow br-12 mb-5">
               <div class="card-body ">
                 <img class="img-fluid br-12 mb-3" src="{{ productDefaultImage(@$recent_product['id'])}}" alt="">
-               <h5 class="fw-bold">{{ @$recent_product['name'] }}</h5>
+               <a href="{{ route('product-detail', $recent_product['sku']) }}"><h5 class="fw-bold">{{ @$recent_product['name'] }}</h5></a>
                <div class="d-flex align-items-center justify-content-between flex-wrap">
                  <!-- <div class="bg-text rounded-pill px-3 py-2">
                     <h6 class="mb-0 f-600">Jhonathan Doe</h6>

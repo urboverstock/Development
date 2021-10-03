@@ -69,8 +69,8 @@
         <input type="hidden" name="" id="username" value="{{ Auth::user()->first_name }}">
         <input type="hidden" name="" id="last_username" value="{{ Auth::user()->last_name }}">
         <input type="hidden" name="" id="current_date_time" value="{{ date('h:s:A') }} | {{ date('d M Y') }}">
-        <input type="hidden" name="" id="sender_profile_pic" value="{{ asset('/') . Auth::user()->profile_pic }}">
-        <input type="hidden" name="" id="receiver_profile_pic" value="{{ $receiver_profile_pic }}">
+        <input type="hidden" name="" id="sender_profile_pic" value="{{ !empty(Auth::user()->profile_pic) ? asset('/') . Auth::user()->profile_pic : asset('/assets/images/default_profile_img.png')}}">
+        <input type="hidden" name="" id="receiver_profile_pic" value="{{ !empty($receiver_profile_pic) ? $receiver_profile_pic : asset('/assets/images/default_profile_img.png') }}">
         <input type="hidden" name="" value="{{ $implodeId }}" id="implodeId">
 
         <div class="box-container pt-4">
@@ -145,12 +145,14 @@
             // $(function()
             // {
                 let ip_address = socketURL ;
-                let socket = io(ip_address);
+                let socket_port = 3000;
+                console.log(ip_address);
+                let socket = io(ip_address + ':' + socket_port);
 
                 var socketId = '';
                 socket.on('connect', () => {
                     socketId = socket.id;
-                    // console.log(socketId);
+                    console.log(socketId + 'socketId');
                 });
                 
                 let recieverId = $("#recieverId").val();
@@ -170,7 +172,7 @@
                 }
 
                 $('.message').keyup(function() {
-                    console.log('happening');
+                    // console.log('happening');
                     typing = true;
                     socket.emit('typing', 'typing...');
                     clearTimeout(timeout);
