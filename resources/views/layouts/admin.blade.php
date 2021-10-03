@@ -22,6 +22,10 @@
   <link rel="stylesheet" href="{{ asset('assets/stylesheet/css/developer.css') }}">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+    var baseUrl = "{{ URL::to('/') }}";
+    var socketURL = '<?php echo env('SOCKET_URL'); ?>';
+  </script>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 

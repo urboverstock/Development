@@ -143,7 +143,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::any('advertisements', [App\Http\Controllers\AdminController::class, 'advertisements'])->name('admin.advertisements');
     Route::any('orders', [App\Http\Controllers\AdminController::class, 'orders'])->name('admin.orders');
     Route::any('order/{id}', [App\Http\Controllers\AdminController::class, 'viewOrder'])->name('adminViewOrder');
-
     Route::any('/edit-profile', [App\Http\Controllers\AdminController::class, 'edit_profile'])->name('admin.edit_profile');
 
     Route::any('faq', [App\Http\Controllers\Admin\FaqController::class, 'index'])->name('adminFaq');
@@ -153,6 +152,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::any('update-faq', [App\Http\Controllers\Admin\FaqController::class, 'update'])->name('adminUpdateFaq');
     Route::any('view-faq/{id}', [App\Http\Controllers\Admin\FaqController::class, 'show'])->name('ViewFaq');
     Route::any('delete-faq/{id}', [App\Http\Controllers\Admin\FaqController::class, 'delete'])->name('adminDeleteFaq');
+
+    Route::any('chat', [App\Http\Controllers\Admin\ChatController::class, 'chat'])->name('admin.chat');
+    Route::any('saveChat', [App\Http\Controllers\Admin\ChatController::class,'saveChat'])->name('adminSaveChat');
+    Route::get('unreadMessage', [App\Http\Controllers\AdminChat\ChatController::class,'unreadMessage'])->name('unreadMessage');
 
     Route::get('/buyers/{id}/{status}', [App\Http\Controllers\AdminController::class, 'buyerStatusUpdate'])->name('admin.buyer.status');
     Route::get('/advertisements/{id}/{status}', [App\Http\Controllers\AdminController::class, 'advertisementStatusUpdate'])->name('admin.advertisement.status');

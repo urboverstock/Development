@@ -166,12 +166,6 @@ class AdminController extends Controller
 
     public function advertisements(Request $request)
     {
-      //$advertisements = Advertisement::where('seller_id', Auth::user()->id)->get()->toArray();
-      /* $advertisements = Advertisement::with(['getUserDetail' => function($q)
-      {
-          $q->select('id', 'first_name', 'profile_pic', 'last_name');
-      }]); */
-
       $advertisements = Advertisement::with('getUserDetail');
       $advertisements = $advertisements->get()->toArray();
 
@@ -250,7 +244,6 @@ class AdminController extends Controller
           
 
           if($user->save()){
-              //return redirect()->route('admin.edit_profile');
               return redirect::back()->with('success', 'Profile has been update successfully.');
           }else{
               return redirect()->back()->with('error', COMMON_ERROR);

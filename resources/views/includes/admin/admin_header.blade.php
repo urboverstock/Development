@@ -157,6 +157,9 @@
                 <a class="dropdown-item" href="{{ route('admin.edit_profile') }}">SETTINGS</a>
               </li>
               <li>
+                <a class="dropdown-item" href="{{ route('admin.chat') }}">CHATS</a>
+              </li>
+              <li>
                 <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
               </li>
             </ul>
