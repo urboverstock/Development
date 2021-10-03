@@ -29,7 +29,7 @@ class SellerController extends Controller
     public function edit_profile(Request $request){
 
         $user = User::find(Auth::user()->id);
-
+        // print_r($user);die();
         if($request->isMethod('post')){
             $postData = $request->all();
             $validator = Validator::make($postData, [
@@ -59,6 +59,8 @@ class SellerController extends Controller
             $user->location         = $postData['location'];
             $user->billing_address  = $postData['billing_address'];
             $user->about            = $postData['about'];
+            $user->user_chat_status = isset($postData['user_chat_status']) ? 1 : 0;
+            // print_r($user);die();
 
             if(isset($postData['profile_pic']) && !empty($postData['profile_pic'])){
                 $user->profile_pic = UploadImage($postData['profile_pic'], $this->uploadUserProfilePath);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\UserPost;
 use App\Models\User;
 use App\Models\UserDocument;
 use App\Models\ProductCategory;
@@ -24,12 +25,21 @@ class BuyerController extends Controller
 
     public function index(Request $request)
     {
+        if(Auth::check())
+        {
+            $user_posts = UserPost::with('getUserPostFile', 'getUser')->where('user_id', '<>', Auth::user()->id)->latest()->get();
+        }
+        else
+        {
+            $user_posts = UserPost::with('getUserPostFile', 'getUser')->latest()->get();
+        }
+
         $request->request->add(['limit' => 6]);
         $latestProducts = Product::getLatestProducts($request);
         $request->request->add(['limit' => 3]);
         $sellers = User::getSellers($request);
         // echo "<pre>"; print_r($latestProducts); die;
-        return view('common.home', compact('latestProducts', 'sellers'));
+        return view('common.home', compact('latestProducts', 'sellers', 'user_posts'));
     }
 
     public function dashboard(Request $request)
@@ -77,6 +87,7 @@ class BuyerController extends Controller
             $user->location         = $postData['location'];
             $user->billing_address  = $postData['billing_address'];
             $user->about            = $postData['about'];
+
 
             if(isset($postData['profile_pic']) && !empty($postData['profile_pic'])){
                 $user->profile_pic = UploadImage($postData['profile_pic'], $this->uploadUserProfilePath);

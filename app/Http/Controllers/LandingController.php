@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\UserPost;
 use App\Models\User;
 use App\Models\UserRole;
 use App\Models\Cart;
@@ -18,12 +19,22 @@ class LandingController extends Controller
 
     public function home(Request $request)
     {
+        if(Auth::check())
+        {
+            $user_posts = UserPost::with('getUserPostFile', 'getUser', 'getPostLike')->where('user_id', '<>', Auth::user()->id)->latest()->get();
+        }
+        else
+        {
+            $user_posts = UserPost::with('getUserPostFile', 'getUser', 'getPostLike')->latest()->get();
+        }
+        // echo "<pre>";
+        // print_r($user_posts);die();
         $request->request->add(['limit' => 6]);
         $latestProducts = Product::getLatestProducts($request);
         $request->request->add(['limit' => 3]);
         $sellers = User::getSellers($request);
         // echo "<pre>"; print_r($latestProducts); die;
-        return view('common.home', compact('latestProducts', 'sellers'));
+        return view('common.home', compact('latestProducts', 'sellers', 'user_posts'));
     }
 
     public function register(Request $request)

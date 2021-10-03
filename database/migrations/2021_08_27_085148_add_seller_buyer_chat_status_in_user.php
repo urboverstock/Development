@@ -14,7 +14,7 @@ class AddSellerBuyerChatStatusInUser extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('seller_buyer_chat_status')->default(1)->comment('0 Not 1 Yes');
+            $table->integer('user_chat_status')->default(1)->comment('0 Not 1 Yes');
         });
     }
 

@@ -8,6 +8,8 @@ use App\Http\Requests\UserPostStoreRequest;
 use App\Http\Requests\UserPostUpdateRequest;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\UserPost;
+use App\Models\PostLike;
+use App\Models\PostComment;
 use App\Models\UserPostFile;
 use Auth, Validator;
 
@@ -25,11 +27,11 @@ class UserPostController extends Controller
         $search = $request->search;
         if(!empty($search))
         {
-            $data['userPosts'] = UserPost::with('getUserPostFile')->where('title', 'like', '%' . $search . '%')->where('user_id', Auth::user()->id)->get()->toArray();
+            $data['userPosts'] = UserPost::with('getUserPostFile', 'getPostLike')->where('title', 'like', '%' . $search . '%')->where('user_id', Auth::user()->id)->get()->toArray();
         }
         else
         {
-            $data['userPosts'] = UserPost::where('user_id', Auth::user()->id)->with('getUserPostFile')->get()->toArray();
+            $data['userPosts'] = UserPost::where('user_id', Auth::user()->id)->UserPost::with('getUserPostFile', 'getPostLike')->get()->toArray();
         }
         return view('userPost.userPostList', $data);
     }
@@ -96,7 +98,9 @@ class UserPostController extends Controller
     public function show($id)
     {
         $id = Crypt::decrypt($id);
-        $userPost = UserPost::with('getUserPostFile')->find($id);
+        $userPost = UserPost::with('getUserPostFile','getPostLike', 'getPostComments')->find($id);
+        // echo "<pre>";
+        // print_r($userPost);die();
         return view('userPost.viewUserPost', compact('userPost'));
     }
 
@@ -190,4 +194,80 @@ class UserPostController extends Controller
             return redirect()->back()->with('error', COMMON_ERROR);
         }
     }
+
+    public function likePost($post_id)
+    {
+        if(!Auth::check()){
+            $response["status"] = 0;
+            $response["message"] = "Please login first";
+        }else{
+            $postLike = PostLike::where(['user_id' => Auth::user()->id, 'post_id' => $post_id])->first();
+
+            if(empty($postLike))
+            {
+                $post = new PostLike;
+                $post->post_id = $post_id;
+                $post->like_status = 1;
+            }
+            else
+            {
+                $post = PostLike::find($postLike->id);
+                $likeStatus = $post->like_status == 0 ? 1 : 0;
+                $post->like_status = $likeStatus;
+            }
+
+            $post->user_id = Auth::user()->id;
+
+            if($post->save()){
+
+                $like = $post->like_status == 1 ? 'Like' : 'Unlike';
+           
+                $button = $post->like_status == 1 ? 'Unlike' : 'Like';
+                $response["status"] = 1;
+                $response['like_status'] = $button;
+                $response["message"] = "You have ". $like ." Successfully";
+            }else{
+                $response["status"] = 0;
+                $response["message"] = "Something went wrong";
+            }
+
+            return $response;
+        }
+    }
+
+    public function commentPost(Request $request)
+    {
+        if(!Auth::check()){
+            $response["status"] = 0;
+            $response["message"] = "Please login first";
+            return $response;
+        }else{
+            // $postLike = PostComment::where(['user_id' => Auth::user()->id, 'post_id' => $request->post_id])->first();
+
+            // if(empty($postLike))
+            // {
+                $post = new PostComment();
+                $post->user_id = Auth::user()->id;
+                $post->comment = $request->comment;
+                $post->post_id = $request->post_id;
+
+                if($post->save()){
+                    $response["status"] = 1;
+                    $response["message"] = "You have commented successfully";
+                }else{
+                    $response["status"] = 0;
+                    $response["message"] = "Something went wrong";
+                }
+            // }
+            // else
+            // {
+            //     $response["status"] = 0;
+            //     $response["message"] = "You have already comment";
+            // }
+
+                return $response;            
+        }
+    }
+
+
 }

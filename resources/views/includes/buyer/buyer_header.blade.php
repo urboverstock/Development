@@ -49,7 +49,7 @@
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerFavouriteProduct') }}">My Favourites</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerAddress') }}">Shipping Address</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerUserPost') }}">Posts</a></li>
-              <li class="logout_btn"><a class="dropdown-item border-bottom" href="javascript:;">Logout</a></li>
+              <li class="logout_btn"><a class="dropdown-item border-bottom" href="{{ route('logout') }}">Logout</a></li>
             </ul>
           </div>
           

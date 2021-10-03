@@ -109,10 +109,12 @@
             <a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3">Add to Cart</a>
             @endif
 
+            @if($store_user_details->user_chat_status == 1)
             @if(Auth::check())
             <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($store_user_details->id)) }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3" id="add-to-cart" data-productid="{{ @$product_details->id }}"><i class="far fa-comments"></i></a>
             @else
             <a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3"><i class="far fa-comments"></i></a>
+            @endif
             @endif
           </div>
         </div>

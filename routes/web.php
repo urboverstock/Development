@@ -106,7 +106,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('store-user-post', [App\Http\Controllers\UserPostController::class, 'store'])->name('buyerStoreUserPost');
     Route::any('edit-user-post/{id}', [App\Http\Controllers\UserPostController::class, 'edit'])->name('buyerEditUserPost');
     Route::any('update-user-post', [App\Http\Controllers\UserPostController::class, 'update'])->name('buyerUpdateUserPost');
-    Route::any('view-user-post/{id}', [App\Http\Controllers\UserPostController::class, 'show'])->name('buyerViewUserPost');
+    Route::any('like-post/{post_id}', [App\Http\Controllers\UserPostController::class, 'likePost'])->name('LikePost');
+    Route::post('comment-post/', [App\Http\Controllers\UserPostController::class, 'commentPost'])->name('CommentPost');
+    
     Route::any('delete-user-post/{id}', [App\Http\Controllers\UserPostController::class, 'destroy'])->name('buyerDeleteUserPost');
     Route::any('delete-user-post-file/{id}', [App\Http\Controllers\UserPostController::class, 'deleteUserPostFile'])->name('buyerDeleteUserPostFile');
 
@@ -123,6 +125,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('orders', [App\Http\Controllers\Buyer\OrderController::class, 'orderList'])->name('buyerOrderList');
     Route::any('order/{id}', [App\Http\Controllers\Buyer\OrderController::class, 'viewOrder'])->name('buyerViewOrder');
 });
+
+Route::any('view-user-post/{id}', [App\Http\Controllers\UserPostController::class, 'show'])->name('buyerViewUserPost');
 
 
 Route::get('carts', [App\Http\Controllers\LandingController::class, 'carts'])->name('carts');
@@ -189,3 +193,5 @@ Route::get('buy-now/{product_id}', [App\Http\Controllers\LandingController::clas
 
 
 Route::any('newsletter', [App\Http\Controllers\NewsletterController::class, 'sendNewsLetter'])->name('sendNewsLetter');
+
+Route::get('profile/{user_id}', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');

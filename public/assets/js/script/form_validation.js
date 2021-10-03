@@ -863,6 +863,39 @@ $(document).ready(function() {
           		required : true
           	}
         } 
+      });
+
+	$("#comment-form").validate({ 
+		errorElement: 'span',
+		rules: {
+			comment: {
+					required:true,
+			}
+		},
+	    messages: { 
+	    	 
+	    },
+	    submitHandler: function(form, event) {
+		    $.ajax({
+		        url: base_url + '/buyer/comment-post',
+		        type: "POST",
+		        data: $(form).serialize(),
+		        success: function(response) {
+		            if(response.status == 1) {
+						toastr.success(response.message, "Success");
+					}else{
+						toastr.error(response.message, "Error");
+					}
+
+					location.reload();
+		        },
+		        error:function(){
+                       toastr.error('Please login first!', "Error");
+                        // $("#result").html('There is error while submit');
+                    }             
+		    });
+		    // $form.submit();
+		}
 	  });
 	  
 	$("#add_faq_form").validate({ 

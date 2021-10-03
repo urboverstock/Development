@@ -115,6 +115,15 @@
                         <span class="error">{{ $errors->first('phone_number') }}</span>
                       </div>
                     </div>
+                    <div class="col-lg-6">
+                      <div class="mb-4">
+                        <label class="form-label">Chat On/Off</label>
+                        <div class="custom-urban-form">
+                          <input type="checkbox" placeholder="" name="user_chat_status" value="1" {{ $user->user_chat_status == 1 ? 'checked' : '' }}>
+                        </div>
+                        <span class="error">{{ $errors->first('user_chat_status') }}</span>
+                      </div>
+                    </div>
                     <div class="col-lg-12">
                       <div class="mb-4 ">
                         <label class="form-label ">Billing Address</label>

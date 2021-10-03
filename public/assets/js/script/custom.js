@@ -123,5 +123,38 @@ $(document).ready(function() {
 				toastr.error("Something went wrong!", "Error");
 			});
 	});
+
+	$(".like-post").click(function() {
+		var post_id = $(this).data('post_id');
+		var url = $(this).data('url');
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+			$.ajax({
+				type : 'POST',
+				url: url,
+				data: { post_id: post_id},
+				//async: false,
+			}).done(function(response) {
+					if(response.status == 1) {
+						toastr.success(response.message, "Success");
+					}else{
+						toastr.error(response.message, "Error");
+					}
+
+					console.log(response.like_status);
+					$('.like-anchor').text(response.like_status);
+			}).fail(function() {
+				ajaxrequestTime = false;
+			    toastr.error("Something went wrong!", "Error");
+			});
+	});
+
+	$('.comment-button').click(function()
+	{
+		$('.comment-form').show();
+	});
 	
 });

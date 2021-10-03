@@ -277,12 +277,7 @@
           </div>
         </div>
       </div>
-    </div>
-    
-
-    
-    
-    
+    </div>    
    </section>
 
   <!-- section-3 -->
@@ -329,6 +324,31 @@
                         <img class="w-100" src="{{ productDefaultImage($product->id)}}" alt="">
                         <button type="button" class="btn btn-dark px-3 py-3 rounded-pill position-absolute bottom-0 start-50 translate-middle-x mb-4" style="display: inline-block;width: 180px; white-space: nowrap; overflow: hidden !important;    text-overflow: ellipsis;" title="{{ $product->name }}">
                           <a href="{{ route('product-detail', $product->sku) }}">{{ $product->name }}</a>
+                        </button>
+                    </div>
+                </div>
+            @endforeach
+        <div>
+        </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- section-4 latest-user-posts  -->
+  <section id="z-products">
+    <div class="container-xl ">
+      <div class="row">
+        <div class="col-md-12 text-center mb-4" data-aos="fade-up"  >
+          <h1 class="fw-bold mb-3" >Latest Posts</h1>
+          <h3 class="text-muted">Browse through the colection</h3>
+        </div>
+        <div class="three-item">
+            @foreach($user_posts as $user_post)                
+                <div>
+                    <div class="position-relative me-3">
+                        <img class="w-100" src="{{ postDefaultImage($user_post->id)}}" alt="">
+                        <button type="button" class="btn btn-dark px-3 py-3 rounded-pill position-absolute bottom-0 start-50 translate-middle-x mb-4" style="display: inline-block;width: 180px; white-space: nowrap; overflow: hidden !important;    text-overflow: ellipsis;" title="{{ $user_post->title }}">
+                          <a href="{{ route('buyerViewUserPost', \Illuminate\Support\Facades\Crypt::encrypt($user_post->id)) }}">{{ $user_post->title }}</a>
                         </button>
                     </div>
                 </div>

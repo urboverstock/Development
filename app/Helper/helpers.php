@@ -1,5 +1,6 @@
  <?php
  	use App\Models\ProductImage;
+ 	use App\Models\UserPostFile;
  	use App\Models\Chat;
  	use App\Models\ChatRoom;
  	
@@ -45,6 +46,26 @@
 					$file = $productImage->file;					
 				} 
 			} */
+			return asset($file);
+		}
+	}
+
+	// DEFAULT IMAGES FOR POST
+	if(!function_exists('postDefaultImage')) {
+		function postDefaultImage($post_id) {			
+			$file = '/assets/images/section-4/1.png';
+			
+			$postImage = UserPostFile::where('user_post_id', $post_id)
+										->where('file_type', PRDOCUT_IMAGE_TYPE)
+										->orderBy('file_type', 'ASC')
+										->select('file')->first();
+			
+			$removeFirstSlash = ltrim($postImage->file, '/');
+			if($postImage) {
+				if(file_exists($removeFirstSlash)) {
+					$file = $postImage->file;					
+				} 
+			}
 			return asset($file);
 		}
 	}

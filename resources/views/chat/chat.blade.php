@@ -23,8 +23,7 @@
             @if($users->count())
             @foreach($users as $key => $user)
                 <?php
-                    $unreadMessageCounter = unreadMessageCounter(Auth::user()->id, $user->id);
-                    
+                    $unreadMessageCounter = unreadMessageCounter(Auth::user()->id, $user->id);                    
                 ?>
                 <div class="box-item {{$user->id == $userId ? 'active' : ''}}">
                   <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($user->id)) }}" class="py-3 d-flex align-items-start text-decoration-none text-dark">
