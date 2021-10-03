@@ -117,8 +117,7 @@
                     </tr>
                     @endforeach
                     @else
-                    <tr>No data
-                    </tr>
+                    <tr><td class="py-3 align-middle"><div>No Records</div></td></tr>
                     @endif
 
                     
