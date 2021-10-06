@@ -323,7 +323,7 @@
                     <div class="position-relative me-3">
                         <img class="w-100" src="{{ productDefaultImage($product->id)}}" alt="">
                         <button type="button" class="btn btn-dark px-3 py-3 rounded-pill position-absolute bottom-0 start-50 translate-middle-x mb-4" style="display: inline-block;width: 180px; white-space: nowrap; overflow: hidden !important;    text-overflow: ellipsis;" title="{{ $product->name }}">
-                          <a href="{{ route('product-detail', $product->sku) }}">{{ $product->name }}</a>
+                          <a class="text-decoration-none text-white text-capitalize" href="{{ route('product-detail', $product->sku) }}">{{ $product->name }}</a>
                         </button>
                     </div>
                 </div>
@@ -348,7 +348,7 @@
                     <div class="position-relative me-3">
                         <img class="w-100" src="{{ postDefaultImage($user_post->id)}}" alt="">
                         <button type="button" class="btn btn-dark px-3 py-3 rounded-pill position-absolute bottom-0 start-50 translate-middle-x mb-4" style="display: inline-block;width: 180px; white-space: nowrap; overflow: hidden !important;    text-overflow: ellipsis;" title="{{ $user_post->title }}">
-                          <a href="{{ route('buyerViewUserPost', \Illuminate\Support\Facades\Crypt::encrypt($user_post->id)) }}">{{ $user_post->title }}</a>
+                          <a class="text-decoration-none text-white text-capitalize" href="{{ route('buyerViewUserPost', \Illuminate\Support\Facades\Crypt::encrypt($user_post->id)) }}">{{ $user_post->title }}</a>
                         </button>
                     </div>
                 </div>

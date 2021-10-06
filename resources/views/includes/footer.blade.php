@@ -69,9 +69,15 @@
               <i class="fab fa-linkedin-in"></i>
             </a>
           </div> -->
-          <div class="d-flex">
-            <a href="#"></a>
-          </div>
+        </div>
+        <div class="d-flex">
+        <?php 
+            // pass web-site url
+            $site_url  = "https://www.facebook.com/autovlog";
+            // post title
+            $site_title  = "onlinecode";
+        ?>
+          <a href="http://www.facebook.com/sharer.php?u=<?=$site_url?>" target="_blank" class="text-decoration-none text-dark"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
     </div>
