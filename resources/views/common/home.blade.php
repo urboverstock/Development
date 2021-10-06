@@ -240,14 +240,14 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center sec-7-card-sm-title flex-wrap">
                       <img class="img-fluid me-2" src="{{ $seller->profile_pic ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt="">
-                      <h2 class="fw-bold mb-0">{{ $seller->name }}</h2>
+                      <h2 class="fw-bold mb-0">{{ $seller->full_name }}</h2>
                     </div>
 
                     <div class="sec-7-card-lg-title">
                       <div class="d-flex align-items-center border-bottom py-3 flex-wrap">
                         <img class="avatar me-3" src="{{ $seller->profile_pic ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt="">
                         <div class="me-3">
-                          <p class="fw-bold mb-1 text-white">{{ $seller->name }}</p>
+                          <p class="fw-bold mb-1 text-white">{{ $seller->full_name }}</p>
                           <div class="d-flex">
                             <i class="far fa-star text-white"></i>
                             <i class="far fa-star text-white"></i>
