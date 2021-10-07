@@ -190,4 +190,6 @@ class UserPostController extends Controller
             return redirect()->back()->with('error', COMMON_ERROR);
         }
     }
+
+    
 }

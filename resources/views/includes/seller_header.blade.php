@@ -56,6 +56,9 @@
               <li><a class="dropdown-item border-bottom" href="{{ route('sellerWishlistProduct') }}
               ">Users Wishlist</a></li>
 
+              <li><a class="dropdown-item border-bottom" href="{{ route('AllPost') }}
+              ">All Posts</a></li>
+
               <li><a class="dropdown-item border-bottom" href="{{ route('sellerUserPost') }}
               ">Posts</a></li>
 

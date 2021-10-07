@@ -41,7 +41,7 @@
 
             <div class="col-lg-12">
               @if(Auth::check())
-              <a href="javascript:void(0)" class="like-post like-anchor" data-post_id="{{ $userPost->id }}" data-url="{{ route('LikePost', $userPost->id) }}"> {{ $userPost->getPostLike->like_status == 1 ? 'Unlike' : 'Like'}}</a>
+              <a href="javascript:void(0)" class="like-post like-anchor" data-post_id="{{ $userPost->id }}" data-url="{{ route('LikePost', $userPost->id) }}"> {{ isset($userPost->getPostLike) && $userPost->getPostLike->like_status == 1 ? 'Unlike' : 'Like'}}</a>
               @else
               <a href="{{ route('signin') }}" class="like-anchor">{{ isset($userPost->getPostLike) && $userPost->getPostLike->like_status == 1 ? 'Unlike' : 'Like'}}</a>
               @endif

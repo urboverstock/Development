@@ -18,17 +18,20 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="d-flex mb-2" data-aos="fade-up">
-            <h1 class="display-5 f-600 me-3">{{ $user->first_name }} {{ !empty($user->last_name) }}</h1>
+            <h1 class="display-5 f-600 me-3">{{ $user->first_name }} {{ !empty($user->last_name) ? $user->last_name : '' }}</h1>
             <div class="online-active"></div>
           </div>
+          <h3 data-aos="fade-up"><a href="mailto:{{ $user->email }}"> {{ $user->email }} </a></h3>
           
 
           @if($user->user_chat_status == 1)
-          @if(Auth::check())
-            <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($store_user_details->id)) }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3 display-5" id="add-to-cart" data-productid="{{ @$product_details->id }}"  data-aos="fade-up"><i class="far fa-comments"></i></a>
+          @if($user->id != Auth::user()->id)
+            @if(Auth::check())
+            <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($user->id)) }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3 display-5" id="add-to-cart" data-productid="{{ @$product_details->id }}"  data-aos="fade-up"><i class="far fa-comments"></i></a>
             @else
             <a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3" data-aos="fade-up"><i class="far fa-comments"></i></a>
             @endif
+          @endif
           @endif
           <div class="mb-5" data-aos="fade-up">
             <div class="urban-title text--primary position-relative mb-2">

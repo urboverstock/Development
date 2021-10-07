@@ -19,14 +19,8 @@ class LandingController extends Controller
 
     public function home(Request $request)
     {
-        if(Auth::check())
-        {
-            $user_posts = UserPost::with('getUserPostFile', 'getUser', 'getPostLike')->where('user_id', '<>', Auth::user()->id)->latest()->get();
-        }
-        else
-        {
-            $user_posts = UserPost::with('getUserPostFile', 'getUser', 'getPostLike')->latest()->get();
-        }
+        $user_posts = UserPost::with('getUserPostFile', 'getUser', 'getPostLike')->latest()->get();
+        
         // echo "<pre>";
         // print_r($user_posts);die();
         $request->request->add(['limit' => 6]);
@@ -135,7 +129,7 @@ class LandingController extends Controller
                 User::where('id', Auth::user()->id)->update(['login_status' => LOGIN]);
 
                 if (Auth::user()->user_type == 4) {
-                    return redirect()->route('buyer.dashboard')->with('success', "Logged in successfully");
+                    return redirect()->route('buyer.index')->with('success', "Logged in successfully");
                 }else if (Auth::user()->user_type == 1) {
                     return redirect()->route('admin.dashboard')->with('success', "Logged in successfully");
                 }else{

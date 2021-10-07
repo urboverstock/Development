@@ -62,7 +62,7 @@
             @endif
         </div>
 
-        @if(isset($userId))
+        @if(isset($userId) && !empty($userId))
         <input type="hidden" name="senderId" id="senderId" value="{{Auth::user()->id}}">
         <input type="hidden" name="recieverId" id="recieverId" value="{{isset($userId) ? $userId : ''}}">
         <input type="hidden" name="" id="username" value="{{ Auth::user()->first_name }}">
@@ -79,33 +79,33 @@
             
             <div id="chat-box">
                 @if(isset($messages) && count($messages) > 0)
-                @foreach($messages as $message)
-                @if($message['sender_id'] == Auth::user()->id && $message['receiver_id'] == $userId)
-                <div class="box-container-item d-flex align-items-start px-4 mb-5">
-                
-                  <img class="avatar-sm me-3" src="{{$message['sender_name']['profile_img']}}" alt="">
-                  <div>
-                    <h6 class="mb-0 fw-bold">{{$message['sender_name']['full_name']}}</h6>
-                    <p class="text-muted text-12 mb-0">{{ date('h:s:A', strtotime($message['created_at'])) }} | {{ date('d M Y', strtotime($message['created_at'])) }}</p>
-                    <div class="mt-3 col-lg-12 bg-chat p-3 br-12 text-15">
-                      {{ @$message['message'] }}
-                    </div>
-                  </div>        
-                </div>
-                @elseif($message['sender_id'] == $userId && $message['receiver_id'] == Auth::user()->id)
-                <div class="box-container-item d-flex align-items-start px-4 mb-5">
-                
-                  <img class="avatar-sm me-3" src="{{$message['sender_name']['profile_img']}}" alt="">
-                  <div>
-                    <h6 class="mb-0 fw-bold">{{$message['sender_name']['full_name']}}</h6>
-                    <p class="text-muted text-12 mb-0">{{ date('h:s:A', strtotime($message['created_at'])) }} | {{ date('d M Y', strtotime($message['created_at'])) }}</p>
-                    <div class="mt-3 col-lg-12 bg-chat p-3 br-12 text-15">
-                      {{ @$message['message'] }}
-                    </div>
-                  </div>        
-                </div>
-                @endif
-                @endforeach
+                    @foreach($messages as $message)
+                        @if($message['sender_id'] == Auth::user()->id && $message['receiver_id'] == $userId)
+                        <div class="box-container-item d-flex align-items-start px-4 mb-5">
+                        
+                          <img class="avatar-sm me-3" src="{{$message['sender_name']['profile_img']}}" alt="">
+                          <div>
+                            <h6 class="mb-0 fw-bold">{{$message['sender_name']['full_name']}}</h6>
+                            <p class="text-muted text-12 mb-0">{{ date('h:s:A', strtotime($message['created_at'])) }} | {{ date('d M Y', strtotime($message['created_at'])) }}</p>
+                            <div class="mt-3 col-lg-12 bg-chat p-3 br-12 text-15">
+                              {{ @$message['message'] }}
+                            </div>
+                          </div>        
+                        </div>
+                        @elseif($message['sender_id'] == $userId && $message['receiver_id'] == Auth::user()->id)
+                        <div class="box-container-item d-flex align-items-start px-4 mb-5">
+                        
+                          <img class="avatar-sm me-3" src="{{$message['sender_name']['profile_img']}}" alt="">
+                          <div>
+                            <h6 class="mb-0 fw-bold">{{$message['sender_name']['full_name']}}</h6>
+                            <p class="text-muted text-12 mb-0">{{ date('h:s:A', strtotime($message['created_at'])) }} | {{ date('d M Y', strtotime($message['created_at'])) }}</p>
+                            <div class="mt-3 col-lg-12 bg-chat p-3 br-12 text-15">
+                              {{ @$message['message'] }}
+                            </div>
+                          </div>        
+                        </div>
+                        @endif
+                    @endforeach
                 @else
                 <div class="mt-3  p-3 br-12 text-15">
                     <h3 class="text--primary">There’s nothing here. Start a conversation.</h3>

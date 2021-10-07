@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserPost;
 use App\Models\User;
+use App\Models\Payment;
 use App\Models\UserDocument;
 use App\Models\ProductCategory;
 use App\Models\ProductCompanies;
@@ -16,8 +17,11 @@ use App\Models\ProductImage;
 use App\Models\UserFollowers;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Crypt;
+use App\Http\Requests\StoreStripeRequest;
 use Auth, Validator, DB;
 use Illuminate\Support\Str;
+use Stripe;
+use Config;
 
 class BuyerController extends Controller
 {
@@ -170,43 +174,70 @@ class BuyerController extends Controller
         return view('buyer.checkout', compact('addresses', 'carts', 'c_total_quantity', 'total_price'));
     }
 
+    public function payment(Request $request)
+    {
+        return view('stripe.stripe', compact('request'));
+    }
+
     // Save order in order and order details tables and also decrement the product table quantity
-    public function saveOrder(Request $request)
+    public function saveOrder(StoreStripeRequest $request)
     {
         $carts = Cart::with('product')->where('user_id', Auth::user()->id)->get()->toArray();
 
         DB::beginTransaction();
         try
         {
-            $order = new Order;
-            $order->user_id = Auth::user()->id;
-            $order->address_id = $request->address;
-            $order->price = $request->total_price;
-            $order->total_quantity = $request->total_quantity;
-            $order->order_number = Str::random(4).time();
-            $order->save();
+            Stripe\Stripe::setApiKey(Config::get('services.stripe.secret'));
+            
 
-            foreach ($carts as $key => $cart)
-            {
-                $getProduct = Product::find($cart['product']['id']);
+            $charge = Stripe\Charge::create([
+                'source' => $request->stripeToken,
+                'currency' => 'inr',
+                'amount' => $request->total_price * 100,
+                'description' => 'test',
+            ]);
 
-                $order_details = new OrderDetail;
-                $order_details->order_id = $order->id;   
-                $order_details->product_id = $cart['product']['id'];
-                $order_details->product_quantity = $cart['quantity'];
-                $order_details->product_price = $cart['product']['price'];
-                $order_details->save();
+            // echo "<pre>";
+            // print_r($charge);die();
 
-                if((int)$getProduct->quantity != 0)
+            if ($charge['status'] == 'succeeded') {
+                $order = new Order;
+                $order->user_id = Auth::user()->id;
+                $order->address_id = $request->address;
+                $order->price = $request->total_price;
+                $order->total_quantity = $request->total_quantity;
+                $order->order_number = Str::random(4).time();
+                $order->save();
+
+                foreach ($carts as $key => $cart)
                 {
-                    $productUpdate = Product::where('id', $cart['product']['id'])
-                    ->decrement('quantity' , $cart['quantity']);
+                    $getProduct = Product::find($cart['product']['id']);
+
+                    $order_details = new OrderDetail;
+                    $order_details->order_id = $order->id;   
+                    $order_details->product_id = $cart['product']['id'];
+                    $order_details->product_quantity = $cart['quantity'];
+                    $order_details->product_price = $cart['product']['price'];
+                    $order_details->save();
+
+                    if((int)$getProduct->quantity != 0)
+                    {
+                        $productUpdate = Product::where('id', $cart['product']['id'])
+                        ->decrement('quantity' , $cart['quantity']);
+                    }
                 }
+
+                $payment = new Payment;
+                $payment->user_id = Auth::user()->id;
+                $payment->order_id = $order->id;
+                $payment->charge_id = $charge['id'];
+                $payment->transaction_id = $charge['balance_transaction'];
+                $payment->save();
+
+                Cart::where('user_id', Auth::user()->id)->delete();
+
+                DB::commit();
             }
-
-            Cart::where('user_id', Auth::user()->id)->delete();
-
-            DB::commit();
         }
         catch (\Throwable $e)
         {

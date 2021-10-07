@@ -59,7 +59,6 @@ Route::group(['middleware' => ['auth', 'checksellerstore'], 'prefix' => 'seller'
     Route::any('order/{id}', [App\Http\Controllers\Seller\OrderController::class, 'viewOrder'])->name('ViewOrder');
     Route::any('order-status/{orderId}/{orderStatus}', [App\Http\Controllers\Seller\OrderController::class, 'updateOrderStatus'])->name('UpdateOrderStatus');
 
-
     Route::any('user-post', [App\Http\Controllers\Seller\UserPostController::class, 'index'])->name('UserPost');
     Route::any('add-user-post', [App\Http\Controllers\Seller\UserPostController::class, 'create'])->name('AddUserPost');
     Route::any('store-user-post', [App\Http\Controllers\Seller\UserPostController::class, 'store'])->name('StoreUserPost');
@@ -94,6 +93,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('/view-profile', [App\Http\Controllers\BuyerController::class, 'view_profile'])->name('buyer.view_profile');
     Route::any('/followers', [App\Http\Controllers\BuyerController::class, 'get_followers'])->name('buyer.followers');
     Route::any('/checkout', [App\Http\Controllers\BuyerController::class, 'checkout'])->name('buyer.checkout');
+    Route::any('/payment', [App\Http\Controllers\BuyerController::class, 'payment'])->name('payment');
     Route::any('/save-order', [App\Http\Controllers\BuyerController::class, 'saveOrder'])->name('save.order');
     Route::any('/add-new-address', [App\Http\Controllers\BuyerController::class, 'address'])->name('buyer.address');
 
@@ -195,3 +195,4 @@ Route::get('buy-now/{product_id}', [App\Http\Controllers\LandingController::clas
 Route::any('newsletter', [App\Http\Controllers\NewsletterController::class, 'sendNewsLetter'])->name('sendNewsLetter');
 
 Route::get('profile/{user_id}', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
+ Route::get('all-post', [App\Http\Controllers\UserPostController::class, 'allPost'])->name('AllPost');

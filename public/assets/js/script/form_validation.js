@@ -865,6 +865,35 @@ $(document).ready(function() {
         } 
       });
 
+	$("#payment-form").validate({ 
+        errorElement: 'span',
+        rules: {
+        	name : {
+          		required : true
+          	},          	
+          	card_number: {
+            	required:true,
+            	number: true,
+            	minlength: 16
+          	},
+          	cvv : {
+          		required : true,
+          		number: true,
+            	minlength: 3
+          	},
+          	expiry_month : {
+          		required : true,
+          		number: true,
+            	minlength: 3,
+          	},
+          	expiry_year : {
+          		required : true,
+          		number: true,
+            	minlength: 4,
+          	}
+        } 
+      });
+
 	$("#comment-form").validate({ 
 		errorElement: 'span',
 		rules: {

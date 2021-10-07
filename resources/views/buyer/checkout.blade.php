@@ -1,9 +1,9 @@
 @extends('layouts.buyer')
 @section('title', 'Checkout')
 @section('content')
-<section class="mt-96   pb-5 ">
+<section class="mt-96 pb-5 ">
   <div class="container pt-4">
-    <form method="post" action="{{ route('save.order') }}">
+    <form method="post" action="{{ route('payment') }}">
       <div class="row">
         @if(isset($carts) && !empty($carts))
   			<div class="col-lg-8">

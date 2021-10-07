@@ -31,7 +31,8 @@ class UserPostController extends Controller
         }
         else
         {
-            $data['userPosts'] = UserPost::where('user_id', Auth::user()->id)->UserPost::with('getUserPostFile', 'getPostLike')->get()->toArray();
+            $data['userPosts'] = UserPost::where('user_id', Auth::user()->id)->with('getUserPostFile', 'getPostLike')->get()->toArray();
+            // print_r($data['userPosts']);die();
         }
         return view('userPost.userPostList', $data);
     }
@@ -269,5 +270,10 @@ class UserPostController extends Controller
         }
     }
 
+    public function allPost()
+    {
+        $user_posts = UserPost::with('getUserPostFile', 'getUser', 'getPostLike')->latest()->paginate();
 
+        return view('seller.userPost.allpost', compact('user_posts'));
+    }
 }

@@ -17,8 +17,15 @@ class ChatController extends Controller
     {
         if(Auth::check())
         {
+            $getReceiverUsers = Chat::where('sender_id', Auth::user()->id)->get()->pluck('receiver_id')->toArray();
+
+            $getSenderUsers = Chat::where('receiver_id', Auth::user()->id)->get()->pluck('sender_id')->toArray();
+
+
             $data['users'] = User::where('id', '!=', Auth::user()->id)
             ->whereNotIn('user_type', [1])
+            ->whereIn('id', $getReceiverUsers)
+            ->orWhereIn('id', $getSenderUsers)
             ->get();
 
             $userId = '';
@@ -98,6 +105,7 @@ class ChatController extends Controller
             }
     	}
     }
+
     public function unreadMessage(Request $request)
     {
         $countUnreadMessages = Chat::where(['sender_id' => $request->senderId, 'receiver_id' => $request->recieverId])->whereNULL('read_by')->count();
