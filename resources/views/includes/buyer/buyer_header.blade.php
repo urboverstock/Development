@@ -7,7 +7,7 @@
     <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light fixed-top bg-white">
       <div class="container-fluid px-5">
         <a class="navbar-brand" href="{{ url('/') }}">
-          <img src="{{ asset('assets/images/logo.png') }}" alt="">
+          <img class="navbar-logo-seller " src="{{ asset('assets/images/logo.png') }}" alt="">
         </a>
         
         <div class="custom-form-group-search position-relative 	d-none d-lg-block">
@@ -55,12 +55,12 @@
             </ul>
           </div>
           
-          <div class="hamburger-menu">
+          <!-- <div class="hamburger-menu">
             <div class="line line-1"> </div>
             <div class="line line-3"> </div>
-          </div>
+          </div> -->
         </div>
-        <div class="custom-navbar">
+        <!-- <div class="custom-navbar">
           <ul class="nav-list">
             <li class="custom-nav-item">
               <a href="{{ url('/') }}" class="custom-nav-link">Home</a>
@@ -75,7 +75,7 @@
               <a href="#z-contact" class="custom-nav-link">Contact Us</a>
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </nav>
   </header>

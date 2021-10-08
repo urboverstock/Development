@@ -6,15 +6,17 @@
 	<section class="mt-5 mb-4">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">
-          <div class="d-flex mb-2" data-aos="fade-up">
-            <h1 class="display-5 f-600 me-3">{{$userPost->title}}</h1>
-          </div>
-          <div class="d-flex mb-2" data-aos="fade-up">
-            <p><label>Post By : </label><span> <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($userPost->getUser->id)) }}"> {{ $userPost->getUser->fullname }} </a></span></p>
-          </div>
+        <div class="d-flex">
+          <div class="card border-0 shadow br-10 px-4">
+            <div class="card-body">
+            <div class="d-flex mb-0" data-aos="fade-up">
+              <h1 class="display-5 f-600 me-3 mb-1">{{$userPost->title}}</h1>
+            </div>
+            <div class="d-flex mb-0" data-aos="fade-up">
+              <p class="mb-1"><label>Post By : </label><span> <a class="text-decoration-none text--primary text-decoration-none" href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($userPost->getUser->id)) }}"> {{ $userPost->getUser->fullname }} </a></span></p>
+            </div>
 
-            <div class="d-flex flex-wrap mb-2" data-aos="fade-up">
+            <div class="d-flex flex-wrap mb-4" data-aos="fade-up">
               Description : {{$userPost->description}}
             </div>
             @if(count($userPost->getUserPostFile) > 0)
@@ -33,7 +35,7 @@
                   <source src="{{url('/') . $file->file}}" type="video/{{ $ext }}">
                 </video>
               <?php } else { ?>
-            		<img src="{{ url('/') . $file->file }}" width="200">
+            		<img class="view-post-img " src="{{ url('/') . $file->file }}">
               <?php } ?>
             	@endforeach
             </div>
@@ -41,18 +43,18 @@
 
             <div class="col-lg-12">
               @if(Auth::check())
-              <a href="javascript:void(0)" class="like-post like-anchor" data-post_id="{{ $userPost->id }}" data-url="{{ route('LikePost', $userPost->id) }}"> {{ isset($userPost->getPostLike) && $userPost->getPostLike->like_status == 1 ? 'Unlike' : 'Like'}}</a>
+              <a href="javascript:void(0)" class="like-post like-anchor text-decoration-none me-2 hover-primary" data-post_id="{{ $userPost->id }}" data-url="{{ route('LikePost', $userPost->id) }}"> {{ isset($userPost->getPostLike) && $userPost->getPostLike->like_status == 1 ? 'Unlike' : 'Like'}}</a>
               @else
-              <a href="{{ route('signin') }}" class="like-anchor">{{ isset($userPost->getPostLike) && $userPost->getPostLike->like_status == 1 ? 'Unlike' : 'Like'}}</a>
+              <a href="{{ route('signin') }}" class="like-anchor text-decoration-none me-2 hover-primary">{{ isset($userPost->getPostLike) && $userPost->getPostLike->like_status == 1 ? 'Unlike' : 'Like'}}</a>
               @endif
 
-              <a href="javascript:void(0)" class="comment-button">Comment</a>
+              <a href="javascript:void(0)" class="comment-button text-decoration-none hover-primary ">Comment</a>
 
-              <form class="comment-form" action="" method="post" id="comment-form" style="display: none;">
+              <form class="comment-form col-md-6 mt-4" action="" method="post" id="comment-form" style="display: none;">
                 @csrf
                 <input type="hidden" name="post_id" value="{{ $userPost->id }}">
-                <textarea name="comment"></textarea>
-                <input type="submit" name="" value="Submit">
+                <textarea class="form-control mb-3" name="comment"></textarea>
+                <input class="btn btn--primary text-white" type="submit" name="" value="Submit">
               </form>
 
               @if(isset($userPost->getPostComments))
@@ -67,8 +69,10 @@
               </ul>
               @endif
             </div>
+            </div>
+          </div>
            
-      </div>
+        </div>
     </div>
   </section>
 

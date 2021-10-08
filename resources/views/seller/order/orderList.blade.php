@@ -79,7 +79,7 @@
                           @endswitch -->
 
                       </td>
-                      <td class="py-3 align-middle "><a href="{{ route('sellerViewOrder', \Illuminate\Support\Facades\Crypt::encrypt($order['id'])) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                      <td class="py-3 align-middle "><a class="btn btn--primary text-white btn-sm" href="{{ route('sellerViewOrder', \Illuminate\Support\Facades\Crypt::encrypt($order['id'])) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                       
                     </tr>
                     @endforeach

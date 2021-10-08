@@ -33,3 +33,14 @@
         padding-bottom: 30px;
     }
 }
+
+.hover-primary {
+    color: #000;
+}
+.hover-primary:hover{
+  color: #d9b950 ;
+}
+
+.view-post-img {
+    width: 220px;
+}

@@ -35,3 +35,25 @@ body {
         }
     }
 
+@media only screen and (max-width: 418px) {
+    .navbar-logo-seller {
+        width: 124px;
+    }
+    .--header-margin-top-mobile-version{
+        margin-top: 0;
+    }
+    .inner-profile-header {
+       
+        margin-top: 100px;
+    }
+  }
+
+  .hover-primary {
+      color: #000;
+  }
+.hover-primary:hover{
+    color: #d9b950 ;
+}
+.mh-420 {
+    max-height: 420px;
+}
