@@ -50,7 +50,7 @@
 
               <a href="javascript:void(0)" class="comment-button text-decoration-none hover-primary ">Comment</a>
 
-              <form class="comment-form col-md-6 mt-4" action="" method="post" id="comment-form" style="display: none;">
+              <form class="comment-form col-md-12 mt-4" action="" method="post" id="comment-form" style="display: none;">
                 @csrf
                 <input type="hidden" name="post_id" value="{{ $userPost->id }}">
                 <textarea class="form-control mb-3" name="comment"></textarea>
@@ -58,9 +58,9 @@
               </form>
 
               @if(isset($userPost->getPostComments))
-                <ul>
+                <ul class="list-group list-group-flush">
                 @foreach($userPost->getPostComments as $comment)
-                  <li>{{ $comment->comment }} <span>{{ date('d M, Y H:i A', strtotime($comment->created_at)) }}</span></li>
+                  <li class="list-group-item px-0">{{ $comment->comment }} <div class="mt-2"><small class="text-muted">{{ date('d M, Y H:i A', strtotime($comment->created_at)) }}</small></div></li>
                 @endforeach
                 </ul>
               @else
