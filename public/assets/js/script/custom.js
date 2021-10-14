@@ -113,7 +113,9 @@ $(document).ready(function() {
 				data: { product_id: product_id, quantity : quantity},
 				//async: false,
 			}).done(function(response) {
+				console.log(response);
 					if(response.status == 1) {
+						$('.cart_count').html(response.cart_count);
 						toastr.success(response.message, "Success");
 					}else{
 						toastr.error(response.message, "Error");

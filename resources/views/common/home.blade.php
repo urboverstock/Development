@@ -245,9 +245,15 @@
 
                     <div class="sec-7-card-lg-title">
                       <div class="d-flex align-items-center border-bottom py-3 flex-wrap">
+
                         <img class="avatar me-3" src="{{ $seller->profile_pic ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt="">
                         <div class="me-3">
                           <p class="fw-bold mb-1 text-white">{{ $seller->full_name }}</p>
+
+                        <!-- <img class="avatar me-3" src="{{ isset($seller->profile_pic) && !empty($seller->profile_pic) ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt="">
+                        <div class="me-3">
+                          <p class="fw-bold mb-1 text-white">{{ $seller->first_name }} {{ $seller->last_name }}</p> -->
+
                           <div class="d-flex">
                             <i class="far fa-star text-white"></i>
                             <i class="far fa-star text-white"></i>
@@ -256,13 +262,17 @@
                             <i class="far fa-star text-white"></i>
                           </div>
                         </div>
+                        @if($seller->user_chat_status == 1)
                         <span class="badge bg--primary-darken px-3">
-                          <i class="far fa-envelope h2 mb-0"></i>
+                          <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}" class="" id="add-to-cart" data-productid="{{ @$product_details->id }}"><i class="far fa-envelope h2 mb-0"></i></a>
                         </span>
+                        @endif
                       </div>
                       <div class="d-flex align-items-center justify-content-between flex-wrap my-4">
-                        <h6 class="mb-0 fw-bold text-white">247k Followers</h6>
-                        <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0">Follow</button>
+                        <h6 class="mb-0 fw-bold text-white">{{countSellerFollowers($seller->id)}} Followers</h6>
+                        <input type="hidden"  value="{{ route('add-follow-user') }}" class="addFollowUser">
+                        <input type="hidden" value="{{ $seller->id }}" class="userId">
+                        <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 add-follow-user">Follow</button>
                       </div>
                       <div>
                         <h6 class="fw-bold text-white">{{$seller->about}}</h6>
@@ -399,7 +409,7 @@
             <p class="mb-0">Find your style</p>
           </div>
           <p class="line-height-2 mb-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-          <button type="button" class="btn btn-dark border-0 shadow-none fw-bold px-5 py-4">Know More</button>
+          <a href="{{ route('products') }}" class="btn btn-dark border-0 shadow-none fw-bold px-5 py-4">Know More</a>
         </div>
         <div class="col-lg-6">
           <img class="img-fluid" data-aos="zoom-in-up" src="{{ asset('assets/images/section-6/1.png') }}" alt="">

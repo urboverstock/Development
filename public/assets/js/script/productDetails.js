@@ -212,6 +212,7 @@ $('.slider-for').slick({
            data: {deleteids_arr: deleteids_arr},
            success: function(response){
               if(response.status == 1) {
+                $('.cart_count').html(0);
                 toastr.success(response.message, "Success");
               }else{
                 toastr.error(response.message, "Error");

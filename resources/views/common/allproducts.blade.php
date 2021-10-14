@@ -29,7 +29,7 @@
                   @csrf
                   <div class="d-flex flex-grow-1 flex-wrap flex-lg-nowrap my-2">
                     <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example" name="brand">
-                        <option selected class="">Brand</option>
+                        <option selected class="" disabled="">Brand</option>
 
                         @if(isset($brands) && !empty($brands))
                           @foreach($brands as $brand)
@@ -44,14 +44,14 @@
                         <option value="2" {{ (@$gender == '1') ? 'selected' : '' }}>Women</option>
                     </select> -->
                     <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example" name="price">
-                        <option selected class="">Price</option>
+                        <option selected class="" disabled="">Price</option>
                         <option value="0 - 100" {{ @$price == '0 - 100' ? 'selected' : '' }}>0 - 100</option>
                         <option value="101 - 500" {{ @$price == '101 - 500' ? 'selected' : '' }}>101 - 500</option>
                         <option value="501 - 1000" {{ @$price == '501 - 1000' ? 'selected' : '' }}>501 - 1000</option>
                         <option value="1001" {{ @$price == '1001' ? 'selected' : '' }}>1001 > </option>
                     </select>
                     <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example" name="category">
-                        <option class="" value="">Category</option>
+                        <option class="" value="" disabled="" selected="">Category</option>
                         @foreach($categories as $category)
 
                         @php

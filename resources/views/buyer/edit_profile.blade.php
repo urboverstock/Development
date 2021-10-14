@@ -122,7 +122,7 @@
                         <span class="error">{{ $errors->first('about') }}</span>
                       </div>
                     </div>
-                    <div class="col-lg-12">
+                    <!-- <div class="col-lg-12">
                       <div class="mb-4">
                         <div class="d-flex align-items-center mb-2">
                           <p class="mb-0 me-2">Payment Method</p>
@@ -138,7 +138,7 @@
                           <i class="fas fa-pen "></i>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-lg-12">
                       <button type="submit" class="btn btn-dark px-5 py-3 rounded-pill">Save Changes</button>
                     </div>

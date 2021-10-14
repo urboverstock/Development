@@ -11,8 +11,10 @@
         </a>
         
         <div class="custom-form-group-search position-relative 	d-none d-lg-block">
-          <input type="text" class="form-control" placeholder="Search for your favourite brands" />
-          <i class="fas fa-search text--primary"></i>
+          <form action="{{ route('search-products') }}">
+            <input type="text" class="form-control" placeholder="Search for your favourite brands" name="search" />
+            <i class="fas fa-search text--primary"></i>
+          </form>
         </div>
         <div class="d-flex align-items-center">
           <a href="{{ route('carts') }}" class="text-dark me-4 fw-bold text-decoration-none d-none d-lg-block">
@@ -28,7 +30,7 @@
                 </clipPath>
                 </defs>
               </svg>
-              <!-- <span class="badge bg-dark ms-1">2</span> -->
+              <span class="badge bg-dark ms-1 cart_count">{{cartCount(Auth::user()->id)}}</span>
             </div>
 
           </a>
@@ -42,8 +44,11 @@
                <!-- fw-bold -->
               <li><a class="dropdown-item border-bottom" href="{{ route('buyer.edit_profile') }}">My Profile</a></li>
               <li><a class="dropdown-item border-bottom" href="{{ route('buyer.dashboard') }}">Dashboard</a></li>
+              <li class="">
+                <a href="{{ route('buyer.index') }}#z-about" class="dropdown-item border-bottom">About Us</a>
+              </li>
               <li><a class="dropdown-item border-bottom" href="{{ route('buyer.followers') }}">Followers</a></li>
-              
+              <li><a href="{{ route('products') }}" class="dropdown-item border-bottom">Products</a></li>
               <!--li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li-->
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerOrderList') }}">My Orders</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerFavouriteProduct') }}">My Favourites</a></li>
@@ -51,16 +56,18 @@
               <li><a class="dropdown-item border-bottom " href="{{ route('AllPost') }}">All Posts</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerUserPost') }}">Posts</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('chat') }}">Chat</a></li>
+              <li><a href="#z-contact" class="dropdown-item border-bottom">Contact Us</a>
+              </li>
               <li class="logout_btn"><a class="dropdown-item border-bottom" href="{{ route('logout') }}">Logout</a></li>
             </ul>
           </div>
-          
-          <!-- <div class="hamburger-menu">
+        </div>
+          @if(!Auth::check())
+          <div class="hamburger-menu">
             <div class="line line-1"> </div>
             <div class="line line-3"> </div>
-          </div> -->
-        </div>
-        <!-- <div class="custom-navbar">
+          </div>
+        <div class="custom-navbar">
           <ul class="nav-list">
             <li class="custom-nav-item">
               <a href="{{ url('/') }}" class="custom-nav-link">Home</a>
@@ -75,7 +82,8 @@
               <a href="#z-contact" class="custom-nav-link">Contact Us</a>
             </li>
           </ul>
-        </div> -->
+        </div>
+        @endif
       </div>
     </nav>
   </header>

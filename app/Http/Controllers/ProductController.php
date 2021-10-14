@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\User;
+use App\Models\OrderDetail;
+use App\Models\ProductView;
 
 class ProductController extends Controller
 {
@@ -21,9 +23,12 @@ class ProductController extends Controller
     {
         $request->request->add(['limit' => 8]);
         $products = Product::getProducts($request);
+        $brands = Product::select('brand')->whereNotNull('brand')->groupBy('brand')->get()->toArray();
         $categories = ProductCategory::get();
         $search = $request->search;
-        return view('common.search-results', compact('products','categories','search'));
+        $price = $request->price;
+        $filter_brand = $request->brand;
+        return view('common.search-results', compact('products','categories','search','price', 'brands', 'filter_brand'));
     }
 
     public function getProducts(Request $request)
@@ -74,8 +79,34 @@ class ProductController extends Controller
             $product_details = Product::with('product_image')->where('sku', $slug)->first();
             $store_user_details = User::with('storeDetail')->find($product_details->user_id);
             $recent_products = Product::with('product_image')->where('sku', '!=', $slug)->latest()->take(4)->get()->toArray();
+
+            $totalSoldProduct = OrderDetail::where('product_id', $product_details->id)->count();
+
+            $checkProductView = ProductView::where('product_id', $product_details->id)->first();
+     
+            if(empty($checkProductView))
+            {
+                $productView = new ProductView;
+                $productView->view_count = 1;
+                $productView->product_id = $product_details->id;
+                $productView->save();
+            }
+            else
+            {
+                $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
+
+                if(!$pageWasRefreshed ) {
+                    $productView = ProductView::find($checkProductView->id);
+                    $productView->view_count = $checkProductView->view_count + 1;
+                    $productView->product_id = $product_details->id;
+                    $productView->save();
+                }
+            }
+
+            $totalProductView = ProductView::where('product_id', $product_details->id)->first();
+            // print_r($totalProductView);die();
             
-            return view('common.productDetail', compact('product_details', 'recent_products', 'store_user_details'));
+            return view('common.productDetail', compact('product_details', 'recent_products', 'store_user_details', 'totalSoldProduct', 'totalProductView'));
         } else {
             return redirect('/');
         }

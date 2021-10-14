@@ -45,7 +45,8 @@
                   	@foreach($orders as $key => $order)
                     <tr>
                       <th scope="row" class="py-3 text-24 align-middle f-400">{{ $key + 1  }}</td>
-                      <th scope="row" class="py-3 text-24 align-middle f-400">{{ $order['get_user_detail']['first_name']}}</td>
+                      <th scope="row" class="py-3 text-24 align-middle f-400">
+                        <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($order['get_user_detail']['id'])) }}"> {{ $order['get_user_detail']['first_name']}}</a></td>
                       <td class="py-3 align-middle text-24">{{ $order['order_number'] }}</td>
                       <td class="py-3 align-middle text-24"> {{ $order['total_quantity'] }} </td>
                       <td class="py-3 align-middle text-24">{{ $order['price'] }}</td>

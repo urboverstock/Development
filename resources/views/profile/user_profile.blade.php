@@ -23,11 +23,14 @@
           </div>
           <h3 data-aos="fade-up"><a href="mailto:{{ $user->email }}"> {{ $user->email }} </a></h3>
           
+          <input type="hidden"  value="{{ route('add-follow-user') }}" class="addFollowUser">
+          <input type="hidden" value="{{ $user->id }}" class="userId">
+          <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 add-follow-user mb-3 me-3 py-2 px-4">Follow</button>
 
           @if($user->user_chat_status == 1)
           @if($user->id != Auth::user()->id)
             @if(Auth::check())
-            <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($user->id)) }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3 display-5" id="add-to-cart" data-productid="{{ @$product_details->id }}"  data-aos="fade-up"><i class="far fa-comments"></i></a>
+            <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($user->id)) }}" class="btn btn-dark z-btn-text-white py-2 px-4 mb-3 me-3 display-5" id="add-to-cart" data-productid="{{ @$product_details->id }}"  data-aos="fade-up"><i class="far fa-comments"></i></a>
             @else
             <a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3" data-aos="fade-up"><i class="far fa-comments"></i></a>
             @endif

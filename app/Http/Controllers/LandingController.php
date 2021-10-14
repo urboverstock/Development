@@ -378,6 +378,8 @@ class LandingController extends Controller
                 $cart->product_id = $postData['product_id'];
                 $cart->quantity = isset($postData['quantity']) ? $postData['quantity'] : 1;
                 if($cart->save()){
+                    $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+                    $response["cart_count"] = $cartCount;
                     $response["status"] = 1;
                     $response["message"] = "Add to cart successfully";
                 }else{
@@ -396,6 +398,7 @@ class LandingController extends Controller
                 $cart = Cart::find($check->id);
                 $cart->quantity = $check->quantity + 1;
                 if($cart->save()){
+                    
                     $response["status"] = 1;
                     $response["message"] = "Add to cart successfully";
                 }else{

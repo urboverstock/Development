@@ -15,6 +15,8 @@ use App\Models\OrderDetail;
 use App\Models\Address;
 use App\Models\ProductImage;
 use App\Models\UserFollowers;
+use App\Models\ProductFavourite;
+use App\Models\Chat;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Requests\StoreStripeRequest;
@@ -55,7 +57,11 @@ class BuyerController extends Controller
       $user = User::find(Auth::user()->id);
       $followers = UserFollowers::where(['follower_id'=>Auth::user()->id])->count();
       $followings = UserFollowers::where(['user_id'=>Auth::user()->id])->count();
-      return view('buyer.dashboard', compact('user','followers','followings'));
+      $total_item_order = Order::where('user_id', Auth::user()->id)->count();
+      $total_item_favourite = ProductFavourite::where('user_id', Auth::user()->id)->count();
+      $unread_msg_count = Chat::whereNull('read_at')->count();
+      $total_pending_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_PENDING)->count();
+      return view('buyer.dashboard', compact('user','followers','followings', 'total_item_order', 'total_item_favourite', 'unread_msg_count','total_pending_order'));
     }
 
     public function edit_profile(Request $request){
@@ -137,7 +143,6 @@ class BuyerController extends Controller
                     })
                     ->where('user_followers.follower_id', '=', Auth::user()->id)
                     ->get();
-
         $get_followings = DB::table('user_followers')
                     ->distinct()
                     ->select("users.id","users.first_name","users.profile_pic","user_followers.id","user_followers.user_id","user_followers.follower_id")
@@ -147,8 +152,13 @@ class BuyerController extends Controller
                     ->where('user_followers.user_id', '=', Auth::user()->id)
                     ->get();
 
+        $total_item_order = Order::where('user_id', Auth::user()->id)->count();
+        $total_item_favourite = ProductFavourite::where('user_id', Auth::user()->id)->count();
+        $unread_msg_count = Chat::whereNull('read_at')->count();
+        $total_pending_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_PENDING)->count();
+        // print_r($total_item_order);die();
         //echo "<pre>";print_r($get_followings);die;
-        return view('buyer.show_followers', compact('user','followers','followings','get_followers','get_followings'));
+        return view('buyer.show_followers', compact('user','followers','followings','get_followers','get_followings', 'total_item_order', 'total_item_favourite', 'unread_msg_count', 'total_pending_order'));
     }
 
     // Checkout functionality

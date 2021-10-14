@@ -38,7 +38,8 @@ class Product extends Model
     						->where('status', ACTIVE_STATUS);
     	if($request->search) {
     		$query->where(function($q) use ($request) {
-    			$q->where('name', 'LIKE', "%{$request->search}%"); 
+    			$q->where('name', 'LIKE', "%{$request->search}%")
+                ->orWhere('name', 'LIKE', "%{$request->search}%"); 
     		});
     	}
 

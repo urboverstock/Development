@@ -48,29 +48,31 @@
               </svg>
               
               <div class="border-r-grey pe-2">
-                <h6 class="f-600 mb-0">4,320 <span class="fw-normal">Sold</span></h6>
+                <h6 class="f-600 mb-0">{{$totalSoldProduct}} <span class="fw-normal">Sold</span></h6>
               </div>
             </span>
             <div class=" d-flex border-r-grey pe-2 mb-0 align-items-center">
               <svg class="mx-2" width="26" height="17" viewBox="0 0 26 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M25.416 7.96239C23.0757 3.55296 18.4424 0.56958 13.1371 0.56958C7.83186 0.56958 3.19726 3.55504 0.858169 7.9628C0.759445 8.15138 0.708008 8.35972 0.708008 8.57102C0.708008 8.78232 0.759445 8.99067 0.858169 9.17924C3.19856 13.5887 7.83186 16.572 13.1371 16.572C18.4424 16.572 23.077 13.5866 25.416 9.17882C25.5148 8.99025 25.5662 8.78191 25.5662 8.57061C25.5662 8.3593 25.5148 8.15096 25.416 7.96239ZM13.1371 14.5717C11.908 14.5717 10.7065 14.2198 9.68448 13.5604C8.6625 12.901 7.86597 11.9638 7.3956 10.8673C6.92524 9.77074 6.80217 8.56416 7.04196 7.40009C7.28175 6.23603 7.87363 5.16676 8.74275 4.32752C9.61187 3.48827 10.7192 2.91674 11.9247 2.68519C13.1302 2.45365 14.3798 2.57249 15.5153 3.02668C16.6509 3.48088 17.6215 4.25003 18.3043 5.23688C18.9872 6.22372 19.3517 7.38394 19.3517 8.57081C19.3521 9.35897 19.1916 10.1395 18.8794 10.8677C18.5673 11.596 18.1095 12.2576 17.5324 12.815C16.9552 13.3723 16.27 13.8143 15.5158 14.1157C14.7616 14.4172 13.9533 14.5721 13.1371 14.5717ZM13.1371 4.5702C12.7673 4.57519 12.3999 4.62831 12.0448 4.72814C12.3375 5.11223 12.478 5.58489 12.4407 6.0604C12.4035 6.53592 12.191 6.9828 11.8418 7.32C11.4926 7.6572 11.0298 7.86239 10.5373 7.89836C10.0449 7.93433 9.55539 7.7987 9.15763 7.51607C8.93113 8.32185 8.97202 9.17594 9.27453 9.95811C9.57705 10.7403 10.126 11.4112 10.844 11.8763C11.5621 12.3415 12.4131 12.5775 13.2774 12.5511C14.1416 12.5247 14.9755 12.2373 15.6617 11.7293C16.3479 11.2214 16.8519 10.5184 17.1027 9.71932C17.3535 8.92027 17.3385 8.06539 17.0597 7.27502C16.781 6.48464 16.2526 5.79857 15.549 5.31336C14.8453 4.82815 14.0018 4.56823 13.1371 4.5702Z" fill="#BABABA"/>
                 </svg>
-                <h6 class="f-600 mb-0">1.4K Viewed</h6>
+                <h6 class="f-600 mb-0">{{ $totalProductView->view_count }} Viewed</h6>
             </div>
             <div class="d-flex align-items-center">
               <svg class="mx-2" width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M21.4536 1.72456C18.9595 -0.0361952 15.2501 0.280515 12.9608 2.23733L12.0642 3.00271L11.1676 2.23733C8.88276 0.280515 5.16885 -0.0361952 2.6747 1.72456C-0.183561 3.74547 -0.333757 7.37255 2.22411 9.56313L11.031 17.0963C11.5999 17.5827 12.5239 17.5827 13.0928 17.0963L21.8997 9.56313C24.4621 7.37255 24.3119 3.74547 21.4536 1.72456Z" fill="#D4AF37"/>
                 </svg>
-              <a href="#" class="text--primary text-decoration-none">Add To wishlist</a>
+              <a href="javascript:void(0)" class="text--primary text-decoration-none add-wishlist-product" data-productId="{{ $product_details->id }}">Add To wishlist</a>
             </div>
           </div>
 
           <div class="d-flex align-items-center border-bottom pb-4 mb-4">
             <h2 class="text--primary f-600 mb-0 me-3">${{ @$product_details->price }}</h2>
-            <h4 class="mb-0 text-decoration-line-through text-mute">{{ @$product_details->compare_price }}</h4>
+            @if($product_details->compare_price)
+            <h4 class="mb-0 text-decoration-line-through text-mute">${{ $product_details->compare_price }}</h4>
+            @endif
           </div>
 
-          <h5 class="mb-4">{{ @$product_details->description }}</h5>
+          <!-- <h5 class="mb-4">{{ @$product_details->description }}</h5> -->
 
           <!-- <div class="d-flex align-items-center flex-wrap mb-3">
             <h5 class="fw-bold me-5 mb-3">Shoe Size</h5>
@@ -129,16 +131,15 @@
             <nav class="mb-5">
                <div class="nav nav-tabs product-nav-tabs border-0  px-4" id="nav-tab" role="tablist">
                   <button class="nav-link active  py-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
-                  <button class="nav-link  py-3" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Specification</button>
-                  <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Discussion</button>
+                  <!-- <button class="nav-link  py-3" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Specification</button> -->
+                  <!-- <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Discussion</button> -->
                   <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews (223)</button>
                   <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-store" type="button" role="tab" aria-controls="nav-store" aria-selected="false">Store</button>
                </div>
             </nav>
             <div class="tab-content px-4" id="nav-tabContent">
                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                  <h2 class="fw-bold mb-3">See the best picture no matter where you sit</h2>
-                  <p class="text-mute">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                  {{ @$product_details->description }}
                </div>
                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                   Specification

@@ -8,7 +8,7 @@
                 <span class="float-right">
                 	<a href="{{route('sellerAddCoupon')}}" class="btn btn-dark mb-3 rounded-pill fw-bold px-5 py-3 mb-1 aos-init aos-animate" data-aos="fade-up">Add Coupon 
                   </a>
-                  <h4 class="f-600 mb-0">Coupons</h4>
+                  <!-- <h4 class="f-600 mb-0">Coupons</h4> -->
                 </span>
             </div>
 

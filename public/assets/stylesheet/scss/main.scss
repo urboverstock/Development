@@ -283,18 +283,18 @@ section {
 
 // getstarted  page 
 .get-started-banner-section {
-  background-image: url('../../images/get-started/banner.png');
+  background-image: url('../../assets/images/get-started/banner.png');
   background-repeat: no-repeat;
   background-size:cover;
   display: flex;
   align-items: center;
   margin-top: 100px;
   &.--products-banner {
-    background-image: url('../../images/get-started/banner-2.png');
+    background-image: url('../../assets/images/get-started/banner-2.png');
    
   }
   &.--search-banner {
-    background-image: url('../../images/get-started/banner-3.png');
+    background-image: url('../../assets/images/get-started/banner-3.png');
    
   }
   .--banner-text {

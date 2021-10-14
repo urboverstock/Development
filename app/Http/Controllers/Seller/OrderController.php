@@ -30,7 +30,7 @@ class OrderController extends Controller
     	   $orders = Order::with('getUserDetail');
         }
 
-        $orders = $orders->get()->toArray();
+        $orders = $orders->latest()->get()->toArray();
     	// print_r($orders);die();
     	return view('seller.order.orderList', compact('orders'));
     }

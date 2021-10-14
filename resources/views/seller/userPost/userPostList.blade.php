@@ -8,7 +8,7 @@
                 <span class="float-right">
                 	<a href="{{route('sellerAddUserPost')}}" class="btn btn-dark rounded-pill mb-3 fw-bold px-5 py-3 mb-1 aos-init aos-animate" data-aos="fade-up">Add User Post
                   </a>
-                <h4 class="f-600">User Posts</h4>
+                <!-- <h4 class="f-600">User Posts</h4> -->
                 </span>
             </div>
 

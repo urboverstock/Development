@@ -276,7 +276,7 @@ class ProductController extends Controller
         }
 
         
-        $wishlists = $wishlists->whereIn('product_id', $productId)->get()->toArray();
+        $wishlists = $wishlists->whereIn('product_id', $productId)->latest()->get()->toArray();
 
         // echo "<pre>";
         // print_r($wishlists);die();

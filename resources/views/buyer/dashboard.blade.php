@@ -56,8 +56,13 @@
               <div class="d-flex justify-content-between flex-wrap">
                 <div class="p-5">
                   <h1 class="text-38">Welcome Back,</h1>
-                  <p class="text-18 f-600">You have 2 Pending Orders Coming your way.</p>
-                  <button type="button" class="btn btn-dark rounded-pill fw-bold px-5 py-3">View Orders</button>
+                  <p class="text-18 f-600">You have {{$total_pending_order}} Pending Orders Coming your way.</p>
+                  <a href="{{ route('buyerOrderList') }}" 
+                      type="button"
+                      class="btn btn-dark rounded-pill fw-bold px-5 py-3"
+                    >
+                      View Orders
+                    </a>
                 </div> <img class="img-fluid ps-4 mt--28" src="../assets/images/man-mobile.png" alt=""> </div>
             </div>
           </div>
@@ -65,7 +70,7 @@
         <div class="col-lg-4 mb-5">
           <div class="card flex-row align-items-center justify-content-center  br-24  border-3-primary h-100"> <img class="w-80 me-4" src="../assets/images/icon/box-verified.png" alt="">
             <div>
-              <h1 class="text-50 fw-bolder">155</h1>
+              <h1 class="text-50 fw-bolder">{{$total_item_order}}</h1>
               <p class="text-25">Total Items
                 <br> Ordered</p>
             </div>
@@ -74,7 +79,7 @@
         <div class="col-lg-4 mb-5">
           <div class="card py-4 flex-row align-items-center justify-content-center  br-24  border-3-primary h-100"> <img class="w-80 me-4" src="../assets/images/icon/heart.png" alt="">
             <div>
-              <h1 class="text-50 fw-bolder">103</h1>
+              <h1 class="text-50 fw-bolder">{{$total_item_favourite}}</h1>
               <p class="text-25">Favourite
                 <br> Items Added</p>
             </div>
@@ -83,7 +88,7 @@
         <div class="col-lg-4 mb-5">
           <div class="card py-4 flex-row align-items-center justify-content-center  br-24  border-3-primary h-100"> <img class="w-80 me-4" src="../assets/images/icon/chat.png" alt="">
             <div>
-              <h1 class="text-50 fw-bolder">24</h1>
+              <h1 class="text-50 fw-bolder">{{$unread_msg_count}}</h1>
               <p class="text-25">New Message
                 <br> from sellers</p>
             </div>
@@ -94,7 +99,7 @@
             <div>
               <p class="text-25 text--primary">You are
                 <br> following
-                <br> 20 Sellers </p>
+                <br> {{$followers}} Sellers </p>
             </div>
           </div>
         </div>

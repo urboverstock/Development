@@ -455,7 +455,7 @@
                 </div>
                 @if(Auth::check())
                 <div class="product-wishlist position-absolute end-0 pe-3">
-                  <button type="button" class="btn btn--primary btn-sm fw-bold">Add to Wishlist</button>
+                  <button type="button" class="btn btn--primary btn-sm fw-bold add-wishlist-product" data-productId="{{ $product->id }}">Add to Wishlist</button>
                 </div>
                 @endif
               </div>

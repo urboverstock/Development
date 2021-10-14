@@ -7,7 +7,7 @@
         
         <div class="custom-form-group-search position-relative 	d-none d-lg-block">
             <form action="{{ route('search-products') }}">
-                <input name="search" type="text" class="form-control" placeholder="Search brands...." />
+                <input name="search" type="text" class="form-control" placeholder="Search for your favourite brands" />
                 <button type="submit" class="transparent-button"><i class="fas fa-search text--primary"></i></button>
             </form>
         </div>
@@ -22,6 +22,8 @@
           </a>
           @endif
           <a href="{{ route('signin') }}" class="text-dark me-4 fw-bold text-decoration-none d-none d-lg-block">Login</a>
+
+          @if(!Auth::check())
           <div class="hamburger-menu">
             <div class="line line-1"> </div>
             <div class="line line-3"> </div>
@@ -44,6 +46,7 @@
             </li>
           </ul>
         </div>
+        @endif
         
       </div>
     </nav>

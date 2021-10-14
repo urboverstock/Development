@@ -23,7 +23,11 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
+    @if(Auth::user()->user_type == 3)
     @include('includes.seller_header')
+    @else
+    @include('includes.buyer.buyer_header')
+    @endif
     @yield('content')
     @include('includes.seller_footer')
 

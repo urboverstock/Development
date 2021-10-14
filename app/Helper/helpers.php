@@ -3,6 +3,8 @@
  	use App\Models\UserPostFile;
  	use App\Models\Chat;
  	use App\Models\ChatRoom;
+ 	use App\Models\UserFollowers;
+ 	use App\Models\Cart;
  	
  	if(!function_exists('emailSend')) {
 		// This function use  for email send 
@@ -30,7 +32,7 @@
 		}
 	}
 
-	// UPLOAD IMAGES FOR USER
+	// UPLOAD IMAGES FOR PRODUCT
 	if(!function_exists('productDefaultImage')) {
 		function productDefaultImage($productId) {			
 			$file = '/assets/images/section-4/1.png';
@@ -40,12 +42,16 @@
 										->orderBy('file_type', 'ASC')
 										->select('file')->first();
 			
-			$removeFirstSlash = ltrim(@$productImage->file, '/');
+
+			 $removeFirstSlash = ltrim($productImage->file, '/');
+
 			if($productImage) {
 				if(file_exists($removeFirstSlash)) {
-					$file = $productImage->file;					
+					$file = $productImage->file;
 				} 
-			}
+
+			} 
+
 			return asset($file);
 		}
 	}
@@ -129,3 +135,15 @@
 	    }
 	}
    
+
+   	if (! function_exists('countSellerFollowers')) {
+	    function countSellerFollowers($seller_id) {
+	        return UserFollowers::where('follower_id', $seller_id)->count();
+	    }
+	}
+
+	if (! function_exists('cartCount')) {
+	    function cartCount($user_id) {
+	        return Cart::where('user_id', $user_id)->count();
+	    }
+	}
