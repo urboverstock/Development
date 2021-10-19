@@ -189,7 +189,7 @@
           <div class="card card-hover cursor-pointer border-0 shadow-sm mb-4 h-100 br-10">
             <div class="card-body d-flex align-items-center">
                 
-              <a href="#" class="fw-bold h4 mb-0 px-4">Boston Proper</a>
+              <a href="#" class="fw-bold h4 mb-0 px-4">Jeans</a>
                
             </div>
           </div>
@@ -198,7 +198,7 @@
           <div class="card card-hover cursor-pointer border-0 shadow-sm mb-4 h-100 br-10">
             <div class="card-body d-flex align-items-center">
                 
-              <a href="#" class="fw-bold h4 mb-0 px-4">Rdoadster</a>
+              <a href="#" class="fw-bold h4 mb-0 px-4">Shorts</a>
                
             </div>
           </div>
@@ -207,7 +207,7 @@
           <div class="card card-hover cursor-pointer border-0 shadow-sm mb-4 h-100 br-10">
             <div class="card-body d-flex align-items-center">
                 
-              <a href="#" class="fw-bold h4 mb-0 px-4">Macmerise</a>
+              <a href="#" class="fw-bold h4 mb-0 px-4">Gowns</a>
                
             </div>
           </div>
@@ -216,7 +216,7 @@
           <div class="card card-hover cursor-pointer border-0 shadow-sm mb-4 h-100 br-10">
             <div class="card-body d-flex align-items-center">
                 
-              <a href="#" class="fw-bold h4 mb-0 px-4">Mast & Harbour</a>
+              <a href="#" class="fw-bold h4 mb-0 px-4">Sneakers</a>
                
             </div>
           </div>
@@ -225,7 +225,7 @@
           <div class="card card-hover cursor-pointer border-0 shadow-sm mb-4 h-100 br-10">
             <div class="card-body d-flex align-items-center">
                 
-              <a href="#" class="fw-bold h4 mb-0 px-4">Flying Machine</a>
+              <a href="#" class="fw-bold h4 mb-0 px-4">Heels</a>
                
             </div>
           </div>
@@ -234,7 +234,7 @@
           <div class="card card-hover cursor-pointer border-0 shadow-sm mb-4 h-100 br-10">
             <div class="card-body d-flex align-items-center">
                 
-              <a href="#" class="fw-bold h4 mb-0 px-4">Athom Trendz</a>
+              <a href="#" class="fw-bold h4 mb-0 px-4">Scarfs</a>
                
             </div>
           </div>
@@ -243,7 +243,7 @@
           <div class="card card-hover cursor-pointer border-0 shadow-sm mb-4 h-100 br-10">
             <div class="card-body d-flex align-items-center">
                 
-              <a href="#" class="fw-bold h4 mb-0 px-4">Ariane</a>
+              <a href="#" class="fw-bold h4 mb-0 px-4">Lingerie</a>
                
             </div>
           </div>
@@ -252,7 +252,7 @@
           <div class="card card-hover cursor-pointer border-0 shadow-sm mb-4 h-100 br-10">
             <div class="card-body d-flex align-items-center">
                 
-              <a href="#" class="fw-bold h4 mb-0 px-4">John Players</a>
+              <a href="#" class="fw-bold h4 mb-0 px-4">Accessories</a>
                
             </div>
           </div>
