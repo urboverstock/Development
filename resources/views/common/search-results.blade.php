@@ -10,8 +10,10 @@
       <div class="d-flex  justify-content-end">
         <div class="text-end --banner-text">
           <h2 class="fw-bold">Get the Real Deal</h2>
-          <h4 class="fw-semibold">Browse through all your favourite products
-            and get the best deals.</h4>
+          <h4 class="fw-semibold">
+            <!-- Browse through all your favourite products and get the best deals. -->
+            We have the highest quality at unbeatable rates that you won't find anywhere else.
+          </h4>
         </div>
       </div>
     </div>
@@ -85,7 +87,10 @@
                 <p class="mb-0">{{count($products)}} Results Found</p>
               </div>
               <div class="urban-sub-title mb-4">
-                <p class="mb-0">Search Results</p>
+                <p class="mb-0">
+                  <!-- Search Results -->
+                  Trending Now
+                </p>
               </div>
             </div>
             <!-- <div>
@@ -104,7 +109,7 @@
                     <div class="card product-item border-0 shadow-sm mb-5">
                         <div class="card-body ">
                             <img class="img-fluid productImg" src="{{ productDefaultImage($product->id)}}" alt="">
-                            <a href="{{ route('product-detail', $product->sku) }}"><h5 class="fw-bold">{{$product->name }}</h5></a>
+                            <a class="text-decoration-none text-dark" href="{{ route('product-detail', $product->sku) }}"><h5 class="fw-bold">{{$product->name }}</h5></a>
                             <div class="d-flex flex-wrap justify-content-between align-items-center">
                                 <span class="badge rounded-pill bg-secondary-two text-dark px-3 py-2 my-2">{{@$product->user->name }}</span>
                                 <div class="d-flex my-2">
@@ -178,9 +183,12 @@
             <img class="w-101 mx-auto mt--75 " src="{{ asset('assets/images/get-started/secure-card.png') }}" alt="">
             <div class="card-body text-center py-4">
               <h3 class="text-white fw-bold mb-3">Protected <br> Payments</h3>
-              <h6 class="text--gray-color px-5">If it’s not what you ordered, 
-                we guarantee to give your 
-                money back.</h6>
+              <h6 class="text--gray-color px-5">
+                <!-- If it’s not what you ordered,  we guarantee to give your money back. -->
+                Your information is protected from unauthorized access, and your credit card information is safe on our encrypted servers.
+
+              
+              </h6>
             </div>
           </div>
         </div>
@@ -189,9 +197,11 @@
             <img class="w-101 mx-auto mt--75 " src="{{ asset('assets/images/get-started/bus.png')}}" alt="">
             <div class="card-body text-center py-4">
               <h3 class="text-white fw-bold mb-3">Free <br> Delivery</h3>
-              <h6 class="text--gray-color px-5">If it’s not what you ordered, 
-                we guarantee to give your 
-                money back.</h6>
+              <h6 class="text--gray-color px-5">
+                <!-- If it’s not what you ordered, we guarantee to give your money back. -->
+                You won't have to think about exorbitant shipping costs because we'll deliver your products for free.
+
+              </h6>
             </div>
           </div>
         </div>
@@ -200,9 +210,10 @@
             <img class="w-101 mx-auto mt--75 " src="{{ asset('assets/images/get-started/monitor.png')}}" alt="">
             <div class="card-body text-center py-4">
               <h3 class="text-white fw-bold mb-3">Free <br> Authentication</h3>
-              <h6 class="text--gray-color px-5">If it’s not what you ordered, 
-                we guarantee to give your 
-                money back.</h6>
+              <h6 class="text--gray-color px-5">
+                <!-- If it’s not what you ordered, we guarantee to give your money back. -->
+                We know you because our authentication is fast and even better, it's free.
+              </h6>
             </div>
           </div>
         </div>

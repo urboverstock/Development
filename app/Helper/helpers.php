@@ -43,9 +43,10 @@
 										->select('file')->first();
 			
 
-			 $removeFirstSlash = ltrim($productImage->file, '/');
+			 
 
 			if($productImage) {
+				$removeFirstSlash = ltrim($productImage->file, '/');
 				if(file_exists($removeFirstSlash)) {
 					$file = $productImage->file;
 				} 
