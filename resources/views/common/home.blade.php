@@ -299,18 +299,27 @@
       <div class="col-lg-5 p-5"  data-aos="fade-left">
         <h4 class="text--primary font-500">A Brief About</h4>
         <h1 class="fw-bold mb-4">THE URBAN OVERSTOCK</h1>
-        <p class="text-muted mb-5">Depop is the fashion marketplace app where the next generation come to discover unique items. With a global community buying, selling and connecting to make fashion more inclusive, diverse and less wasteful. This is what transforming fashion looks like.</p>
+        <p class="text-muted mb-3">Hello and welcome to Urban Overstock, your one-stop shop for the best fashion finds for any taste or occasion. We meticulously inspect the quality of our products and only work with reputable suppliers to ensure that you receive only the highest quality product. </p>
+        <p class="text-muted mb-4">You've come to the correct place if you're seeking something fresh. </p>
         <div class="d-flex mb-4">
           <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
-          <h4 class="mb-0 text-muted font-500">Lorem ipsum dolor sit amet, consectetur </h4>
+          <h4 class="mb-0 text-muted font-500">You've come to the correct place if you're seeking something fresh.  </h4>
         </div>
         <div class="d-flex mb-4">
           <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
-          <h4 class="mb-0 text-muted font-500">Sed ut perspiciatis unde omnis iste natus error sit </h4>
+          <h4 class="mb-0 text-muted font-500">We've gone a long way, so we know just what to do when it comes to providing you with high-quality, low-cost items. All of this is provided while maintaining exceptional customer service and helpful assistance. </h4>
         </div>
         <div class="d-flex mb-5">
           <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
-          <h4 class="mb-0 text-muted font-500">Nemo enim ipsam voluptatem quia voluptas sit  </h4>
+          <h4 class="mb-0 text-muted font-500">We want to provide our customers with a wide range of the most up-to-date fashion products so they may make the proper impression. We keep an eye on the current trends and prioritize our customers' needs. 
+That is why we have happy consumers all around the world and are proud to be associated with the fashion business. 
+  </h4>
+        </div>
+        <div class="d-flex mb-5">
+          <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
+          <h4 class="mb-0 text-muted font-500">We always put the needs of our consumers first, so we hope you appreciate our items as much as we enjoy making them available to you.
+
+  </h4>
         </div>
         
         <a href="{{ route('get-started') }}" class="btn btn-dark rounded-pill fw-bold px-5 py-4">Let's Get Started</a>
@@ -429,7 +438,10 @@
         </div>
         <div class="col-lg-6" data-aos="fade-left">
           <div class="sec-8-header position-relative">
-            <h2 class="fw-bold ">Be part of the community that's transforming things in the most fun way </h2>
+            <h2 class="fw-bold ">
+                <!-- Be part of the community that's transforming things in the most fun way  -->
+                If you have any queries regarding our services, would like to enquire about our existing and upcoming goods, or would like to discuss delivery, please contact us at
+            </h2>
             <img class="sec-8-img position-absolute top-0 start-100 translate-middle" src="assets/images/section-8/1.png" alt="">
           </div>
         </div>
