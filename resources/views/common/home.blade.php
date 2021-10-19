@@ -300,7 +300,7 @@
         <h4 class="text--primary font-500">A Brief About</h4>
         <h1 class="fw-bold mb-4">THE URBAN OVERSTOCK</h1>
         <p class="text-muted mb-3">Hello and welcome to Urban Overstock, your one-stop shop for the best fashion finds for any taste or occasion. We meticulously inspect the quality of our products and only work with reputable suppliers to ensure that you receive only the highest quality product. </p>
-        <p class="text-muted mb-4">You've come to the correct place if you're seeking something fresh. </p>
+        
         <div class="d-flex mb-4">
           <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
           <h4 class="mb-0 text-muted font-500">You've come to the correct place if you're seeking something fresh.  </h4>
