@@ -10,6 +10,7 @@ use App\Models\ProductCompanies;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Auth, Validator;
+use App\Models\Order;
 
 class SellerController extends Controller
 {
@@ -23,7 +24,11 @@ class SellerController extends Controller
             return redirect()->route('signin')->with('error', 'You need to login first');
         }
 
-        return view('seller.dashboard');
+        $total_pending_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_PENDING)->count();
+        $total_complete_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_COMPLETED)->count();
+        $total_price_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_COMPLETED)->sum('price');
+
+        return view('seller.dashboard', compact('total_complete_order', 'total_pending_order', 'total_price_order'));
     }
 
     public function edit_profile(Request $request){

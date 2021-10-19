@@ -272,7 +272,7 @@ class UserPostController extends Controller
 
     public function allPost()
     {
-        $user_posts = UserPost::with('getUserPostFile', 'getUser', 'getPostLike')->latest()->paginate();
+        $user_posts = UserPost::with('getUserPostFile', 'getUser', 'getPostLike')->latest()->paginate(4);
 
         return view('seller.userPost.allpost', compact('user_posts'));
     }

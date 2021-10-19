@@ -31,7 +31,7 @@ class OrderController extends Controller
     	   $orders = Order::where('user_id', Auth::id())->with('getUserDetail');
         }
 
-        $orders = $orders->latest()->get()->toArray();
+        $orders = $orders->latest()->paginate(20);
     	// print_r($orders);die();
     	return view('buyer.order.orderList', compact('orders'));
     }

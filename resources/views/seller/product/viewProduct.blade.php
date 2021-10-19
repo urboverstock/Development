@@ -14,9 +14,9 @@
            <h6 class="f-600 mb-2" data-aos="fade-up">Category : {{$product->category->name}}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Brand : {{$product->brand}}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Quantity : {{$product->quantity}}</h6>
-           <h6 class="f-600 mb-2" data-aos="fade-up">Price : {{$product->price}}</h6>
-           <h6 class="f-600 mb-2" data-aos="fade-up">Compare Price : {{$product->compare_price}}</h6>
-           <h6 class="f-600 mb-2" data-aos="fade-up">Cost Per Price : {{$product->cost_per_price}}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Price : ${{$product->price}}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Compare Price : ${{!empty($product->compare_price) || ($product->compare_price != 0) ? $product->compare_price : 0}}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Cost Per Price : {{ !empty($product->cost_per_price) || ($product->cost_per_price != 0) ? $product->cost_per_price : 0 }}</h6>
           
             <!-- <div class="d-flex align-items-center flex-wrap mb-3" data-aos="fade-up">
               <p class="mb-0 text-random-color font-500  me-3">Jewelery</p>

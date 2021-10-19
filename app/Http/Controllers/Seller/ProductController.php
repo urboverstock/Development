@@ -55,7 +55,7 @@ class ProductController extends Controller
             $product->name          = $request->name;
             $product->description   = $request->description;
             $product->price         = $request->price;
-            // $product->status        = '1';
+            $product->status        = $request->status;
             // $product->gender        = $request['gender'];
             $product->category_id   = $request->category_id;
             // $product->company_id    = $request['company_id'];
@@ -165,6 +165,7 @@ class ProductController extends Controller
             $product->brand    = $request->brand;
             $product->compare_price    = $request->compare_price;
             $product->cost_per_price    = $request->cost_per_price;
+            $product->status        = $request->status;
             
             if($product->sku != '')
             {

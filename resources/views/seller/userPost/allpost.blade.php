@@ -12,6 +12,10 @@
             	</div>
 			</div>
 	        @endforeach
+
+	        <div class="">
+                {{ $user_posts->links() }}
+           	</div>
         </div>
 	</div>
 </section>
