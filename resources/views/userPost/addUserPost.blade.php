@@ -87,9 +87,9 @@
                             ?>
 
                             
-                              <div class="result">
+                              <div class="result mt-4">
                                 <div>
-                                  <a href="{{ route('sellerDeleteUserPostFile', \Illuminate\Support\Facades\Crypt::encrypt( $image->id)) }}"><i class="fas fa-trash-alt"></i>
+                                  <a class="text-decoration-none hover-primary" href="{{ route('sellerDeleteUserPostFile', \Illuminate\Support\Facades\Crypt::encrypt( $image->id)) }}"><i class="fas fa-trash-alt"></i>
 
                                   <?php 
                                     $ext = pathinfo($image->file, PATHINFO_EXTENSION);
@@ -99,12 +99,13 @@
                                     if ($ext == "mp4" || $ext == "mov" || $ext == "vob" || $ext == "mpeg" || $ext == "3gp" || $ext == "avi" || $ext == "wmv" || $ext == "mov" || $ext == "amv" || $ext == "svi" || $ext == "flv" || $ext == "mkv" || $ext == "webm" || $ext == "gif" || $ext == "asf") {
                                   ?>
 
-                                    <video controls autoplay style="width: 200px;vertical-align: middle;">
+                                    <video  controls autoplay style="width: 200px;vertical-align: middle;">
                                       <source src="{{url('/') . $image->file}}" type="video/ogg">
                                       <source src="{{url('/') . $image->file}}" type="video/{{ $ext }}">
                                     </video>
                                   <?php } else { ?>
-                                <img src="{{ asset('/') .$image->file }}" width="100" style="float: left;"></a>
+                                  <img class="img-fluid float-start" src="{{ asset('/') .$image->file }}" width="100"  >
+                                </a>
                               <?php } ?>
                               </div>
                               </div>
@@ -164,9 +165,9 @@
                           
                           var picFile = event.target;
                           
-                          var div = document.createElement("div");
+                        var div = document.createElement("div");
                           
-                          div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                          div.innerHTML = "<img class='thumbnail width-backend-120' src='" + picFile.result + "'" +
                                   "title='" + picFile.name + "'/>";
                           
                           output.insertBefore(div,null);            
@@ -209,7 +210,7 @@
                           var img = document.createElement('img');
                           img.src = image;
                           var div = document.createElement("div");
-                          div.innerHTML = "<img class='thumbnail' src='" + img.src + "'/>";
+                          div.innerHTML = "<img class='thumbnail width-backend-120' src='" + img.src + "'/>";
                           output.insertBefore(div, null);
                           // URL.revokeObjectURL(url);
                         }
