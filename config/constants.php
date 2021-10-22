@@ -16,3 +16,7 @@ defined('LOGIN') OR define('LOGIN', 1);
 //UNSUBSCRIBED/ SUBSCRIBED STATUS
 defined('SUBSCRIBED') OR define('SUBSCRIBED', 1);
 defined('UNSUBSCRIBED') OR define('UNSUBSCRIBED', 0);
+
+defined('IN_ACTIVE') OR define('IN_ACTIVE', 0);
+defined('DRAFT') OR define('DRAFT', 1);
+defined('PUBLISHED') OR define('PUBLISHED', 2);

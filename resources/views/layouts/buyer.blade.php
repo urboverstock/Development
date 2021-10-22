@@ -31,13 +31,27 @@
     @yield('content')
     @include('includes.buyer.buyer_footer')
 
+    <div class="buyer-profile-update" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="text-50 f-600">Are you sure you want to update profile?</div>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn  py-4 rounded-pill px-5rem me-3 fw-bold border-logout-screen cancel_logout_btn">Go Back </button>
+                        <button type="button" class="btn btn-danger py-4 rounded-pill confirm_profile_update px-5rem">Update </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="logout-screen" style="display: none;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="text-50 f-600">Are you sure you want to logout?</div>
                     <div class="d-flex justify-content-center">
-                        <button type="button" class="btn  py-4 rounded-pill px-5rem me-3 fw-bold border-logout-screen cancel_logout_btn">Go Back </button>
+                        <button type="button" class="btn  py-4 rounded-pill px-5rem me-3 fw-bold border-logout-screen cancel_go_btn">Go Back </button>
                         <button type="button" class="btn btn-danger py-4 rounded-pill confirm_logout_btn px-5rem">Logout </button>
                     </div>
                 </div>
@@ -94,6 +108,19 @@
 
         $(document).on('click', '.confirm_logout_btn', function(){
             window.location.href = "{{ route('logout') }}";
+        });
+
+
+        $(document).on('click', '.update_buyer_profile', function(){
+            $('.buyer-profile-update').show();
+        });
+
+        $(document).on('click', '.cancel_go_btn', function(){
+            $('.buyer-profile-update').hide();
+        });
+
+        $(document).on('click', '.confirm_profile_update', function(){
+            window.location.href = "{{ route('buyer.edit_profile') }}";
         });
     </script>
 

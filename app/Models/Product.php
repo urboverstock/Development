@@ -26,7 +26,7 @@ class Product extends Model
     }
 
     public static function getLatestProducts($request) {
-    	$query = Product::with('category:id,name', 'images:id,product_id,file,file_type')->where('status', ACTIVE_STATUS);
+    	$query = Product::with('category:id,name', 'images:id,product_id,file,file_type')->where('status', PUBLISHED);
 
     	return $query->orderBy('id', 'DESC')->paginate($request->limit);
     }
@@ -35,7 +35,7 @@ class Product extends Model
     	$query = Product::with('category:id,name',
     						 'images:id,product_id,file,file_type',
     						 'user:id,first_name')
-    						->where('status', ACTIVE_STATUS);
+    						->where('status', PUBLISHED);
     	if($request->search) {
     		$query->where(function($q) use ($request) {
     			$q->where('name', 'LIKE', "%{$request->search}%")

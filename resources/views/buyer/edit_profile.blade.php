@@ -140,7 +140,7 @@
                       </div>
                     </div> -->
                     <div class="col-lg-12">
-                      <button type="submit" class="btn btn-dark px-5 py-3 rounded-pill">Save Changes</button>
+                      <button type="submit" class="btn btn-dark px-5 py-3 rounded-pill update_buyer_profile">Save Changes</button>
                     </div>
                   </div>
                 </form>

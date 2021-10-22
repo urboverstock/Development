@@ -22,12 +22,13 @@
                 <div class="card shadow border-0 br-10">
                     <div class="card-body d-flex align-items-start justify-content-between flex-wrap">
                         <div>
-                            <h6 class="text-muted mb-2">Sales</h6>
-                            <h2 class="fw-bold mb-3">{{ $total_complete_order }}</h1>
-                            <div class="d-flex align-items-baseline">
+                            
+                            <h6 class="text-muted mb-2">Total Order</h6>
+                            <h2 class="fw-bold mb-3">{{ $total_orders }}</h1>
+                            <!-- <div class="d-flex align-items-baseline">
                                 <img class="me-1" src="../assets/images/icon/increase.png" alt="">
                                 <h6 class="text-green text-16 f-600 mb-0">+2.01%</h6>
-                            </div>
+                            </div> -->
                         </div>
                         <img class="img-fluid" src="../assets/images/dashboard/bag.png" alt="">
                     </div>
@@ -37,12 +38,12 @@
                 <div class="card shadow border-0 br-10">
                     <div class="card-body d-flex align-items-start justify-content-between flex-wrap">
                         <div class="">
-                            <h6 class="text-muted mb-2">Profit</h6>
-                            <h2 class="fw-bold mb-3">$1,050</h1>
-                            <div class="d-flex align-items-baseline">
+                          <h6 class="text-muted mb-2">Complete Order</h6>
+                            <h2 class="fw-bold mb-3">{{ $total_complete_order }}</h1>
+                            <!-- <div class="d-flex align-items-baseline">
                                 <img class="me-1" src="../assets/images/icon/decrease.png" alt="">
                                 <h6 class="text-red text-16 f-600 mb-0"> -0.3%</h6>
-                            </div>
+                            </div> -->
                         </div>
                         <img class="img-fluid" src="../assets/images/dashboard/revenue.png" alt="">
                     </div>
@@ -54,10 +55,10 @@
                         <div class="">
                             <h6 class="text-muted mb-2">Revenue</h6>
                             <h2 class="fw-bold mb-3">${{ $total_price_order }}</h1>
-                            <div class="d-flex align-items-baseline">
+                            <!-- <div class="d-flex align-items-baseline">
                                 <img class="me-1" src="../assets/images/icon/increase.png" alt="">
                                 <h6 class="text-green text-16 f-600 mb-0"> 10.3%</h6>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- <img class="img-fluid" src="../assets/images/dashboard/revenue.png" alt=""> -->
                     </div>
@@ -69,10 +70,10 @@
                         <div class="">
                             <h6 class="text-muted mb-2">Pending Shipping</h6>
                             <h2 class="fw-bold mb-3">{{ $total_pending_order }}</h1>
-                            <div class="d-flex align-items-baseline">
-                                <!-- <img class="me-1" src="../assets/images/icon/increase.png" alt=""> -->
+                            <!-- <div class="d-flex align-items-baseline">
+                                <img class="me-1" src="../assets/images/icon/increase.png" alt="">
                                 <h6 class="text-green text-16 f-600 mb-0"> 0.00</h6>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- <img class="img-fluid" src="../assets/images/dashboard/revenue.png" alt=""> -->
                     </div>

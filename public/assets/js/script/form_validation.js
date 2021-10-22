@@ -215,7 +215,8 @@ $(document).ready(function() {
 				required: true
 			},
 			about:{
-				required: true
+				required: true,
+				maxlength:200
 			}
 		},
 	    messages: {

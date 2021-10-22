@@ -24,11 +24,12 @@ class SellerController extends Controller
             return redirect()->route('signin')->with('error', 'You need to login first');
         }
 
+        $total_orders = Order::where('user_id', Auth::user()->id)->count();
         $total_pending_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_PENDING)->count();
         $total_complete_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_COMPLETED)->count();
         $total_price_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_COMPLETED)->sum('price');
 
-        return view('seller.dashboard', compact('total_complete_order', 'total_pending_order', 'total_price_order'));
+        return view('seller.dashboard', compact('total_complete_order', 'total_pending_order', 'total_price_order', 'total_orders'));
     }
 
     public function edit_profile(Request $request){
