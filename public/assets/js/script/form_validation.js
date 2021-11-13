@@ -188,10 +188,12 @@ $(document).ready(function() {
 				equalTo: '#password'
 			},
 			first_name:{
-				required:true
+				required:true,
+				lettersonlys:true
 			},
 			last_name:{
-				required:true
+				required:true,				
+				lettersonlys:true
 			},
 			location:{
 				required:true
@@ -749,7 +751,8 @@ $(document).ready(function() {
 				required:true,
 			},
 			description: {
-				required:true,
+				required: true,
+				maxlength: 400
 			}
 		} 
 	});

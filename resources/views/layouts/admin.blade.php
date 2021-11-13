@@ -40,7 +40,7 @@
                     <div class="text-50 f-600">Are you sure you want to logout?</div>
                     <div class="d-flex justify-content-center">
                         <button type="button" class="btn  py-4 rounded-pill px-5rem me-3 fw-bold border-logout-screen cancel_logout_btn">Go Back </button>
-                        <button type="button" class="btn btn-danger py-4 rounded-pill confirm_logout_btn px-5rem">Logout </button>
+                        <button type="button" class="btn btn-danger py-4 rounded-pill confirm_logout_btn px-5rem">Logout</button>
                     </div>
                 </div>
             </div>

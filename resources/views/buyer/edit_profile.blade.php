@@ -56,7 +56,7 @@
                       <div class="mb-4">
                         <label class="form-label">First Name</label>
                         <div class="custom-urban-form">
-                          <input class="form-control" type="text" placeholder="First Name" name="first_name" value="{{ $user->first_name }}">
+                          <input class="form-control" type="text" placeholder="First Name" name="first_name" value="{{ $user->first_name }}" id="first_name">
                           <i class="fas fa-pen"></i>
                         </div>
                         <span class="error">{{ $errors->first('first_name') }}</span>
@@ -66,7 +66,7 @@
                       <div class="mb-4">
                         <label for="exampleFormControlInput1" class="form-label">Last Name</label>
                         <div class="custom-urban-form">
-                          <input class="form-control" type="text" placeholder="Last Name" name="last_name" value="{{ $user->last_name }}">
+                          <input class="form-control" type="text" placeholder="Last Name" name="last_name" value="{{ $user->last_name }}" id="last_name">
                           <i class="fas fa-pen"></i>
                         </div>
                         <span class="error">{{ $errors->first('last_name') }}</span>
@@ -76,7 +76,7 @@
                       <div class="mb-4">
                         <label class="form-label">Location</label>
                         <div class="custom-urban-form">
-                          <input class="form-control" type="text" placeholder="Location" name="location" value="{{ $user->location }}">
+                          <input class="form-control" type="text" placeholder="Location" name="location" value="{{ $user->location }}" id="location">
                           <i class="fas fa-pen"></i>
                         </div>
                         <span class="error">{{ $errors->first('location') }}</span>
@@ -86,7 +86,7 @@
                       <div class="mb-4">
                         <label class="form-label">ISD Code</label>
                         <div class="custom-urban-form">
-                          <input type="text" class="form-control"  placeholder="ISD Code" name="isd_code" value="{{ $user->isd_code }}">
+                          <input type="text" class="form-control"  placeholder="ISD Code" name="isd_code" value="{{ $user->isd_code }}" id="isd_code">
                           <i class="fas fa-pen"></i>
                         </div>
                         <span class="error">{{ $errors->first('isd_code') }}</span>
@@ -96,7 +96,7 @@
                       <div class="mb-4">
                         <label class="form-label">Phone Number</label>
                         <div class="custom-urban-form">
-                          <input type="text" class="form-control"  placeholder="Phone Number" name="phone_number" value="{{ $user->phone_number }}">
+                          <input type="text" class="form-control"  placeholder="Phone Number" name="phone_number" value="{{ $user->phone_number }}" id="phone_number">
                           <span class="badge rounded-pill badge-primary-light text-dark py-2">Verify</span>
                         </div>
                         <span class="error">{{ $errors->first('phone_number') }}</span>
@@ -106,7 +106,7 @@
                       <div class="mb-4 ">
                         <label class="form-label ">Billing Address</label>
                         <div class="custom-urban-form">
-                          <textarea class="form-control" placeholder="Billing Address" rows="5" name="billing_address">{{ $user->billing_address }}</textarea>
+                          <textarea class="form-control" placeholder="Billing Address" rows="5" name="billing_address" id="billing_address">{{ $user->billing_address }}</textarea>
                           <i class="fas fa-pen textarea-icon"></i>
                         </div>
                         <span class="error">{{ $errors->first('billing_address') }}</span>
@@ -116,7 +116,7 @@
                       <div class="mb-4 ">
                         <label class="form-label">Update Bio</label>
                         <div class="custom-urban-form">
-                          <textarea class="form-control" placeholder="Update Bio" rows="4" name="about">{{ $user->about }}</textarea>
+                          <textarea class="form-control" placeholder="Update Bio" rows="4" name="about" id="about">{{ $user->about }}</textarea>
                           <i class="fas fa-pen textarea-icon"></i>
                         </div>
                         <span class="error">{{ $errors->first('about') }}</span>
@@ -140,7 +140,7 @@
                       </div>
                     </div> -->
                     <div class="col-lg-12">
-                      <button type="submit" class="btn btn-dark px-5 py-3 rounded-pill update_buyer_profile">Save Changes</button>
+                      <button type="submit" class="btn btn-dark px-5 py-3 rounded-pill update_buyer_profile" >Save Changes</button>
                     </div>
                   </div>
                 </form>
@@ -156,6 +156,10 @@
 
 @endsection
 @section('scripts')
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+</script>
 
 <script>
   function readURL(input) {
@@ -188,6 +192,106 @@
       }
     }
 	});
+
+  $("#edit_profile_form").validate({ 
+    errorElement: 'span',
+    rules: {
+      email: {
+        required:true,
+        email: true,
+        emailfull: true
+      },
+      password:{
+        required:true,
+        minlength:8
+      },
+      confirm_password:{
+        required:true,
+        minlength:8,
+        equalTo: '#password'
+      },
+      first_name:{
+        required:true
+      },
+      last_name:{
+        required:true
+      },
+      location:{
+        required:true
+      },
+      gender:{
+        required:true
+      },
+      isd_code:{
+        required:true,
+        digits: true,
+        minlength:1,
+        maxlength:3
+      },
+      phone_number:{
+        required:true,
+        digits: true,
+        minlength:10,
+        maxlength:10
+      },
+      billing_address:{
+        required: true,
+        maxlength:200
+      },
+      about:{
+        required: true,
+        maxlength:200
+      }
+    },
+      messages: {
+      confirm_password:{
+        equalTo: 'Password and Re-enter password should be same'
+      },
+      },
+      submitHandler: function(form, event) {
+        var first_name = $('#first_name').val();
+        var last_name = $('#last_name').val();
+        var location = $('#location').val();
+        var isd_code = $('#isd_code').val();
+        var phone_number = $('#phone_number').val();
+        var billing_address = $('#billing_address').val();
+        var about = $('#about').val();
+        
+        var success_msg = 'Profile Updated Successfully';
+        var cancel_msg = 'Something went wrong';
+
+        var body = 'Are you sure to change update?';
+        var url  = '/buyer/edit-profile';
+
+        swal({
+            // title: title,
+            text: body,
+            icon: '',
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: "POST",
+                        url: base_url + url,
+                        data: $(form).serialize(),
+                        success: function (response) {
+                                swal(success_msg, {
+                                    icon: "success",
+                                });
+
+                                // setTimeout(function () {
+                                //     window.location.reload();
+                                // }, 2000);
+                        }
+                    });
+                } else {
+                    swal(cancel_msg);
+                }
+            });
+        }
+  });
 
 </script>
 

@@ -10,7 +10,7 @@
           <div class="card-body h-100">
             <div class="d-flex align-items-center justify-content-between">
               <div>
-                <h5 class="text--pink">124</h5>
+                <h5 class="text--pink">{{ $total_buyers }}</h5>
                 <h6 class="text-muted">Total Buyers</h6>
               </div>
               <svg
@@ -26,7 +26,7 @@
                   fill="#F7617D"
                 />
               </svg>
-              <h5 class="text--pink">86%</h5>
+              <!-- <h5 class="text--pink">86%</h5> -->
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between">
               <div>
-                <h5 class="text--green">+124</h5>
+                <h5 class="text--green">{{ $total_sellers }}</h5>
                 <h6 class="text-muted">Total Sellers</h6>
               </div>
               <svg
@@ -56,7 +56,7 @@
                 />
               </svg>
 
-              <h5 class="text--green">86%</h5>
+              <!-- <h5 class="text--green">86%</h5> -->
             </div>
           </div>
         </div>
@@ -66,8 +66,8 @@
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between">
               <div>
-                <h5 class="text--green">48</h5>
-                <h6 class="text-muted">Total Sellers</h6>
+                <h5 class="text--green">{{ $total_orders }}</h5>
+                <h6 class="text-muted">Total Orders</h6>
               </div>
               <svg
                 width="84"
@@ -82,7 +82,7 @@
                 />
               </svg>
 
-              <h5 class="text--green">91%</h5>
+              <!-- <h5 class="text--green">91%</h5> -->
             </div>
           </div>
         </div>
@@ -92,8 +92,8 @@
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between">
               <div>
-                <h5 class="text--yellow">124</h5>
-                <h6 class="text-muted">Total Sellers</h6>
+                <h5 class="text--yellow">{{ $total_pending_order }}</h5>
+                <h6 class="text-muted">Total Pending Orders</h6>
               </div>
               <svg
                 width="91"
@@ -108,7 +108,7 @@
                 />
               </svg>
 
-              <h5 class="text--yellow">91%</h5>
+              <!-- <h5 class="text--yellow">91%</h5> -->
             </div>
           </div>
         </div>

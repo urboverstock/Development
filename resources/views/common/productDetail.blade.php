@@ -153,19 +153,19 @@
                <div class="tab-pane fade" id="nav-store" role="tabpanel" aria-labelledby="nav-contact-tab">
                   <h3 class="f-600 mb-0 me-3">{{ $store_user_details->full_name }}</h3>
 
-                  @if($store_user_details->storeDetail->name)
+                  @if(!empty($store_user_details->storeDetail->name))
                   <p>Store Name : {{ $store_user_details->storeDetail->name }}</p>
                   @endif
 
-                  @if($store_user_details->storeDetail->phone_number)
+                  @if(!empty($store_user_details->storeDetail->phone_number))
                   <p>Phone No. : {{ $store_user_details->storeDetail->phone_number }}</p>
                   @endif
 
-                  @if($store_user_details->storeDetail->description)
+                  @if(!empty($store_user_details->storeDetail->description))
                   <p>Description : {{ $store_user_details->storeDetail->description }}</p>
                   @endif
 
-                  @if($store_user_details->storeDetail->address)
+                  @if(!empty($store_user_details->storeDetail->address))
                   <p>Address : {{ $store_user_details->storeDetail->address }}</p>
                   @endif
                </div>

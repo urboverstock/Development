@@ -72,9 +72,9 @@
       <div
         class="d-flex justify-content-between align-items-center flex-wrap"
       >
-        <h5 class="--left mb-0">Hello, Welcome Here</h5>
+        <h5 class="--left mb-0">Hello, {{Auth::user()->first_name}} {{Auth::user()->last_name}}</h5>
         <div class="d-flex align-items-center">
-          <div class="position-relative me-3">
+          <!-- <div class="position-relative me-3">
             <div class="dropdown">
               <button
                 class="btn admin-header-button bg-white"
@@ -110,14 +110,14 @@
                 aria-labelledby="dropdownMenuButton1"
               >
                 <li>
-                <a class="dropdown-item" href="{{ route('admin.edit_profile') }}">SETTINGS</a>
+                <a class="dropdown-item" href="{{ route('admin.edit_profile') }}">SettingS</a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
                 </li>
               </ul>
             </div>
-          </div>
+          </div> -->
           <div class="dropdown">
             <button
               class="btn admin-header-button"
@@ -154,10 +154,10 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li>
-                <a class="dropdown-item" href="{{ route('admin.edit_profile') }}">SETTINGS</a>
+                <a class="dropdown-item" href="{{ route('admin.edit_profile') }}">Settings</a>
               </li>
               <li>
-                <a class="dropdown-item" href="{{ route('admin.chat') }}">CHATS</a>
+                <a class="dropdown-item" href="{{ route('admin.chat') }}">Chats</a>
               </li>
               <li>
                 <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>

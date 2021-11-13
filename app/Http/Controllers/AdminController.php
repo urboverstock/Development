@@ -194,13 +194,24 @@ class AdminController extends Controller
       $orders = Order::with('getUserDetail');
       $orders = $orders->get()->toArray();
 
-      return view('admin.orders.list', compact('orders'));
+      $total_sellers = User::where('user_type', SELLER)->count();
+      $total_buyers = User::where('user_type', BUYER)->count();
+
+      $total_orders = Order::count();
+
+      $total_pending_order = Order::where('status', ORDER_PENDING)->count();
+      $total_complete_order = Order::where('status', ORDER_COMPLETED)->count();
+      $total_price_order = Order::where('status', ORDER_COMPLETED)->sum('price');
+
+      return view('admin.orders.list', compact('orders', 'total_sellers', 'total_buyers', 'total_orders', 'total_pending_order'));
     }
 
     public function viewOrder($id)
     {
       $id = Crypt::decrypt($id);
     	$order = Order::with('getOrderDetail.getProductDetails', 'getUserAddress.getUserDetail')->find($id);
+
+      // print_r($id);die();
       return view('admin.orders.orderDetail', compact('order'));
     }
 

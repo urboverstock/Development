@@ -61,7 +61,20 @@ class BuyerController extends Controller
       $total_item_favourite = ProductFavourite::where('user_id', Auth::user()->id)->count();
       $unread_msg_count = Chat::whereNull('read_at')->count();
       $total_pending_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_PENDING)->count();
-      return view('buyer.dashboard', compact('user','followers','followings', 'total_item_order', 'total_item_favourite', 'unread_msg_count','total_pending_order'));
+
+      $orders_detail_product_id = OrderDetail::select('product_id')
+      ->groupBy('product_id')
+      ->where('user_id', Auth::user()->id)
+      ->where('status', ORDER_COMPLETED)
+      ->latest()
+      ->get()
+      ->pluck('product_id')
+      ->toArray();
+
+      $get_old_order_products = Product::whereIn('id', $orders_detail_product_id)->get()->toArray();
+      // print_r($get_old_order_products);die();
+
+      return view('buyer.dashboard', compact('user','followers','followings', 'total_item_order', 'total_item_favourite', 'unread_msg_count','total_pending_order', 'get_old_order_products'));
     }
 
     public function edit_profile(Request $request){
@@ -224,7 +237,8 @@ class BuyerController extends Controller
                     $getProduct = Product::find($cart['product']['id']);
 
                     $order_details = new OrderDetail;
-                    $order_details->order_id = $order->id;   
+                    $order_details->order_id = $order->id;
+                    $order_details->user_id = Auth::user()->id;
                     $order_details->product_id = $cart['product']['id'];
                     $order_details->product_quantity = $cart['quantity'];
                     $order_details->product_price = $cart['product']['price'];

@@ -8,14 +8,14 @@
             <div class="col-lg-12">
                 <div class="d-flex align-items-center py-4">
                     <h3 class="mb-0 fw-bold me-3">Overview</h3>
-                    <div class="col-lg-2">
+                    <!-- <div class="col-lg-2">
                         <select class="form-select bg-transparent " aria-label="Default select example">
                             <option selected>Monthly</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                           </select>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-3 mb-3">
@@ -106,12 +106,12 @@
                   <div class="card border-0 shadow br-10">
                       <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                          <h5 class="ms-3  f-600">Latest Activities</h5>
+                          <h5 class="ms-3 f-600">Latest Activities</h5>
                           <h5 class="ms-3 f-600">
                             <a href="#" class="text-decoration-none text-dark">View All</a>
                           </h5>
-                          
                         </div>
+                        
                         <div class="">
                           <div class="row">
                             <div class="col-lg-6 latest-activities-wrapper position-relative mb-3">

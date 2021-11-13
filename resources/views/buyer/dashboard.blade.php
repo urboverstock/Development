@@ -138,84 +138,24 @@
         </div>
         <div class="col-lg-12">
           <div class="orders">
+            @if(count($get_old_order_products) > 0)
+            @foreach($get_old_order_products as $key => $get_old_order_product)
             <div class="custom-orders">
               <div class="card product-item border-0 shadow br-12 mb-5">
-                <div class="card-body "> <img class="img-fluid br-12 mb-3" src="../assets/images/garbage/1.png" alt="">
-                  <h5 class="fw-bold">Peachy Umbrella</h5>
+                <div class="card-body "> <img class="img-fluid br-12 mb-3" src="{{ productDefaultImage($get_old_order_product['id'])}}" alt="">
+                  <h5 class="fw-bold">{{ $get_old_order_product['name'] }}</h5>
                   <h6>Order Status - Delivered</h6> </div>
                 <div class="card-footer bg-transparent">
                   <div class="d-flex justify-content-between align-items-center flex-wrap py-2">
-                    <h5 class="mb-0">$150.00</h5>
-                    <button type="button" class="btn btn-dark rounded-pill text-12 px-4">Re-Order</button>
+                    <h5 class="mb-0">${{ $get_old_order_product['price'] }}</h5>
+                    <a href="{{ route('buy-now', $get_old_order_product['id']) }}" class="btn btn-dark rounded-pill text-12 px-4">Re-Order</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="custom-orders">
-              <div class="card product-item border-0 shadow br-12 mb-5">
-                <div class="card-body "> <img class="img-fluid br-12 mb-3" src="../assets/images/garbage/1.png" alt="">
-                  <h5 class="fw-bold">Peachy Umbrella</h5>
-                  <h6>Order Status - Delivered</h6> </div>
-                <div class="card-footer bg-transparent">
-                  <div class="d-flex justify-content-between align-items-center flex-wrap py-2">
-                    <h5 class="mb-0">$150.00</h5>
-                    <button type="button" class="btn btn-dark rounded-pill text-12 px-4">Re-Order</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="custom-orders">
-              <div class="card product-item border-0 shadow br-12 mb-5">
-                <div class="card-body "> <img class="img-fluid br-12 mb-3" src="../assets/images/garbage/1.png" alt="">
-                  <h5 class="fw-bold">Peachy Umbrella</h5>
-                  <h6>Order Status - Delivered</h6> </div>
-                <div class="card-footer bg-transparent">
-                  <div class="d-flex justify-content-between align-items-center flex-wrap py-2">
-                    <h5 class="mb-0">$150.00</h5>
-                    <button type="button" class="btn btn-dark rounded-pill text-12 px-4">Re-Order</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="custom-orders">
-              <div class="card product-item border-0 shadow br-12 mb-5">
-                <div class="card-body "> <img class="img-fluid br-12 mb-3" src="../assets/images/garbage/1.png" alt="">
-                  <h5 class="fw-bold">Peachy Umbrella</h5>
-                  <h6>Order Status - Delivered</h6> </div>
-                <div class="card-footer bg-transparent">
-                  <div class="d-flex justify-content-between align-items-center flex-wrap py-2">
-                    <h5 class="mb-0">$150.00</h5>
-                    <button type="button" class="btn btn-dark rounded-pill text-12 px-4">Re-Order</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="custom-orders">
-              <div class="card product-item border-0 shadow br-12 mb-5">
-                <div class="card-body "> <img class="img-fluid br-12 mb-3" src="../assets/images/garbage/1.png" alt="">
-                  <h5 class="fw-bold">Peachy Umbrella</h5>
-                  <h6>Order Status - Delivered</h6> </div>
-                <div class="card-footer bg-transparent">
-                  <div class="d-flex justify-content-between align-items-center flex-wrap py-2">
-                    <h5 class="mb-0">$150.00</h5>
-                    <button type="button" class="btn btn-dark rounded-pill text-12 px-4">Re-Order</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="custom-orders">
-              <div class="card product-item border-0 shadow br-12 mb-5">
-                <div class="card-body "> <img class="img-fluid br-12 mb-3" src="../assets/images/garbage/1.png" alt="">
-                  <h5 class="fw-bold">Peachy last</h5>
-                  <h6>Order Status - Delivered</h6> </div>
-                <div class="card-footer bg-transparent">
-                  <div class="d-flex justify-content-between align-items-center flex-wrap py-2">
-                    <h5 class="mb-0">$150.00</h5>
-                    <button type="button" class="btn btn-dark rounded-pill text-12 px-4">Re-Order</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
+            @endif
+            
           </div>
         </div>
       </div>
@@ -232,7 +172,7 @@
               </div>
             </div>
             <div class="p-5 border-left-buyer-dashboard">
-              <button type="button" class="btn btn-light rounded-pill mt-2 py-3 px-5 fw-bold">View Orders</button>
+              <a href="{{ route('buyerOrderList') }}" class="btn btn-light rounded-pill mt-2 py-3 px-5 fw-bold">View Orders</a>
             </div>
           </div>
         </div>

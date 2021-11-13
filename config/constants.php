@@ -20,3 +20,8 @@ defined('UNSUBSCRIBED') OR define('UNSUBSCRIBED', 0);
 defined('IN_ACTIVE') OR define('IN_ACTIVE', 0);
 defined('DRAFT') OR define('DRAFT', 1);
 defined('PUBLISHED') OR define('PUBLISHED', 2);
+
+
+defined('ADMIN') OR define('ADMIN', 1);
+defined('SELLER') OR define('SELLER', 3);
+defined('BUYER') OR define('BUYER', 4);
