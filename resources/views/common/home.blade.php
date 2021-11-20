@@ -240,7 +240,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center sec-7-card-sm-title flex-wrap">
                       <img class="img-fluid me-2" src="{{ $seller->profile_pic ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt="">
-                      <h2 class="fw-bold mb-0">{{ $seller->full_name }}</h2>
+                      <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><h2 class="fw-bold mb-0">{{ $seller->full_name }}</h2></a>
                     </div>
 
                     <div class="sec-7-card-lg-title">
