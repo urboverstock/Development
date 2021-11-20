@@ -43,7 +43,7 @@
             <input type="hidden" name="" id="rate_user_id" value="{{ $user->id }}">
             <div data-aos="fade-up" class="col-lg-12">
               <!-- @for($i = 1; $i <= 5; $i++)
-                <span><i class="fa fa-star user_rating" aria-hidden = "true" id = "st{{ $i }}" data-rate_value="{{ $i }}" style="{{ $i <= $getUserRate->rate ? 'color:yellow' : '' }}"></i></span>
+                <span><i class="fa fa-star user_rating" aria-hidden = "true" id = "st{{ $i }}" data-rate_value="{{ $i }}" style="{{ $i <= @$getUserRate->rate ? 'color:yellow' : '' }}"></i></span>
               @endfor -->
               <i class = "fa fa-star user_rating" aria-hidden = "true" id = "st1" data-rate_value="1"></i>
               <i class = "fa fa-star user_rating" aria-hidden = "true" id = "st2" data-rate_value="2"></i>
