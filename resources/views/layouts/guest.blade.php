@@ -34,7 +34,9 @@
    </head>
    <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-      @if(Auth::check())
+      @if(Auth::check() &&  Auth::user()->user_type == 3)
+        @include('includes.seller_header')
+      @elseif(Auth::check())
         @include('includes.buyer.buyer_header')
       @else
         @include('includes.header')
@@ -81,6 +83,23 @@
                   toastr.info("{{ \Session::get('info') }}", "Info");
               <?php } ?>
           });
+      </script>
+
+      <script>
+        function clipboard() {
+          /* Get the text field */
+          var copyText = document.getElementById("profile_link");
+
+          /* Select the text field */
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+          /* Copy the text inside the text field */
+          navigator.clipboard.writeText(copyText.value);
+          
+          /* Alert the copied text */
+          // alert("Copied the text: " + copyText.value);
+        }
       </script>
         
       @yield('after_footer')

@@ -9,6 +9,7 @@ use App\Models\ProductCategory;
 use App\Models\ProductCompanies;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\ProductWishlist;
 use Auth, Validator;
 use App\Models\Order;
 
@@ -29,7 +30,61 @@ class SellerController extends Controller
         $total_complete_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_COMPLETED)->count();
         $total_price_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_COMPLETED)->sum('price');
 
-        return view('seller.dashboard', compact('total_complete_order', 'total_pending_order', 'total_price_order', 'total_orders'));
+        $order_chart = [];
+        $final_result = [];
+
+        $order_By_month = Order::select(\DB::raw('count(id) as `orderCount`'), \DB::raw("DATE_FORMAT(created_at, '%M') month"))
+            ->where('user_id', Auth::user()->id)
+            ->groupBy('month')
+            ->get()
+            ->toArray();
+
+        $key = array_column($order_By_month, 'month');
+        $val = array_column($order_By_month, 'orderCount');
+        $order_By_month = array_combine($key, $val);
+        $months = array("January", "February", "March", 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+        foreach ($months as $month) {
+            if (array_key_exists($month, $order_By_month)) {
+                $result = $order_By_month[$month];
+            } else {
+                $result = 0;
+            }
+            $final_result[] = $result;
+        }
+        foreach ($order_By_month as $key => $val) {
+            $order_By_month[$key] = $val['data'];
+        }
+        $data['order_By_month'] = $final_result;
+
+        $order_chart = Order::select('status as name', \DB::raw('count(*) as y'))
+            ->where('user_id', Auth::user()->id)
+            ->groupBy('status')
+            ->get()
+            ->toArray();
+
+
+        foreach ($order_chart as $key => $val) {
+            $order_chart[$key]['name'] = getOrderStatusName($val['name']);
+            $order_chart[$key]['y'] = $val['y'];
+        }
+
+        // echo "<pre>";
+        // print_r($order_chart);die();
+
+        $data['order_chart'] = $order_chart;
+
+        $productId = Product::where('user_id', Auth::user()->id)->get()->pluck('id')->toArray();
+        $data['wishlists'] = ProductWishlist::with(['getUserDetail' => function($q)
+            {
+                $q->select('id', 'first_name', 'profile_pic', 'last_name');
+            }])
+            ->with(['getProductDetail' => function($q)
+            {
+                $q->select('id', 'name');
+            }])
+            ->whereIn('product_id', $productId)->latest()->paginate(10);
+
+        return view('seller.dashboard', compact('total_complete_order', 'total_pending_order', 'total_price_order', 'total_orders', 'data'));
     }
 
     public function edit_profile(Request $request){

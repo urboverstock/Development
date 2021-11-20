@@ -54,7 +54,8 @@
                       <th scope="row" class="py-3 align-middle f-400">{{ $wishlist['get_user_detail']['full_name']}}</th>
                       <td class="py-3 align-middle">{{ $wishlist['get_product_detail']['name'] }}</td>
                       <td class="py-3 align-middle">{{ date('d M, Y', strtotime($wishlist['created_at']) ) }}</td>
-                      <td class="py-3 align-middle"><a data-bs-toggle="modal"  data-bs-target="#myModal" data-userId="{{ $wishlist['user_id'] }}" data-productId="{{ $wishlist['product_id'] }}"  class="productSuggestionModal" data-url="{{ route('sellerSuggestionModal', ['userId' => $wishlist['user_id'], 'productId' => $wishlist['product_id']]) }}">Suggest</a>
+                      <td class="py-3 align-middle">
+                        <a data-bs-toggle="modal"  data-bs-target="#myModal" data-userId="{{ $wishlist['user_id'] }}" data-productId="{{ $wishlist['product_id'] }}"  class="productSuggestionModal" data-url="{{ route('sellerSuggestionModal', ['userId' => $wishlist['user_id'], 'productId' => $wishlist['product_id']]) }}">Suggest</a>
                         <a href="{{ route('sellerOfferListing',  \Illuminate\Support\Facades\Crypt::encrypt($wishlist['product_id'])) }}">Offers</a>
                       </td>
 

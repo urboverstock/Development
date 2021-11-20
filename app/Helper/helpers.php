@@ -148,3 +148,46 @@
 	        return Cart::where('user_id', $user_id)->count();
 	    }
 	}
+
+
+	if (!function_exists('getOrderStatusName')) {
+	    function getOrderStatusName($status)
+	    {
+	        switch ($status) {
+	        	case 0:
+	                return "ORDER PENDING";
+	                break;
+	            case 1:
+	                return "ORDER PROCESS";
+	                break;
+	            case 2:
+	                return "ORDER ON DELIVERY";
+	                break;
+	            case 3:
+	                return "ORDER COMPLETED";
+	                break;
+	            case 4:
+	                return "ORDER DECLINED";
+	                break;
+
+	            default:
+	                return "Sorry!!!!!! You don't have any order";
+	        }
+	    }
+	}
+
+	function urbonRound($rate)
+	{
+	  $intRate = (int)$rate;
+	  $decimalRate = $rate - $intRate;
+
+	  if($decimalRate >= 0.1 && $decimalRate <= 0.5)
+	  {
+	    $value = (int)$rate + 0.5;
+	  }
+	  else
+	  {
+	    $value = round($rate);
+	  }
+	  return $value;
+	}

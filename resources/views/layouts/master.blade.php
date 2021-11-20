@@ -60,6 +60,9 @@
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <script type="text/javascript" src="{{ asset('assets/js/script/sweetalert.min.js') }}"></script>
     <script src="{{ asset('assets/js/script/apexChart.js') }}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="{{ asset('assets/js/script/main.js') }}"></script>
     <script src="{{ asset('assets/js/script/jquery.validate.js') }}"></script>
     <script src="{{ asset('assets/js/script/form_validation.js') }}"></script>
