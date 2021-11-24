@@ -20,7 +20,7 @@ class CreatePagesTable extends Migration
             $table->string('slug');
             $table->text('content');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('status');
+            $table->integer('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
