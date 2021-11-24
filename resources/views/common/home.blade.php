@@ -14,8 +14,8 @@
               <div class="position-relative">
                 <img src="{{ asset('assets/images/banner.jpg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
                 <div class="carousel-content-1 " data-aos="fade-up">
-                  <h1 class="display-5 fw-bold mb-4">Your Favourite Brands Under Single Roof</h1>
-                  <p class="mb-5">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
+                  <h1 class="display-5 fw-bold mb-4">With ease, redefine the rules!</h1>
+                  <p class="mb-5">Are you looking for a comfortable exotic fashion element for yourself,  your home? You've arrived at the perfect location.</p>
                   
                    <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
@@ -48,8 +48,8 @@
               <div class="position-relative">
                 <img src="{{ asset('assets/images/banner-2.jpeg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
                 <div class="carousel-content-1 " data-aos="fade-up">
-                  <h1 class="display-5 fw-bold mb-4 text-white">Your Favourite Brands Under Single Roof</h1>
-                  <p class="mb-5 text-white">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
+                  <h1 class="display-5 fw-bold mb-4 text-white">With ease, redefine the rules!</h1>
+                  <p class="mb-5 text-white">Are you looking for a comfortable exotic fashion element for yourself,  your home? You've arrived at the perfect location.</p>
                   
                    <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
@@ -82,8 +82,8 @@
               <div class="position-relative">
                 <img src="{{ asset('assets/images/banner-3.jpeg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
                 <div class="carousel-content-1 " data-aos="fade-up">
-                  <h1 class="display-5 fw-bold mb-4 text-white">Your Favourite Brands Under Single Roof</h1>
-                  <p class="mb-5 text-white">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
+                  <h1 class="display-5 fw-bold mb-4 text-white">With ease, redefine the rules!</h1>
+                  <p class="mb-5 text-white">Are you looking for a comfortable exotic fashion element for yourself,  your home? You've arrived at the perfect location.</p>
                   
                   <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
@@ -116,8 +116,8 @@
               <div class="position-relative">
                 <img src="{{ asset('assets/images/banner-4.jpg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
                 <div class="carousel-content-1 " data-aos="fade-up">
-                  <h1 class="display-5 fw-bold mb-4 text-dark">Your Favourite Brands Under Single Roof</h1>
-                  <p class="mb-5 text-dark">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
+                  <h1 class="display-5 fw-bold mb-4 text-dark">With ease, redefine the rules!</h1>
+                  <p class="mb-5 text-dark">Are you looking for a comfortable exotic fashion element for yourself,  your home? You've arrived at the perfect location.</p>
                   
                   <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
@@ -150,8 +150,8 @@
               <div class="position-relative">
                 <img src="{{ asset('assets/images/banner-5.jpg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
                 <div class="carousel-content-1 " data-aos="fade-up">
-                  <h1 class="display-5 fw-bold mb-4 text-white">Your Favourite Brands Under Single Roof</h1>
-                  <p class="mb-5 text-white">Designer. Preloved. Vintage. Streetwear. Sneakers. Whatever your style. Find it on Depop.</p>
+                  <h1 class="display-5 fw-bold mb-4 text-white">With ease, redefine the rules!</h1>
+                  <p class="mb-5 text-white">Are you looking for a comfortable exotic fashion element for yourself,  your home? You've arrived at the perfect location.</p>
                   
                   <a href="{{ route('get-started') }}" class="btn btn--primary btn-lg border-0 shadow-none fw-bold px-5 py-4 carousel-sec-button">Let's Get Started</a>
                 </div>
@@ -261,6 +261,7 @@
                             <i class="far fa-star text-white"></i>
                             <i class="far fa-star text-white"></i>
                           </div>
+                          
                         </div>
                         @if($seller->user_chat_status == 1)
                         <span class="badge bg--primary-darken px-3">
@@ -334,7 +335,7 @@ That is why we have happy consumers all around the world and are proud to be ass
       <div class="row">
         <div class="col-md-12 text-center mb-4" data-aos="fade-up"  >
           <h1 class="fw-bold mb-3" >Latest Products</h1>
-          <h3 class="text-muted">Browse through the colection</h3>
+          <h3 class="text-muted">Browse through the collection</h3>
         </div>
         <div class="three-item">
             @foreach($latestProducts as $product)                
@@ -384,22 +385,22 @@ That is why we have happy consumers all around the world and are proud to be ass
       <div class="col-lg-4 p-0">
         <div class="text-center sec-5-card p-5 h-100">
           <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/1.png') }}" alt="">
-          <h4 class="fw-bold mb-2">Free Delivery</h4>
-          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+          <h4 class="fw-bold mb-2">Delivery</h4>
+          <p class="mb-0">Shipping is worldwide. There is no location barrier.</p>
         </div>
       </div>
       <div class="col-lg-4 p-0">
         <div class="text-center sec-5-card p-5 h-100">
           <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/2.png') }}" alt="">
-          <h4 class="fw-bold mb-2">Free Delivery</h4>
-          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+          <h4 class="fw-bold mb-2">Support</h4>
+          <p class="mb-0">24/7 live support available to attend to your inquiries.</p>
         </div>
       </div>
       <div class="col-lg-4 p-0">
         <div class="text-center sec-5-card p-5 h-100">
           <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/3.png') }}" alt="">
-          <h4 class="fw-bold mb-2">Free Delivery</h4>
-          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+          <h4 class="fw-bold mb-2">Security</h4>
+          <p class="mb-0">High end encryption to ensure security of your details.</p>
         </div>
       </div>
     </div>
@@ -417,7 +418,9 @@ That is why we have happy consumers all around the world and are proud to be ass
           <div class="urban-sub-title mb-4">
             <p class="mb-0">Find your style</p>
           </div>
-          <p class="line-height-2 mb-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+          <p class="line-height-2 mb-4">The key to looking fabulous isn't to keep up with all of the latest fashion trends. It's all about remaining authentic and loyal to yourself and your particular style. 
+With our exotic picks sourced from the most forward-thinking suppliers, we can help you build and preserve your personal style.
+ </p>
           <a href="{{ route('products') }}" class="btn btn-dark border-0 shadow-none fw-bold px-5 py-4">Know More</a>
         </div>
         <div class="col-lg-6">
@@ -440,7 +443,8 @@ That is why we have happy consumers all around the world and are proud to be ass
           <div class="sec-8-header position-relative">
             <h2 class="fw-bold ">
                 <!-- Be part of the community that's transforming things in the most fun way  -->
-                If you have any queries regarding our services, would like to enquire about our existing and upcoming goods, or would like to discuss delivery, please contact us at
+                <!-- If you have any queries regarding our services, would like to enquire about our existing and upcoming goods, or would like to discuss delivery, please contact us at -->
+                For all inquiries please reach out to support@urbanoverstock.con and we will get back to you as soon as possible!
             </h2>
             <img class="sec-8-img position-absolute top-0 start-100 translate-middle" src="assets/images/section-8/1.png" alt="">
           </div>

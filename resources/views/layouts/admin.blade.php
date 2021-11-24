@@ -60,7 +60,8 @@
 
     <!--<script src="{{ asset('assets/js/script/apexChart.js') }}"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script> -->
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
     <!--script src="{{ asset('assets/js/script/datatables.min.js') }}"></script>
     <script src="{{ asset('assets/js/script/datatables.select.min.js') }}"></script-->
     <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>

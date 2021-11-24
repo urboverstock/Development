@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/pages/{page-slug}', [App\Http\Controllers\LandingController::class, 'viewPage'])->name('viewPage');
+
 Route::get('/cache-clear', function () {
     Artisan::call('cache:clear');
     Artisan::call('route:clear');
@@ -26,6 +28,7 @@ Route::group(['middleware' => ['guest']], function () {
     Route::any('/signup', [App\Http\Controllers\LandingController::class, 'register'])->name('signup');
     Route::any('/signin', [App\Http\Controllers\LandingController::class, 'signIn'])->name('signin');
     Route::any('/forgot-password', [App\Http\Controllers\LandingController::class, 'forgot_password'])->name('forgot_password');
+
 });
 
 Route::group(['middleware' => ['auth', 'checksellerstore'], 'prefix' => 'seller', 'as' => 'seller'], function ()
@@ -163,6 +166,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     Route::get('/buyers/{id}/{status}', [App\Http\Controllers\AdminController::class, 'buyerStatusUpdate'])->name('admin.buyer.status');
     Route::get('/advertisements/{id}/{status}', [App\Http\Controllers\AdminController::class, 'advertisementStatusUpdate'])->name('admin.advertisement.status');
+
+    Route::get('/page/create', [App\Http\Controllers\Admin\PageController::class, 'create'])->name('admin.page.create');
+    Route::post('/page/store', [App\Http\Controllers\Admin\PageController::class, 'store'])->name('admin.page.store');
+    Route::get('/page', [App\Http\Controllers\Admin\PageController::class, 'index'])->name('admin.page.list');
+    Route::get('/page/{id}', [App\Http\Controllers\Admin\PageController::class, 'edit'])->name('admin.page.edit');
+    Route::get('/page/show/{id}', [App\Http\Controllers\Admin\PageController::class, 'show'])->name('admin.page.show');
+    Route::post('/page/update', [App\Http\Controllers\Admin\PageController::class, 'update'])->name('admin.page.update');
 });
 
 
@@ -183,6 +193,8 @@ Route::any('chat', [App\Http\Controllers\Chat\ChatController::class, 'chat'])->n
 Route::any('saveChat', [App\Http\Controllers\Chat\ChatController::class,'saveChat'])->name('SaveChat');
 Route::get('unreadMessage', [App\Http\Controllers\Chat\ChatController::class,'unreadMessage'])->name('unreadMessage');
 
+
+
 Route::get('guest-buyer/{id}', [App\Http\Controllers\LandingController::class, 'guestBuyer'])->name('guest-buyer');
 Route::get('pro-seller/{id}', [App\Http\Controllers\LandingController::class, 'proSeller'])->name('pro-seller');
 Route::post('add-follow-user', [App\Http\Controllers\LandingController::class, 'addFollowUser'])->name('add-follow-user');
@@ -195,7 +207,9 @@ Route::get('buy-now/{product_id}', [App\Http\Controllers\LandingController::clas
 Route::any('newsletter', [App\Http\Controllers\NewsletterController::class, 'sendNewsLetter'])->name('sendNewsLetter');
 
 Route::group(['middleware' => ['auth']], function () {
-Route::get('profile/{user_id}', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
-Route::get('user_rate', [App\Http\Controllers\UserController::class, 'userRate'])->name('user-rate');
+    Route::get('profile/{user_id}', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
+    Route::get('user_rate', [App\Http\Controllers\UserController::class, 'userRate'])->name('user-rate');
 });
- Route::get('all-post', [App\Http\Controllers\UserPostController::class, 'allPost'])->name('AllPost');
+
+Route::get('all-post', [App\Http\Controllers\UserPostController::class, 'allPost'])->name('AllPost');
+

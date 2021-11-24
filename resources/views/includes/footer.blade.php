@@ -29,7 +29,7 @@
           <div class="d-flex flex-column">
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Browse Through</a>
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Terms of Service</a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Privacy Policy</a>
+            <a href="{{ url('page/privacy-policy') }}" class="text-dark text-decoration-none mb-3 fw-bold">Privacy Policy</a>
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Refund Policy </a>
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Disclaimer </a>
           </div>

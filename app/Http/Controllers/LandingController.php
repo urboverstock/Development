@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\UserPost;
 use App\Models\User;
+use App\Models\Page;
 use App\Models\UserRole;
 use App\Models\Cart;
 use App\Models\UserFollowers;
@@ -472,5 +473,12 @@ class LandingController extends Controller
         $response["status"] = 1;
         $response["message"] = "Cart remove successfully";
         return response()->json($response);
+    }
+
+    public function viewPage($slug)
+    {
+        print_r($slug);die();
+        $page = Page::where('slug', $slug)->first();
+        return view('page', compact('page'));
     }
 }

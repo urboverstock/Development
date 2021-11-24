@@ -41,7 +41,7 @@
                 <i class="fas fa-star"></i>
               </span>
             </div>
-            <span class="text-mute border-r-grey pe-2 ">(223)</span>
+            <span class="text-mute border-r-grey pe-2 "></span>
             <span class="d-flex align-items-center">
               <svg class="mx-2" width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.34246 13.0735L0.283273 7.26158C-0.0807523 6.91241 -0.0807523 6.34628 0.283273 5.99708L1.60155 4.73257C1.96557 4.38337 2.55583 4.38337 2.91986 4.73257L7.00162 8.64771L15.7443 0.261876C16.1083 -0.087292 16.6986 -0.087292 17.0626 0.261876L18.3809 1.52638C18.7449 1.87555 18.7449 2.44169 18.3809 2.79089L7.66078 13.0735C7.29671 13.4227 6.70649 13.4227 6.34246 13.0735Z" fill="#BABABA"/>
@@ -133,7 +133,7 @@
                   <button class="nav-link active  py-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
                   <!-- <button class="nav-link  py-3" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Specification</button> -->
                   <!-- <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Discussion</button> -->
-                  <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews (223)</button>
+                  <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews </button>
                   <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-store" type="button" role="tab" aria-controls="nav-store" aria-selected="false">Store</button>
                </div>
             </nav>

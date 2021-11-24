@@ -44,6 +44,20 @@
 
       @yield('content')
 
+      <div class="logout-screen" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="text-50 f-600">Are you sure you want to logout?</div>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn  py-4 rounded-pill px-5rem me-3 fw-bold border-logout-screen cancel_logout_btn">Go Back </button>
+                        <button type="button" class="btn btn-danger py-4 rounded-pill confirm_logout_btn px-5rem">Logout </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
       @include('includes.footer')
       <!-- Include js files here -->
 
@@ -101,6 +115,20 @@
           // alert("Copied the text: " + copyText.value);
         }
       </script>
+
+      <script>
+        $(document).on('click', '.logout_btn', function(){
+            $('.logout-screen').show();
+        });
+
+        $(document).on('click', '.cancel_logout_btn', function(){
+            $('.logout-screen').hide();
+        });
+
+        $(document).on('click', '.confirm_logout_btn', function(){
+            window.location.href = "{{ route('logout') }}";
+        });
+    </script>
         
       @yield('after_footer')
 

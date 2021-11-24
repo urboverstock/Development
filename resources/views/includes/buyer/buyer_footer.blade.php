@@ -1,5 +1,3 @@
-
-
 <style type="text/css">
   .footer-mail{
     max-width: 100%;
@@ -32,7 +30,7 @@
           <div class="d-flex flex-column">
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Browse Through</a>
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Terms of Service</a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Privacy Policy</a>
+            <a href="{{ route('viewPage', 'privacy-policy') }}" class="text-dark text-decoration-none mb-3 fw-bold">Privacy Policy</a>
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Refund Policy </a>
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Disclaimer </a>
           </div>

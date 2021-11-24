@@ -42,15 +42,17 @@
           @if(Auth::check())
             <input type="hidden" name="" id="rate_user_id" value="{{ $user->id }}">
             <div data-aos="fade-up" class="col-lg-12">
-              <!-- @for($i = 1; $i <= 5; $i++)
-                <span><i class="fa fa-star user_rating" aria-hidden = "true" id = "st{{ $i }}" data-rate_value="{{ $i }}" style="{{ $i <= @$getUserRate->rate ? 'color:yellow' : '' }}"></i></span>
-              @endfor -->
-              <i class = "fa fa-star user_rating" aria-hidden = "true" id = "st1" data-rate_value="1"></i>
+
+
+              @for($i = 1; $i <= 5; $i++)
+                <span><i class="fa fa-star {{ Auth::user()->id != $user->id ? 'user_rating' : '' }}" aria-hidden = "true" id = "st{{ Auth::user()->id != $user->id ? $i : '' }}" data-rate_value="{{ $i }}" style="{{ $i <= $countRateAvg ? 'color:yellow' : '' }}"></i></span>
+              @endfor
+              <!-- <i class = "fa fa-star user_rating" aria-hidden = "true" id = "st1" data-rate_value="1"></i>
               <i class = "fa fa-star user_rating" aria-hidden = "true" id = "st2" data-rate_value="2"></i>
               <i class = "fa fa-star user_rating" aria-hidden = "true" id = "st3" data-rate_value="3"></i>
               <i class = "fa fa-star user_rating" aria-hidden = "true" id = "st4" data-rate_value="4"></i>
-              <i class = "fa fa-star user_rating" aria-hidden = "true" id = "st5" data-rate_value="5"></i>
-              <span>({{ urbonRound($countRateAvg) }})</span>
+              <i class = "fa fa-star user_rating" aria-hidden = "true" id = "st5" data-rate_value="5"></i> -->
+              <span>(Average rating {{ number_format($countRateAvg) }} out of 5)</span>
             </div>
           @endif
 
