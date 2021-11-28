@@ -23,6 +23,7 @@
           <span class="error">{{ $errors->first('email') }}</span>
           <input class="form-control form-control-lg mb-5 py-3" type="password" placeholder="Password" aria-label="password" name="password">
           <span class="error">{{ $errors->first('password') }}</span>
+          <input type="hidden" name="previous_url" value="{{ redirect()->getUrlGenerator()->previous() }}">
           <div class="d-grid mb-3">
             <button type="submit" class="btn btn-dark shadow py-3 fw-bold btn-lg">Log in</button>
           </div>

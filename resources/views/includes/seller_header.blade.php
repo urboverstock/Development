@@ -49,9 +49,11 @@
               <li><a class="dropdown-item border-bottom" href="{{ route('chat') }}
               ">Chat</a></li>
 
-
-              <li><a class="dropdown-item border-bottom" href="{{ route('sellerListAdvertisement') }}
-              ">Advertisement</a></li>              
+              @if($user->user_type != 4)
+                <li>
+                  <a class="dropdown-item border-bottom" href="{{ route('sellerListAdvertisement') }}">Advertisement</a>
+                </li>
+              @endif          
               <!-- <li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li> -->
               <li><a href="{{ route('sellerDashboard') }}#z-contact" class="dropdown-item border-bottom">Contact Us</a>
               </li>

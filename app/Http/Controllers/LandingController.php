@@ -12,6 +12,7 @@ use App\Models\UserFollowers;
 use App\Models\ProductWishlist;
 use App\Models\ProductFavourite;
 use App\Models\ProductCategory;
+use Illuminate\Support\Facades\Redirect;
 use Auth, Validator, Hash;
 
 class LandingController extends Controller
@@ -130,7 +131,11 @@ class LandingController extends Controller
                 User::where('id', Auth::user()->id)->update(['login_status' => LOGIN]);
 
                 if (Auth::user()->user_type == 4) {
-                    return redirect()->route('buyer.index')->with('success', "Logged in successfully");
+                    if($postData['previous_url']){
+                        return Redirect::to(''.$postData['previous_url'].'')->with('success', "Logged in successfully");
+                    }else{
+                        return redirect()->route('buyer.index')->with('success', "Logged in successfully");   
+                    }
                 }else if (Auth::user()->user_type == 1) {
                     return redirect()->route('admin.dashboard')->with('success', "Logged in successfully");
                 }else{
