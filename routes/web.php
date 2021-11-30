@@ -135,6 +135,7 @@ Route::any('view-user-post/{id}', [App\Http\Controllers\UserPostController::clas
 Route::get('carts', [App\Http\Controllers\LandingController::class, 'carts'])->name('carts');
 Route::get('increase-decrease-cart/{cart_id}', [App\Http\Controllers\LandingController::class, 'increaseOrDecreaseCart'])->name('increase-decrease-cart');
 Route::get('remove-cart/{cart_id}', [App\Http\Controllers\LandingController::class, 'removeCart'])->name('remove-cart');
+Route::get('cart-later/{cart_id}', [App\Http\Controllers\LandingController::class, 'saveToLaterCart'])->name('save-later-cart');
 Route::get('remove-all-cart', [App\Http\Controllers\LandingController::class, 'removeAllCart'])->name('remove-all-cart');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {

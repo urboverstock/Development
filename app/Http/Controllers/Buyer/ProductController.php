@@ -41,7 +41,7 @@ class ProductController extends Controller
             })
             ->orWhereHas('getProductDetail', function($q) use($search)
             {
-                $q->select('id', 'name')->where('name', 'LIKE', '%'. $search .'%');
+                $q->select('id', 'name','price')->where('name', 'LIKE', '%'. $search .'%');
             });
         }
         else
@@ -52,7 +52,7 @@ class ProductController extends Controller
             }])
             ->with(['getProductDetail' => function($q)
             {
-                $q->select('id', 'name');
+                $q->select('id', 'name','price');
             }]);
         }
 

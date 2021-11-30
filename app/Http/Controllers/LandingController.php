@@ -472,6 +472,32 @@ class LandingController extends Controller
         return response()->json($response);
     }
 
+    public function saveToLaterCart($cart_id)
+    {
+        $cart = Cart::find($cart_id);
+        if($cart->delete())
+        {
+            $check = ProductFavourite::where(['user_id'=> Auth::user()->id,'product_id'=>$cart->product_id])->first();
+            if(empty($check)){
+                $favourite                = new ProductFavourite;
+                $favourite->user_id       = Auth::user()->id;
+                $favourite->product_id    = $cart->product_id;
+                if($favourite->save()){
+                    //$response["status"] = 1;
+                    //$response["message"] = "You have favourite successfully";
+                }
+            }
+            
+            $response["status"] = 1;
+            $response["message"] = "Item save for later successfully";
+        }else{
+            $response["status"] = 0;
+            $response["message"] = "Something went wrong";
+        }
+
+        return response()->json($response);
+    }
+
     public function removeAllCart(Request $request)
     {
         $cart = Cart::whereIn('id',$request->deleteids_arr)->delete();
