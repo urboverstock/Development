@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.guest')
 @section('title','Order Detail')
 @section('content')
 	<section class="mt-5 mb-4">
@@ -11,6 +11,7 @@
            <h6 class="f-600 mb-2" data-aos="fade-up">Order ID : {{ $order->order_number }}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Total Product : {{ $order->total_quantity }}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Total Price : {{ $order->price }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Status : {{ getOrderStatusName($order->status) }}</h6>
 
          </div>
 
@@ -19,13 +20,13 @@
             <h1 class="display-5 f-600 me-3">Shipping Details</h1>
             
           </div>
-           <h6 class="f-600 mb-2" data-aos="fade-up">Name : {{ $order->getUserAddress->getUserDetail->first_name }} {{ $order->getUserAddress->getUserDetail->last_name }}</h6>
-           <h6 class="f-600 mb-2" data-aos="fade-up">Email : {{ $order->getUserAddress->getUserDetail->email }}</h6>
-           <h6 class="f-600 mb-2" data-aos="fade-up">Phone : {{ $order->getUserAddress->getUserDetail->phone_number }}</h6>
-           <h6 class="f-600 mb-2" data-aos="fade-up">Country : {{ $order->getUserAddress->country }}</h6>
-           <h6 class="f-600 mb-2" data-aos="fade-up">City : {{ $order->getUserAddress->city }}</h6>
-           <h6 class="f-600 mb-2" data-aos="fade-up">State : {{ $order->getUserAddress->state }}</h6>
-           <h6 class="f-600 mb-2" data-aos="fade-up">Pin Code : {{ $order->getUserAddress->pincode }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Name : {{ $order->getGuestUserDetail->name }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Email : {{ $order->getGuestUserDetail->email }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Phone : {{ $order->getGuestUserDetail->phone_number }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Country : {{ $order->country }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">City : {{ $order->city }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">State : {{ $order->state }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Pin Code : {{ $order->pincode }}</h6>
 
          </div>
 

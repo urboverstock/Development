@@ -27,7 +27,12 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
+    @if(Auth::check())
     @include('includes.buyer.buyer_header')
+    @else
+    @include('includes.header')
+
+    @endif
     @yield('content')
     @include('includes.buyer.buyer_footer')
 

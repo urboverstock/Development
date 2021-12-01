@@ -108,7 +108,7 @@
             @if(Auth::check())
             <a href="javascript:void(0)" class="add-to-cart btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3" id="add-to-cart" data-productid="{{ @$product_details->id }}">Add to Cart</a>
             @else
-            <a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3">Add to Cart</a>
+            <a href="javascript:void(0)" class="add-to-cart btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3"  id="add-to-cart" data-productid="{{ @$product_details->id }}">Add to Cart</a>
             @endif
 
             @if($store_user_details->user_chat_status == 1)

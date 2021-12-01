@@ -87,17 +87,20 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'seller', 'as' => 'seller'],
 
 Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout']);
 
+Route::any('/checkout', [App\Http\Controllers\BuyerController::class, 'checkout'])->name('buyer.checkout');
+Route::any('/payment', [App\Http\Controllers\BuyerController::class, 'payment'])->name('payment');
+Route::any('/save-order', [App\Http\Controllers\BuyerController::class, 'saveOrder'])->name('save.order');
+
 Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('/', [App\Http\Controllers\BuyerController::class, 'index'])->name('buyer.index');
     Route::any('dashboard', [App\Http\Controllers\BuyerController::class, 'dashboard'])->name('buyer.dashboard');
     Route::any('/edit-profile', [App\Http\Controllers\BuyerController::class, 'edit_profile'])->name('buyer.edit_profile');
     Route::any('/view-profile', [App\Http\Controllers\BuyerController::class, 'view_profile'])->name('buyer.view_profile');
     Route::any('/followers', [App\Http\Controllers\BuyerController::class, 'get_followers'])->name('buyer.followers');
-    Route::any('/checkout', [App\Http\Controllers\BuyerController::class, 'checkout'])->name('buyer.checkout');
-    Route::any('/payment', [App\Http\Controllers\BuyerController::class, 'payment'])->name('payment');
-    Route::any('/save-order', [App\Http\Controllers\BuyerController::class, 'saveOrder'])->name('save.order');
+    // Route::any('/checkout', [App\Http\Controllers\BuyerController::class, 'checkout'])->name('buyer.checkout');
+    // Route::any('/payment', [App\Http\Controllers\BuyerController::class, 'payment'])->name('payment');
+    // Route::any('/save-order', [App\Http\Controllers\BuyerController::class, 'saveOrder'])->name('save.order');
     Route::any('/add-new-address', [App\Http\Controllers\BuyerController::class, 'address'])->name('buyer.address');
-    Route::any('/apply-coupon', [App\Http\Controllers\LandingController::class, 'applyCoupon'])->name('buyer.apply_coupon');
 
     Route::any('/followers/delete/{id}', [App\Http\Controllers\BuyerController::class, 'delete_followers'])->name('buyerDeleteFollower');
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');
@@ -134,7 +137,6 @@ Route::any('view-user-post/{id}', [App\Http\Controllers\UserPostController::clas
 Route::get('carts', [App\Http\Controllers\LandingController::class, 'carts'])->name('carts');
 Route::get('increase-decrease-cart/{cart_id}', [App\Http\Controllers\LandingController::class, 'increaseOrDecreaseCart'])->name('increase-decrease-cart');
 Route::get('remove-cart/{cart_id}', [App\Http\Controllers\LandingController::class, 'removeCart'])->name('remove-cart');
-Route::get('cart-later/{cart_id}', [App\Http\Controllers\LandingController::class, 'saveToLaterCart'])->name('save-later-cart');
 Route::get('remove-all-cart', [App\Http\Controllers\LandingController::class, 'removeAllCart'])->name('remove-all-cart');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
@@ -212,3 +214,4 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('all-post', [App\Http\Controllers\UserPostController::class, 'allPost'])->name('AllPost');
 
 Route::get('/{pageSlug}', [App\Http\Controllers\LandingController::class, 'viewPage'])->name('viewPage');
+Route::any('order/{orderNumber}', [App\Http\Controllers\LandingController::class, 'viewOrder'])->name('viewOrder');

@@ -24,5 +24,10 @@ class Order extends Model
     	return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
+    public function getGuestUserDetail()
+    {
+        return $this->hasOne('App\Models\GuestUser', 'id', 'user_id');
+    }
+
     
 }

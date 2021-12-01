@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\GuestUser;
 use App\Models\UserPost;
+use App\Models\UserOffer;
 use App\Models\User;
 use App\Models\Payment;
 use App\Models\UserDocument;
@@ -18,10 +20,9 @@ use App\Models\UserFollowers;
 use App\Models\ProductFavourite;
 use App\Models\Chat;
 use App\Models\Cart;
-use App\Models\UsedCoupon;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Requests\StoreStripeRequest;
-use Auth, Validator, DB;
+use Auth, Validator, DB, Session;
 use Illuminate\Support\Str;
 use Stripe;
 use Config;
@@ -64,7 +65,7 @@ class BuyerController extends Controller
       $total_pending_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_PENDING)->count();
 
       $orders_detail_product_id = OrderDetail::select('product_id')
-      ///->groupBy('product_id')
+      ->groupBy('product_id')
       ->where('user_id', Auth::user()->id)
       ->where('status', ORDER_COMPLETED)
       ->latest()
@@ -118,7 +119,7 @@ class BuyerController extends Controller
             }
 
             if($user->save()){
-                return redirect()->route('buyer.view_profile')->with('success', 'Order placed successfully.');
+                return redirect()->route('buyer.view_profile');
             }else{
                 return redirect()->back()->with('error', COMMON_ERROR);
             }
@@ -178,10 +179,29 @@ class BuyerController extends Controller
     // Checkout functionality
     public function checkout()
     {
-        $user_id = Auth::user()->id;
-        $c_total_quantity = Cart::where('user_id', $user_id)->sum('quantity');
-        $carts = Cart::with('product')->where('user_id', $user_id)->get()->toArray();
-        $addresses = Address::where('user_id', $user_id)->get()->toArray();
+        if(!Auth::check())
+        {
+            $id = getPhysicalAddressOfPC();
+            $userId = ['physical_address' => $id];
+        }
+        else
+        {
+            $user_id = Auth::user()->id;
+            $userId = ['user_id' => $user_id];
+        }
+
+        
+        $c_total_quantity = Cart::where($userId)->sum('quantity');
+        $carts = Cart::with('product')->where($userId)->get()->toArray();
+        
+        if(Auth::check())
+        {
+            $addresses = Address::where('user_id', Auth::user()->id)->get()->toArray();
+        }
+        else
+        {
+            $addresses = NULL;
+        }
 
         if(count($carts) > 0)
         {
@@ -189,37 +209,72 @@ class BuyerController extends Controller
             {
                 $carts[$key]['p_price'] = $cart['product']['price'];
                 $carts[$key]['p_total_price'] = $cart['product']['price'] * $cart['quantity'];
+
+                $checkOffer = UserOffer::where([ 'product_id' => $cart['product_id'], 'offer_used' => SELLER_GIVE_OFFER])
+                ->where($userId)->first();
+
+                $carts[$key]['product_offer'] = $checkOffer['offer_percentage'];
+                $carts[$key]['product_offer_description'] = $checkOffer['offer_description'];
+                $carts[$key]['product_offer_type'] = $checkOffer['offer_type'];
             }
         }
 
         $p_total_price_column = array_column($carts, 'p_total_price');
         $total_price = array_sum($p_total_price_column);
 
-        $apply_coupon = UsedCoupon::with('coupon')->where(['user_id' => Auth::user()->id,'is_completed' => 0])->latest()->first();
+        $get_offer_amount = array_column($carts, 'product_offer');
+        $total_offer = array_sum($get_offer_amount);
 
-        return view('buyer.checkout', compact('addresses', 'carts', 'c_total_quantity', 'total_price','apply_coupon'));
+        return view('buyer.checkout', compact('addresses', 'carts', 'c_total_quantity', 'total_price', 'total_offer'));
     }
 
     public function payment(Request $request)
     {
+        Session::put('guest_user_data', $request->all());
         return view('stripe.stripe', compact('request'));
     }
 
     // Save order in order and order details tables and also decrement the product table quantity
     public function saveOrder(StoreStripeRequest $request)
     {
-        $carts = Cart::with('product')->where('user_id', Auth::user()->id)->get()->toArray();
+        $guest_user = Session::get('guest_user_data');
+        // print_r($guest_user['user_name']);die(); 
+
+        if(!Auth::check())
+        {
+            $id = getPhysicalAddressOfPC();
+            $userId = ['physical_address' => $id];
+        }
+        else
+        {
+            $id = Auth::user()->id;
+            $userId = ['user_id' => $id];
+        }
+
+        $carts = Cart::with('product')->where($userId)->get()->toArray();
+
 
         DB::beginTransaction();
         try
         {
             Stripe\Stripe::setApiKey(Config::get('services.stripe.secret'));
+
+            if(Auth::check())
+            {
+                $stripeToken = $request->stripeToken;
+                $total_price = $request->total_price;
+            }
+            else
+            {
+                $stripeToken = $request->stripeToken;
+                $total_price = $guest_user['total_price'];
+            }
             
 
             $charge = Stripe\Charge::create([
-                'source' => $request->stripeToken,
+                'source' => $stripeToken,
                 'currency' => 'inr',
-                'amount' => $request->total_price * 100,
+                'amount' => $total_price * 100,
                 'description' => 'test',
             ]);
 
@@ -227,12 +282,46 @@ class BuyerController extends Controller
             // print_r($charge);die();
 
             if ($charge['status'] == 'succeeded') {
+                $check_guest_user = GuestUser::where('email', $guest_user['user_email'])
+                ->orWhere('phone_number', $guest_user['user_email'])
+                ->first();
+
+                if(empty($check_guest_user))
+                {
+                    $guest_user_data = new GuestUser;
+                    $guest_user_data->name = $guest_user['user_name'];
+                    $guest_user_data->email = $guest_user['user_email'];
+                    $guest_user_data->phone_number = $guest_user['user_number'];
+                    $guest_user_data->physical_address = getPhysicalAddressOfPC();
+                    $guest_user_data->save();  
+                }
+                else
+                {
+                    $guest_user_data = $check_guest_user;
+                }
+                
+
                 $order = new Order;
-                $order->user_id = Auth::user()->id;
-                $order->address_id = $request->address;
+                if(Auth::check())
+                {
+                    $order->user_id = Auth::user()->id;
+                    $order->address_id = $request->address;
+                }
                 $order->price = $request->total_price;
                 $order->total_quantity = $request->total_quantity;
+                $order->discount = $request->total_offer;
                 $order->order_number = Str::random(4).time();
+
+                if(!Auth::check())
+                {
+                    $order->user_id = $guest_user_data->id;
+                    $order->address = $guest_user['user_address'];
+                    $order->country = $guest_user['user_country'];
+                    $order->state = $guest_user['user_state'];
+                    $order->city = $guest_user['user_city'];
+                    $order->pincode = $guest_user['user_pincode'];
+                }
+
                 $order->save();
 
                 foreach ($carts as $key => $cart)
@@ -241,11 +330,25 @@ class BuyerController extends Controller
 
                     $order_details = new OrderDetail;
                     $order_details->order_id = $order->id;
-                    $order_details->user_id = Auth::user()->id;
+                    if(Auth::check())
+                    {
+                        $order_details->user_id = Auth::user()->id;
+                    }
+                    else
+                    {
+                        $order_details->user_id = $guest_user_data->id;   
+                    }
                     $order_details->product_id = $cart['product']['id'];
                     $order_details->product_quantity = $cart['quantity'];
                     $order_details->product_price = $cart['product']['price'];
                     $order_details->save();
+
+                    if(Auth::check())
+                    {
+                        $updateUserOffer = UserOffer::where(['user_id' => Auth::user()->id,
+                        'product_id' => $cart['product']['id']])
+                        ->update(['offer_used' => BUYER_USED_OFFER]);
+                    }
 
                     if((int)$getProduct->quantity != 0)
                     {
@@ -255,13 +358,36 @@ class BuyerController extends Controller
                 }
 
                 $payment = new Payment;
-                $payment->user_id = Auth::user()->id;
+                if(Auth::check())
+                {
+                    $payment->user_id = Auth::user()->id;
+                }
+                else
+                {
+                    $payment->user_id = $guest_user_data->id;   
+                }
                 $payment->order_id = $order->id;
                 $payment->charge_id = $charge['id'];
                 $payment->transaction_id = $charge['balance_transaction'];
                 $payment->save();
 
-                Cart::where('user_id', Auth::user()->id)->delete();
+                if(Auth::check())
+                {
+                    $data['email'] = Auth::user()->email;
+                }
+                else
+                {
+                    $data['email'] = $guest_user_data['email'];   
+                }                
+
+                
+                $data['order_number'] = $order->order_number;
+                $data['subject'] = 'Order';
+                $data['layout'] = 'email_templates.newOrder';
+
+                // $mail = emailSend($data);
+
+                Cart::where($userId)->delete();
 
                 DB::commit();
             }
@@ -272,9 +398,10 @@ class BuyerController extends Controller
             throw $e;
         }
 
-        Cart::where('user_id', Auth::user()->id)->delete();
+        Cart::where($userId)->delete();
 
-        return redirect()->route('buyer.index')->with('success', 'Order placed successfully.');
+        // return redirect()->route('buyer.index')->with('success', 'Order placed successfully.');
+        return redirect()->route('viewOrder', $order->order_number)->with('success', 'Order placed successfully.');
     }
     
     public function delete_followers($id)

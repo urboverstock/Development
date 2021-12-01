@@ -4,17 +4,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\UserPost;
+use App\Models\UserOffer;
 use App\Models\User;
 use App\Models\Page;
 use App\Models\UserRole;
 use App\Models\Cart;
-use App\Models\Coupon;
-use App\Models\UsedCoupon;
 use App\Models\UserFollowers;
 use App\Models\ProductWishlist;
 use App\Models\ProductFavourite;
 use App\Models\ProductCategory;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\Order;
 use Auth, Validator, Hash;
 
 class LandingController extends Controller
@@ -133,11 +132,7 @@ class LandingController extends Controller
                 User::where('id', Auth::user()->id)->update(['login_status' => LOGIN]);
 
                 if (Auth::user()->user_type == 4) {
-                    if($postData['previous_url']){
-                        return Redirect::to(''.$postData['previous_url'].'')->with('success', "Logged in successfully");
-                    }else{
-                        return redirect()->route('buyer.index')->with('success', "Logged in successfully");   
-                    }
+                    return redirect()->route('buyer.index')->with('success', "Logged in successfully");
                 }else if (Auth::user()->user_type == 1) {
                     return redirect()->route('admin.dashboard')->with('success', "Logged in successfully");
                 }else{
@@ -291,11 +286,25 @@ class LandingController extends Controller
 
     public function carts(Request $request)
     {
-        if(!Auth::check()){
-            return redirect()->route('signin')->with('error', 'Please login first');
+        if(!Auth::check())
+        {
+            $id = getPhysicalAddressOfPC();
+            $userId = ['physical_address' => $id];
+        }
+        else
+        {
+            $id = Auth::user()->id;
+            $userId = ['user_id' => $id];
         }
 
-        $carts = Cart::with('product')->where('user_id', Auth::user()->id)->get()->toArray();
+        // if(!Auth::check()){
+        //     return redirect()->route('signin')->with('error', 'Please login first');
+        // }
+
+        $carts = Cart::with('product')->where($userId)
+        ->get()
+        ->toArray();
+
         if(count($carts) > 0)
         {
             foreach ($carts as $key => $cart)
@@ -304,6 +313,13 @@ class LandingController extends Controller
                 $carts[$key]['p_total_price'] = $cart['product']['price'] * $cart['quantity'];
                 $carts[$key]['p_ids'] = $cart['product']['id'];
                 
+                $checkOffer = UserOffer::where(['product_id' => $cart['product_id'], 'offer_used' => SELLER_GIVE_OFFER])
+                ->where($userId)
+                ->first();
+                
+                $carts[$key]['product_offer'] = $checkOffer['offer_percentage'];
+                $carts[$key]['product_offer_description'] = $checkOffer['offer_description'];
+                $carts[$key]['product_offer_type'] = $checkOffer['offer_type'];
             }
         }
 
@@ -314,8 +330,13 @@ class LandingController extends Controller
         
         $recent_products = Product::with('product_image')->whereNotIn('id', $product_ids)->latest()->take(4)->get()->toArray();
 
-        $apply_coupon = UsedCoupon::with('coupon')->where(['user_id' => Auth::user()->id,'is_completed' => 0])->latest()->first();
-        return view('buyer.cart', compact('carts', 'total_price', 'recent_products','apply_coupon'));
+        $get_offer_amount = array_column($carts, 'product_offer');
+        $total_offer = array_sum($get_offer_amount);
+
+        // echo "<pre>";
+        // print_r($carts);die();
+
+        return view('buyer.cart', compact('carts', 'total_price', 'recent_products', 'total_offer'));
     }
 
     public function increaseOrDecreaseCart(Request $request)
@@ -361,18 +382,100 @@ class LandingController extends Controller
         return response()->json($response);
     }
 
+    // public function addToCart(Request $request)
+    // {
+    //     if(!Auth::check()){
+    //         // $response["status"] = 0;
+    //         // $response["message"] = "Please login first";
+    //         ob_start(); // Turn on output buffering
+    //         system('ipconfig /all');
+    //         $mycom = ob_get_contents();
+    //         ob_clean();
+    //         $findme = "Physical";
+    //         $pmac = strpos($mycom, $findme);
+    //         $mac = substr($mycom,($pmac+36),17); 
+    //         echo $mac;die('test');
+    //     }else{
+    //         $postData = $request->all();
+
+    //         $product = Product::find($postData['product_id']);
+
+    //         $check = Cart::where(['user_id'=> Auth::user()->id,'product_id'=>$postData['product_id']])->first();
+
+    //         if($product->quantity == 0)
+    //         {
+    //             $response["status"] = 0;
+    //             $response["message"] = "Product quantity is zero";
+    //             return response()->json($response);
+    //         }
+
+    //         if(empty($check)){
+    //             $cart = new Cart;
+    //             $cart->user_id = Auth::user()->id;
+    //             $cart->product_id = $postData['product_id'];
+    //             $cart->quantity = isset($postData['quantity']) ? $postData['quantity'] : 1;
+    //             if($cart->save()){
+    //                 $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+    //                 $response["cart_count"] = $cartCount;
+    //                 $response["status"] = 1;
+    //                 $response["message"] = "Add to cart successfully";
+    //             }else{
+    //                 $response["status"] = 0;
+    //                 $response["message"] = "Something went wrong";
+    //             }
+    //         }else{
+
+    //             if($check->quantity >= $product->quantity)
+    //             {
+    //                 $response["status"] = 0;
+    //                 $response["message"] = "Product quantity is low";
+    //                 return response()->json($response);
+    //             }
+
+    //             $cart = Cart::find($check->id);
+    //             $cart->quantity = $check->quantity + 1;
+    //             if($cart->save()){
+                    
+    //                 $response["status"] = 1;
+    //                 $response["message"] = "Add to cart successfully";
+    //             }else{
+    //                 $response["status"] = 0;
+    //                 $response["message"] = "Something went wrong";
+    //             }
+    //         }
+    //     }
+    //     return response()->json($response);
+    // }
+
     public function addToCart(Request $request)
     {
-        // print_r($request->all());die();
-        if(!Auth::check()){
-            $response["status"] = 0;
-            $response["message"] = "Please login first";
-        }else{
+        ob_start(); // Turn on output buffering
+        system('ipconfig /all');
+        $mycom = ob_get_contents();
+        ob_clean();
+        $findme = "Physical";
+        $pmac = strpos($mycom, $findme);
+        $mac = substr($mycom,($pmac+36),17); 
+        
+
+        if(!Auth::check())
+        {
+            $id = $mac;
+            $userId = ['physical_address' => $id];
+        }
+        else
+        {
+            $id = Auth::user()->id;
+            $userId = ['user_id' => $id];
+        }
+
             $postData = $request->all();
 
             $product = Product::find($postData['product_id']);
 
-            $check = Cart::where(['user_id'=> Auth::user()->id,'product_id'=>$postData['product_id']])->first();
+            $check = Cart::where(['product_id'=>$postData['product_id']])
+            ->where($userId)
+            ->first();
 
             if($product->quantity == 0)
             {
@@ -383,11 +486,21 @@ class LandingController extends Controller
 
             if(empty($check)){
                 $cart = new Cart;
-                $cart->user_id = Auth::user()->id;
+                
+                if(Auth::check())
+                {
+                    $cart->user_id = Auth::user()->id;
+                }
+                else
+                {
+                    $cart->user_id = NULL;
+                    $cart->physical_address = $mac;
+                }
+
                 $cart->product_id = $postData['product_id'];
                 $cart->quantity = isset($postData['quantity']) ? $postData['quantity'] : 1;
                 if($cart->save()){
-                    $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+                    $cartCount = Cart::where($userId)->count();
                     $response["cart_count"] = $cartCount;
                     $response["status"] = 1;
                     $response["message"] = "Add to cart successfully";
@@ -415,7 +528,7 @@ class LandingController extends Controller
                     $response["message"] = "Something went wrong";
                 }
             }
-        }
+        
         return response()->json($response);
     }
 
@@ -475,32 +588,6 @@ class LandingController extends Controller
         return response()->json($response);
     }
 
-    public function saveToLaterCart($cart_id)
-    {
-        $cart = Cart::find($cart_id);
-        if($cart->delete())
-        {
-            $check = ProductFavourite::where(['user_id'=> Auth::user()->id,'product_id'=>$cart->product_id])->first();
-            if(empty($check)){
-                $favourite                = new ProductFavourite;
-                $favourite->user_id       = Auth::user()->id;
-                $favourite->product_id    = $cart->product_id;
-                if($favourite->save()){
-                    //$response["status"] = 1;
-                    //$response["message"] = "You have favourite successfully";
-                }
-            }
-            
-            $response["status"] = 1;
-            $response["message"] = "Item save for later successfully";
-        }else{
-            $response["status"] = 0;
-            $response["message"] = "Something went wrong";
-        }
-
-        return response()->json($response);
-    }
-
     public function removeAllCart(Request $request)
     {
         $cart = Cart::whereIn('id',$request->deleteids_arr)->delete();
@@ -515,30 +602,17 @@ class LandingController extends Controller
         return view('page', compact('page'));
     }
 
-    public function applyCoupon(Request $request)
+    public function viewOrder($orderNumber)
     {
-        if(!Auth::check())
+        if(Auth::check())
         {
-            return redirect()->back()->with('error', "Please login first");
+            $order = Order::with('getOrderDetail.getProductDetails', 'getUserAddress.getUserDetail')->where('order_number', $orderNumber)->first();
+        }
+        else
+        {
+            $order = Order::with('getOrderDetail.getProductDetails', 'getGuestUserDetail')->where('order_number', $orderNumber)->first();            
         }
 
-        $check_coupon = Coupon::where(['name' => $request->coupon_code,'status' => 1])->first();
-        if($check_coupon){
-            $coupon = New UsedCoupon;
-            $coupon->user_id = Auth::user()->id;
-            $coupon->coupon_id = $check_coupon->id;
-            $coupon->name = $request->coupon_code;
-            if($coupon->save()){
-                $response["status"] = 1;
-                $response["message"] = "Coupon apply successfully";
-            }else{
-                $response["status"] = 0;
-                $response["message"] = "Something went wrong";
-            }
-        }else{
-            $response["status"] = 0;
-            $response["message"] = "Invalid coupon code!";
-        }
-        return response()->json($response);
+        return view('orderDetail', compact('order'));
     }
 }

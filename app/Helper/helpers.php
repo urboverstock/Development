@@ -145,7 +145,17 @@
 
 	if (! function_exists('cartCount')) {
 	    function cartCount($user_id) {
-	        return Cart::where('user_id', $user_id)->count();
+	    	$physical_address = getPhysicalAddressOfPC();
+	    	
+	    	if(!Auth::check())
+	    	{
+	    		$userId = ['physical_address' => $physical_address];
+	    	}
+	    	else{
+            	$userId = ['user_id' => $user_id];
+	    	}
+
+	        return Cart::where($userId)->count();
 	    }
 	}
 
@@ -190,4 +200,16 @@
 	    $value = round($rate);
 	  }
 	  return $value;
+	}
+
+	function getPhysicalAddressOfPC()
+	{
+		ob_start(); // Turn on output buffering
+        system('ipconfig /all');
+        $mycom = ob_get_contents();
+        ob_clean();
+        $findme = "Physical";
+        $pmac = strpos($mycom, $findme);
+        $mac = substr($mycom,($pmac+36),17); 
+        return $mac;
 	}

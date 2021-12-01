@@ -6,6 +6,7 @@
 <form method="post" action="{{ route('save.order') }}" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ Config::get('services.stripe.key') }}" id="payment-form">
 	@csrf
 	<input type="hidden" name="total_price" value="{{ $request['total_price'] }}">
+    <input type="hidden" name="total_offer" value="{{ $request['total_offer'] }}">
 	<input type="hidden" name="total_quantity" value="{{ $request['total_quantity'] }}">
 	<input type="hidden" name="address" value="{{ $request['address'] }}">
 

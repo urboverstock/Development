@@ -3,15 +3,16 @@
 @section('content')
 <section class="mt-96 pb-5 ">
   <div class="container pt-4">
-    <form method="post" action="{{ route('payment') }}">
+    <form method="post" action="{{ route('payment') }}" id="checkout_form">
       <div class="row">
         @if(isset($carts) && !empty($carts))
   			<div class="col-lg-8">
           @csrf
           <input type="hidden" name="total_price" value="{{ $total_price }}">
+          <input type="hidden" name="total_offer" value="{{ $total_offer }}">
           <input type="hidden" name="total_quantity" value="{{ $c_total_quantity }}">
           
-          @if(count($addresses) > 0)
+          @if(isset($addresses) && count($addresses) > 0)
             <h5 class="f-600">Select Address:</h5>
             @foreach($addresses as $address)
 
@@ -20,13 +21,100 @@
             @endforeach
           @else
           @endif
+
+            @if(Auth::check())
             <button type="button" class="btn btn-dark rounded-pill py-3 px-3 mb-3" data-bs-toggle="modal" data-bs-target="#addressModal">Add New Address</button>
+            @endif
         
+          @if(!Auth::check())
+          <!-- <form> -->
+            <div class="mb-4">
+                  <div class="custom-urban-form">
+                      <input class="form-control" type="text" placeholder="Enter Name" name="user_name" value="" id="user_name">
+                      <i class="fas fa-pen"></i>
+                  </div>
+                  <span class="error">{{ $errors->first('user_name') }}</span>
+              </div>
+
+              <div class="mb-4">
+                  <div class="custom-urban-form">
+                      <input class="form-control" type="text" placeholder="Enter Email" name="user_email" value="" id="user_email">
+                      <i class="fas fa-pen"></i>
+                  </div>
+                  <span class="error">{{ $errors->first('user_email') }}</span>
+              </div>
+
+              <div class="mb-4">
+                  <div class="custom-urban-form">
+                      <input class="form-control" type="text" placeholder="Enter Phone Number" name="user_number" value="" id="user_number">
+                      <i class="fas fa-pen"></i>
+                  </div>
+                  <span class="error">{{ $errors->first('user_number') }}</span>
+              </div>
+
+              <div class="mb-4">
+                  <div class="custom-urban-form">
+                      <input class="form-control" type="text" placeholder="Enter Country" name="user_country" value="" id="user_country">
+                      <i class="fas fa-pen"></i>
+                  </div>
+                  <span class="error">{{ $errors->first('user_country') }}</span>
+              </div>
+
+              <div class="mb-4">
+                  <div class="custom-urban-form">
+                      <input class="form-control" type="text" placeholder="Enter State" name="user_state" value="" id="user_state">
+                      <i class="fas fa-pen"></i>
+                  </div>
+                  <span class="error">{{ $errors->first('user_state') }}</span>
+              </div>
+
+              <div class="mb-4">
+                  <div class="custom-urban-form">
+                      <input class="form-control" type="text" placeholder="Enter City" name="user_city" value="" id="user_city">
+                      <i class="fas fa-pen"></i>
+                  </div>
+                  <span class="error">{{ $errors->first('user_city') }}</span>
+              </div>
+
+              <div class="mb-4">
+                  <div class="custom-urban-form">
+                      <input class="form-control" type="text" placeholder="Enter Pincode" name="user_pincode" value="" id="user_pincode">
+                      <i class="fas fa-pen"></i>
+                  </div>
+                  <span class="error">{{ $errors->first('user_pincode') }}</span>
+              </div>
+              
+              <div class="mb-4">
+                  <div class="custom-urban-form">
+                      <input class="form-control" type="text" placeholder="Enter Address" name="user_address" value="" id="user_address">
+                      <i class="fas fa-pen"></i>
+                  </div>
+                  <span class="error">{{ $errors->first('user_address') }}</span>
+              </div>
+
+
+
+              <!-- <div class="mb-4">
+                <div class="custom-urban-form">
+                    <input class="form-checkbox user_password_checkbox" type="checkbox" name="user_password_checkbox" value="" id="user_password_checkbox">Check for password profile registeration
+                </div>
+              </div>
+ -->
+              <div class="mb-4 password_div" style="display: none;">
+                  <div class="custom-urban-form">
+                      <input class="form-control" type="password" placeholder="Enter Password" name="user_password" value="" id="user_password">
+                      <i class="fas fa-pen"></i>
+                  </div>
+                  <span class="error">{{ $errors->first('user_password') }}</span>
+              </div>
+
+              
+          <!-- </form> -->
+          @endif
         </div>
 
         <div class="col-lg-4">
-          @if(empty($apply_coupon))
-          <a href="javascript:void(0);" class="text-decoration-none"  data-bs-toggle="modal" data-bs-target="#applyCouponModal">
+          <a href="#" class="text-decoration-none">
                   <div class="mb-4 border-primary align-items-center d-flex border justify-content-between bg-primary-lighten-3 px-3 py-3 br-10 mb-4">
                       <div class="d-flex align-items-center">
                           <svg class="me-3" width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,22 +129,9 @@
                           
                   </div>
               </a>
-              @endif
               <div class="card br-10">
                   <div class="card-body text-center">
                       <h4 class="mb-4 fw-bold">Shopping Summary</h4>
-                      @if(!empty($apply_coupon))
-                      <div class="d-flex justify-content-between  mb-4">
-                          <h5 class="f-600">Discount</h5>
-                          <h3 class="fw-bold">
-                          @if($apply_coupon['coupon']->type == 0)
-                            <span class="total_price">{{ $apply_coupon['coupon']->price }}</span>%
-                          @else
-                            $<span class="total_price">{{ $apply_coupon['coupon']->price }}</span>
-                          @endif
-                          </h3>
-                      </div>
-                      @endif
                       <div class="d-flex justify-content-between  mb-4">
                           <h5 class="f-600">Total Quantity</h5>
                           <h3 class="fw-bold"><span class="total_price">{{ $c_total_quantity }}</span></h3>
@@ -65,6 +140,17 @@
                           <h5 class="f-600">Total Price</h5>
                           <h3 class="fw-bold">$<span class="total_price">{{ $total_price }}</span></h3>
                       </div>
+                      @if($total_offer !=0)
+                      <div class="d-flex justify-content-between  mb-4">
+                          <h5 class="f-600">Total Discount</h5>
+                          <h3 class="fw-bold">$<span class="total_price">{{ $total_offer }}</span></h3>
+                      </div>
+
+                      <div class="d-flex justify-content-between  mb-4">
+                          <h5 class="f-600">Total Price</h5>
+                          <h3 class="fw-bold">$<span class="total_price">{{ $total_price - $total_offer }}</span></h3>
+                      </div>                    
+                      @endif
                       <button type="submit" class="btn btn-dark rounded-pill py-3 px-3 mb-3">Checkout</button>
                       <div>
                           <a href="{{ route('products') }}" class="text--primary text-decoration-none f-600">
@@ -164,37 +250,24 @@
     </div>
   </div>
 </div>
+@endsection
 
-<!-- Modal -->
-<div class="modal fade" id="applyCouponModal" tabindex="-1" aria-labelledby="couponModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="couponModalLabel">Apply Coupon</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="post" id="apply_coupon">
-        	@csrf
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="mb-4">
-                  <div class="custom-urban-form">
-                      <input class="form-control" type="text" placeholder="Enter Coupon Code" name="coupon_code" value="" id="coupon_code">
-                      <!--i class="fas fa-pen"></i-->
-                  </div>
-                  <span class="error">{{ $errors->first('coupon_code') }}</span>
-              </div>
-        	    <button type="submit" class="btn btn-dark rounded-pill py-3 px-3 mb-3">Apply Coupon</button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
+@section('scripts')
+  <script type="text/javascript">
+    $(document).ready(function()
+    {
+      $('.user_password_checkbox').click(function()
+      {
+        if($(this).is(":checked"))
+        {
+          $('.password_div').show();
+        }
+        else
+        {
+          $('.password_div').hide();
+
+        }
+      });
+    });
+  </script>
 @endsection

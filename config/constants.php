@@ -25,3 +25,7 @@ defined('PUBLISHED') OR define('PUBLISHED', 2);
 defined('ADMIN') OR define('ADMIN', 1);
 defined('SELLER') OR define('SELLER', 3);
 defined('BUYER') OR define('BUYER', 4);
+
+
+defined('SELLER_GIVE_OFFER') OR define('SELLER_GIVE_OFFER', 1);
+defined('BUYER_USED_OFFER') OR define('BUYER_USED_OFFER', 2);

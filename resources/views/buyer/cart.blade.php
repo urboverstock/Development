@@ -5,7 +5,8 @@
     <div class="container pt-4">
       @if(count($carts) > 0)
       <div class="row cart_main" data-cart_count="{{ count($carts) }}">
-        <input type="hidden" name="" value="{{ count($carts) }}" class="cart_count">
+        <!-- <input type="hidden" value="{{ count($carts) }}" class="cart_count"> -->
+        <span value="{{ count($carts) }}" class="cart_count" style="display: none;">{{ count($carts) }}</span>
           <div class="col-lg-8">
             <div class="d-flex flex-wrap border justify-content-between px-3 py-3 br-10 mb-4">
                 <div class="form-check mb-3 mb-sm-0">
@@ -37,16 +38,15 @@
                     </div>
 
                     <div class="d-flex align-items-end flex-wrap">
-                          
-                        <div class="quantity-field rounded-pill border d-flex align-items-center  me-4">                         
+                        <div class="quantity-field rounded-pill border d-flex align-items-center  me-4">
                               <button class="btn value-button decrease-button decrease"data-cart_id="{{ $cart['id'] }}"
                               data-url="{{ route('increase-decrease-cart', $cart['id']) }}"
                               data-p_price="{{ $cart['product']['price'] }}"> 
                                 <svg width="14" height="15" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0.970703 0.209473H17.8388V3.76558H0.970703V0.209473Z" fill="#D2D2D2"></path>
                                 </svg>
-                                
                               </button>
+
                             <div class="number text-dark fs-5 f-600" id="qty{{ $cart['id'] }}">{{ $cart['quantity'] }}</div>
                             <button class="btn value-button increase-button increase" 
                             data-url="{{ route('increase-decrease-cart', $cart['id']) }}" data-cart_id="{{ $cart['id'] }}" data-product_total_quantity="{{ $cart['product']['quantity'] }}"
@@ -59,19 +59,32 @@
 
                           <h5 class="text--primary f-600">$<span id="p_total_price{{ $cart['id'] }}">{{ $cart['p_total_price'] }}</span></h5>
 
+                          @if($cart['product_offer_type'] == 1)
+                          <h5>Free</h5>
+                          @else
+                          @if(isset($cart['product_offer']))
+                          <h5>
+                          <p>${{ $cart['product_offer'] }}</p>
+                          </h5>
+                          @endif
+                          @endif
+
+                          @if(isset($cart['product_offer_type']))
+                          <p>{{ isset($cart['product_offer_description']) ? $cart['product_offer_description'] : 'Product Discount' }}</p>
+                          @endif
+
                         <button type="button" class="btn btn-outline-grey py-2 px-4 rounded-pill me-3 cart-remove remove_cart{{ $cart['id'] }}" data-url="{{ route('remove-cart', $cart['id']) }}" data-cart="{{ $cart['id'] }}" data-p_price="{{ $cart['product']['price'] }}">
                             <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.3571 1.37501H12.5357L12.158 0.571492C12.078 0.399709 11.9548 0.255209 11.8022 0.154247C11.6496 0.0532863 11.4736 -0.000130108 11.2942 7.53359e-06H6.70179C6.52274 -0.000728544 6.34712 0.0524887 6.19506 0.153562C6.04299 0.254636 5.92062 0.399477 5.84196 0.571492L5.46429 1.37501H0.642857C0.472361 1.37501 0.308848 1.44744 0.188289 1.57637C0.0677294 1.7053 0 1.88017 0 2.06251L0 3.43751C0 3.61984 0.0677294 3.79471 0.188289 3.92364C0.308848 4.05257 0.472361 4.12501 0.642857 4.12501H17.3571C17.5276 4.12501 17.6912 4.05257 17.8117 3.92364C17.9323 3.79471 18 3.61984 18 3.43751V2.06251C18 1.88017 17.9323 1.7053 17.8117 1.57637C17.6912 1.44744 17.5276 1.37501 17.3571 1.37501ZM2.1375 20.0664C2.16816 20.59 2.38426 21.0815 2.74181 21.4407C3.09936 21.7999 3.57147 21.9999 4.06205 22H13.9379C14.4285 21.9999 14.9006 21.7999 15.2582 21.4407C15.6157 21.0815 15.8318 20.59 15.8625 20.0664L16.7143 5.50001H1.28571L2.1375 20.0664Z" fill="#A4A4A4"/>
                                 </svg>
                                 
                         </button>
-                        <button type="button" class="btn btn--primary py-2 px-3 br-10 save-later-cart save-later-cart{{ $cart['id'] }}" data-url="{{ route('save-later-cart', $cart['id']) }}" data-cart="{{ $cart['id'] }}" data-p_price="{{ $cart['product']['price'] }}">Save to later</button>
-                        <!--button type="button" class="btn btn--primary py-2 px-3 br-10 ">
+                        <button type="button" class="btn btn--primary py-2 px-3 br-10 ">
                             <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M19.8646 1.29915C17.51 -0.681392 14.0081 -0.325149 11.8468 1.87593L11.0003 2.73685L10.1538 1.87593C7.99686 -0.325149 4.49068 -0.681392 2.13603 1.29915C-0.562353 3.57232 -0.704147 7.65216 1.71065 10.1162L10.0249 18.5897C10.562 19.1368 11.4343 19.1368 11.9714 18.5897L20.2857 10.1162C22.7048 7.65216 22.563 3.57232 19.8646 1.29915Z" fill="white"/>
                                 </svg>
                                 
-                        </button-->
+                        </button>
                     </div>
                 </div>
             </div>
@@ -80,9 +93,8 @@
           </div>
 
           <div class="col-lg-4">
-          
-            @if(empty($apply_coupon))
-            <a href="javascript:void(0);" class="text-decoration-none"  data-bs-toggle="modal" data-bs-target="#applyCouponModal">
+               
+            <a href="#" class="text-decoration-none">
                 <div class="mb-4 border-primary align-items-center d-flex border justify-content-between bg-primary-lighten-3 px-3 py-3 br-10 mb-4">
                     <div class="d-flex align-items-center">
                         <svg class="me-3" width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,26 +109,25 @@
                         
                 </div>
             </a>
-            @endif
             <div class="card br-10">
                 <div class="card-body text-center">
                     <h4 class="mb-4 fw-bold">Shopping Summary</h4>
-                    @if(!empty($apply_coupon))
-                    <div class="d-flex justify-content-between  mb-4">
-                        <h5 class="f-600">Discount</h5>
-                        <h3 class="fw-bold">
-                        @if($apply_coupon['coupon']->type == 0)
-                          <span class="total_price">{{ $apply_coupon['coupon']->price }}</span>%
-                        @else
-                          $<span class="total_price">{{ $apply_coupon['coupon']->price }}</span>
-                        @endif
-                        </h3>
-                    </div>
-                    @endif
                     <div class="d-flex justify-content-between  mb-4">
                         <h5 class="f-600">Total</h5>
                         <h3 class="fw-bold">$<span class="total_price">{{ $total_price }}</span></h3>
                     </div>
+
+                    @if($total_offer !=0)
+                    <div class="d-flex justify-content-between  mb-4">
+                        <h5 class="f-600">Total Discount</h5>
+                        <h3 class="fw-bold">$<span class="total_price">{{ $total_offer }}</span></h3>
+                    </div>
+
+                    <div class="d-flex justify-content-between  mb-4">
+                        <h5 class="f-600">Total Price</h5>
+                        <h3 class="fw-bold">$<span class="total_price">{{ $total_price - $total_offer }}</span></h3>
+                    </div>                    
+                    @endif
                     <!-- <button type="button" class="btn btn-dark rounded-pill py-3 px-3 mb-3">Load More Products</button> -->
                     <a href="{{ route('buyer.checkout') }}" class="btn btn-dark rounded-pill py-3 px-3 mb-3">Place Order</a>
                     <div>
@@ -127,7 +138,6 @@
                 </div>
             </div>
           </div>
-
 
         @else
           <div class="d-flex justify-content-center align-items-center">
@@ -218,38 +228,4 @@
         @endif 
       </row>
     </section>
-
-
-<!-- Modal -->
-<div class="modal fade" id="applyCouponModal" tabindex="-1" aria-labelledby="couponModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="couponModalLabel">Apply Coupon</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="post" id="apply_coupon">
-        	@csrf
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="mb-4">
-                  <div class="custom-urban-form">
-                      <input class="form-control" type="text" placeholder="Enter Coupon Code" name="coupon_code" value="" id="coupon_code">
-                      <!--i class="fas fa-pen"></i-->
-                  </div>
-                  <span class="error">{{ $errors->first('coupon_code') }}</span>
-              </div>
-        	    <button type="submit" class="btn btn-dark rounded-pill py-3 px-3 mb-3">Apply Coupon</button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
 @endsection
