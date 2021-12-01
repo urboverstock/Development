@@ -99,6 +99,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('/payment', [App\Http\Controllers\BuyerController::class, 'payment'])->name('payment');
     Route::any('/save-order', [App\Http\Controllers\BuyerController::class, 'saveOrder'])->name('save.order');
     Route::any('/add-new-address', [App\Http\Controllers\BuyerController::class, 'address'])->name('buyer.address');
+    Route::any('/apply-coupon', [App\Http\Controllers\LandingController::class, 'applyCoupon'])->name('buyer.apply_coupon');
 
     Route::any('/followers/delete/{id}', [App\Http\Controllers\BuyerController::class, 'delete_followers'])->name('buyerDeleteFollower');
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');

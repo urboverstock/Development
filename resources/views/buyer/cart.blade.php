@@ -80,8 +80,9 @@
           </div>
 
           <div class="col-lg-4">
-               
-            <a href="#" class="text-decoration-none">
+          
+            @if(empty($apply_coupon))
+            <a href="javascript:void(0);" class="text-decoration-none"  data-bs-toggle="modal" data-bs-target="#applyCouponModal">
                 <div class="mb-4 border-primary align-items-center d-flex border justify-content-between bg-primary-lighten-3 px-3 py-3 br-10 mb-4">
                     <div class="d-flex align-items-center">
                         <svg class="me-3" width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,9 +97,22 @@
                         
                 </div>
             </a>
+            @endif
             <div class="card br-10">
                 <div class="card-body text-center">
                     <h4 class="mb-4 fw-bold">Shopping Summary</h4>
+                    @if(!empty($apply_coupon))
+                    <div class="d-flex justify-content-between  mb-4">
+                        <h5 class="f-600">Discount</h5>
+                        <h3 class="fw-bold">
+                        @if($apply_coupon['coupon']->type == 0)
+                          <span class="total_price">{{ $apply_coupon['coupon']->price }}</span>%
+                        @else
+                          $<span class="total_price">{{ $apply_coupon['coupon']->price }}</span>
+                        @endif
+                        </h3>
+                    </div>
+                    @endif
                     <div class="d-flex justify-content-between  mb-4">
                         <h5 class="f-600">Total</h5>
                         <h3 class="fw-bold">$<span class="total_price">{{ $total_price }}</span></h3>
@@ -204,4 +218,38 @@
         @endif 
       </row>
     </section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="applyCouponModal" tabindex="-1" aria-labelledby="couponModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="couponModalLabel">Apply Coupon</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" id="apply_coupon">
+        	@csrf
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="mb-4">
+                  <div class="custom-urban-form">
+                      <input class="form-control" type="text" placeholder="Enter Coupon Code" name="coupon_code" value="" id="coupon_code">
+                      <!--i class="fas fa-pen"></i-->
+                  </div>
+                  <span class="error">{{ $errors->first('coupon_code') }}</span>
+              </div>
+        	    <button type="submit" class="btn btn-dark rounded-pill py-3 px-3 mb-3">Apply Coupon</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
 @endsection

@@ -18,6 +18,7 @@ use App\Models\UserFollowers;
 use App\Models\ProductFavourite;
 use App\Models\Chat;
 use App\Models\Cart;
+use App\Models\UsedCoupon;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Requests\StoreStripeRequest;
 use Auth, Validator, DB;
@@ -194,7 +195,9 @@ class BuyerController extends Controller
         $p_total_price_column = array_column($carts, 'p_total_price');
         $total_price = array_sum($p_total_price_column);
 
-        return view('buyer.checkout', compact('addresses', 'carts', 'c_total_quantity', 'total_price'));
+        $apply_coupon = UsedCoupon::with('coupon')->where(['user_id' => Auth::user()->id,'is_completed' => 0])->latest()->first();
+
+        return view('buyer.checkout', compact('addresses', 'carts', 'c_total_quantity', 'total_price','apply_coupon'));
     }
 
     public function payment(Request $request)

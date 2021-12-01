@@ -850,6 +850,39 @@ $(document).ready(function() {
 		}
 	});
 
+	$("#apply_coupon").validate({ 
+		errorElement: 'span',
+		rules: {
+			coupon_code: {
+					required:true,
+			}
+		},
+	    messages: { 
+	    	 
+	    },
+	    submitHandler: function(form, event) {
+		    $.ajax({
+		        url: base_url + '/buyer/apply-coupon',
+		        type: "GET",
+		        data: $(form).serialize(),
+		        success: function(response) {
+		            if(response.status == 1) {
+						toastr.success(response.message, "Success");
+					}else{
+						toastr.error(response.message, "Error");
+					}
+					$("#applyCouponModal").modal('hide');
+					setTimeout(function(){ location.reload(); }, 1000);
+		        },
+		        error:function(){
+                       alert("failure");
+                        // $("#result").html('There is error while submit');
+                    }             
+		    });
+		    // $form.submit();
+		}
+	});
+
 	$("#seller_store").validate({ 
         errorElement: 'span',
         rules: {

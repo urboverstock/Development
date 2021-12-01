@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Page;
 use App\Models\UserRole;
 use App\Models\Cart;
+use App\Models\Coupon;
+use App\Models\UsedCoupon;
 use App\Models\UserFollowers;
 use App\Models\ProductWishlist;
 use App\Models\ProductFavourite;
@@ -312,7 +314,8 @@ class LandingController extends Controller
         
         $recent_products = Product::with('product_image')->whereNotIn('id', $product_ids)->latest()->take(4)->get()->toArray();
 
-        return view('buyer.cart', compact('carts', 'total_price', 'recent_products'));
+        $apply_coupon = UsedCoupon::with('coupon')->where(['user_id' => Auth::user()->id,'is_completed' => 0])->latest()->first();
+        return view('buyer.cart', compact('carts', 'total_price', 'recent_products','apply_coupon'));
     }
 
     public function increaseOrDecreaseCart(Request $request)
@@ -511,5 +514,32 @@ class LandingController extends Controller
         print_r($slug);die();
         $page = Page::where('slug', $slug)->first();
         return view('page', compact('page'));
+    }
+
+    public function applyCoupon(Request $request)
+    {
+        if(!Auth::check())
+        {
+            return redirect()->back()->with('error', "Please login first");
+        }
+
+        $check_coupon = Coupon::where(['name' => $request->coupon_code,'status' => 1])->first();
+        if($check_coupon){
+            $coupon = New UsedCoupon;
+            $coupon->user_id = Auth::user()->id;
+            $coupon->coupon_id = $check_coupon->id;
+            $coupon->name = $request->coupon_code;
+            if($coupon->save()){
+                $response["status"] = 1;
+                $response["message"] = "Coupon apply successfully";
+            }else{
+                $response["status"] = 0;
+                $response["message"] = "Something went wrong";
+            }
+        }else{
+            $response["status"] = 0;
+            $response["message"] = "Invalid coupon code!";
+        }
+        return response()->json($response);
     }
 }
