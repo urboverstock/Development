@@ -85,21 +85,18 @@ class PageController extends Controller
     	$page->user_id = Auth::user()->id;
 
     	$slug = \Str::slug($request->title);
-       	$count = Page::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
-        $slug = $count ? "{$slug}-{$count}" : $slug;
+       	// $count = Page::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->count();
+        // $slug = $count ? "{$slug}-{$count}" : $slug;
 
         $page->slug = $slug;
 
         if($page->save())
         {
 	   		return redirect()->route('admin.page.list')->with('success', 'Page updated successfully');
-            
         }
         else
         {
             return redirect()->back()->with('error', COMMON_ERROR);
         }
     }
-
-    
 }

@@ -511,7 +511,6 @@ class LandingController extends Controller
 
     public function viewPage($slug)
     {
-        print_r($slug);die();
         $page = Page::where('slug', $slug)->first();
         return view('page', compact('page'));
     }

@@ -54,7 +54,7 @@
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerFavouriteProduct') }}">My Favourites</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerAddress') }}">Shipping Address</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('AllPost') }}">All Posts</a></li>
-              <li><a class="dropdown-item border-bottom " href="{{ route('buyerUserPost') }}">Posts</a></li>
+              <li><a class="dropdown-item border-bottom " href="{{ route('buyerUserPost') }}">My Post</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('chat') }}">Chat</a></li>
               <li><a href="#z-contact" class="dropdown-item border-bottom">Contact Us</a>
               </li>

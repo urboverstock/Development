@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/pages/{page-slug}', [App\Http\Controllers\LandingController::class, 'viewPage'])->name('viewPage');
-
 Route::get('/cache-clear', function () {
     Artisan::call('cache:clear');
     Artisan::call('route:clear');
@@ -195,8 +193,6 @@ Route::any('chat', [App\Http\Controllers\Chat\ChatController::class, 'chat'])->n
 Route::any('saveChat', [App\Http\Controllers\Chat\ChatController::class,'saveChat'])->name('SaveChat');
 Route::get('unreadMessage', [App\Http\Controllers\Chat\ChatController::class,'unreadMessage'])->name('unreadMessage');
 
-
-
 Route::get('guest-buyer/{id}', [App\Http\Controllers\LandingController::class, 'guestBuyer'])->name('guest-buyer');
 Route::get('pro-seller/{id}', [App\Http\Controllers\LandingController::class, 'proSeller'])->name('pro-seller');
 Route::post('add-follow-user', [App\Http\Controllers\LandingController::class, 'addFollowUser'])->name('add-follow-user');
@@ -215,3 +211,4 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('all-post', [App\Http\Controllers\UserPostController::class, 'allPost'])->name('AllPost');
 
+Route::get('/{pageSlug}', [App\Http\Controllers\LandingController::class, 'viewPage'])->name('viewPage');

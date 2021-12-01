@@ -31,7 +31,7 @@ class ProductController extends Controller
         if(!empty($search) && isset($search))
         {
             // print_r($search);die();
-            $favourites = ProductFavourite::with('getUserDetail', 'getProductDetail:id,name')
+            $favourites = ProductWishlist::with('getUserDetail', 'getProductDetail:id,name')
             ->whereHas('getUserDetail', function($q) use($search)
             {
                 $q->select('id', 'first_name', 'profile_pic', 'last_name')
@@ -42,18 +42,20 @@ class ProductController extends Controller
             ->orWhereHas('getProductDetail', function($q) use($search)
             {
                 $q->select('id', 'name','price')->where('name', 'LIKE', '%'. $search .'%');
-            });
+            })
+            ->where('user_id', Auth::user()->id);
         }
         else
         {
-            $favourites = ProductFavourite::with(['getUserDetail' => function($q)
+            $favourites = ProductWishlist::with(['getUserDetail' => function($q)
             {
                 $q->select('id', 'first_name', 'profile_pic', 'last_name');
             }])
             ->with(['getProductDetail' => function($q)
             {
                 $q->select('id', 'name','price');
-            }]);
+            }])
+            ->where('user_id', Auth::user()->id);
         }
 
         
@@ -68,7 +70,7 @@ class ProductController extends Controller
     public function delete_favourite($id)
     {
         $id = Crypt::decrypt($id);
-        $favourite = ProductFavourite::find($id);
+        $favourite = ProductWishlist::find($id);
         if($favourite->delete())
         {
             return redirect()->route('buyerFavouriteProduct')->with('success', 'Favourite removed successfully');

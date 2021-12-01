@@ -298,7 +298,8 @@ class ProductController extends Controller
     public function sendSuggestionNotifcation(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'offerPercentage' => 'required|digits_between:1,10',
+            // 'offerPercentage' => 'required|digits_between:1,10',
+            'message' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -321,7 +322,19 @@ class ProductController extends Controller
         $userOffer->product_id = $request->product_id;
         $userOffer->description = $request->message;
         $userOffer->offer_percentage = $request->offerPercentage;
+        $userOffer->offer_type = $request->offerType;
         $userOffer->save();
+
+        $buyerDetails = User::find($request->user_id);
+        $productDetails = Product::find($request->user_id);
+        
+        $data['email'] = $buyerDetails->email;
+        $data['offer_amount'] = $request->offerPercentage;
+        $data['product_name'] = $productDetails->name;
+        $data['subject'] = 'Product Offer';
+        $data['layout'] = 'email_templates.sendOffer';
+    
+        $mail = emailSend($data);
 
         return response()->json(['success' => 'Offer send successfully']);
     }

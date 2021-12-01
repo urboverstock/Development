@@ -19,7 +19,7 @@
         </div>
         <div class="col-sm-6 col-md-6 col-lg-2 mb-3">
           <div class="d-flex flex-column">
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">About Us</a>
+            <a href="{{ route('viewPage', 'about-us') }}" class="text-dark text-decoration-none mb-3 fw-bold">About Us</a>
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Contact Now</a>
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Our Community </a>
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">How It Works </a>

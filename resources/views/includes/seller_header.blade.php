@@ -44,7 +44,7 @@
               ">All Posts</a></li>
 
               <li><a class="dropdown-item border-bottom" href="{{ route('sellerUserPost') }}
-              ">Posts</a></li>
+              ">My Post</a></li>
 
               <li><a class="dropdown-item border-bottom" href="{{ route('chat') }}
               ">Chat</a></li>
