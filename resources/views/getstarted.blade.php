@@ -421,7 +421,7 @@
           <div class="me-4">
             <div class="card product-item border-0 shadow-sm mb-5">
               <div class="card-body ">
-                <img class="img-fluid productImg" src="{{ productDefaultImage($product->id)}}" alt="">
+                <img class=" productImg" src="{{ productDefaultImage($product->id)}}" alt="">
                 <a class="text-decoration-none text-dark" href="{{ route('product-detail', $product->sku) }}"><h5 class="fw-bold">{{$product->name }}</h5></a>
               </div>
               <div class="card-footer bg-transparent">

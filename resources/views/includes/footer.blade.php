@@ -9,29 +9,29 @@
       <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-2 mb-3">
           <div class="d-flex flex-column">
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Home Decor</a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Kitchenware</a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Fitness Tools </a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Electronics </a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">All Products </a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Home Decor</a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Kitchenware</a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Fitness Tools </a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Electronics </a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">All Products </a>
           </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-2 mb-3">
           <div class="d-flex flex-column">
-            <a href="{{ route('viewPage', 'about-us') }}" class="text-dark text-decoration-none mb-3 fw-bold">About Us</a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Contact Now</a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Our Community </a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">How It Works </a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">FAQ’s </a>
+            <a href="{{ route('viewPage', 'about-us') }}" class="text-black text-decoration-none mb-3 fw-500">About Us</a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Contact Now</a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Our Community </a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">How It Works </a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">FAQ’s </a>
           </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-2 mb-3">
           <div class="d-flex flex-column">
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Browse Through</a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Terms of Service</a>
-            <a href="{{ route('viewPage', 'privacy-policy') }}" class="text-dark text-decoration-none mb-3 fw-bold">Privacy Policy</a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Refund Policy </a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Disclaimer </a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Browse Through</a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Terms of Service</a>
+            <a href="{{ route('viewPage', 'privacy-policy') }}" class="text-black text-decoration-none mb-3 fw-500">Privacy Policy</a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Refund Policy </a>
+            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Disclaimer </a>
           </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
@@ -62,7 +62,7 @@
 
           </div>
           <!-- <div class="d-flex justify-content-end mb-3">
-            <a href="#" class="text-dark h4 me-3">
+            <a href="#" class="text-black h4 me-3">
               <i class="fab fa-twitter"></i>
             </a>
             <a href="#" class="text-dark h4">
