@@ -210,15 +210,19 @@ class BuyerController extends Controller
         {
             foreach ($carts as $key => $cart)
             {
-                $carts[$key]['p_price'] = $cart['product']['price'];
-                $carts[$key]['p_total_price'] = $cart['product']['price'] * $cart['quantity'];
+                if($cart) {
+                    $carts[$key]['p_price'] = $cart['product']['price'];
+                    $carts[$key]['p_total_price'] = $cart['product']['price'] * $cart['quantity'];
 
-                $checkOffer = UserOffer::where([ 'product_id' => $cart['product_id'], 'offer_used' => SELLER_GIVE_OFFER])
-                ->where($userId)->first();
+                    $checkOffer = UserOffer::where([ 'product_id' => $cart['product_id'], 'offer_used' => SELLER_GIVE_OFFER])
+                    ->where($userId)->first();
+                    if($checkOffer) {
 
-                $carts[$key]['product_offer'] = $checkOffer['offer_percentage'];
-                $carts[$key]['product_offer_description'] = $checkOffer['offer_description'];
-                $carts[$key]['product_offer_type'] = $checkOffer['offer_type'];
+                        $carts[$key]['product_offer'] = $checkOffer['offer_percentage'];
+                        $carts[$key]['product_offer_description'] = $checkOffer['offer_description'];
+                        $carts[$key]['product_offer_type'] = $checkOffer['offer_type'];
+                    }
+                }
             }
         }
 
