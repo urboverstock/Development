@@ -316,17 +316,19 @@ class LandingController extends Controller
         {
             foreach ($carts as $key => $cart)
             {
-                $carts[$key]['p_price'] = $cart['product']['price'];
-                $carts[$key]['p_total_price'] = $cart['product']['price'] * $cart['quantity'];
-                $carts[$key]['p_ids'] = $cart['product']['id'];
-                
-                $checkOffer = UserOffer::where(['product_id' => $cart['product_id'], 'offer_used' => SELLER_GIVE_OFFER])
-                ->where($userId)
-                ->first();
-                
-                $carts[$key]['product_offer'] = $checkOffer['offer_percentage'];
-                $carts[$key]['product_offer_description'] = $checkOffer['offer_description'];
-                $carts[$key]['product_offer_type'] = $checkOffer['offer_type'];
+                if($cart) {
+                    $carts[$key]['p_price'] = $cart['product']['price'];
+                    $carts[$key]['p_total_price'] = $cart['product']['price'] * $cart['quantity'];
+                    $carts[$key]['p_ids'] = $cart['product']['id'];
+                    
+                    $checkOffer = UserOffer::where(['product_id' => $cart['product_id'], 'offer_used' => SELLER_GIVE_OFFER])
+                    ->where($userId)
+                    ->first();
+                    
+                    $carts[$key]['product_offer'] = $checkOffer['offer_percentage'];
+                    $carts[$key]['product_offer_description'] = $checkOffer['offer_description'];
+                    $carts[$key]['product_offer_type'] = $checkOffer['offer_type'];
+                }
             }
         }
 
