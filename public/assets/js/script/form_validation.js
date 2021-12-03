@@ -170,7 +170,7 @@ $(document).ready(function() {
 	    }*/
 	});
 
-	$("#edit_profile_form").validate({ 
+	$("#edit_profile_form1").validate({ 
 		errorElement: 'span',
 		rules: {
 			email: {
