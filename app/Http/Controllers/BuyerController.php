@@ -216,9 +216,11 @@ class BuyerController extends Controller
                 $checkOffer = UserOffer::where([ 'product_id' => $cart['product_id'], 'offer_used' => SELLER_GIVE_OFFER])
                 ->where($userId)->first();
 
-                $carts[$key]['product_offer'] = $checkOffer['offer_percentage'];
-                $carts[$key]['product_offer_description'] = $checkOffer['offer_description'];
-                $carts[$key]['product_offer_type'] = $checkOffer['offer_type'];
+                if($checkOffer) {
+                    $carts[$key]['product_offer'] = $checkOffer['offer_percentage'];
+                    $carts[$key]['product_offer_description'] = $checkOffer['offer_description'];
+                    $carts[$key]['product_offer_type'] = $checkOffer['offer_type'];
+                }
             }
         }
 
