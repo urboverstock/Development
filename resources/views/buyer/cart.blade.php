@@ -3,7 +3,7 @@
 @section('content')
 <section class="mt-96 pb-5 ">
     <div class="container pt-4">
-      @if(count($carts) > 0)
+      @if($carts && count($carts) > 0)
       <div class="row cart_main" data-cart_count="{{ count($carts) }}">
         <!-- <input type="hidden" value="{{ count($carts) }}" class="cart_count"> -->
         <span value="{{ count($carts) }}" class="cart_count" style="display: none;">{{ count($carts) }}</span>
@@ -22,49 +22,49 @@
             </div>
             
             @foreach($carts as $key => $cart)
-            <div class="card border-0 shadow br-10 mb-5" id="cart-section{{ $cart['id'] }}">
+            <div class="card border-0 shadow br-10 mb-5" id="cart-section{{ @$cart['id'] }}">
                 <div class=" d-flex flex-wrap justify-content-between px-3 py-3 br-10">
                     <div class="form-check d-flex align-items-center mb-sm-3 mb-0">
-                        <input class="form-check-input form-product-list me-3 delete_check" type="checkbox" name="checkbox[]" id="flexCheckDefault2" value="{{ $cart['id'] }}">
+                        <input class="form-check-input form-product-list me-3 delete_check" type="checkbox" name="checkbox[]" id="flexCheckDefault2" value="{{ @$cart['id'] }}">
                         <label class="form-check-label d-flex flex-wrap fw-bold mb-sm-3 mb-0" for="flexCheckDefault2">
-                            <img class="avatar-lg br-10 me-4 mb-sm-0 mb-3" src="{{ productDefaultImage($cart['product']['id'])}}" alt="" width="100">
+                            <img class="avatar-lg br-10 me-4 mb-sm-0 mb-3" src="{{ productDefaultImage(@$cart['product']['id'])}}" alt="" width="100">
                             <div>
                                 <a href="#" class="text-decoration-none text-dark">
-                                    <h5 class="fw-bold mb-3">{{ $cart['product']['name'] }}</h5>
+                                    <h5 class="fw-bold mb-3">{{ @$cart['product']['name'] }}</h5>
                                 </a>
-                                <h5 class="text--primary f-600">${{ $cart['p_price'] }}</h5>
+                                <h5 class="text--primary f-600">${{ @$cart['p_price'] }}</h5>
                             </div>
                         </label>
                     </div>
 
                     <div class="d-flex align-items-end flex-wrap">
                         <div class="quantity-field rounded-pill border d-flex align-items-center  me-4">
-                              <button class="btn value-button decrease-button decrease"data-cart_id="{{ $cart['id'] }}"
-                              data-url="{{ route('increase-decrease-cart', $cart['id']) }}"
-                              data-p_price="{{ $cart['product']['price'] }}"> 
+                              <button class="btn value-button decrease-button decrease"data-cart_id="{{ @$cart['id'] }}"
+                              data-url="{{ route('increase-decrease-cart', @$cart['id']) }}"
+                              data-p_price="{{ @$cart['product']['price'] }}"> 
                                 <svg width="14" height="15" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0.970703 0.209473H17.8388V3.76558H0.970703V0.209473Z" fill="#D2D2D2"></path>
                                 </svg>
                               </button>
 
-                            <div class="number text-dark fs-5 f-600" id="qty{{ $cart['id'] }}">{{ $cart['quantity'] }}</div>
+                            <div class="number text-dark fs-5 f-600" id="qty{{ @$cart['id'] }}">{{ @$cart['quantity'] }}</div>
                             <button class="btn value-button increase-button increase" 
-                            data-url="{{ route('increase-decrease-cart', $cart['id']) }}" data-cart_id="{{ $cart['id'] }}" data-product_total_quantity="{{ $cart['product']['quantity'] }}"
-                            data-p_price="{{ $cart['product']['price'] }}">
+                            data-url="{{ route('increase-decrease-cart', @$cart['id']) }}" data-cart_id="{{ @$cart['id'] }}" data-product_total_quantity="{{ @$cart['product']['quantity'] }}"
+                            data-p_price="{{ @$cart['product']['price'] }}">
                                 <svg width="14" height="15" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M9.52007 0.773926V7.33494H15.7364V10.2634H9.52007V16.8564H6.32401V10.2634H0.139648V7.33494H6.32401V0.773926H9.52007Z" fill="#D2D2D2"></path>
                                 </svg>
                             </button>
                         </div>
 
-                          <h5 class="text--primary f-600">$<span id="p_total_price{{ $cart['id'] }}">{{ $cart['p_total_price'] }}</span></h5>
+                          <h5 class="text--primary f-600">$<span id="p_total_price{{ @$cart['id'] }}">{{ @$cart['p_total_price'] }}</span></h5>
 
-                          @if($cart['product_offer_type'] == 1)
+                          @if(@$cart['product_offer_type'] == 1)
                           <h5>Free</h5>
                           @else
                           @if(isset($cart['product_offer']))
                           <h5>
-                          <p>${{ $cart['product_offer'] }}</p>
+                          <p>${{ @$cart['product_offer'] }}</p>
                           </h5>
                           @endif
                           @endif
@@ -73,7 +73,7 @@
                           <p>{{ isset($cart['product_offer_description']) ? $cart['product_offer_description'] : 'Product Discount' }}</p>
                           @endif
 
-                        <button type="button" class="btn btn-outline-grey py-2 px-4 rounded-pill me-3 cart-remove remove_cart{{ $cart['id'] }}" data-url="{{ route('remove-cart', $cart['id']) }}" data-cart="{{ $cart['id'] }}" data-p_price="{{ $cart['product']['price'] }}">
+                        <button type="button" class="btn btn-outline-grey py-2 px-4 rounded-pill me-3 cart-remove remove_cart{{ $cart['id'] }}" data-url="{{ route('remove-cart', @$cart['id']) }}" data-cart="{{ @$cart['id'] }}" data-p_price="{{ @$cart['product']['price'] }}">
                             <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.3571 1.37501H12.5357L12.158 0.571492C12.078 0.399709 11.9548 0.255209 11.8022 0.154247C11.6496 0.0532863 11.4736 -0.000130108 11.2942 7.53359e-06H6.70179C6.52274 -0.000728544 6.34712 0.0524887 6.19506 0.153562C6.04299 0.254636 5.92062 0.399477 5.84196 0.571492L5.46429 1.37501H0.642857C0.472361 1.37501 0.308848 1.44744 0.188289 1.57637C0.0677294 1.7053 0 1.88017 0 2.06251L0 3.43751C0 3.61984 0.0677294 3.79471 0.188289 3.92364C0.308848 4.05257 0.472361 4.12501 0.642857 4.12501H17.3571C17.5276 4.12501 17.6912 4.05257 17.8117 3.92364C17.9323 3.79471 18 3.61984 18 3.43751V2.06251C18 1.88017 17.9323 1.7053 17.8117 1.57637C17.6912 1.44744 17.5276 1.37501 17.3571 1.37501ZM2.1375 20.0664C2.16816 20.59 2.38426 21.0815 2.74181 21.4407C3.09936 21.7999 3.57147 21.9999 4.06205 22H13.9379C14.4285 21.9999 14.9006 21.7999 15.2582 21.4407C15.6157 21.0815 15.8318 20.59 15.8625 20.0664L16.7143 5.50001H1.28571L2.1375 20.0664Z" fill="#A4A4A4"/>
                                 </svg>
