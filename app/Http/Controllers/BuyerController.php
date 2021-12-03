@@ -20,6 +20,7 @@ use App\Models\UserFollowers;
 use App\Models\ProductFavourite;
 use App\Models\Chat;
 use App\Models\Cart;
+use App\Models\UsedCoupon;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Requests\StoreStripeRequest;
 use Auth, Validator, DB, Session;
@@ -119,7 +120,7 @@ class BuyerController extends Controller
             }
 
             if($user->save()){
-                return redirect()->route('buyer.view_profile');
+                return redirect()->route('buyer.view_profile')->with('success', 'Order placed successfully.');;
             }else{
                 return redirect()->back()->with('error', COMMON_ERROR);
             }
@@ -197,10 +198,12 @@ class BuyerController extends Controller
         if(Auth::check())
         {
             $addresses = Address::where('user_id', Auth::user()->id)->get()->toArray();
+            $apply_coupon = UsedCoupon::with('coupon')->where(['user_id' => Auth::user()->id,'is_completed' => 0])->latest()->first();
         }
         else
         {
             $addresses = NULL;
+            $apply_coupon = NULL;
         }
 
         if(count($carts) > 0)
@@ -225,7 +228,7 @@ class BuyerController extends Controller
         $get_offer_amount = array_column($carts, 'product_offer');
         $total_offer = array_sum($get_offer_amount);
 
-        return view('buyer.checkout', compact('addresses', 'carts', 'c_total_quantity', 'total_price', 'total_offer'));
+        return view('buyer.checkout', compact('addresses', 'carts', 'c_total_quantity', 'total_price', 'apply_coupon', 'total_offer'));
     }
 
     public function payment(Request $request)

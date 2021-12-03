@@ -9,10 +9,13 @@ use App\Models\User;
 use App\Models\Page;
 use App\Models\UserRole;
 use App\Models\Cart;
+use App\Models\Coupon;
+use App\Models\UsedCoupon;
 use App\Models\UserFollowers;
 use App\Models\ProductWishlist;
 use App\Models\ProductFavourite;
 use App\Models\ProductCategory;
+use Illuminate\Support\Facades\Redirect;
 use App\Models\Order;
 use Auth, Validator, Hash;
 
@@ -132,7 +135,11 @@ class LandingController extends Controller
                 User::where('id', Auth::user()->id)->update(['login_status' => LOGIN]);
 
                 if (Auth::user()->user_type == 4) {
-                    return redirect()->route('buyer.index')->with('success', "Logged in successfully");
+                    if($postData['previous_url']){
+                        return Redirect::to(''.$postData['previous_url'].'')->with('success', "Logged in successfully");
+                    }else{
+                        return redirect()->route('buyer.index')->with('success', "Logged in successfully");   
+                    }
                 }else if (Auth::user()->user_type == 1) {
                     return redirect()->route('admin.dashboard')->with('success', "Logged in successfully");
                 }else{
@@ -330,13 +337,15 @@ class LandingController extends Controller
         
         $recent_products = Product::with('product_image')->whereNotIn('id', $product_ids)->latest()->take(4)->get()->toArray();
 
+        $apply_coupon = UsedCoupon::with('coupon')->where(['user_id' => $id,'is_completed' => 0])->latest()->first();
+         
         $get_offer_amount = array_column($carts, 'product_offer');
         $total_offer = array_sum($get_offer_amount);
 
         // echo "<pre>";
         // print_r($carts);die();
 
-        return view('buyer.cart', compact('carts', 'total_price', 'recent_products', 'total_offer'));
+        return view('buyer.cart', compact('carts', 'total_price', 'recent_products', 'apply_coupon', 'total_offer'));
     }
 
     public function increaseOrDecreaseCart(Request $request)
@@ -615,4 +624,31 @@ class LandingController extends Controller
 
         return view('orderDetail', compact('order'));
     }
+
+    public function applyCoupon(Request $request)
+     {
+         if(!Auth::check())
+         {
+             return redirect()->back()->with('error', "Please login first");
+         }
+
+         $check_coupon = Coupon::where(['name' => $request->coupon_code,'status' => 1])->first();
+         if($check_coupon){
+             $coupon = New UsedCoupon;
+             $coupon->user_id = Auth::user()->id;
+             $coupon->coupon_id = $check_coupon->id;
+             $coupon->name = $request->coupon_code;
+             if($coupon->save()){
+                 $response["status"] = 1;
+                 $response["message"] = "Coupon apply successfully";
+             }else{
+                 $response["status"] = 0;
+                 $response["message"] = "Something went wrong";
+             }
+         }else{
+             $response["status"] = 0;
+             $response["message"] = "Invalid coupon code!";
+         }
+         return response()->json($response);
+     }
 }
