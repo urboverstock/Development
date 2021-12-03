@@ -101,7 +101,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     // Route::any('/payment', [App\Http\Controllers\BuyerController::class, 'payment'])->name('payment');
     // Route::any('/save-order', [App\Http\Controllers\BuyerController::class, 'saveOrder'])->name('save.order');
     Route::any('/add-new-address', [App\Http\Controllers\BuyerController::class, 'address'])->name('buyer.address');
-    Route::any('/apply-coupon', [App\Http\Controllers\LandingController::class, 'applyCoupon'])->name('buyer.apply_coupon');
 
     Route::any('/followers/delete/{id}', [App\Http\Controllers\BuyerController::class, 'delete_followers'])->name('buyerDeleteFollower');
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('logout');
@@ -136,6 +135,8 @@ Route::any('view-user-post/{id}', [App\Http\Controllers\UserPostController::clas
 
 
 Route::get('carts', [App\Http\Controllers\LandingController::class, 'carts'])->name('carts');
+Route::any('/apply-coupon', [App\Http\Controllers\LandingController::class, 'applyCoupon'])->name('apply_coupon');
+Route::any('/remove-coupon', [App\Http\Controllers\LandingController::class, 'removeCoupon'])->name('remove_coupon');
 Route::get('increase-decrease-cart/{cart_id}', [App\Http\Controllers\LandingController::class, 'increaseOrDecreaseCart'])->name('increase-decrease-cart');
 Route::get('remove-cart/{cart_id}', [App\Http\Controllers\LandingController::class, 'removeCart'])->name('remove-cart');
 Route::get('cart-later/{cart_id}', [App\Http\Controllers\LandingController::class, 'saveToLaterCart'])->name('save-later-cart');

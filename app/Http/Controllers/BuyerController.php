@@ -203,7 +203,7 @@ class BuyerController extends Controller
         else
         {
             $addresses = NULL;
-            $apply_coupon = NULL;
+            $apply_coupon = UsedCoupon::with('coupon')->where(['is_completed' => 0])->latest()->first();
         }
 
         if(count($carts) > 0)

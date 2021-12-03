@@ -862,7 +862,7 @@ $(document).ready(function() {
 		},
 		submitHandler: function(form, event) {
 			$.ajax({
-				url: base_url + '/buyer/apply-coupon',
+				url: base_url + '/apply-coupon',
 				type: "GET",
 				data: $(form).serialize(),
 				success: function(response) {
@@ -880,6 +880,36 @@ $(document).ready(function() {
 					}             
 			});
 			// $form.submit();
+		}
+	});
+
+	$("#removeCoupon").click(function() {
+		
+		var coupon_id = $(this).data('coupon_id');
+		var url = $(this).data('url');
+		var confirmremove = confirm("Are you sure? want remove coupon?");
+     	if (confirmremove == true) {
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+			$.ajax({
+				type : 'post',
+				url: url,
+				data: { coupon_id: coupon_id},
+				//async: false,
+			}).done(function(response) {
+					if(response.status == 1) {
+						toastr.success(response.message, "Success");
+					}else{
+						toastr.error(response.message, "Error");
+					}
+					setTimeout(function(){ location.reload(); }, 1000);
+			}).fail(function() {
+				ajaxrequestTime = false;
+				toastr.error("Something went wrong!", "Error");
+			});
 		}
 	});
 

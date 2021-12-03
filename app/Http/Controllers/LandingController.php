@@ -659,13 +659,15 @@ class LandingController extends Controller
      {
          if(!Auth::check())
          {
-             return redirect()->back()->with('error', "Please login first");
+            $user_id = 0;
+         }else{
+            $user_id = Auth::user()->id;
          }
 
          $check_coupon = Coupon::where(['name' => $request->coupon_code,'status' => 1])->first();
          if($check_coupon){
              $coupon = New UsedCoupon;
-             $coupon->user_id = Auth::user()->id;
+             $coupon->user_id = $user_id;
              $coupon->coupon_id = $check_coupon->id;
              $coupon->name = $request->coupon_code;
              if($coupon->save()){
@@ -680,5 +682,24 @@ class LandingController extends Controller
              $response["message"] = "Invalid coupon code!";
          }
          return response()->json($response);
+     }
+
+     public function removeCoupon(Request $request)
+     {
+        $used_coupon = UsedCoupon::find($request->coupon_id);
+        if($used_coupon){
+            if($used_coupon->delete())
+            {
+                $response["status"] = 1;
+                $response["message"] = "Coupon has been remove successfully";
+            }else{
+                $response["status"] = 0;
+                $response["message"] = "Something went wrong";
+            }
+        }else{
+            $response["status"] = 0;
+            $response["message"] = "Invalid coupon code!";
+        }
+        return response()->json($response);
      }
 }
