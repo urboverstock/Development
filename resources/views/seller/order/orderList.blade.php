@@ -43,22 +43,23 @@
                   <tbody>
                   	
                   	@foreach($orders as $key => $order)
+                    if($order) {
                     <tr>
                       <th scope="row" class="py-3 text-24 align-middle f-400">{{ $key + 1  }}</td>
                       <th scope="row" class="py-3 text-24 align-middle f-400">
-                        <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($order['get_user_detail']['id'])) }}"> {{ $order['get_user_detail']['first_name']}}</a></td>
-                      <td class="py-3 align-middle text-24">{{ $order['order_number'] }}</td>
-                      <td class="py-3 align-middle text-24"> {{ $order['total_quantity'] }} </td>
-                      <td class="py-3 align-middle text-24">{{ $order['price'] }}</td>
-                      <td class="py-3 align-middle text-24">{{ date('d/m/Y', strtotime($order['created_at'])) }}</td>
+                        <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt(@$order['get_user_detail']['id'])) }}"> {{ @$order['get_user_detail']['first_name']}}</a></td>
+                      <td class="py-3 align-middle text-24">{{ @$order['order_number'] }}</td>
+                      <td class="py-3 align-middle text-24"> {{ @$order['total_quantity'] }} </td>
+                      <td class="py-3 align-middle text-24">{{ @$order['price'] }}</td>
+                      <td class="py-3 align-middle text-24">{{ date('d/m/Y', strtotime(@$order['created_at'])) }}</td>
                       <td class="py-3 align-middle text-22">
 
                         <select id="order_status" class="order_status">
-                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_PENDING] ) }}" {{ $order['status'] == ORDER_PENDING ? 'selected' : ''}}>Pending</option>
-                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_PROCESS] ) }}" {{ $order['status'] == ORDER_PROCESS ? 'selected' : ''}}>Processing</option>
-                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_ON_DELIVERY] ) }}" {{ $order['status'] == ORDER_ON_DELIVERY ? 'selected' : ''}}>On Delivery</option>
-                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_COMPLETED] ) }}" {{ $order['status'] == ORDER_COMPLETED ? 'selected' : ''}}>Completed</option>
-                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_DECLINED] ) }}" {{ $order['status'] == ORDER_DECLINED ? 'selected' : ''}}>Declined</option>
+                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => @$order['id'], 'orderStatus' => ORDER_PENDING] ) }}" {{ @$order['status'] == ORDER_PENDING ? 'selected' : ''}}>Pending</option>
+                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => @$order['id'], 'orderStatus' => ORDER_PROCESS] ) }}" {{ @$order['status'] == ORDER_PROCESS ? 'selected' : ''}}>Processing</option>
+                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => @$order['id'], 'orderStatus' => ORDER_ON_DELIVERY] ) }}" {{ @$order['status'] == ORDER_ON_DELIVERY ? 'selected' : ''}}>On Delivery</option>
+                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => @$order['id'], 'orderStatus' => ORDER_COMPLETED] ) }}" {{ @$order['status'] == ORDER_COMPLETED ? 'selected' : ''}}>Completed</option>
+                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => @$order['id'], 'orderStatus' => ORDER_DECLINED] ) }}" {{ @$order['status'] == ORDER_DECLINED ? 'selected' : ''}}>Declined</option>
                         </select>
                           
                           <!-- @switch($order['status'])
@@ -83,6 +84,7 @@
                       <td class="py-3 align-middle "><a class="btn btn--primary text-white btn-sm" href="{{ route('sellerViewOrder', \Illuminate\Support\Facades\Crypt::encrypt($order['id'])) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                       
                     </tr>
+                    }
                     @endforeach
                     
                   </tbody>
