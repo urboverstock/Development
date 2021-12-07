@@ -43,11 +43,11 @@
                   <tbody>
                   	
                   	@foreach($orders as $key => $order)
-                    if($order) {
+                    <!-- if($order) { -->
                     <tr>
                       <th scope="row" class="py-3 text-24 align-middle f-400">{{ $key + 1  }}</td>
                       <th scope="row" class="py-3 text-24 align-middle f-400">
-                        <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt(@$order['get_user_detail']['id'])) }}"> {{ @$order['get_user_detail']['first_name']}}</a></td>
+                        <a class="text-decoration-none text-dark" href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt(@$order['get_user_detail']['id'])) }}"> {{ @$order['get_user_detail']['first_name']}}</a></td>
                       <td class="py-3 align-middle text-24">{{ @$order['order_number'] }}</td>
                       <td class="py-3 align-middle text-24"> {{ @$order['total_quantity'] }} </td>
                       <td class="py-3 align-middle text-24">{{ @$order['price'] }}</td>
@@ -84,7 +84,7 @@
                       <td class="py-3 align-middle "><a class="btn btn--primary text-white btn-sm" href="{{ route('sellerViewOrder', \Illuminate\Support\Facades\Crypt::encrypt($order['id'])) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                       
                     </tr>
-                    }
+                    <!-- } -->
                     @endforeach
                     
                   </tbody>

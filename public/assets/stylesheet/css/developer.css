@@ -79,3 +79,7 @@ footer {
     width: 120px;
     height: auto;
 }
+.view-profile-img {
+    height: auto !important;
+    width: 100%;
+}

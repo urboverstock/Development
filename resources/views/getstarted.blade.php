@@ -4,7 +4,7 @@
 
   <section class="get-started-banner-section">
     <div class="container">
-      <div class="d-flex  justify-content-end">
+      <div class="d-flex  justify-content-end get-started">
         <div class="text-end --banner-text">
           <h2 class="fw-bold">Looking for something ?</h2>
           <h4 class="fw-semibold">Let’s get you started and find the best option for type of style</h4>

@@ -50,7 +50,15 @@
 .text-black {
     color: #000 !important;
 }
-
+.carousel-dark-glass {
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 2rem 3rem;
+}
 .view-post-img {
     width: 220px;
 }
@@ -64,6 +72,11 @@
 a.btn {
     font-weight: 700;
 }
+@media only screen and (max-width: 700px) {
+    .carousel-dark-glass {
+        padding: 0.5rem;
+    }
+}
 @media only screen and (max-width: 418px) {
     .navbar-logo-seller {
         width: 124px;
@@ -74,4 +87,32 @@ a.btn {
     .inner-profile-header {
         margin-top: 100px;
     }
+    .navbar {
+        flex-wrap: nowrap;
+    }
+    a.navbar-brand img {
+        width: 60% !important;
+        margin-right: 0px !important;
+    }
+    .get-started-banner-section {
+        margin-top: 70px;
+    }
+}
+@media only screen and (max-width: 454px) {
+    .urban-sub-title {
+        line-height: 1;
+    }
+}
+@media only screen and (max-width: 1180px) {
+    .get-started {
+        background: rgba(217, 185, 80, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+    /* .get-started h4 {
+        color: #d7d7d7;
+    } */
 }

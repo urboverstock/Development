@@ -47,7 +47,7 @@
             <div class="carousel-item">
               <div class="position-relative">
                 <img src="{{ asset('assets/images/banner-2.jpeg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
-                <div class="carousel-content-1 " data-aos="fade-up">
+                <div class="carousel-content-1 carousel-dark-glass" data-aos="fade-up">
                   <h1 class="display-5 fw-bold mb-4 text-white">With ease, redefine the rules!</h1>
                   <p class="mb-5 text-white">Are you looking for a comfortable exotic fashion element for yourself,  your home? You've arrived at the perfect location.</p>
                   
@@ -81,7 +81,7 @@
             <div class="carousel-item">
               <div class="position-relative">
                 <img src="{{ asset('assets/images/banner-3.jpeg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
-                <div class="carousel-content-1 " data-aos="fade-up">
+                <div class="carousel-content-1 carousel-dark-glass" data-aos="fade-up">
                   <h1 class="display-5 fw-bold mb-4 text-white">With ease, redefine the rules!</h1>
                   <p class="mb-5 text-white">Are you looking for a comfortable exotic fashion element for yourself,  your home? You've arrived at the perfect location.</p>
                   
@@ -149,7 +149,7 @@
             <div class="carousel-item">
               <div class="position-relative">
                 <img src="{{ asset('assets/images/banner-5.jpg') }}" class="d-lg-block vh-100 w-100" style="object-fit: cover; " alt="...">
-                <div class="carousel-content-1 " data-aos="fade-up">
+                <div class="carousel-content-1 carousel-dark-glass" data-aos="fade-up">
                   <h1 class="display-5 fw-bold mb-4 text-white">With ease, redefine the rules!</h1>
                   <p class="mb-5 text-white">Are you looking for a comfortable exotic fashion element for yourself,  your home? You've arrived at the perfect location.</p>
                   
@@ -304,23 +304,23 @@
         
         <div class="d-flex mb-4">
           <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
-          <h4 class="mb-0 text-muted font-500">You've come to the correct place if you're seeking something fresh.  </h4>
+          <h6 class="mb-0 text-muted font-500">You've come to the correct place if you're seeking something fresh.  </h6>
         </div>
         <div class="d-flex mb-4">
           <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
-          <h4 class="mb-0 text-muted font-500">We've gone a long way, so we know just what to do when it comes to providing you with high-quality, low-cost items. All of this is provided while maintaining exceptional customer service and helpful assistance. </h4>
+          <h6 class="mb-0 text-muted font-500">We've gone a long way, so we know just what to do when it comes to providing you with high-quality, low-cost items. All of this is provided while maintaining exceptional customer service and helpful assistance. </h6>
         </div>
         <div class="d-flex mb-5">
           <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
-          <h4 class="mb-0 text-muted font-500">We want to provide our customers with a wide range of the most up-to-date fashion products so they may make the proper impression. We keep an eye on the current trends and prioritize our customers' needs. 
+          <h6 class="mb-0 text-muted font-500">We want to provide our customers with a wide range of the most up-to-date fashion products so they may make the proper impression. We keep an eye on the current trends and prioritize our customers' needs. 
 That is why we have happy consumers all around the world and are proud to be associated with the fashion business. 
-  </h4>
+  </h6>
         </div>
         <div class="d-flex mb-5">
           <i class="fas fa-check text--primary fw-bold fs-3 me-3"></i>
-          <h4 class="mb-0 text-muted font-500">We always put the needs of our consumers first, so we hope you appreciate our items as much as we enjoy making them available to you.
+          <h6 class="mb-0 text-muted font-500">We always put the needs of our consumers first, so we hope you appreciate our items as much as we enjoy making them available to you.
 
-  </h4>
+  </h6>
         </div>
         
         <a href="{{ route('get-started') }}" class="btn btn-dark rounded-pill fw-bold px-5 py-4">Let's Get Started</a>
