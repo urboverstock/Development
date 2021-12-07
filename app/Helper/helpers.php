@@ -67,8 +67,9 @@
 										->orderBy('file_type', 'ASC')
 										->select('file')->first();
 			
-			$removeFirstSlash = ltrim($postImage->file, '/');
+			
 			if($postImage) {
+				$removeFirstSlash = ltrim($postImage->file, '/');
 				if(file_exists($removeFirstSlash)) {
 					$file = $postImage->file;					
 				} 
