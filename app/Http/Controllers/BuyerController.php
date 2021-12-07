@@ -66,7 +66,7 @@ class BuyerController extends Controller
       $total_pending_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_PENDING)->count();
 
       $orders_detail_product_id = OrderDetail::select('product_id')
-      ->groupBy('product_id')
+      //->groupBy('product_id')
       ->where('user_id', Auth::user()->id)
       ->where('status', ORDER_COMPLETED)
       ->latest()
