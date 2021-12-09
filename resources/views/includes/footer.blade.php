@@ -72,8 +72,8 @@
         </div>
         <div class="d-flex">
         
-          <a   href="http://www.facebook.com/sharer.php?u {{url('/')}}" target="_blank" class="text-decoration-none text-dark me-2"><i class="fab fa-facebook-f"></i></a>
-          <a   href="http://www.facebook.com/sharer.php?u {{url('/')}}" target="_blank" class="text-decoration-none text-dark font-weight-bold"><i class="fab fa-instagram"></i></a>
+          <a   href="http://www.facebook.com/sharer.php?u {{url('/')}}" target="_blank" class="text-decoration-none text-dark me-2 fs-5"><i class="fab fa-facebook-f"></i></a>
+          <a   href="https://www.instagram.com/urban.overstock/" target="_blank" class="text-decoration-none text-dark font-weight-bold fs-4"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     </div>

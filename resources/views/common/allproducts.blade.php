@@ -94,9 +94,9 @@
                 <p class="mb-0">Urban Products</p>
               </div>
             </div>
-            <div>
+            <!-- <div>
               <button type="button" class="btn btn-dark rounded-pill px-4 py-3">Get Featured Now</button>
-            </div>
+            </div> -->
           </div>
          
         </div>

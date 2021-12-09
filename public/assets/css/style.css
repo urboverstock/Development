@@ -40,7 +40,10 @@
         padding-bottom: 30px;
     }
 }
-
+.btn-dark {
+    background-color: #000;
+    border-color: #000;
+}
 .hover-primary {
     color: #000;
 }
