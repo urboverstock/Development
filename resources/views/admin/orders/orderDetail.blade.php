@@ -14,6 +14,7 @@
 
          </div>
 
+         @if(!empty($order->getUserAddress->getUserDetail) && isset($order->getUserAddress->getUserDetail))
          <div class="col-lg-6">
           <div class="d-flex mb-2" data-aos="fade-up">
             <h1 class="display-5 f-600 me-3">Shipping Details</h1>
@@ -28,6 +29,7 @@
            <h6 class="f-600 mb-2" data-aos="fade-up">Pin Code : {{ $order->getUserAddress->pincode }}</h6>
 
          </div>
+         @endif
 
          <div class="col-lg-12">
             <div class="d-flex flex-wrap mb-2" data-aos="fade-up">

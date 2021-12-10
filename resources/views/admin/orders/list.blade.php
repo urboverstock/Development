@@ -203,7 +203,11 @@
                           
                         </td>
                         <td class="py-3 align-middle">#{{ $order['id'] }}</td>
-                        <td class="py-3 align-middle">{{ $order['get_user_detail']['first_name']}} {{ $order['get_user_detail']['last_name']}}</td>
+                        <td class="py-3 align-middle">
+                        @if(!empty($order['get_user_detail']) && isset($order['get_user_detail']))
+                          {{ $order['get_user_detail']['first_name']}} {{ $order['get_user_detail']['last_name']}}
+                        @endif
+                        </td>
                         <td class="py-3 align-middle">{{ $order['order_number'] }}</td>
                         <td class="py-3 align-middle">{{ $order['total_quantity'] }}</td>
                         <td class="py-3 align-middle">{{ $order['price'] }}</td>
