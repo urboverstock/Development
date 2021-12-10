@@ -19,14 +19,16 @@
 
          </div>
 
+         @if(!empty($order->getUserAddress->getUserDetail) && isset($order->getUserAddress->getUserDetail))
          <div class="col-lg-6">
             <div class="card-header bg-transparent">
               <h4 class="mb-0 f-600">Shipping Details</h4>
             </div>
           <div class="card border-0 shadow br-10">
             <div class="card-body">
-            
-            <h6 class="f-600 mb-2" data-aos="fade-up">Name : {{ $order->getUserAddress->getUserDetail->first_name }} {{ $order->getUserAddress->getUserDetail->last_name }}</h6>
+            <h6 class="f-600 mb-2" data-aos="fade-up">Name :
+             {{ $order->getUserAddress->getUserDetail->first_name }} {{ $order->getUserAddress->getUserDetail->last_name }}
+            </h6>
             <h6 class="f-600 mb-2" data-aos="fade-up">Email : {{ $order->getUserAddress->getUserDetail->email }}</h6>
             <h6 class="f-600 mb-2" data-aos="fade-up">Phone : {{ $order->getUserAddress->getUserDetail->phone_number }}</h6>
             <h6 class="f-600 mb-2" data-aos="fade-up">Country : {{ $order->getUserAddress->country }}</h6>
@@ -37,6 +39,7 @@
           </div>
             </div>
           </div>
+          @endif
 
          <div class="col-lg-12">
             <div class="d-flex flex-wrap mb-2" data-aos="fade-up">
@@ -66,11 +69,13 @@
             @endif           
         </div>
 
+        @if(!empty($order->getUserAddress->getUserDetail) && isset($order->getUserAddress->getUserDetail))
         <div class="col-lg-12">
           <div class="d-flex flex-wrap mb-2 align-center" data-aos="fade-up">
               <a href="{{ url('chat?user_id='. \Illuminate\Support\Facades\Crypt::encrypt($order->getUserAddress->getUserDetail->id)) }}" class="btn btn-dark rounded-pill px-4 py-2 mt-3 mb-4">Send Message</a>
             </div>
         </div>
+        @endif
     </div>
   </section>
 @endsection
