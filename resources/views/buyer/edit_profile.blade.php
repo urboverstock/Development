@@ -277,13 +277,13 @@
                         url: base_url + url,
                         data: $(form).serialize(),
                         success: function (response) {
-                                swal(success_msg, {
-                                    icon: "success",
-                                });
+                          swal(success_msg, {
+                              icon: "success",
+                          });
 
-                                // setTimeout(function () {
-                                //     window.location.reload();
-                                // }, 2000);
+                          setTimeout(function () {
+                              window.location.reload();
+                          }, 2000);
                         }
                     });
                 } else {

@@ -25,10 +25,10 @@ class SellerController extends Controller
             return redirect()->route('signin')->with('error', 'You need to login first');
         }
 
-        $total_orders = Order::where('user_id', Auth::user()->id)->count();
-        $total_pending_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_PENDING)->count();
-        $total_complete_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_COMPLETED)->count();
-        $total_price_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_COMPLETED)->sum('price');
+        $total_orders = Order::count();
+        $total_pending_order = Order::where('status', ORDER_PENDING)->count();
+        $total_complete_order = Order::where('status', ORDER_COMPLETED)->count();
+        $total_price_order = Order::where('status', ORDER_COMPLETED)->sum('price');
 
         $order_chart = [];
         $final_result = [];
@@ -43,6 +43,7 @@ class SellerController extends Controller
         $val = array_column($order_By_month, 'orderCount');
         $order_By_month = array_combine($key, $val);
         $months = array("January", "February", "March", 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+
         foreach ($months as $month) {
             if (array_key_exists($month, $order_By_month)) {
                 $result = $order_By_month[$month];
@@ -51,13 +52,14 @@ class SellerController extends Controller
             }
             $final_result[] = $result;
         }
+
         foreach ($order_By_month as $key => $val) {
             $order_By_month[$key] = $val['data'];
         }
+        
         $data['order_By_month'] = $final_result;
 
         $order_chart = Order::select('status as name', \DB::raw('count(*) as y'))
-            ->where('user_id', Auth::user()->id)
             ->groupBy('status')
             ->get()
             ->toArray();

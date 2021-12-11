@@ -26,15 +26,14 @@
             </div>
           <div class="card border-0 shadow br-10">
             <div class="card-body">
-            <h6 class="f-600 mb-2" data-aos="fade-up">Name :
-             {{ $order->getUserAddress->getUserDetail->first_name }} {{ $order->getUserAddress->getUserDetail->last_name }}
-            </h6>
-            <h6 class="f-600 mb-2" data-aos="fade-up">Email : {{ $order->getUserAddress->getUserDetail->email }}</h6>
-            <h6 class="f-600 mb-2" data-aos="fade-up">Phone : {{ $order->getUserAddress->getUserDetail->phone_number }}</h6>
-            <h6 class="f-600 mb-2" data-aos="fade-up">Country : {{ $order->getUserAddress->country }}</h6>
-            <h6 class="f-600 mb-2" data-aos="fade-up">City : {{ $order->getUserAddress->city }}</h6>
-            <h6 class="f-600 mb-2" data-aos="fade-up">State : {{ $order->getUserAddress->state }}</h6>
-            <h6 class="f-600 mb-2" data-aos="fade-up">Pin Code : {{ $order->getUserAddress->pincode }}</h6>
+            
+            <h6 class="f-600 mb-2" data-aos="fade-up">Name : {{ isset($order->getGuestUserDetail->name) ? $order->getGuestUserDetail->name : ''}} {{ isset($order->getUserAddress->getUserDetail->last_name) ? $order->getUserAddress->getUserDetail->last_name : '' }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Email : {{ isset($order->getGuestUserDetail->email) ? $order->getGuestUserDetail->email : $order->getUserAddress->getUserDetail->email }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Phone : {{ isset($order->getGuestUserDetail->phone_number) ? $order->getGuestUserDetail->phone_number : $order->getUserAddress->getUserDetail->phone_number }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Country : {{ isset($order->country) ? $order->country : $order->getUserAddress->country }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">City : {{ isset($order->city) ? $order->city : $order->getUserAddress->city }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">State : {{ isset($order->state)  ? $order->state : $order->getUserAddress->state }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Pin Code : {{ isset($order->pincode) ? $order->pincode : $order->getUserAddress->pincode }}</h6>
 
           </div>
             </div>
@@ -69,10 +68,14 @@
             @endif           
         </div>
 
-        @if(!empty($order->getUserAddress->getUserDetail) && isset($order->getUserAddress->getUserDetail))
+        @if($order && @$order->getUserAddress && isset($order->getUserAddress->getUserDetail) && !empty($order->getUserAddress->getUserDetail))
         <div class="col-lg-12">
           <div class="d-flex flex-wrap mb-2 align-center" data-aos="fade-up">
-              <a href="{{ url('chat?user_id='. \Illuminate\Support\Facades\Crypt::encrypt($order->getUserAddress->getUserDetail->id)) }}" class="btn btn-dark rounded-pill px-4 py-2 mt-3 mb-4">Send Message</a>
+            @if(isset($order->getUserAddress->getUserDetail->name))
+              <a href="{{ url('chat?user_id='. \Illuminate\Support\Facades\Crypt::encrypt($order->getUserAddress->getUserDetail->id)).'&user=auth' }}" class="btn btn-dark rounded-pill px-4 py-2 mt-3 mb-4">Send Message</a>
+            @else
+              <a href="{{ url('chat?user_id='. \Illuminate\Support\Facades\Crypt::encrypt($order->getGuestUserDetail->id)).'&user=guest' }}" class="btn btn-dark rounded-pill px-4 py-2 mt-3 mb-4">Send Message</a>
+            @endif
             </div>
         </div>
         @endif

@@ -47,7 +47,7 @@
                     <tr>
                       <th scope="row" class="py-3 align-middle f-400">{{ $key + 1  }}</th>
                       <th scope="row" class="py-3 align-middle f-400">{{ $coupon['name']}}</th>
-                      <td class="py-3 align-middle">{{ $coupon['type'] == '0' ? 'Percentage' : 'Amount' }}</td>
+                      <td class="py-3 align-middle">{{ $coupon['type'] == '0' ? 'Percentage' : 'Number' }}</td>
                       <td class="py-3 align-middle ">{{ $coupon['price'] }}</td>
                       <td class="py-3 align-middle "> {{ $coupon['start_date'] }} </td>
                       <td class="py-3 align-middle ">{{ $coupon['end_date'] }}</td>

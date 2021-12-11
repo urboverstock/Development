@@ -16,7 +16,8 @@ class ProductController extends Controller
         $request->request->add(['limit' => 8]);
         $request->request->add(['orderBy' => 'DESC']);
         $products = Product::getProducts($request);
-        return view('getstarted', compact('products'));
+        $sellers = User::getSellers($request);
+        return view('getstarted', compact('products','sellers'));
     }
 
     public function searchresults(Request $request)

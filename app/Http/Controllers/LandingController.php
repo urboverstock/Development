@@ -547,12 +547,25 @@ class LandingController extends Controller
 
     public function buyNow($product_id)
     {
+        ob_start(); // Turn on output buffering
+        system('ipconfig /all');
+        $mycom = ob_get_contents();
+        ob_clean();
+        $findme = "Physical";
+        $pmac = strpos($mycom, $findme);
+        $mac = substr($mycom,($pmac+36),17); 
+        
+
         if(!Auth::check())
         {
-            return redirect()->back()->with('error', "Please login first");
+            $id = $mac;
+            $userId = ['physical_address' => $id];
         }
-
-        $user_id = Auth::user()->id;
+        else
+        {
+            $id = Auth::user()->id;
+            $userId = ['user_id' => $id];
+        }
 
         $product = Product::find($product_id);
         if($product->quantity == 0)
@@ -560,12 +573,17 @@ class LandingController extends Controller
             return redirect()->back()->with('error', "Product quantity is low");
         }
 
-        $check = Cart::where(['user_id'=> $user_id,'product_id'=> $product_id])->first();
+        $check = Cart::where($userId)->where(['product_id'=> $product_id])->first();
 
         if(empty($check))
         {
             $cart = new Cart;
-            $cart->user_id = $user_id;
+            if(!Auth::check())
+            {
+                $cart->physical_address = $id;
+            } else {
+                $cart->user_id = $id;
+            }
             $cart->product_id = $product_id;
             $cart->quantity = 1;
             $cart->save();

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\GuestUser;
+use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 
 class OrderController extends Controller
@@ -28,10 +30,26 @@ class OrderController extends Controller
         }
         else
         {
-    	   $orders = Order::with('getUserDetail');
+    	   $orders = Order::latest();
         }
 
-        $orders = $orders->latest()->get()->toArray();
+        $orders = $orders->get()->toArray();
+
+        if(count($orders))
+        {
+            foreach ($orders as $key => $value) {
+                if(!isset($value['address_id']) && empty($value['address_id']))
+                {
+                    $orders[$key]['get_guest_user_detail'] = GuestUser::find($value['user_id']);
+                }
+                else
+                {
+                    $orders[$key]['get_user_detail'] = User::find($value['user_id']);
+                }
+            }
+        }
+
+        // echo "<pre>";
     	// print_r($orders);die();
     	return view('seller.order.orderList', compact('orders'));
     }
@@ -40,7 +58,16 @@ class OrderController extends Controller
     public function viewOrder($id)
     {
         $id = Crypt::decrypt($id);
-    	$order = Order::with('getOrderDetail.getProductDetails', 'getUserAddress.getUserDetail')->find($id);
+    	$get_order = Order::find($id);
+        if(!isset($get_order->address_id) && empty($get_order->address_id))
+        {
+            $order = Order::with('getOrderDetail.getProductDetails', 'getGuestUserDetail')->find($id);
+        }
+        else
+        {
+            $order = Order::with('getOrderDetail.getProductDetails', 'getUserAddress.getUserDetail')->find($id);
+        }
+        // echo "<pre>";
     	// print_r($order);die();
         return view('seller.order.orderDetail', compact('order'));
     }

@@ -86,6 +86,7 @@ class BuyerController extends Controller
 
         if($request->isMethod('post')){
             $postData = $request->all();
+            // print_r($postData);die();
             $validator = Validator::make($postData, [
                 'first_name' => 'required',
                 'last_name' => 'required',
@@ -290,22 +291,26 @@ class BuyerController extends Controller
             // print_r($charge);die();
 
             if ($charge['status'] == 'succeeded') {
-                $check_guest_user = GuestUser::where('email', $guest_user['user_email'])
-                ->orWhere('phone_number', $guest_user['user_email'])
-                ->first();
+                
+                if(!Auth::check())
+                {
+                    $check_guest_user = GuestUser::where('email', $guest_user['user_email'])
+                    ->orWhere('phone_number', $guest_user['user_email'])
+                    ->first();
 
-                if(empty($check_guest_user))
-                {
-                    $guest_user_data = new GuestUser;
-                    $guest_user_data->name = $guest_user['user_name'];
-                    $guest_user_data->email = $guest_user['user_email'];
-                    $guest_user_data->phone_number = $guest_user['user_number'];
-                    $guest_user_data->physical_address = getPhysicalAddressOfPC();
-                    $guest_user_data->save();  
-                }
-                else
-                {
-                    $guest_user_data = $check_guest_user;
+                    if(empty($check_guest_user))
+                    {
+                        $guest_user_data = new GuestUser;
+                        $guest_user_data->name = $guest_user['user_name'];
+                        $guest_user_data->email = $guest_user['user_email'];
+                        $guest_user_data->phone_number = $guest_user['user_number'];
+                        $guest_user_data->physical_address = getPhysicalAddressOfPC();
+                        $guest_user_data->save();  
+                    }
+                    else
+                    {
+                        $guest_user_data = $check_guest_user;
+                    }
                 }
                 
 

@@ -47,7 +47,12 @@
                     <tr>
                       <th scope="row" class="py-3 text-24 align-middle f-400">{{ $key + 1  }}</td>
                       <th scope="row" class="py-3 text-24 align-middle f-400">
-                        <a class="text-decoration-none text-dark" href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt(@$order['get_user_detail']['id'])) }}"> {{ @$order['get_user_detail']['first_name']}}</a></td>
+                        @if(isset($order['get_user_detail']['first_name']))
+                        <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($order['get_user_detail']['id'])) }}"> {{ $order['get_user_detail']['first_name']}}</a>
+                        @else
+                        <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($order['get_guest_user_detail']['id'])) }}"> {{ $order['get_guest_user_detail']['name']}}</a>
+                        @endif
+                      </td>
                       <td class="py-3 align-middle text-24">{{ @$order['order_number'] }}</td>
                       <td class="py-3 align-middle text-24"> {{ @$order['total_quantity'] }} </td>
                       <td class="py-3 align-middle text-24">{{ @$order['price'] }}</td>
