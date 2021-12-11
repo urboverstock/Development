@@ -61,7 +61,12 @@
                       </div>
                       @if($seller->user_chat_status == 1)
                       <span class="badge bg--primary-darken p-2">
-                        <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}" class="" id="add-to-cart" data-productid="{{ @$product_details->id }}"><i class="far fa-envelope fs-4  mb-0"></i></a>
+                      @if(Auth::check())
+                        <<a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}" class="">
+                      @else
+                      <a href="{{ route('signin') }}" class="">
+                      @endif
+                        <i class="far fa-envelope fs-4  mb-0"></i></a>
                       </span>
                       @endif
                     </div>
