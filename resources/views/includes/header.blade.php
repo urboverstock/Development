@@ -59,7 +59,7 @@
               <a href="#z-about" class="custom-nav-link">About Us</a>
             </li>
             <li class="custom-nav-item">
-              <a href="#z-products" class="custom-nav-link">Product</a>
+              <a href="{{route('products')}}" class="custom-nav-link">Product</a>
             </li>
             <li class="custom-nav-item">
               <a href="#z-contact" class="custom-nav-link">Contact Us</a>

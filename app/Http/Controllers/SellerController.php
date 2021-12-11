@@ -12,6 +12,7 @@ use App\Models\ProductImage;
 use App\Models\ProductWishlist;
 use Auth, Validator;
 use App\Models\Order;
+use App\Models\OrderDetail;
 
 class SellerController extends Controller
 {
@@ -19,22 +20,27 @@ class SellerController extends Controller
 
     public function dashboard(Request $request)
     {
-
         if(!Auth::check())
         {
             return redirect()->route('signin')->with('error', 'You need to login first');
         }
 
-        $total_orders = Order::count();
-        $total_pending_order = Order::where('status', ORDER_PENDING)->count();
-        $total_complete_order = Order::where('status', ORDER_COMPLETED)->count();
-        $total_price_order = Order::where('status', ORDER_COMPLETED)->sum('price');
+        $getProductId = Product::where('user_id', Auth::user()->id)->get()->pluck('id')->toArray();
+
+        $getOrderId = OrderDetail::whereIn('product_id', $getProductId)->get()->pluck('order_id')->toArray();
+        
+        $getUniqueOrderId = array_unique($getOrderId);
+
+        $total_orders = Order::whereIn('id', $getUniqueOrderId)->count();
+        $total_pending_order = Order::whereIn('id', $getUniqueOrderId)->where('status', ORDER_PENDING)->count();
+        $total_complete_order = Order::whereIn('id', $getUniqueOrderId)->where('status', ORDER_COMPLETED)->count();
+        $total_price_order = Order::whereIn('id', $getUniqueOrderId)->where('status', ORDER_COMPLETED)->sum('price');
 
         $order_chart = [];
         $final_result = [];
 
         $order_By_month = Order::select(\DB::raw('count(id) as `orderCount`'), \DB::raw("DATE_FORMAT(created_at, '%M') month"))
-            ->where('user_id', Auth::user()->id)
+            ->whereIn('id', $getUniqueOrderId)
             ->groupBy('month')
             ->get()
             ->toArray();
@@ -60,6 +66,7 @@ class SellerController extends Controller
         $data['order_By_month'] = $final_result;
 
         $order_chart = Order::select('status as name', \DB::raw('count(*) as y'))
+            ->whereIn('id', $getUniqueOrderId)
             ->groupBy('status')
             ->get()
             ->toArray();

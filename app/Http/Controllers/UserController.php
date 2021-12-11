@@ -20,7 +20,7 @@ class UserController extends Controller
 
     	$countRateAvg = UserRate::where('rated_user_id', $user_id)->avg('rate');
 
-    	$getUserRate = UserRate::where(['rated_user_id' => $user_id, 'user_id' => Auth::user()->id])->first();
+    	$getUserRate = UserRate::where(['rated_user_id' => $user_id])->first();
     	// echo "<pre>";
     	// print_r($getUserRate);die();
     	return view('profile.user_profile', compact('user', 'user_posts', 'countRateAvg', 'getUserRate'));

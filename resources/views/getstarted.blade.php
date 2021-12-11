@@ -35,9 +35,10 @@
          
         </div>
         <div class="four-item ">
-          
+
+
           @foreach($sellers as $seller)
-          <?php //dd($seller);?>
+
           <div class="mb-3 me-4">
             
               <div class="featured-seller">
@@ -47,16 +48,18 @@
                   <div class="position-absolute --featured-seller-hover  w-100 h-100 bg--primary br-20 p-3">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                       <div class="d-flex align-items-center">
+
                       <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><img class="avatar-sm me-2" src="{{ $seller->profile_pic ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt=""></a>
                         <div>
                         <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><h6 class="text-white">{{$seller->full_name}}</h6></a>
-                          <div class="d-flex">
+
+                          <!-- <div class="d-flex">
                             <i class="far fa-star  text-white"></i>
                             <i class="far fa-star  text-white"></i>
                             <i class="far fa-star  text-white"></i>
                             <i class="far fa-star  text-white"></i>
                             <i class="far fa-star  text-white"></i>
-                          </div>
+                          </div> -->
                         </div>
                       </div>
                       @if($seller->user_chat_status == 1)
@@ -69,6 +72,7 @@
                         <i class="far fa-envelope fs-4  mb-0"></i></a>
                       </span>
                       @endif
+
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                       <p class="text-white mb-0">{{countSellerFollowers($seller->id)}} Followers</p>
@@ -88,8 +92,8 @@
                 </div>
               </div>
           </div>
-          @endforeach
           
+          @endforeach
         </div>
         <div class="border-bottom pt-5"></div>
       </div>

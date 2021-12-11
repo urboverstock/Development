@@ -209,10 +209,10 @@ Route::get('buy-now/{product_id}', [App\Http\Controllers\LandingController::clas
 
 Route::any('newsletter', [App\Http\Controllers\NewsletterController::class, 'sendNewsLetter'])->name('sendNewsLetter');
 
-Route::group(['middleware' => ['auth']], function () {
+// Route::group(['middleware' => ['auth']], function () {
     Route::get('profile/{user_id}', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
     Route::get('user_rate', [App\Http\Controllers\UserController::class, 'userRate'])->name('user-rate');
-});
+// });
 
 Route::get('all-post', [App\Http\Controllers\UserPostController::class, 'allPost'])->name('AllPost');
 

@@ -30,20 +30,17 @@
           <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 mb-3 me-3 py-2 px-4" data-aos="fade-up" data-bs-toggle="modal" data-bs-target="#myModal">Share Profile</button>
 
           @if($user->user_chat_status == 1)
-          @if($user->id != Auth::user()->id)
-            @if(Auth::check())
+          @if(Auth::check() && $user->id != Auth::user()->id)
             <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($user->id)) }}" class="btn btn-dark z-btn-text-white py-2 px-4 mb-3 me-3 display-5" id="add-to-cart" data-productid="{{ @$product_details->id }}" data-aos="fade-up"><i class="far fa-comments"></i></a>
             @else
             <a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3" data-aos="fade-up"><i class="far fa-comments"></i></a>
-            @endif
+        
           @endif
           @endif
 
+          <input type="hidden" name="" id="rate_user_id" value="{{ $user->id }}">
           @if(Auth::check())
-            <input type="hidden" name="" id="rate_user_id" value="{{ $user->id }}">
             <div data-aos="fade-up" class="col-lg-12">
-
-
               @for($i = 1; $i <= 5; $i++)
                 <span><i class="fa fa-star {{ Auth::user()->id != $user->id ? 'user_rating' : '' }}" aria-hidden = "true" id = "st{{ Auth::user()->id != $user->id ? $i : '' }}" data-rate_value="{{ $i }}" style="{{ $i <= $countRateAvg ? 'color:yellow' : '' }}"></i></span>
               @endfor
@@ -54,6 +51,14 @@
               <i class = "fa fa-star user_rating" aria-hidden = "true" id = "st5" data-rate_value="5"></i> -->
               <span>(Average rating {{ number_format($countRateAvg) }} out of 5)</span>
             </div>
+            @else
+            <div data-aos="fade-up" class="col-lg-12">
+              @for($i = 1; $i <= 5; $i++)
+                <span><i class="fa fa-star" aria-hidden = "true" id = "st$i" data-rate_value="{{ $i }}" style="{{ $i <= $countRateAvg ? 'color:yellow' : '' }}"></i></span>
+              @endfor
+              <span>(Average rating {{ number_format($countRateAvg) }} out of 5)</span>
+            </div>
+
           @endif
 
           <div class="mb-5" data-aos="fade-up">
