@@ -60,7 +60,8 @@ class SellerController extends Controller
         }
 
         foreach ($order_By_month as $key => $val) {
-            $order_By_month[$key] = $val['data'];
+            //$order_By_month[$key] = $val['data'];
+            $order_By_month[$key] = $val;
         }
         
         $data['order_By_month'] = $final_result;

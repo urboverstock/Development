@@ -79,12 +79,13 @@ $('.slider-for').slick({
         //async: false,
       }).done(function(response) {
         if(response.status == 1) {
-          var total_price = $('.total_price').html();
-          var parse_total_price = parseFloat(total_price) - parseFloat(p_price);
+          location.reload();
+          //var total_price = $('.total_price').html();
+          //var parse_total_price = parseFloat(total_price) - parseFloat(p_price);
 
-          $('.total_price').html(parse_total_price);
+          //$('.total_price').html(parse_total_price);
 
-          $('#p_total_price'+ cart_id).html(response.p_total_price);
+          //$('#p_total_price'+ cart_id).html(response.p_total_price);
         }
       }).fail(function() {
         ajaxrequestTime = false;
@@ -118,12 +119,13 @@ $('.slider-for').slick({
         //async: false,
       }).done(function(response) {
         if(response.status == 1) {
-          var total_price = $('.total_price').html();
-          var parse_total_price = parseFloat(total_price) + parseFloat(p_price);
+          location.reload();
+          //var total_price = $('.total_price').html();
+          //var parse_total_price = parseFloat(total_price) + parseFloat(p_price);
 
-          $('.total_price').html(parse_total_price);
+          //$('.total_price').html(parse_total_price);
 
-          $('#p_total_price'+ cart_id).html(response.p_total_price);
+          //$('#p_total_price'+ cart_id).html(response.p_total_price);
         }
       }).fail(function() {
         ajaxrequestTime = false;
@@ -163,6 +165,7 @@ $('.slider-for').slick({
               $('.cart_main').remove();
               location.reload();
             }
+
             var total_price = $('.total_price').html();
             var parse_total_price = parseFloat(total_price) - parseFloat(p_total_price);
             
@@ -170,6 +173,8 @@ $('.slider-for').slick({
 
             $('#cart-section'+cart_id).remove();
             toastr.success(response.message, "Success");
+
+            location.reload();
           }else{
             toastr.error(response.message, "Error");
           }
