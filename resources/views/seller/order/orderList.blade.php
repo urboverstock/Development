@@ -50,7 +50,9 @@
                         @if(isset($order['get_user_detail']['first_name']))
                         <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($order['get_user_detail']['id'])) }}"> {{ $order['get_user_detail']['first_name']}}</a>
                         @else
-                        <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($order['get_guest_user_detail']['id'])) }}"> {{ $order['get_guest_user_detail']['name']}}</a>
+                          @if(!empty($order['get_guest_user_detail']) && isset($order['get_guest_user_detail']))
+                            <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($order['get_guest_user_detail']['id'])) }}"> {{ $order['get_guest_user_detail']['name']}}</a>
+                          @endif
                         @endif
                       </td>
                       <td class="py-3 align-middle text-24">{{ @$order['order_number'] }}</td>

@@ -170,7 +170,7 @@ $(document).ready(function() {
 	    }*/
 	});
 
-	$("#edit_profile_form1").validate({ 
+	$("#edit_profile_form").validate({ 
 		errorElement: 'span',
 		rules: {
 			email: {
@@ -204,7 +204,7 @@ $(document).ready(function() {
 			isd_code:{
 				required:true,
 				digits: true,
-				minlength:1,
+				minlength:2,
 				maxlength:3
 			},
 			phone_number:{
@@ -729,6 +729,7 @@ $(document).ready(function() {
 			price:{
 				required:true,
 				digits: true,
+				min: 0,
 				minlength:1,
 				maxlength:10
 			},

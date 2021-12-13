@@ -26,7 +26,7 @@ class CouponStoreRequest extends FormRequest
         return [
             'name' => 'required|unique:coupons,name,NULL,id,deleted_at,NULL',
             'type' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric|gt:0',
             'start_date' => 'required',
             'end_date' => 'required|after:start_date',
         ];

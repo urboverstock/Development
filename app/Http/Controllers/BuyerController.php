@@ -96,9 +96,11 @@ class BuyerController extends Controller
                 'location' => 'required',
                 'billing_address' => 'required',
                 'about' => 'required',
+                'profile_pic' => 'max:2048'
                 // 'gender' => 'required'
             ],[
-                'about.required' => 'The bio field is required'
+                'about.required' => 'The bio field is required',
+                'profile_pic.max' => 'The :attribute failed to upload.'
             ]);
     
             if ($validator->fails()) {
@@ -121,7 +123,7 @@ class BuyerController extends Controller
             }
 
             if($user->save()){
-                return redirect()->route('buyer.view_profile')->with('success', 'Order placed successfully.');;
+                return redirect()->route('buyer.view_profile')->with('success', 'profile update successfully.');;
             }else{
                 return redirect()->back()->with('error', COMMON_ERROR);
             }

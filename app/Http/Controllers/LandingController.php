@@ -134,6 +134,11 @@ class LandingController extends Controller
                 
                 User::where('id', Auth::user()->id)->update(['login_status' => LOGIN]);
 
+                if(Auth::user()->status==0){
+                    Auth::logout();
+                    return redirect()->back()->with('error', 'You account is deactivate please connect with support team.');
+                }
+
                 if (Auth::user()->user_type == 4) {
                     if($postData['previous_url']){
                         return Redirect::to(''.$postData['previous_url'].'')->with('success', "Logged in successfully");
