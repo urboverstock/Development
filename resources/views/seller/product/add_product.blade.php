@@ -43,8 +43,8 @@
                         <div class="mb-4">
                               <label for="exampleFormControlInput1" class="form-label">Category</label>
                               <div class="custom-urban-form">
-                                  <select class="form-control " name="category_id">
-                                    <option selected="" disabled="">Select</option>
+                                  <select id="select" class="form-control form-select" name="category_id">
+                                    <option style="color:gray" value="null" selected="" disabled="">Select</option>
                                     @if(count($product_categories) > 0)
                                     @foreach($product_categories as $key => $product_category)
                                      <option value="{{ $product_category->id }}" <?php if(isset($product->category_id) && $product->category_id == $product_category->id) { echo 'selected'; } else if(old('category_id') == $product_category->id) { echo 'selected'; } ?> >{{ $product_category->name }}</option>
@@ -74,7 +74,7 @@
                           <div class="mb-4 ">
                               <label for="exampleFormControlTextarea1" class="form-label ">Description</label>
                               <div class="custom-urban-form">
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="" rows="5" name="description">{{ @$product->description ?: old('description') }}</textarea>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="description" rows="5" name="description">{{ @$product->description ?: old('description') }}</textarea>
                                   <i class="fas fa-pen textarea-icon"></i>
                               </div>
                               <span class="error">{{ $errors->first('description') }}</span>
@@ -209,7 +209,7 @@
                               <div class="custom-urban-form mb-2">
                                   <!-- <input type="text" class="form-control " placeholder="Draft">
                                   <i class="fas fa-pen"></i> -->
-                                  <select name="status" class="form-control">
+                                  <select name="status" class="form-control form-select">
                                     <option value="0" {{ (@$product->status == 0 || old('status') == 0) ? 'selected' : '' }}>In-active</option>
                                     <option value="1" {{ (@$product->status == 1 || old('status') == 1) ? 'selected' : '' }}>Draft</option>
                                     <option value="2" {{ (@$product->status == 2 || old('status') == 2) ? 'selected' : '' }}>Published</option>

@@ -6,7 +6,7 @@ span.error {
     padding-bottom: 20px;
     border-radius: 8px;
     border: 2px solid #d9b950;
-    color: #000 !important;
+    /* color: #000; */
     font-weight: 700;
 }
 

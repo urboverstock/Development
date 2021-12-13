@@ -98,7 +98,7 @@
               <p class="mb-0">Browse through</p>
             </div>
             <div class="urban-sub-title ust-100 mb-4">
-              <p class="mb-0 pe-5 ms-2">Your Products</p>
+              <p class="mb-0 pe-5 ms-2">Your Posts</p>
             </div>
           </div>
 

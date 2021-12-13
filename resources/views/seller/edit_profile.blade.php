@@ -126,7 +126,7 @@
                     </div>
                     <div class="col-lg-12">
                       <div class="mb-4 ">
-                        <label class="form-label ">Billing Address</label>
+                        <label class="form-label ">Residential Address</label>
                         <div class="custom-urban-form">
                           <textarea class="form-control" placeholder="Billing Address" rows="5" name="billing_address">{{ $user->billing_address }}</textarea>
                           <i class="fas fa-pen textarea-icon"></i>
