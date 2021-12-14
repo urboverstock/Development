@@ -116,7 +116,7 @@
                               <div class="col-lg-6 mb-4">
                                   <label for="exampleFormControlInput1" class="form-label">Price</label>
                                   <div class="custom-urban-form">
-                                      <input class="form-control" type="text" placeholder="$ 0.00" name="price" value="{{ @$product->price ?: old('price') }}">
+                                      <input class="form-control priceCheck" type="text" placeholder="$ 0.00" name="price" value="{{ @$product->price ?: old('price') }}">
                                       <i class="fas fa-pen"></i>
                                   </div>
                                   <span class="error">{{ $errors->first('price') }}</span>
@@ -124,7 +124,7 @@
                               <div class="col-lg-6 mb-4">
                                   <label for="exampleFormControlInput1" class="form-label">Compare at Price</label>
                                   <div class="custom-urban-form">
-                                      <input class="form-control" type="text" placeholder="$ 0.00" name="compare_price" value="{{ @$product->compare_price ?: old('compare_price') }}">
+                                      <input class="form-control ComparePrice" type="text" placeholder="$ 0.00" name="compare_price" value="{{ @$product->compare_price ?: old('compare_price') }}">
                                       <i class="fas fa-pen"></i>
                                   </div>
                                   <span class="error">{{ $errors->first('compare_price') }}</span>
@@ -132,7 +132,7 @@
                               <div class="col-lg-12">
                                   <label for="exampleFormControlInput1" class="form-label">Cost per Item</label>
                                   <div class="custom-urban-form mb-2">
-                                      <input class="form-control" type="text" placeholder="$ 0.00" name="cost_per_price" value="{{ @$product->cost_per_price ?: old('cost_per_price') }}">
+                                      <input class="form-control CostItem" type="text" placeholder="$ 0.00" name="cost_per_price" value="{{ @$product->cost_per_price ?: old('cost_per_price') }}">
                                       <i class="fas fa-pen"></i>
                                   </div>
                                   <span class="error">{{ $errors->first('cost_per_price') }}</span>
@@ -366,6 +366,37 @@ window.onload = function(){
         console.log("Your browser does not support File API");
     }
 }
+
+
+$(".priceCheck").blur(function() {
+    var price = $(".priceCheck").val();
+    var validatePrice = function(price) {
+      return /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(price);
+    }
+    if(validatePrice(price) == false){
+      alert('Enter Digit only');
+    } // False
+});
+
+$(".ComparePrice").blur(function() {
+    var price = $(".ComparePrice").val();
+    var validatePrice = function(price) {
+      return /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(price);
+    }
+    if(validatePrice(price) == false){
+      alert('Enter Digit only');
+    } // False
+});
+
+$(".CostItem").blur(function() {
+    var price = $(".CostItem").val();
+    var validatePrice = function(price) {
+      return /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(price);
+    }
+    if(validatePrice(price) == false){
+      alert('Enter Digit only');
+    } // False
+});
 
 </script>
 
