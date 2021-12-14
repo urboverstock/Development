@@ -66,7 +66,7 @@
                       <div class="mb-4">
                           <label for="exampleFormControlInput1" class="form-label">Start Date</label>
                           <div class="custom-urban-form">
-                              <input class="form-control" type="date" placeholder="Start Date" name="start_date" value="{{ @$coupon->start_date ?: old('start_date') }}" id="start_date">
+                              <input class="form-control" min="<?php echo date("Y-m-d"); ?>" type="date" placeholder="Start Date" name="start_date" value="{{ @$coupon->start_date ?: old('start_date') }}" id="start_date">
                               
                           </div>
                           <span class="error">{{ $errors->first('start_date') }}</span>
@@ -75,7 +75,7 @@
                       <div class="mb-4">
                           <label for="exampleFormControlInput1" class="form-label">End Date</label>
                           <div class="custom-urban-form">
-                              <input class="form-control" type="date" placeholder="End Date" name="end_date" value="{{ @$coupon->end_date ?: old('end_date') }}">
+                              <input class="form-control" min="<?php echo date("Y-m-d"); ?>" type="date" placeholder="End Date" name="end_date" value="{{ @$coupon->end_date ?: old('end_date') }}">
                               
                           </div>
                           <span class="error">{{ $errors->first('end_date') }}</span>
