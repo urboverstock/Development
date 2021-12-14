@@ -50,7 +50,7 @@
                     <div class="d-flex justify-content-between align-items-center mb-4">
                       <div class="d-flex align-items-center">
 
-                      <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><img class="avatar-sm me-2" src="{{ $seller->profile_pic ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt=""></a>
+                      <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><img class="avatar-sm rounded-circle me-2" src="{{ $seller->profile_pic ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt=""></a>
                         <div>
                         <a class="text-decoration-none" href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><h6 class="text-white">{{$seller->full_name}}</h6></a>
 
@@ -70,7 +70,7 @@
                       @else
                       <a href="{{ route('signin') }}" class="">
                       @endif
-                        <i class="far fa-envelope fs-4  mb-0"></i></a>
+                        <i class="far text-white fa-envelope fs-4  mb-0"></i></a>
                       </span>
                       @endif
 
