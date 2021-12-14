@@ -327,6 +327,11 @@ window.onload = function(){
         var filesInput = document.getElementById("urbanFile");
         
         filesInput.addEventListener("change", function(event){
+
+          var fileExtension = ['jpeg', 'jpg', 'png'];
+          if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+              alert("Only formats are allowed : "+fileExtension.join(', '));
+          }
             
            
             var files = event.target.files; //FileList object
