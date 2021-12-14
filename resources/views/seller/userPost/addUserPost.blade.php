@@ -39,7 +39,7 @@
           <div class="col-lg-12">
             
 
-            <h3 class="mt-5 mb-4 fw-bold ">{{ isset($userPost) ? 'Edit Coupon' : 'Add Coupon' }}</h3>
+            <h3 class="mt-5 mb-4 fw-bold ">{{ isset($userPost) ? 'Edit Post' : 'Add Post' }}</h3>
           </div>
           <div class="col-lg-8">
             <div class="card border-0 mb-5 shadow br-16">

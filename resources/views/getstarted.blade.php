@@ -43,7 +43,8 @@
             
               <div class="featured-seller">
                 <div class="position-relative br-20 overflow-hidden mb-3">
-                  <img class="w-100" src="{{ $seller->profile_pic ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt="">
+                  
+                  <img class="featured-sellers-img" src="{{ $seller->profile_pic ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt="">
                  
                   <div class="position-absolute --featured-seller-hover  w-100 h-100 bg--primary br-20 p-3">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -51,7 +52,7 @@
 
                       <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><img class="avatar-sm me-2" src="{{ $seller->profile_pic ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt=""></a>
                         <div>
-                        <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><h6 class="text-white">{{$seller->full_name}}</h6></a>
+                        <a class="text-decoration-none" href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><h6 class="text-white">{{$seller->full_name}}</h6></a>
 
                           <!-- <div class="d-flex">
                             <i class="far fa-star  text-white"></i>
@@ -65,7 +66,7 @@
                       @if($seller->user_chat_status == 1)
                       <span class="badge bg--primary-darken p-2">
                       @if(Auth::check())
-                        <<a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}" class="">
+                        <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}" class="">
                       @else
                       <a href="{{ route('signin') }}" class="">
                       @endif
@@ -85,7 +86,7 @@
                 
                 </div>
                 <div class="d-flex justify-content-between px-2 align-items-center">
-                <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><h5 class="mb-0 fw-bold">{{$seller->full_name}}</h5></a>
+                <a class="text-decoration-none text-dark" href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><h5 class="mb-0 fw-bold">{{$seller->full_name}}</h5></a>
                 <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><h6 class="text-white"><span type="button" class="badge bg-secondary p-2 featured-seller-badge ">
                     <i class="far fa-user"></i>
                   </span></a>
@@ -95,7 +96,7 @@
           
           @endforeach
         </div>
-        <div class="border-bottom pt-5"></div>
+        
       </div>
     </div>
   </section>

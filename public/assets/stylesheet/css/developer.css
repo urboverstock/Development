@@ -1,6 +1,13 @@
 span.error {
     color: red;
 }
+input.empty-date {
+    color: #808080 !important;
+}
+input.empty-date::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+}
+
 .custom-urban-form select {
     padding-top: 20px;
     padding-bottom: 20px;

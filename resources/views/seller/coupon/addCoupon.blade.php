@@ -45,7 +45,7 @@
                       <div class="mb-4">
                           <label for="exampleFormControlInput1" class="form-label">Type</label>
                           <div class="custom-urban-form">
-                              <select name="type" class="form-control">
+                              <select name="type" class="form-control form-select">
                                 <option disabled="" selected="">Select</option>
                                 <option value="0" {{ (@$coupon->type == 0 || old('type') == 0) ? 'selected' : '' }}>Percentage</option>
                                 <option value="1" {{ (@$coupon->type == 1 || old('type') == 1) ? 'selected' : '' }}>Number</option>
@@ -66,7 +66,7 @@
                       <div class="mb-4">
                           <label for="exampleFormControlInput1" class="form-label">Start Date</label>
                           <div class="custom-urban-form">
-                              <input class="form-control" min="<?php echo date("Y-m-d"); ?>" type="date" placeholder="Start Date" name="start_date" value="{{ @$coupon->start_date ?: old('start_date') }}" id="start_date">
+                              <input class="form-control empty-date date" min="<?php echo date("Y-m-d"); ?>" type="date" placeholder="Start Date" name="start_date" value="{{ @$coupon->start_date ?: old('start_date') }}" id="date">
                               
                           </div>
                           <span class="error">{{ $errors->first('start_date') }}</span>
@@ -75,7 +75,7 @@
                       <div class="mb-4">
                           <label for="exampleFormControlInput1" class="form-label">End Date</label>
                           <div class="custom-urban-form">
-                              <input class="form-control" min="<?php echo date("Y-m-d"); ?>" type="date" placeholder="End Date" name="end_date" value="{{ @$coupon->end_date ?: old('end_date') }}">
+                              <input class="form-control empty-date  date" id="date" min="<?php echo date("Y-m-d"); ?>" type="date" placeholder="End Date" name="end_date" value="{{ @$coupon->end_date ?: old('end_date') }}">
                               
                           </div>
                           <span class="error">{{ $errors->first('end_date') }}</span>
