@@ -128,7 +128,7 @@
                       <div class="mb-4 ">
                         <label class="form-label ">Residential Address</label>
                         <div class="custom-urban-form">
-                          <textarea class="form-control" placeholder="Billing Address" rows="5" name="billing_address">{{ $user->billing_address }}</textarea>
+                          <textarea class="form-control" placeholder="Residential Address" rows="5" name="billing_address">{{ $user->billing_address }}</textarea>
                           <i class="fas fa-pen textarea-icon"></i>
                         </div>
                         <span class="error">{{ $errors->first('billing_address') }}</span>
