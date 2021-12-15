@@ -145,88 +145,97 @@
         {
             var filesInput = document.getElementById("urbanFile");
             
-            filesInput.addEventListener("change", function(event){            
-               
-                var files = event.target.files; //FileList object
-                var output = document.getElementById("result");
-                
-                for(var i = 0; i< files.length; i++)
-                {
-                    var file = files[i];
-                    
-                    //Only pics
-                    if(file.type.match('image'))
-                    {
-                    
-                      var picReader = new FileReader();
-                      
-                      picReader.addEventListener("load",function(event){
-                          
-                          var picFile = event.target;
-                          
-                          var div = document.createElement("div");
-                          
-                          div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
-                                  "title='" + picFile.name + "'/>";
-                          
-                          output.insertBefore(div,null);            
-                      
-                      });
-                      
-                       //Read the image
-                      picReader.readAsDataURL(file);
-                    }
+            filesInput.addEventListener("change", function(event){     
 
-                    else
-                    {
-                      var fileReader = new FileReader();
-                      // var files = event.target.files;
-                      // var file = files[i];
+                var fileSize = filesInput.files[0];
+                var sizeInMb = fileSize.size/1024;
+                var sizeLimit= 1024*2;
+                if (sizeInMb > sizeLimit) {
+                  alert('please upload image less than 2MB');
+                }else {
 
-                      fileReader.onload = function() {
-                      var blob = new Blob([fileReader.result], {type: file.type});
-                      var url = URL.createObjectURL(blob);
-                      var video = document.createElement('video');
-                      var timeupdate = function() {
-                        if (snapImage()) {
-                          video.removeEventListener('timeupdate', timeupdate);
-                          video.pause();
-                        }
+                  var files = event.target.files; //FileList object
+                  var output = document.getElementById("result");
+                  
+                  for(var i = 0; i< files.length; i++)
+                  {
+                      var file = files[i];
+                      
+                      //Only pics
+                      if(file.type.match('image'))
+                      {
+                      
+                        var picReader = new FileReader();
+                        
+                        picReader.addEventListener("load",function(event){
+                            
+                            var picFile = event.target;
+                            
+                            var div = document.createElement("div");
+                            
+                            div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                                    "title='" + picFile.name + "'/>";
+                            
+                            output.insertBefore(div,null);            
+                        
+                        });
+                        
+                        //Read the image
+                        picReader.readAsDataURL(file);
+                      }
+
+                      else
+                      {
+                        var fileReader = new FileReader();
+                        // var files = event.target.files;
+                        // var file = files[i];
+
+                        fileReader.onload = function() {
+                        var blob = new Blob([fileReader.result], {type: file.type});
+                        var url = URL.createObjectURL(blob);
+                        var video = document.createElement('video');
+                        var timeupdate = function() {
+                          if (snapImage()) {
+                            video.removeEventListener('timeupdate', timeupdate);
+                            video.pause();
+                          }
+                        };
+                        video.addEventListener('loadeddata', function() {
+                          if (snapImage()) {
+                            video.removeEventListener('timeupdate', timeupdate);
+                          }
+                        });
+                        var snapImage = function() {
+                          var canvas = document.createElement('canvas');
+                          canvas.width = video.videoWidth;
+                          canvas.height = video.videoHeight;
+                          canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                          var image = canvas.toDataURL();
+                          var success = image.length > 100000;
+                          if (success) {
+                            var img = document.createElement('img');
+                            img.src = image;
+                            var div = document.createElement("div");
+                            div.innerHTML = "<img class='thumbnail' src='" + img.src + "'/>";
+                            output.insertBefore(div, null);
+                            // URL.revokeObjectURL(url);
+                          }
+                            // fileReader.readAsArrayBuffer(file);
+                          return success;
+                        };
+                        video.addEventListener('timeupdate', timeupdate);
+                        video.preload = 'metadata';
+                        video.src = url;
+                        // Load video in Safari / IE11
+                        video.muted = true;
+                        video.playsInline = true;
+                        video.play();
                       };
-                      video.addEventListener('loadeddata', function() {
-                        if (snapImage()) {
-                          video.removeEventListener('timeupdate', timeupdate);
-                        }
-                      });
-                      var snapImage = function() {
-                        var canvas = document.createElement('canvas');
-                        canvas.width = video.videoWidth;
-                        canvas.height = video.videoHeight;
-                        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-                        var image = canvas.toDataURL();
-                        var success = image.length > 100000;
-                        if (success) {
-                          var img = document.createElement('img');
-                          img.src = image;
-                          var div = document.createElement("div");
-                          div.innerHTML = "<img class='thumbnail' src='" + img.src + "'/>";
-                          output.insertBefore(div, null);
-                          // URL.revokeObjectURL(url);
-                        }
-                          // fileReader.readAsArrayBuffer(file);
-                        return success;
-                      };
-                      video.addEventListener('timeupdate', timeupdate);
-                      video.preload = 'metadata';
-                      video.src = url;
-                      // Load video in Safari / IE11
-                      video.muted = true;
-                      video.playsInline = true;
-                      video.play();
-                    };
-                    fileReader.readAsArrayBuffer(file);
-                    }
-                }                               
+                      fileReader.readAsArrayBuffer(file);
+                      }
+                  }
+
+                }                              
                
             });
         }
