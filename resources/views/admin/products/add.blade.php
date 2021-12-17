@@ -141,7 +141,7 @@
                 @endif
               </div>
             </div>
-            <div class="col-lg-6">
+<!--             <div class="col-lg-6">
               <div class="mb-3">
                 <label
                   for="exampleFormControlInput1"
@@ -150,7 +150,7 @@
                 >
                 <div class="position-relative d-flex">
                   <input
-                    type="email"
+                    type="text"
                     class="form-control border-primary-1 br-10"
                     id="exampleFormControlInput1"
                     placeholder="Input Here"
@@ -178,8 +178,8 @@
                   </svg>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-6 mb-4">
+            </div> -->
+            <!-- <div class="col-lg-6 mb-4">
               <label
                 for="exampleFormControlInput1"
                 class="form-label f-600 text-12"
@@ -217,8 +217,8 @@
                 >is this product comes in large packaging?
                 <span class="text--primary">Package Dimension</span></small
               >
-            </div>
-            <div class="col-lg-6 mb-4">
+            </div> -->
+           <!--  <div class="col-lg-6 mb-4">
               <p class="mb-0 f-600 text-12 mb-3">Product Condition</p>
               <div class="d-flex align-items-center">
                 <div class="form-check me-3">
@@ -244,7 +244,7 @@
                   </label>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="col-lg-6 mb-4">
               <label
                 for="exampleFormControlInput1"
@@ -267,7 +267,7 @@
                   <span class="text-danger">{{ $errors->first('quantity') }}</span>
               @endif
             </div>
-            <div class="col-lg-6 mb-4">
+           <!--  <div class="col-lg-6 mb-4">
               <p class="mb-0 f-600 text-12 mb-3">Imported Item (optional)</p>
               <div class="d-flex align-items-center">
                 <div class="form-check me-3">
@@ -293,7 +293,7 @@
                   </label>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
