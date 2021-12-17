@@ -119,7 +119,7 @@
                                       <input class="form-control priceCheck" type="text" placeholder="$ 0.00" name="price" value="{{ @$product->price ?: old('price') }}">
                                       <i class="fas fa-pen"></i>
                                   </div>
-                                  <span class="error">{{ $errors->first('price') }}</span>
+                                  <span class="price-error">{{ $errors->first('price') }}</span>
                               </div>
                               <div class="col-lg-6 mb-4">
                                   <label for="exampleFormControlInput1" class="form-label">Compare at Price</label>
@@ -127,7 +127,7 @@
                                       <input class="form-control ComparePrice" type="text" placeholder="$ 0.00" name="compare_price" value="{{ @$product->compare_price ?: old('compare_price') }}">
                                       <i class="fas fa-pen"></i>
                                   </div>
-                                  <span class="error">{{ $errors->first('compare_price') }}</span>
+                                  <span class="compare-price-error">{{ $errors->first('compare_price') }}</span>
                               </div>
                               <div class="col-lg-12">
                                   <label for="exampleFormControlInput1" class="form-label">Cost per Item</label>
@@ -135,7 +135,7 @@
                                       <input class="form-control CostItem" type="text" placeholder="$ 0.00" name="cost_per_price" value="{{ @$product->cost_per_price ?: old('cost_per_price') }}">
                                       <i class="fas fa-pen"></i>
                                   </div>
-                                  <span class="error">{{ $errors->first('cost_per_price') }}</span>
+                                  <span class="cost-price-error">{{ $errors->first('cost_per_price') }}</span></br>
                                   <span>Customer Won't see this</span>
                                   <div class="mt-3 ">
                                       <div class="urban-checkbox form-group-checkbox">
@@ -378,35 +378,35 @@ window.onload = function(){
 }
 
 
-$(".priceCheck").blur(function() {
-    var price = $(".priceCheck").val();
-    var validatePrice = function(price) {
-      return /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(price);
-    }
-    if(validatePrice(price) == false){
-      alert('Enter Digit only');
-    } // False
-});
+// $(".priceCheck").blur(function() {
+//     var price = $(".priceCheck").val();
+//     var validatePrice = function(price) {
+//       return /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(price);
+//     }
+//     if(validatePrice(price) == false){
+//       alert('Enter Digit only');
+//     } // False
+// });
 
-$(".ComparePrice").blur(function() {
-    var price = $(".ComparePrice").val();
-    var validatePrice = function(price) {
-      return /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(price);
-    }
-    if(validatePrice(price) == false){
-      alert('Enter Digit only');
-    } // False
-});
+// $(".ComparePrice").blur(function() {
+//     var price = $(".ComparePrice").val();
+//     var validatePrice = function(price) {
+//       return /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(price);
+//     }
+//     if(validatePrice(price) == false){
+//       alert('Enter Digit only');
+//     } // False
+// });
 
-$(".CostItem").blur(function() {
-    var price = $(".CostItem").val();
-    var validatePrice = function(price) {
-      return /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(price);
-    }
-    if(validatePrice(price) == false){
-      alert('Enter Digit only');
-    } // False
-});
+// $(".CostItem").blur(function() {
+//     var price = $(".CostItem").val();
+//     var validatePrice = function(price) {
+//       return /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(price);
+//     }
+//     if(validatePrice(price) == false){
+//       alert('Enter Digit only');
+//     } // False
+// });
 
 </script>
 

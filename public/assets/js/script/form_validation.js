@@ -287,6 +287,20 @@ $(document).ready(function() {
 				minlength:1,
 				maxlength:10
 			},
+
+			compare_price:{
+				required:true,
+				digits: true,
+				minlength:1,
+				maxlength:10
+			},
+
+			cost_per_price:{
+				required:true,
+				digits: true,
+				minlength:1,
+				maxlength:10
+			},
 			// gender:{
 			// 	required:true
 			// },
@@ -302,6 +316,7 @@ $(document).ready(function() {
 			brand:{
 				required:true
 			},
+
 		},
 	    messages: {
 			category_id:{
@@ -316,6 +331,10 @@ $(document).ready(function() {
 	            error.appendTo($('.name-error'));
 	        }else if(element.attr("name") == "price"){
 				error.appendTo($('.price-error'));
+			}else if(element.attr("name") == "compare_price"){
+				error.appendTo($('.compare-price-error'));
+			}else if(element.attr("name") == "cost_per_price"){
+				error.appendTo($('.cost-price-error'));
 			}else{
 	            error.insertAfter(element);
 	        }
