@@ -348,10 +348,21 @@
 
   <script type="text/javascript">
 
-    $("input:radio[name*='address']").click(function(){  
-        $("#CheckoutButton").removeAttr("disabled");
-      
-      });
+    // Make this a function.
+function checkProgress() {
+  if ($("input:radio[name*='address']:checked").length != 0) {
+    $('#CheckoutButton').prop('disabled', false);
+  } else {
+    $('#CheckoutButton').prop('disabled', true);
+  }
+}
+
+$(function () {
+  // Set the status once the doc loads.
+  checkProgress();
+  // Set it again when any of the radio buttons are clicked.
+  $("input:radio[name*='address']").on("click change", checkProgress);
+});
 
 
     
