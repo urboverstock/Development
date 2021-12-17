@@ -16,7 +16,7 @@
             <h5 class="f-600">Select Address:</h5>
             @foreach($addresses as $address)
 
-              <p><input type="radio" name="address" {{ $address['default'] == '1' ? 'checked' : '' }} value="{{ $address['id'] }}"> {{ $address['address'] }}, {{ $address['country'] }} {{ $address['state'] }} {{ $address['city']}}, {{ $address['pincode'] }}</p>
+              <p><input type="radio" name="address" class="checkedAdress" {{ $address['default'] == '1' ? 'checked' : '' }} value="{{ $address['id'] }}"> {{ $address['address'] }}, {{ $address['country'] }} {{ $address['state'] }} {{ $address['city']}}, {{ $address['pincode'] }}</p>
               
             @endforeach
           @else
@@ -194,7 +194,7 @@
                           <h3 class="fw-bold">$<span class="total_price">{{ $total_price - $total_offer }}</span></h3>
                       </div>                    
                       @endif
-                      <button type="submit" class="btn btn-dark rounded-pill py-3 px-3 mb-3">Checkout</button>
+                      <button type="submit" disabled="disabled" id="CheckoutButton" class="btn btn-dark rounded-pill py-3 px-3 mb-3">Checkout</button>
                       <div>
                           <a href="{{ route('products') }}" class="text--primary text-decoration-none f-600">
                               Back to Products
@@ -344,5 +344,16 @@
         }
       });
     });
+  </script>
+
+  <script type="text/javascript">
+
+    $("input:radio[name*='address']").click(function(){  
+        $("#CheckoutButton").removeAttr("disabled");
+      
+      });
+
+
+    
   </script>
 @endsection
