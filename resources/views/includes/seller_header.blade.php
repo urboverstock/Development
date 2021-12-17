@@ -11,8 +11,10 @@
         </a>
         
         <div class="custom-form-group-search position-relative 	d-none d-lg-block">
-          <input type="text" class="form-control" placeholder="Search for your favourite brands" />
-          <i class="fas fa-search text--primary"></i>
+          <form action="{{ route('search-products') }}">
+            <input type="text" class="form-control" placeholder="Search for your favourite brands" value="{{ request()->get('search') }}" name="search" />
+            <button type="submit" class="transparent-button"><i class="fas fa-search text--primary" style="top: 35%"></i></button>
+          </form>
         </div>
         <div class="d-flex align-items-center">
           

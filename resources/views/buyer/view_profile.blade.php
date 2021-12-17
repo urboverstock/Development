@@ -8,7 +8,7 @@
     <div class="--right-line"></div>
     <div class="dropdown --dropdown">
       <button class="btn btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="far fa-envelope"></i>
+        <a href="mailto:{{ $user['email'] }}"><i class="far fa-envelope"></i></a>
       </button>
     </div>
   </div>

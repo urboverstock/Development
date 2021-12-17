@@ -225,6 +225,12 @@ $(document).ready(function() {
 			confirm_password:{
 				equalTo: 'Password and Re-enter password should be same'
 			},
+			billing_address:{
+				required: 'Residential Address field is required'
+			},
+			about:{
+				required: 'Update Bio field is required'
+			},
 	    },
 
 	    /*errorPlacement: function(error, element) {

@@ -236,7 +236,7 @@
                   <!-- <label for="exampleFormControlInput1" class="form-label">Country</label> -->
                   <div class="custom-urban-form">
                       <input class="form-control" type="text" placeholder="Enter Country" name="country" value="" id="country">
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('country') }}</span>
               </div>
@@ -245,7 +245,7 @@
                   <!-- <label for="exampleFormControlInput1" class="form-label">State</label> -->
                   <div class="custom-urban-form">
                       <input class="form-control" type="text" placeholder="Enter State" name="state" value="" id="state">
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('state') }}</span>
               </div>
@@ -254,7 +254,7 @@
                   <!-- <label for="exampleFormControlInput1" class="form-label">State</label> -->
                   <div class="custom-urban-form">
                       <input class="form-control" type="text" placeholder="Enter City" name="city" value="" id="city">
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('city') }}</span>
               </div>
@@ -263,7 +263,7 @@
                   <!-- <label for="exampleFormControlInput1" class="form-label">State</label> -->
                   <div class="custom-urban-form">
                       <input class="form-control" type="text" placeholder="Enter Pincode" name="pincode" value="" id="pincode">
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('pincode') }}</span>
               </div>

@@ -276,5 +276,7 @@ $('.slider-for').slick({
            }
         });
      }
+   }else{
+    toastr.error("Please Select an Item", "Error");
    }
 });

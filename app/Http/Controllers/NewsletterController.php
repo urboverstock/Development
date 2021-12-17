@@ -4,12 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Newsletter;
+use Validator;
 
 class NewsletterController extends Controller
 {
     public function sendNewsLetter(Request $request)
     {
-    	$userEmail = $request->email;
+		$userEmail = $request->email;
+		
+		if($request->isMethod('post')){
+			$postData = $request->all();
+			$validator = Validator::make($postData, [
+                'email' => 'required|email'
+			]);
+			
+			if ($validator->fails()) {
+			   return redirect()->back()->with('error', 'Enter valid email address');   
+            }
+		}
 
         $checkEmail = Newsletter::where('email', $userEmail)->first();
 

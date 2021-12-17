@@ -37,7 +37,7 @@
                           <label for="exampleFormControlInput1" class="form-label">Title</label>
                           <div class="custom-urban-form">
                               <input class="form-control" type="text" placeholder="Name" name="name" value="{{ @$coupon->name ?: old('name') }}">
-                              <i class="fas fa-pen"></i>
+                              <i class="fas fa-pen input-icon"></i>
                           </div>
                           <span class="error">{{ $errors->first('name') }}</span>
                       </div>
@@ -47,7 +47,12 @@
                           <div class="custom-urban-form">
                               <select name="type" class="form-control form-select">
                                 <option disabled="" selected="">Select</option>
-                                <option value="0" {{ (@$coupon->type == 0 || old('type') == 0) ? 'selected' : '' }}>Percentage</option>
+                                @if(!isset($coupon))
+                                 <option value="0">Percentage</option>
+                                @else
+                                 <option value="0" {{ (@$coupon->type == 0 || old('type') == 0) ? 'selected' : '' }}>Percentage</option>
+                                @endif
+                                
                                 <option value="1" {{ (@$coupon->type == 1 || old('type') == 1) ? 'selected' : '' }}>Number</option>
                               </select>
                           </div>
@@ -58,7 +63,7 @@
                           <label for="exampleFormControlInput1" class="form-label">Price</label>
                           <div class="custom-urban-form">
                               <input class="form-control" type="text" placeholder="Price" name="price" value="{{ @$coupon->price ?: old('price') }}">
-                              <i class="fas fa-pen"></i>
+                              <i class="fas fa-pen input-icon"></i>
                           </div>
                           <span class="error">{{ $errors->first('price') }}</span>
                       </div>

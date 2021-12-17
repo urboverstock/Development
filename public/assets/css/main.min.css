@@ -334,6 +334,11 @@ a.text-red-2:hover {
     color: #000 !important;
     z-index: 5;
 }
+.custom-urban-form i.input-icon {
+    top: 30px;
+    right: 20px;
+    padding: 0;
+}
 .custom-urban-form i.textarea-icon {
     top: 30px;
     right: 20px;

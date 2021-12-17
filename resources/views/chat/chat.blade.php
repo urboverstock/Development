@@ -118,7 +118,7 @@
               <div class="form-floating">
                 <textarea class="form-control message" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                 <label for="floatingTextarea2">Write Message</label>
-                <span class="description-error error" style="display: none;">This filed is required</span>
+                <span class="description-error error" style="display: none;">Message can not be Empty</span>
               </div>
               <div class="d-flex justify-content-end">
                 <button type="button" class="btn btn--primary mt-3" id="sendMessage">Send Message</button>

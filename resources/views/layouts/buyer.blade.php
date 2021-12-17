@@ -118,10 +118,11 @@
 
 
         $(document).on('click', '.update_buyer_profile', function(){
-            $('.buyer-profile-update').show();
+            //$('.buyer-profile-update').show();
         });
 
         $(document).on('click', '.cancel_go_btn', function(){
+            $('.logout-screen').hide();
             $('.buyer-profile-update').hide();
         });
 
