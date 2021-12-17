@@ -63,6 +63,7 @@
                             <input type="file" name="profile_pic" class="d-none" id="imageUpload" accept="image/*" />
                           </div>
                         </label>
+                            <span class="error">{{ $errors->first('profile_pic') }}</span>
                       </div>
                     </div>
                     <div class="col-lg-6">

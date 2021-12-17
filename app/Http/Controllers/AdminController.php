@@ -230,7 +230,8 @@ class AdminController extends Controller
               'location' => 'required',
               'billing_address' => 'required',
               'about' => 'required',
-              // 'gender' => 'required'
+              // 'gender' => 'required',
+              'profile_pic' => 'max:2192',
           ],[
               'about.required' => 'The bio field is required'
           ]);

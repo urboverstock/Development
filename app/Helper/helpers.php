@@ -1,6 +1,7 @@
  <?php
  	use App\Models\ProductImage;
  	use App\Models\UserPostFile;
+ 	use App\Models\UserRate;
  	use App\Models\Chat;
  	use App\Models\ChatRoom;
  	use App\Models\UserFollowers;
@@ -213,4 +214,9 @@
         $pmac = strpos($mycom, $findme);
         $mac = substr($mycom,($pmac+36),17); 
         return $mac;
+	}
+
+	function getAvgUserRate($user_id)
+	{
+		return UserRate::where('rated_user_id', $user_id)->avg('rate');
 	}

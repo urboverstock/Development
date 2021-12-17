@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth', 'checksellerstore'], 'prefix' => 'seller'
     Route::any('/edit-profile', [App\Http\Controllers\SellerController::class, 'edit_profile'])->name('Edit_profile');
     Route::any('/edit-profile-documents', [App\Http\Controllers\SellerController::class, 'edit_profile_documents'])->name('Edit_profile_documents');
     Route::any('/view-profile', [App\Http\Controllers\SellerController::class, 'view_profile'])->name('View_profile');
+    Route::any('/remove_doc/{id}', [App\Http\Controllers\SellerController::class, 'remove_doc'])->name('Remove_doc');
     
     // Route::any('add-product', [App\Http\Controllers\SellerController::class, 'add_product'])->name('add_product');
     // Route::any('edit-product/{product_id}', [App\Http\Controllers\SellerController::class, 'edit_product'])->name('edit_product');

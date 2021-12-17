@@ -54,23 +54,24 @@
                         <div>
                         <a class="text-decoration-none" href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><h6 class="text-white">{{$seller->full_name}}</h6></a>
 
-                          <!-- <div class="d-flex">
-                            <i class="far fa-star  text-white"></i>
-                            <i class="far fa-star  text-white"></i>
-                            <i class="far fa-star  text-white"></i>
-                            <i class="far fa-star  text-white"></i>
-                            <i class="far fa-star  text-white"></i>
-                          </div> -->
+                          <div class="d-flex">
+                            @for($i = 1; $i <= 5; $i++)
+                              <i class="fa fa-star " aria-hidden = "true"  data-rate_value="{{ $i }}" style="{{ $i <= getAvgUserRate($seller->id) ? 'color:yellow' : '' }}"></i>
+                            @endfor
+                          </div>
                         </div>
                       </div>
                       @if($seller->user_chat_status == 1)
                       <span class="badge bg--primary-darken p-2">
                       @if(Auth::check())
-                        <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}" class="">
+                        <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}" class="text-decoration-none text-white">
+                        <i class="far fa-envelope fs-4  mb-0"></i></a>
+                        </a>
                       @else
-                      <a href="{{ route('signin') }}" class="">
+                      <a href="{{ route('signin') }}" class="text-decoration-none text-white">
+                        <i class="far fa-envelope fs-4  mb-0"></i>
+                      </a>
                       @endif
-                        <i class="far text-white fa-envelope fs-4  mb-0"></i></a>
                       </span>
                       @endif
 

@@ -79,7 +79,9 @@
                                 </svg>
                                 
                         </button>
+                        @if(Auth::check())
                         <button type="button" class="btn btn--primary py-2 px-3 br-10 save-later-cart save-later-cart{{ $cart['id'] }}" data-url="{{ route('save-later-cart', $cart['id']) }}" data-cart="{{ $cart['id'] }}" data-p_price="{{ $cart['product']['price'] }}">Save to later</button>
+                        @endif
                         <!--button type="button" class="btn btn--primary py-2 px-3 br-10 ">
                             <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M19.8646 1.29915C17.51 -0.681392 14.0081 -0.325149 11.8468 1.87593L11.0003 2.73685L10.1538 1.87593C7.99686 -0.325149 4.49068 -0.681392 2.13603 1.29915C-0.562353 3.57232 -0.704147 7.65216 1.71065 10.1162L10.0249 18.5897C10.562 19.1368 11.4343 19.1368 11.9714 18.5897L20.2857 10.1162C22.7048 7.65216 22.563 3.57232 19.8646 1.29915Z" fill="white"/>

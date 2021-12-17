@@ -112,7 +112,9 @@ class SellerController extends Controller
                 'location' => 'required',
                 'billing_address' => 'required',
                 'about' => 'required',
-                // 'gender' => 'required'
+                // 'gender' => 'required',
+                'profile_pic' => 'max:2192',
+
             ],[
                 'about.required' => 'The bio field is required'
             ]);
@@ -348,5 +350,10 @@ class SellerController extends Controller
         }
 
         return view('seller.add_product', compact('product_categories','product_companies','product'));
+    }
+
+    public function remove_doc($id)
+    {
+        UserDocument::where('id',$id)->delete();
     }
 }

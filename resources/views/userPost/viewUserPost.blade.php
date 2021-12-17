@@ -3,6 +3,12 @@
 
 @section('content')
 
+<style type="text/css">
+  .error{
+    color: red;
+  }
+</style>
+
 	<section class="mt-5 mb-4">
     <div class="container">
       <div class="row">
@@ -54,7 +60,9 @@
                 @csrf
                 <input type="hidden" name="post_id" value="{{ $userPost->id }}">
                 <textarea class="form-control mb-3" name="comment"></textarea>
-                <input class="btn btn--primary text-white" type="submit" name="" value="Submit">
+                <div class="col-md-12">
+                  <input class="btn btn--primary text-white" type="submit" name="" value="Submit">
+                </div>
               </form>
 
               @if(isset($userPost->getPostComments))

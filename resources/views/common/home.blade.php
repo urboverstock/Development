@@ -248,18 +248,23 @@
 
                         <img class="avatar me-3" src="{{ $seller->profile_pic ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt="">
                         <div class="me-3">
-                        <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}"><p class="fw-bold mb-1 text-white">{{ $seller->full_name }}</p></a>
+                        <a href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}" class="text-decoration-none">
+                          <p class="fw-bold mb-1 text-white ">{{ $seller->full_name }}</p>
+                        </a>
 
                         <!-- <img class="avatar me-3" src="{{ isset($seller->profile_pic) && !empty($seller->profile_pic) ? asset($seller->profile_pic) : asset('assets/images/section-7/1.png') }}" alt="">
                         <div class="me-3">
                           <p class="fw-bold mb-1 text-white">{{ $seller->first_name }} {{ $seller->last_name }}</p> -->
 
                           <div class="d-flex">
+                            <!-- <i class="far fa-star text-white"></i>
                             <i class="far fa-star text-white"></i>
                             <i class="far fa-star text-white"></i>
                             <i class="far fa-star text-white"></i>
-                            <i class="far fa-star text-white"></i>
-                            <i class="far fa-star text-white"></i>
+                            <i class="far fa-star text-white"></i> -->
+                            @for($i = 1; $i <= 5; $i++)
+                              <i class="fa fa-star " aria-hidden = "true"  data-rate_value="{{ $i }}" style="{{ $i <= getAvgUserRate($seller->id) ? 'color:yellow' : '' }}"></i>
+                            @endfor
                           </div>
                           
                         </div>

@@ -34,6 +34,11 @@ $(document).ready(function() {
 		}
 	});
 
+	//File size validatoin
+	$.validator.addMethod('filesize', function (value, element, param) {
+   		return this.optional(element) || (element.files[0].size <= param)
+	}, 'File size must be less than {0}');
+
 	$(document).on('keyup','input', function (e) {
 		if($.trim($(this).val()) == ""){
 			$(this).val('');
@@ -219,6 +224,9 @@ $(document).ready(function() {
 			about:{
 				required: true,
 				maxlength:200
+			},
+			profile_pic:{
+				filesize: 5
 			}
 		},
 	    messages: {
@@ -991,7 +999,7 @@ $(document).ready(function() {
 		errorElement: 'span',
 		rules: {
 			comment: {
-					required:true,
+				required:true,
 			}
 		},
 	    messages: { 

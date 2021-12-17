@@ -4,8 +4,9 @@
 
 <div class="mt-96 inner-profile-header bg-edit-buyer-profile  pb-3 ">
   <img class="logged-wave-img position-absolute" src="{{ $user->profile_img }}" alt="" style="display:none;">
+
   <div class="header-big-avatar d-inline-flex mb-lg-0 mb-4">
-      <img class="rounded-circle" data-aos="zoom-in-up" src="{{ $user->profile_img }}" alt="" style="max-width:300px; height: 300px;">
+      <img class="rounded-circle img-fluid" data-aos="zoom-in-up" src="{{ $user->profile_img }}" alt="" style="max-width:300px; height: auto;">
   </div>
   
   <div class="inner-profile-header-content --ver-2">
@@ -49,8 +50,9 @@
                         <div class="show_doc_name">
                           <div class="d-flex align-items-center">
                             <h6 class="text-16 mb-0 fw-bold me-2">{{ $doc_1->doc_original_name }}</h6>
-                            <a href="javascript:;" class="text-decoration-none text-dark " >
-                              <img src="{{ asset('assets/images/icon/close.png') }}" class="remove_doc_btn" doc="doc_1" alt="">
+
+                            <a href="javascript:;" class="text-decoration-none text-dark remove_doc" >
+                              <img src="{{ asset('assets/images/icon/close.png') }}" class="remove_doc_btn" doc="doc_1" alt="" data-url="{{ route('sellerRemove_doc', $doc_1->id) }}">
                             </a>
                           </div>
                           @if($doc_1->verified == '1')
@@ -79,7 +81,7 @@
                           <div class="d-flex align-items-center">
                             <h6 class="text-16 mb-0 fw-bold me-2">{{ $doc_2->doc_original_name }}</h6>
                             <a href="javascript:;" class="text-decoration-none text-dark " >
-                              <img src="{{ asset('assets/images/icon/close.png') }}" class="remove_doc_btn" doc="doc_2" alt="">
+                              <img src="{{ asset('assets/images/icon/close.png') }}" class="remove_doc_btn" doc="doc_2" alt="" data-url="{{ route('sellerRemove_doc', $doc_2->id) }}">
                             </a>
                           </div>
                           @if($doc_2->verified == '1')
@@ -109,7 +111,7 @@
                           <div class="d-flex align-items-center">
                             <h6 class="text-16 mb-0 fw-bold me-2">{{ $doc_3->doc_original_name }}</h6>
                             <a href="javascript:;" class="text-decoration-none text-dark " >
-                              <img src="{{ asset('assets/images/icon/close.png') }}" class="remove_doc_btn" doc="doc_3" alt="">
+                              <img src="{{ asset('assets/images/icon/close.png') }}" class="remove_doc_btn" doc="doc_3" alt="" data-url="{{ route('sellerRemove_doc', $doc_3->id) }}">
                             </a>
                           </div>
                           @if($doc_3->verified == '1')
@@ -161,6 +163,48 @@
   $(document).on('click', '.remove_doc_btn', function(){
     var doc_name = $(this).attr('doc');
     $(this).closest('.show_doc_name').html('<input type="file" name="'+doc_name+'" class="doc_btn">');
+
+    var dataUrl = $(this).attr('data-url');
+
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+      $.ajax({
+        type : 'get',
+        url: dataUrl,
+        data: { },
+        //async: false,
+      }).done(function(response) {
+          
+      }).fail(function() {
+        ajaxrequestTime = false;
+          alert( "Something went wrong!" );
+      });
+  });
+
+  $(document).on('click', 'remove_doc', function() {
+    // var dataUrl = $(this).attr('data-url');
+
+    //   $.ajaxSetup({
+    //     headers: {
+    //       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     }
+    //   });
+
+    //   $.ajax({
+    //     type : 'get',
+    //     url: dataUrl,
+    //     data: { },
+    //     //async: false,
+    //   }).done(function(response) {
+          
+    //   }).fail(function() {
+    //     ajaxrequestTime = false;
+    //       alert( "Something went wrong!" );
+    //   });
   });
 </script>
 
