@@ -13,7 +13,7 @@
     </div>
   </section>
 
-  @if(@sellers)
+  @if($sellers)
   <!-- featured-select  -->
   <section>
     <div class="container-xl">
