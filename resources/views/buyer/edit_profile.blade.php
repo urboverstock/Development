@@ -171,7 +171,7 @@
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-	$("#imageUpload").change(function() {
+	$("#imageUpload").change(function(e) {
 
     var filepath = this.value;
     var m = filepath.match(/([^\/\\]+)$/);
@@ -185,7 +185,14 @@
 
       if(ext == 'jpeg' || ext == 'jpg' || ext == 'png')
       {
-        readURL(this);
+        var fileSize = e.target.files[0].size;
+        var sizeInMb = Math.floor(fileSize/1024);
+        var sizeLimit= 1024*2;
+        if (sizeInMb > sizeLimit) {
+          alert('please upload image less than 2MB');
+        }else {
+          readURL(this);
+        }
       }else{
         $(this).val('');
         alert("Please select .png, .jpg or .jpeg file");
