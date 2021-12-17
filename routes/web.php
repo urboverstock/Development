@@ -148,7 +148,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     //Route::any('dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
     
     Route::any('products', [App\Http\Controllers\AdminController::class, 'products'])->name('admin.products');
-    Route::any('add-product', [App\Http\Controllers\AdminController::class, 'add_product'])->name('adminAddProduct');
+    //Route::any('add-product', [App\Http\Controllers\AdminController::class, 'add_product'])->name('adminAddProduct');
     Route::get('logout', [App\Http\Controllers\LandingController::class, 'logout'])->name('admin.logout');
 
     Route::any('buyers', [App\Http\Controllers\AdminController::class, 'buyers'])->name('admin.buyers');
@@ -179,6 +179,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('/page/{id}', [App\Http\Controllers\Admin\PageController::class, 'edit'])->name('admin.page.edit');
     Route::get('/page/show/{id}', [App\Http\Controllers\Admin\PageController::class, 'show'])->name('admin.page.show');
     Route::post('/page/update', [App\Http\Controllers\Admin\PageController::class, 'update'])->name('admin.page.update');
+
+
+    Route::any('add-product', [App\Http\Controllers\Admin\ProductController::class, 'addProduct'])->name('adminAddProduct');
+    Route::any('edit-product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'editProduct'])->name('adminEditProduct');
+    Route::any('view-product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'viewProduct'])->name('adminViewProduct');
+    Route::any('delete-image/{id}', [App\Http\Controllers\Admin\ProductController::class, 'deleteImage'])->name('adminDeleteImage');
 });
 
 

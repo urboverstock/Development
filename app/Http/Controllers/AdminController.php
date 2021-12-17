@@ -25,8 +25,7 @@ class AdminController extends Controller
         return redirect()->route('signin')->with('error', 'You need to login first');
       }
       $products = Product::with('category:id,name',
-    						 'user:id,first_name')
-                ->where('status', ACTIVE_STATUS)->orderBy('id', 'DESC')->get();
+    						 'user:id,first_name')->orderBy('id', 'DESC')->get();
       $products = $products->toArray();  
       //echo "<pre>";print_r($products);die;       
       return view('admin.products.list', compact('products'));
