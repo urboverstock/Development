@@ -301,7 +301,7 @@
       <section class="p-0">
         <div class="container">
           <div class="row">
-            <div class="col-lg-4 mb-4">
+            <!-- <div class="col-lg-4 mb-4">
               <div class="card border-0 shadow-sm br-20 py-3">
                 <div class="card-body">
                   <h6 class="f-600 mb-3">Variation</h6>
@@ -309,7 +309,7 @@
                   <button type="button" class="btn btn--primary text-white">Set Variation</button>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="col-lg-4 mb-4">
               <label for="avatar" class="card border-0 text-center shadow-sm br-20 h-100 d-flex cursor-pointer flex-column justify-content-center align-items-center py-5">
