@@ -57,7 +57,7 @@
                         <label class="form-label">First Name</label>
                         <div class="custom-urban-form">
                           <input class="form-control" type="text" placeholder="First Name" name="first_name" value="{{ $user->first_name }}" id="first_name">
-                          <i class="fas fa-pen"></i>
+                          <i class="fas fa-pen input-icon"></i>
                         </div>
                         <span class="error">{{ $errors->first('first_name') }}</span>
                       </div>
@@ -67,7 +67,7 @@
                         <label for="exampleFormControlInput1" class="form-label">Last Name</label>
                         <div class="custom-urban-form">
                           <input class="form-control" type="text" placeholder="Last Name" name="last_name" value="{{ $user->last_name }}" id="last_name">
-                          <i class="fas fa-pen"></i>
+                          <i class="fas fa-pen input-icon"></i>
                         </div>
                         <span class="error">{{ $errors->first('last_name') }}</span>
                       </div>
@@ -77,7 +77,7 @@
                         <label class="form-label">Location</label>
                         <div class="custom-urban-form">
                           <input class="form-control" type="text" placeholder="Location" name="location" value="{{ $user->location }}" id="location">
-                          <i class="fas fa-pen"></i>
+                          <i class="fas fa-pen input-icon"></i>
                         </div>
                         <span class="error">{{ $errors->first('location') }}</span>
                       </div>
@@ -87,7 +87,7 @@
                         <label class="form-label">ISD Code</label>
                         <div class="custom-urban-form">
                           <input type="text" class="form-control"  placeholder="ISD Code" name="isd_code" value="{{ $user->isd_code }}" id="isd_code">
-                          <i class="fas fa-pen"></i>
+                          <i class="fas fa-pen input-icon"></i>
                         </div>
                         <span class="error">{{ $errors->first('isd_code') }}</span>
                       </div>

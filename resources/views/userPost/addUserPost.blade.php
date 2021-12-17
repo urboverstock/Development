@@ -39,7 +39,7 @@
           <div class="col-lg-12">
             
 
-            <h3 class="mt-5 mb-4 fw-bold ">{{ isset($userPost) ? 'Edit Coupon' : 'Add Coupon' }}</h3>
+            <h3 class="mt-5 mb-4 fw-bold ">{{ isset($userPost) ? 'Edit User Post' : 'Add User Post' }}</h3>
           </div>
           <div class="col-lg-8">
             <div class="card border-0 mb-5 shadow br-16">
@@ -48,7 +48,7 @@
                   <label for="exampleFormControlInput1" class="form-label">Title</label>
                   <div class="custom-urban-form">
                     <input class="form-control" type="text" placeholder="Name" name="title" value="{{ @$userPost->title ?: old('title') }}">
-                    <i class="fas fa-pen"></i>
+                    <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('title') }}</span>
                 </div>
