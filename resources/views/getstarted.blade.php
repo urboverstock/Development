@@ -80,7 +80,12 @@
                       <p class="text-white mb-0">{{countSellerFollowers($seller->id)}} Followers</p>
                       <input type="hidden"  value="{{ route('add-follow-user') }}" class="addFollowUser">
                         <input type="hidden" value="{{ $seller->id }}" class="userId">
-                        <button type="button" class="btn btn-dark btn-sm px-3 add-follow-user">Follow</button>
+                        @if($seller->Follow_status =='1')
+                           <button type="button" class="btn btn-dark btn-sm px-3 add-follow-user">Following</button>
+                              @else
+                           <button type="button" class="btn btn-dark btn-sm px-3 add-follow-user">Follow</button>   
+                          @endif
+                        
                     </div>
                     <p class="text-white mb-0">{{$seller->about}}</p>
                   </div>

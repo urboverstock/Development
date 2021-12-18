@@ -25,7 +25,11 @@
           
           <input type="hidden"  value="{{ route('add-follow-user') }}" class="addFollowUser">
           <input type="hidden" value="{{ $user->id }}" class="userId">
-          <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 add-follow-user mb-3 me-3 py-2 px-4" data-aos="fade-up">Follow</button>
+          @if($UserFollowers)
+           <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 mb-3 me-3 py-2 px-4" data-aos="fade-up">Following</button>
+              @else
+           <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 add-follow-user mb-3 me-3 py-2 px-4" data-aos="fade-up">Follow</button>   
+          @endif
 
           <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 mb-3 me-3 py-2 px-4" data-aos="fade-up" data-bs-toggle="modal" data-bs-target="#myModal">Share Profile</button>
 

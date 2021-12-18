@@ -38,6 +38,7 @@ $(document).ready(function() {
 			}).done(function(response) {
 					if(response.status == 1) {
 						toastr.success(response.message, "Success");
+						location.reload();
 					}else{
 						toastr.error(response.message, "Error");
 					}

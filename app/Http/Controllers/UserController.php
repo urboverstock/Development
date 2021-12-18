@@ -7,6 +7,7 @@ use Auth;
 use App\Models\User;
 use App\Models\UserPost;
 use App\Models\UserRate;
+use App\Models\UserFollowers;
 use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
@@ -15,15 +16,17 @@ class UserController extends Controller
     {
     	$user_id = Crypt::decrypt($user_id);
     	$user = User::find($user_id);
+        $login_id = Auth::user()->id;
     	
     	$user_posts = UserPost::with('getUserPostFile', 'getUser', 'getPostLike')->where('user_id', $user_id)->latest()->get();
 
     	$countRateAvg = UserRate::where('rated_user_id', $user_id)->avg('rate');
 
     	$getUserRate = UserRate::where(['rated_user_id' => $user_id])->first();
-    	// echo "<pre>";
-    	// print_r($getUserRate);die();
-    	return view('profile.user_profile', compact('user', 'user_posts', 'countRateAvg', 'getUserRate'));
+        $UserFollowers = UserFollowers::where(['user_id' => $login_id ,'follower_id' => $user_id])->first();
+    	 //echo "<pre>";
+    	// print_r($UserFollowers);die();
+    	return view('profile.user_profile', compact('user', 'user_posts', 'countRateAvg', 'getUserRate' ,'UserFollowers'));
     }
 
     public function userRate(Request $request)

@@ -7,16 +7,30 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\User;
 use App\Models\OrderDetail;
+use App\Models\UserFollowers;
 use App\Models\ProductView;
+use Auth;
 
 class ProductController extends Controller
 {
     public function getStarted(Request $request)
     {
+        $login_id = Auth::user()->id;
         $request->request->add(['limit' => 8]);
         $request->request->add(['orderBy' => 'DESC']);
         $products = Product::getProducts($request);
         $sellers = User::getSellers($request);
+        foreach($sellers as $key => $seller){
+            $UserFollowers = UserFollowers::where(['user_id' => $login_id ,'follower_id' => $seller->id])->get();
+
+            if (count($UserFollowers) > 0){
+                $sellers[$key]['Follow_status'] = '1';
+            }else{
+                $sellers[$key]['Follow_status'] = '0';
+            }
+        }
+
+        //echo "<pre>";print_r($sellers);die;
         return view('getstarted', compact('products','sellers'));
     }
 
