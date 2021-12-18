@@ -178,19 +178,19 @@ $(document).ready(function () {
 });
 
 // var el = document.getElementById("date");
-var date = document.querySelectorAll(".date");
-if (date) {
-    date.forEach((e) => {
-        e.onchange = function () {
-            if (e.value === "") {
-                e.classList.add("empty-date");
-            } else {
-                console.log(e);
-                e.classList.remove("empty-date");
-            }
-        };
-    });
-}
+// var date = document.querySelectorAll(".date");
+// if (date) {
+//     date.forEach((e) => {
+//         e.onchange = function () {
+//             if (e.value === "") {
+//                 e.classList.add("empty-date");
+//             } else {
+//                 console.log(e);
+//                 e.classList.remove("empty-date");
+//             }
+//         };
+//     });
+// }
 //  test date color change
 // el.onchange = function () {
 //     if (el.value === "") {

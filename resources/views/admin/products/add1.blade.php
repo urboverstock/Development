@@ -97,7 +97,7 @@
                       fill="#D9B950"
                     />
                   </svg-->
-                  <select class="form-control border-primary-1 br-10" name="category_id">
+                  <select class="form-control form-select border-primary-1 br-10" name="category_id">
                     <option selected="" disabled="">Select</option>
                     @if(count($product_categories) > 0)
                     @foreach($product_categories as $key => $product_category)
