@@ -21,7 +21,7 @@
             <h1 class="display-5 f-600 me-3">{{ $user->first_name }} {{ !empty($user->last_name) ? $user->last_name : '' }}</h1>
             <div class="online-active"></div>
           </div>
-          <h3 data-aos="fade-up"><a href="mailto:{{ $user->email }}"> {{ $user->email }} </a></h3>
+          <h3 data-aos="fade-up"><a class="text-dark" href="mailto:{{ $user->email }}"> {{ $user->email }} </a></h3>
           
           <input type="hidden"  value="{{ route('add-follow-user') }}" class="addFollowUser">
           <input type="hidden" value="{{ $user->id }}" class="userId">
@@ -108,9 +108,9 @@
       </div>
 
       <!-- Modal body -->
-      <div class="modal-body">
-        <input type="text" name="" value="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($user->id)) }}" id="profile_link">
-        <button onclick="clipboard()">Copy Link</button>
+      <div class="modal-body d-flex align-items-center">
+        <input class="me-3 flex-1 form-control" type="text" name="" value="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($user->id)) }}" id="profile_link">
+        <button class="btn btn--primary" onclick="clipboard()">Copy Link</button>
       </div>
 
       <!-- Modal footer -->

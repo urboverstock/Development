@@ -98,8 +98,8 @@
           <div class="col-lg-4">
                
           @if(empty($apply_coupon))
-             <a href="javascript:void(0);" class="text-decoration-none"  data-bs-toggle="modal" data-bs-target="#applyCouponModal">
-                <div class="mb-4 border-primary align-items-center d-flex border justify-content-between bg-primary-lighten-3 px-3 py-3 br-10 mb-4">
+             <a href="javascript:void(0);" class="text-decoration-none "  data-bs-toggle="modal" data-bs-target="#applyCouponModal">
+                <div class="mb-4   align-items-center d-flex border justify-content-between bg-primary-lighten-3 px-3 py-3 br-10 mb-4">
                     <div class="d-flex align-items-center">
                         <svg class="me-3" width="34" height="22" viewBox="0 0 34 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.80801 5.37278H26.2148V16.1183H7.80801V5.37278ZM30.8164 10.7456C30.8164 12.2292 32.0526 13.432 33.5775 13.432V18.8047C33.5775 20.2884 32.3413 21.4911 30.8164 21.4911H3.20632C1.68144 21.4911 0.445312 20.2884 0.445312 18.8047V13.432C1.9702 13.432 3.20632 12.2292 3.20632 10.7456C3.20632 9.26189 1.9702 8.05917 0.445312 8.05917V2.68639C0.445312 1.20272 1.68144 0 3.20632 0H30.8164C32.3413 0 33.5775 1.20272 33.5775 2.68639V8.05917C32.0526 8.05917 30.8164 9.26189 30.8164 10.7456ZM28.0554 4.92505C28.0554 4.18321 27.4374 3.58185 26.6749 3.58185H7.34784C6.5854 3.58185 5.96734 4.18321 5.96734 4.92505V16.5661C5.96734 17.3079 6.5854 17.9093 7.34784 17.9093H26.6749C27.4374 17.9093 28.0554 17.3079 28.0554 16.5661V4.92505Z" fill="#D4AF37"/>
@@ -226,8 +226,8 @@
          <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card product-item border-0 shadow br-12 mb-5">
                <div class="card-body ">
-                  <img class="img-fluid br-12 mb-3" src="{{ productDefaultImage($recent_product['id'])}}" alt="">
-                  <a href="{{ route('product-detail', $recent_product['sku']) }}"><h5 class="fw-bold">{{ $recent_product['name'] }}</h5></a>
+                  <a class="text-decoration-none text-dark" href="{{ route('product-detail', $recent_product['sku']) }}"><img class="img-fluid br-12 mb-3" src="{{ productDefaultImage($recent_product['id'])}}" alt=""></a>
+                  <a class="text-decoration-none text-dark" href="{{ route('product-detail', $recent_product['sku']) }}"><h5 class="fw-bold">{{ $recent_product['name'] }}</h5></a>
                   <div class="d-flex align-items-center justify-content-between flex-wrap">
                      <!-- <div class="bg-text rounded-pill px-3 py-2">
                         <h6 class="mb-0 f-600">Jhonathan Doe</h6>

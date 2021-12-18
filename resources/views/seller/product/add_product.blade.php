@@ -43,8 +43,8 @@
                         <div class="mb-4">
                               <label for="exampleFormControlInput1" class="form-label">Category</label>
                               <div class="custom-urban-form">
-                                  <select id="select" class="form-control form-select" name="category_id">
-                                    <option style="color:gray" value="null" selected="" disabled="">Select</option>
+                                  <select class="form-control form-select" name="category_id">
+                                    <option value="null" selected="" disabled="">Select</option>
                                     @if(count($product_categories) > 0)
                                     @foreach($product_categories as $key => $product_category)
                                      <option value="{{ $product_category->id }}" <?php if(isset($product->category_id) && $product->category_id == $product_category->id) { echo 'selected'; } else if(old('category_id') == $product_category->id) { echo 'selected'; } ?> >{{ $product_category->name }}</option>

@@ -209,8 +209,8 @@
                  
             <div class="card product-item border-0 shadow br-12 mb-5">
               <div class="card-body ">
-                <img class="img-fluid br-12 mb-3" src="{{ productDefaultImage(@$recent_product['id'])}}" alt="">
-               <a href="{{ route('product-detail', $recent_product['sku']) }}"><h5 class="fw-bold">{{ @$recent_product['name'] }}</h5></a>
+               <a class="text-decoration-none text-dark" href="{{ route('product-detail', $recent_product['sku']) }}"><img class="img-fluid br-12 mb-3" src="{{ productDefaultImage(@$recent_product['id'])}}" alt=""></a>
+               <a class="text-decoration-none text-dark" href="{{ route('product-detail', $recent_product['sku']) }}"><h5 class="fw-bold">{{ @$recent_product['name'] }}</h5></a>
                <div class="d-flex align-items-center justify-content-between flex-wrap">
                  <!-- <div class="bg-text rounded-pill px-3 py-2">
                     <h6 class="mb-0 f-600">Jhonathan Doe</h6>
