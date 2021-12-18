@@ -24,9 +24,9 @@
               <div class="urban-title text--primary position-relative mb-2">
                 <p class="mb-0">Browse Sellers</p>
               </div>
-              <div class="urban-sub-title mb-4">
+              <!-- <div class="urban-sub-title mb-4">
                 <p class="mb-0">Featured Sellers</p>
-              </div>
+              </div> -->
             </div>
             <div>
               <button type="button" class="btn btn-dark rounded-pill px-4 py-3">Get Featured Now</button>
