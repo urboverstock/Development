@@ -79,12 +79,7 @@
                                 </svg>
                                 
                         </button>
-<<<<<<< Updated upstream
                         @if(Auth::check())
-=======
-                        
-  
->>>>>>> Stashed changes
                         <button type="button" class="btn btn--primary py-2 px-3 br-10 save-later-cart save-later-cart{{ $cart['id'] }}" data-url="{{ route('save-later-cart', $cart['id']) }}" data-cart="{{ $cart['id'] }}" data-p_price="{{ $cart['product']['price'] }}">Save to later</button>
                         @endif
                         <!--button type="button" class="btn btn--primary py-2 px-3 br-10 ">
@@ -251,7 +246,7 @@
                      <h5 class="mb-0">${{ $recent_product['price'] }} </h5>
                      <div class="d-flex align-items-center">
                      @if(Auth::check())
-                      <a href="javascript:void(0)" class="add-favourite-product" data-productid="{{$product->id }}" title="Mark as favourite">
+                      <a href="javascript:void(0)" class="add-favourite-product" data-productid="{{@$product->id }}" title="Mark as favourite">
                     @else
                       <a href="{{ route('signin') }}" title="Add to favourite" title="Mark as favourite">
                     @endif
