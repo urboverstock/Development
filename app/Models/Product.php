@@ -36,10 +36,10 @@ class Product extends Model
     						 'images:id,product_id,file,file_type',
     						 'user:id,first_name')
     						->where('status', PUBLISHED);
-    	if($request->search) {
+    	if($request->searchproduct) {
     		$query->where(function($q) use ($request) {
-    			$q->where('name', 'LIKE', "%{$request->search}%")
-                ->orWhere('name', 'LIKE', "%{$request->search}%"); 
+    			$q->where('name', 'LIKE', "%{$request->searchproduct}%")
+                ->orWhere('name', 'LIKE', "%{$request->searchproduct}%"); 
     		});
     	}
 

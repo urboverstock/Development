@@ -40,7 +40,7 @@ class ProductController extends Controller
         $products = Product::getProducts($request);
         $brands = Product::select('brand')->whereNotNull('brand')->groupBy('brand')->get()->toArray();
         $categories = ProductCategory::get();
-        $search = $request->search;
+        $search = $request->searchproduct;
         $price = $request->price;
         $filter_brand = $request->brand;
         return view('common.search-results', compact('products','categories','search','price', 'brands', 'filter_brand'));
