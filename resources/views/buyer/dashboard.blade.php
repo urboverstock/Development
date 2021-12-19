@@ -9,7 +9,7 @@
         <label for="avatar-file"> <span class="p-3 bg-dark rounded-circle cursor-pointer" style="display: none !important">
                     <i class="fas fa-pencil-alt text-white"></i>
                   </span> </label>
-        <input type="file" class="d-none" id="avatar-file"> </div>
+        <input type="file" class="d-none" id="avatar-file" accept="image/*"> </div>
     </div>
     <div class="inner-profile-header-content --ver-2">
       <h1 class="display-5 f-600 me-3">

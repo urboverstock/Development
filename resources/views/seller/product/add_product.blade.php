@@ -90,7 +90,7 @@
                               
                               <i class="fas fa-plus fs-3 text-white"></i>
                             </div>
-                            <input type="file" class="urbanUploadFileProduct" name="image[]" id="urbanFile" multiple="">
+                            <input type="file" class="urbanUploadFileProduct" name="image[]" accept="image/*" id="urbanFile" multiple="">
                             <label for="urbanFile" class="btn btn-outline-primary px-5 py-3 br-8 mb-2"><span class="text-dark f-600">Add Image</span></label>
 
                             <!-- <span class="f-600">or Drop an Image to Upload</span> -->

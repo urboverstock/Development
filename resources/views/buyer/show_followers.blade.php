@@ -22,7 +22,7 @@
               <i class="fas fa-pencil-alt text-white"></i>
             </span>
           </label>
-          <input type="file" class="d-none" id="avatar-file" />
+          <input type="file" class="d-none" id="avatar-file" accept="image/*"/>
         </div>
       </div>
 
