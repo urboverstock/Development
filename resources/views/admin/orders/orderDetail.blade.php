@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="d-flex mb-2" data-aos="fade-up">
-            <h1 class="display-5 f-600 me-3">Order Detail</h1>            
+            <h1 class="display-5 f-600 me-3">Order Details</h1>            
           </div>
            <h6 class="f-600 mb-2" data-aos="fade-up">Order ID : {{ $order->order_number }}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Total Product : {{ $order->total_quantity }}</h6>
