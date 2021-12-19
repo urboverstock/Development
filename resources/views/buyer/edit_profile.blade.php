@@ -97,7 +97,7 @@
                         <label class="form-label">Phone Number</label>
                         <div class="custom-urban-form">
                           <input type="text" class="form-control"  placeholder="Phone Number" name="phone_number" value="{{ $user->phone_number }}" id="phone_number">
-                          <span class="badge rounded-pill badge-primary-light text-dark py-2">Verify</span>
+                          <!-- <span class="badge rounded-pill badge-primary-light text-dark py-2">Verify</span> -->
                         </div>
                         <span class="error">{{ $errors->first('phone_number') }}</span>
                       </div>
