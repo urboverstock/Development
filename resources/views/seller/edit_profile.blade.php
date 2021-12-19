@@ -209,6 +209,7 @@
         var sizeLimit= 1024*2;
         if (sizeInMb > sizeLimit) {
           alert('please upload image less than 2MB');
+          $(this).val('');
         }else {
           readURL(this);
         }

@@ -104,7 +104,7 @@
                                       <source src="{{url('/') . $image->file}}" type="video/{{ $ext }}">
                                     </video>
                                   <?php } else { ?>
-                                  <img class="img-fluid float-start" src="{{ asset('/') .$image->file }}" width="100"  >
+                                  <img class="img-fluid float-start" src="{{ url('/') .$image->file }}" width="100">
                                 </a>
                               <?php } ?>
                               </div>
@@ -159,6 +159,7 @@
                 var sizeLimit= 1024*2;
                 if (sizeInMb > sizeLimit) {
                   alert('please upload image less than 2MB');
+                  $(this).val('');
                 }else {
                   var files = event.target.files; //FileList object
                   var output = document.getElementById("result");

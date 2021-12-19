@@ -37,7 +37,7 @@
                           <label for="exampleFormControlInput1" class="form-label">City</label>
                           <div class="custom-urban-form">
                               <input class="form-control" type="text" placeholder="City Name" name="city" value="{{ @$address->city ?: old('city') }}">
-                              <i class="fas fa-pen"></i>
+                              <i class="fas fa-pen input-icon"></i>
                           </div>
                           <span class="error">{{ $errors->first('city') }}</span>
                       </div>
@@ -46,7 +46,7 @@
                           <label for="exampleFormControlInput1" class="form-label">State</label>
                           <div class="custom-urban-form">
                               <input class="form-control" type="text" placeholder="state Name" name="state" value="{{ @$address->state ?: old('state') }}">
-                              <i class="fas fa-pen"></i>
+                              <i class="fas fa-pen input-icon"></i>
                           </div>
                           <span class="error">{{ $errors->first('state') }}</span>
                       </div>
@@ -55,7 +55,7 @@
                           <label for="exampleFormControlInput1" class="form-label">Country</label>
                           <div class="custom-urban-form">
                               <input class="form-control" type="text" placeholder="Country Name" name="country" value="{{ @$address->country ?: old('country') }}">
-                              <i class="fas fa-pen"></i>
+                              <i class="fas fa-pen input-icon"></i>
                           </div>
                           <span class="error">{{ $errors->first('country') }}</span>
                       </div>
@@ -64,7 +64,7 @@
                           <label for="exampleFormControlInput1" class="form-label">Pincode</label>
                           <div class="custom-urban-form">
                               <input class="form-control" type="number" placeholder="pincode" name="pincode" value="{{ @$address->pincode ?: old('pincode') }}">
-                              <i class="fas fa-pen"></i>
+                              <i class="fas fa-pen input-icon"></i>
                           </div>
                           <span class="error">{{ $errors->first('pincode') }}</span>
                       </div>
