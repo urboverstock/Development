@@ -4,7 +4,10 @@
 <input type="hidden"  value="{{ route('add-follow-user') }}" class="addFollowUser">
 <input type="hidden" value="{{ $user->id }}" class="userId">
 <div class="mt-96 inner-profile-header bg-primary-lighten-2 pb-3"> 
-  <img class="logged-wave-img position-absolute" src="{{ asset('assets/images/wave-logg-seller.png') }}" alt=""> <img class="img-fluid header-big-avatar mb-lg-0 mb-4" data-aos="zoom-in-up" src="{{ $user->profile_img }}" alt="">
+    <img class="logged-wave-img position-absolute" src="{{ asset('assets/images/wave-logg-seller.png') }}" alt=""> 
+    <div class="header-big-avatar d-inline-flex mb-lg-0 mb-4"> 
+  		<img class="img-fluid rounded-circle" data-aos="zoom-in-up" src="{{ $user->profile_img }}" style="max-width:300px;height: 300px;" alt="">
+    </div>
 	<div class="--right-line"></div>
 	<div class="inner-profile-header-content">
 		<div class="d-flex mb-2">
@@ -16,9 +19,9 @@
     @endif
 		<div class="d-flex align-items-center flex-wrap me-4 mb-4">
 			<div class="d-flex align-items-center me-2 mb-lg-0 mb-3"> <i class="fas fa-star me-2"></i> <i class="fas fa-star me-2"></i> <i class="fas fa-star me-2"></i> <i class="fas fa-star me-2"></i> <i class="fas fa-star text-white"></i> </div>
-			<h6 class="f-600 mb-lg-0 mb-3 me-3 ">(1045)</h6> <i class="far fa-heart fs-5 me-2 "></i>
-			<h6 class="f-600 mb-lg-0 mb-3 me-3 ">(1045)</h6>
-			<button type="button" class="btn btn-light br-11 me-2 mb-lg-0 mb-3"> <i class="far fa-envelope"></i> </button>
+			<!--h6 class="f-600 mb-lg-0 mb-3 me-3 ">(1045)</h6> <i class="far fa-heart fs-5 me-2 "></i>
+			<h6 class="f-600 mb-lg-0 mb-3 me-3 ">(1045)</h6-->
+			<button type="button" class="btn btn-light br-11 me-2 mb-lg-0 mb-3"> <a href="mailto:{{ $user['email'] }}"><i class="far fa-envelope"></i></a> </button>
 			<button type="button" class="btn btn-light br-11 me-3 mb-lg-0 mb-3">
 				<svg class="" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<g clip-path="url(#clip0)">
@@ -31,16 +34,18 @@
 					</defs>
 				</svg>
 			</button>
+			@if(Auth::check() && ($user['id']!=Auth::user()->id))
 			<button type="button" class="btn btn-dark rounded-pill px-3 mb-lg-0 mb-3 d-flex align-items-center add-follow-user">
 				<svg width="16" height="16" class="me-2" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M15.375 3.98438H14.8125V3.42188C14.8125 3.07669 14.5327 2.79688 14.1875 2.79688C13.8423 2.79688 13.5625 3.07669 13.5625 3.42188V3.98438H13C12.6548 3.98438 12.375 4.26419 12.375 4.60938C12.375 4.95456 12.6548 5.23438 13 5.23438H13.5625V5.79688C13.5625 6.14206 13.8423 6.42188 14.1875 6.42188C14.5327 6.42188 14.8125 6.14206 14.8125 5.79688V5.23438H15.375C15.7202 5.23438 16 4.95456 16 4.60938C16 4.26419 15.7202 3.98438 15.375 3.98438Z" fill="white" />
 					<path d="M9.85653 7.78847C10.8079 7.05347 11.4219 5.90188 11.4219 4.60938C11.4219 2.39516 9.62047 0.59375 7.40625 0.59375C5.19203 0.59375 3.39062 2.39516 3.39062 4.60938C3.39062 5.90184 4.00456 7.05347 4.95597 7.78847C2.13416 8.77478 0 11.4821 0 14.7812C0 15.1264 0.279813 15.4062 0.625 15.4062H14.1875C14.5327 15.4062 14.8125 15.1264 14.8125 14.7812C14.8125 11.4813 12.6768 8.77422 9.85653 7.78847ZM4.64062 4.60938C4.64062 3.08441 5.88128 1.84375 7.40625 1.84375C8.93122 1.84375 10.1719 3.08441 10.1719 4.60938C10.1719 6.13434 8.93122 7.375 7.40625 7.375C5.88128 7.375 4.64062 6.13434 4.64062 4.60938ZM1.2815 14.1562C1.59566 11.0541 4.22259 8.625 7.40625 8.625C10.5899 8.625 13.2168 11.0541 13.531 14.1562H1.2815Z" fill="white" /> </svg> Follow</button>
+			@endif
 		</div>
 		<div class="my-3 d-flex flex-wrap mt-4">
 			<div class="d-flex align-items-center  me-3 mb-lg-0 mb-lg-0 mb-3">
-				<div class="bg-white px-4 py-2 rounded-pill d-inline-block me-2">
-					<h6 class="mb-0 f-600">5K+</h6></div>
-				<h5 class="mb-0 f-600">Items Sold</h5> </div>
+				<!--div class="bg-white px-4 py-2 rounded-pill d-inline-block me-2">
+					<h6 class="mb-0 f-600">5K+</h6></div-->
+				<!--h5 class="mb-0 f-600">Items Sold</h5--> </div>
 			<div class="d-flex align-items-center  me-3 mb-lg-0 mb-lg-0 mb-3">
 				<div class="bg-white px-4 py-2 rounded-pill d-inline-block me-2">
 					<h6 class="mb-0 f-600">{{ $followers }}</h6></div>
@@ -50,7 +55,7 @@
 					<h6 class="mb-0 f-600">{{ $followings }}</h6></div>
 				<h5 class="mb-0 f-600">Following</h5> </div>
 		</div>
-		<div class="mb-3">
+		<!--div class="mb-3">
 			<a class="text-dark text-decoration-none f-600 " href="#">
 				<svg class="me-1" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M7.04764 12.9576L5.04449 14.9607C4.21402 15.7912 2.86914 15.7912 2.03937 14.9609C1.20944 14.131 1.20944 12.7859 2.03921 11.9562L6.04621 7.94916C6.87598 7.11935 8.22099 7.11935 9.05076 7.94916C9.32737 8.22577 9.77588 8.22577 10.0525 7.94916C10.3291 7.67255 10.3291 7.22404 10.0525 6.94743C8.66946 5.5644 6.42751 5.5644 5.04449 6.94743L1.03751 10.9544C-0.345513 12.3375 -0.345513 14.5794 1.03751 15.9625C2.42038 17.3462 4.66249 17.3462 6.04625 15.9625L8.0494 13.9593C8.32601 13.6827 8.32601 13.2342 8.0494 12.9576C7.77279 12.681 7.32425 12.681 7.04764 12.9576Z" fill="#000" />
@@ -64,7 +69,7 @@
 				<svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M17.7071 8.70711C18.0976 8.31658 18.0976 7.68342 17.7071 7.29289L11.3431 0.928932C10.9526 0.538408 10.3195 0.538408 9.92893 0.928932C9.53841 1.31946 9.53841 1.95262 9.92893 2.34315L15.5858 8L9.92893 13.6569C9.53841 14.0474 9.53841 14.6805 9.92893 15.0711C10.3195 15.4616 10.9526 15.4616 11.3431 15.0711L17.7071 8.70711ZM0 9H17V7H0V9Z" fill="#000" /> </svg>
 			</a>
-		</div>
+		</div-->
 	</div>
 </div>
 <!-- featured-select  -->
