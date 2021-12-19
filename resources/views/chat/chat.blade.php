@@ -121,7 +121,8 @@
                 <span class="description-error error" style="display: none;">Message can not be Empty</span>
               </div>
               <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn--primary mt-3" id="sendMessage">Send Message</button>
+                <button type="button" class="btn btn--primary mt-3" id="sendMessage">Send Message</button>&nbsp;&nbsp;&nbsp;
+                <a href="{{ url()->previous() }}" class="btn btn--primary mt-3">Back</a>
               </div>
             </div>
         </div>
