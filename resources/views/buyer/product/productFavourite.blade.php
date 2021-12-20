@@ -33,8 +33,13 @@
                 @foreach($favourites as $key => $favourite)
                 <div class="custom-orders">
                   <div class="card product-item border-0 shadow br-12 mb-5">
-                    <div class="card-body "> <img class="img-fluid br-12 mb-3" src="{{ productDefaultImage($favourite['get_product_detail']['id'])}}" alt="">
-                      <h5 class="fw-bold">{{ $favourite['get_product_detail']['name'] }}</h5>
+                    <div class="card-body "> 
+                      <a class="text-decoration-none text-dark" target="_blank" href="{{ route('product-detail', $favourite['get_product_detail']['sku']) }}">
+                        <img class="img-fluid br-12 mb-3" src="{{ productDefaultImage($favourite['get_product_detail']['id'])}}" alt="">
+                      </a>
+                      <a class="text-decoration-none text-dark" target="_blank" href="{{ route('product-detail', $favourite['get_product_detail']['sku']) }}">
+                        <h5 class="fw-bold">{{ $favourite['get_product_detail']['name'] }}</h5>
+                      </a>
                     </div>
                     <div class="card-footer bg-transparent">
                       <div class="d-flex justify-content-between align-items-center flex-wrap py-2">

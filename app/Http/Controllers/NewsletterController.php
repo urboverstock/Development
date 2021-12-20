@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Newsletter;
-use Validator;
+use Auth, Validator;
 
 class NewsletterController extends Controller
 {
     public function sendNewsLetter(Request $request)
     {
 		$userEmail = $request->email;
+
+		if(!Auth::check()){
+			return redirect()->route('signin')->with('error', 'You need to login first');
+		}
 		
 		if($request->isMethod('post')){
 			$postData = $request->all();

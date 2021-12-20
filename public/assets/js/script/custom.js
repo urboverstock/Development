@@ -24,7 +24,8 @@ $(document).ready(function() {
 
 	$(".add-follow-user").click(function() {
 		var addFollowUser = $(".addFollowUser").val();
-		var user_id = $(".userId").val();
+		//var user_id = $(".userId").val();
+		var user_id = $(this).data('userid');
 			$.ajaxSetup({
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -16,7 +16,12 @@ class UserController extends Controller
     {
     	$user_id = Crypt::decrypt($user_id);
     	$user = User::find($user_id);
-        $login_id = Auth::user()->id;
+		//$login_id = Auth::user()->id;
+		if(Auth::user()) {
+			$login_id = Auth::user()->id;
+		}else{
+			$login_id = 0;
+		}
     	
     	$user_posts = UserPost::with('getUserPostFile', 'getUser', 'getPostLike')->where('user_id', $user_id)->latest()->get();
 

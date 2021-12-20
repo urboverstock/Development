@@ -31,7 +31,7 @@
             <div class="mb-4">
                   <div class="custom-urban-form">
                       <input class="form-control" type="text" placeholder="Enter Name" name="user_name" value="" id="user_name">
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('user_name') }}</span>
               </div>
@@ -39,7 +39,7 @@
               <div class="mb-4">
                   <div class="custom-urban-form">
                       <input class="form-control" type="text" placeholder="Enter Email" name="user_email" value="" id="user_email">
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('user_email') }}</span>
               </div>
@@ -47,7 +47,7 @@
               <div class="mb-4">
                   <div class="custom-urban-form">
                       <input class="form-control" type="text" placeholder="Enter Phone Number" name="user_number" value="" id="user_number">
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('user_number') }}</span>
               </div>
@@ -55,7 +55,7 @@
               <div class="mb-4">
                   <div class="custom-urban-form">
                       <input class="form-control" type="text" placeholder="Enter Country" name="user_country" value="" id="user_country">
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('user_country') }}</span>
               </div>
@@ -63,7 +63,7 @@
               <div class="mb-4">
                   <div class="custom-urban-form">
                       <input class="form-control" type="text" placeholder="Enter State" name="user_state" value="" id="user_state">
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('user_state') }}</span>
               </div>
@@ -71,7 +71,7 @@
               <div class="mb-4">
                   <div class="custom-urban-form">
                       <input class="form-control" type="text" placeholder="Enter City" name="user_city" value="" id="user_city">
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('user_city') }}</span>
               </div>
@@ -79,7 +79,7 @@
               <div class="mb-4">
                   <div class="custom-urban-form">
                       <input class="form-control" type="text" placeholder="Enter Pincode" name="user_pincode" value="" id="user_pincode">
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen input-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('user_pincode') }}</span>
               </div>
@@ -89,7 +89,7 @@
                       <input class="form-control" type="text" placeholder="Enter Address" name="user_address" value="" id="user_address">
                       <i class="fas fa-pen"></i>
                   </div>
-                  <span class="error">{{ $errors->first('user_address') }}</span>
+                  <span class="error input-icon">{{ $errors->first('user_address') }}</span>
               </div>
 
 

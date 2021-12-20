@@ -114,7 +114,7 @@
             <div>
               <p class="text-25">You are
                 <br> following
-                <br> {{$followers}} Sellers </p>
+                <br> {{$followings}} Sellers </p>
             </div>
           </div>
         </div>

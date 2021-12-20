@@ -81,9 +81,9 @@
                       <input type="hidden"  value="{{ route('add-follow-user') }}" class="addFollowUser">
                         <input type="hidden" value="{{ $seller->id }}" class="userId">
                         @if($seller->Follow_status =='1')
-                           <button type="button" class="btn btn-dark btn-sm px-3 add-follow-user">Following</button>
+                           <button type="button" class="btn btn-dark btn-sm px-3 add-follow-user" data-userid="{{ $seller->id }}">Following</button>
                               @else
-                           <button type="button" class="btn btn-dark btn-sm px-3 add-follow-user">Follow</button>   
+                           <button type="button" class="btn btn-dark btn-sm px-3 add-follow-user" data-userid="{{ $seller->id }}">Follow</button>   
                           @endif
                         
                     </div>
