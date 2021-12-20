@@ -56,7 +56,7 @@
                 <div class="mb-4">
                   <label for="exampleFormControlTextarea1" class="form-label ">Description</label>
                   <div class="custom-urban-form">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="" rows="5" name="description">{{ @$userPost->description ?: old('description') }}</textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="5" name="description">{{ @$userPost->description ?: old('description') }}</textarea>
                     <i class="fas fa-pen textarea-icon"></i>
                   </div>
                   <span class="error">{{ $errors->first('description') }}</span>
