@@ -19,11 +19,13 @@
           </a>
        
     </div>
-    <!-- <div class="dropdown --dropdown">
-      <button class="btn btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <a href="mailto:{{ $user['email'] }}"><i class="far fa-envelope"></i></a>
-      </button>
-    </div> -->
+    <div class="dropdown --dropdown">
+      <a href="mailto:{{ $user['email'] }}">
+        <button class="btn btn-dark" type="button">
+          <i class="far fa-envelope"></i>
+        </button>
+      </a>
+    </div>
   </div>
 
   <section>
