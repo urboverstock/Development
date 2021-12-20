@@ -17,6 +17,7 @@ use App\Models\OrderDetail;
 use App\Models\Address;
 use App\Models\ProductImage;
 use App\Models\UserFollowers;
+use App\Models\ProductWishlist;
 use App\Models\ProductFavourite;
 use App\Models\Chat;
 use App\Models\Cart;
@@ -61,7 +62,8 @@ class BuyerController extends Controller
       $followers = UserFollowers::where(['follower_id'=>Auth::user()->id])->count();
       $followings = UserFollowers::where(['user_id'=>Auth::user()->id])->count();
       $total_item_order = Order::where('user_id', Auth::user()->id)->count();
-      $total_item_favourite = ProductFavourite::where('user_id', Auth::user()->id)->count();
+      //$total_item_favourite = ProductFavourite::where('user_id', Auth::user()->id)->count();
+      $total_item_favourite = ProductWishlist::where('user_id', Auth::user()->id)->count();
       $unread_msg_count = Chat::whereNull('read_at')->count();
       $total_pending_order = Order::where('user_id', Auth::user()->id)->where('status', ORDER_PENDING)->count();
 

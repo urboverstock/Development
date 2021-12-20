@@ -15,7 +15,12 @@ class ProductController extends Controller
 {
     public function getStarted(Request $request)
     {
-        $login_id = Auth::user()->id;
+        if(Auth::check()){
+            $login_id = Auth::user()->id;
+        }else{
+            $login_id = 0;
+        }
+
         $request->request->add(['limit' => 8]);
         $request->request->add(['orderBy' => 'DESC']);
         $products = Product::getProducts($request);

@@ -269,6 +269,26 @@ class LandingController extends Controller
         return response()->json($response);
     }
 
+    public function removeFollowUser(Request $request)
+    {
+        if(!Auth::check()){
+            $response["status"] = 0;
+            $response["message"] = "Please login first";
+        }else{
+            $postData = $request->all();
+            $check = UserFollowers::where(['user_id'=> Auth::user()->id,'follower_id'=>$postData['user_id']])->first();
+            if(!empty($check)){
+                $follow = UserFollowers::where(['user_id'=> Auth::user()->id,'follower_id'=>$postData['user_id']])->delete();
+                $response["status"] = 1;
+                $response["message"] = "You have unfollow successfully";
+            }else{
+                $response["status"] = 0;
+                $response["message"] = "You have not follow";
+            }
+        }
+        return response()->json($response);
+    }
+
     public function addWishlistProduct(Request $request)
     {
         if(!Auth::check()){

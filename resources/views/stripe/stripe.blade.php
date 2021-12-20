@@ -17,7 +17,7 @@
             	<div class="mb-4">
 	              	<label for="exampleFormControlInput1" class="form-label">Name on Card</label>
 	              	<div class="custom-urban-form">
-	                	<input class="form-control" type="text" placeholder="Name on Card" name="name" value="" size="4">
+	                	<input class="form-control" type="text" placeholder="Name on Card" name="name" value="" required size="4">
 	                <i class="fas fa-pen"></i>
 	              	</div>
 	              	<span class="error">{{ $errors->first('name') }}</span>
@@ -26,7 +26,7 @@
             	<div class="mb-4">
 	              	<label for="exampleFormControlInput1" class="form-label">Card Number</label>
 	              	<div class="custom-urban-form">
-	                	<input class="form-control card-number" type="text" placeholder="Card Number" name="card_number" value="" size="20">
+	                	<input class="form-control card-number" type="text" placeholder="Card Number" required name="card_number" value="" size="20">
 	                <i class="fas fa-pen"></i>
 	              	</div>
 	              	<span class="error">{{ $errors->first('card_number') }}</span>
@@ -35,7 +35,7 @@
             	<div class="mb-4">
 	              	<label for="exampleFormControlInput1" class="form-label">CVV</label>
 	              	<div class="custom-urban-form">
-	                	<input class="form-control card-cvc" type="text" placeholder='ex. 311'  name="cvv" value="" size="4">
+	                	<input class="form-control card-cvc" type="text" placeholder='ex. 311' required name="cvv" value="" size="4">
 	                <i class="fas fa-pen"></i>
 	              	</div>
 	              	<span class="error">{{ $errors->first('cvv') }}</span>
@@ -44,7 +44,7 @@
             	<div class="mb-4">
 	              	<label for="exampleFormControlInput1" class="form-label">Expiry Month</label>
 	              	<div class="custom-urban-form">
-	                	<input class="form-control card-expiry-month" type="text" placeholder='MM'  name="expire_month" value="" size="2">
+	                	<input class="form-control card-expiry-month" type="text" placeholder='MM' required name="expire_month" value="" size="2">
 	                <i class="fas fa-pen"></i>
 	              	</div>
 	              	<span class="error">{{ $errors->first('expire_month') }}</span>
@@ -53,7 +53,7 @@
             	<div class="mb-4">
 	              	<label for="exampleFormControlInput1" class="form-label">Expiry Year</label>
 	              	<div class="custom-urban-form">
-	                	<input class="form-control card-expiry-year" type="text" placeholder='YYYY'  name="expire_year" value="" size="4">
+	                	<input class="form-control card-expiry-year" type="text" placeholder='YYYY' required name="expire_year" value="" size="4">
 	                <i class="fas fa-pen"></i>
 	              	</div>
 	              	<span class="error">{{ $errors->first('expire_year') }}</span>
@@ -135,10 +135,11 @@
 
     function stripeResponseHandler(status, response) {
         if (response.error) {
-            $('.error')
+			toastr.error(response.error.message, "Error");
+            /* $('.error')
                 .removeClass('hide')
                 .find('.alert')
-                .text(response.error.message);
+                .text(response.error.message); */
         } else {
             /* token contains id, last4, and card type */
             var token = response['id'];

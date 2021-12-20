@@ -24,11 +24,12 @@
           <h3 data-aos="fade-up"><a class="text-dark" href="mailto:{{ $user->email }}"> {{ $user->email }} </a></h3>
           
           <input type="hidden"  value="{{ route('add-follow-user') }}" class="addFollowUser">
+          <input type="hidden"  value="{{ route('remove-follow-user') }}" class="removeFollowUser">
           <input type="hidden" value="{{ $user->id }}" class="userId">
           @if($UserFollowers)
-           <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 mb-3 me-3 py-2 px-4" data-aos="fade-up">Following</button>
+           <button type="button" class="btn btn-dark shadow-0 border-0 px-3 remove-follow-user rounded-0 mb-3 me-3 py-2 px-4" data-aos="fade-up" data-userid="{{ $user->id }}">Unfollow</button>
               @else
-           <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 add-follow-user mb-3 me-3 py-2 px-4" data-aos="fade-up">Follow</button>   
+           <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 add-follow-user mb-3 me-3 py-2 px-4" data-aos="fade-up" data-userid="{{ $user->id }}">Follow</button>   
           @endif
 
           <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 mb-3 me-3 py-2 px-4" data-aos="fade-up" data-bs-toggle="modal" data-bs-target="#myModal">Share Profile</button>

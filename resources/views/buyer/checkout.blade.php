@@ -350,11 +350,15 @@
 
     // Make this a function.
 function checkProgress() {
+  @if(Auth::check())
   if ($("input:radio[name*='address']:checked").length != 0) {
     $('#CheckoutButton').prop('disabled', false);
   } else {
     $('#CheckoutButton').prop('disabled', true);
   }
+  @else
+    $('#CheckoutButton').prop('disabled', false);
+  @endif
 }
 
 $(function () {

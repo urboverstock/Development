@@ -39,7 +39,34 @@ $(document).ready(function() {
 			}).done(function(response) {
 					if(response.status == 1) {
 						toastr.success(response.message, "Success");
-						location.reload();
+						setTimeout(function(){ location.reload(); }, 1000);
+					}else{
+						toastr.error(response.message, "Error");
+					}
+			}).fail(function() {
+				ajaxrequestTime = false;
+				toastr.error("Something went wrong!", "Error");
+			});
+	});
+
+	$(".remove-follow-user").click(function() {
+		var addFollowUser = $(".removeFollowUser").val();
+		//var user_id = $(".userId").val();
+		var user_id = $(this).data('userid');
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+			$.ajax({
+				type : 'post',
+				url: addFollowUser,
+				data: { user_id: user_id},
+				//async: false,
+			}).done(function(response) {
+					if(response.status == 1) {
+						toastr.success(response.message, "Success");
+						setTimeout(function(){ location.reload(); }, 1000);
 					}else{
 						toastr.error(response.message, "Error");
 					}
