@@ -80,15 +80,31 @@ class ProductController extends Controller
 
                     $files = $request->image;
                     if (count($files)) {
-                        foreach ($files as $key => $file) {
-                            $extension = $file->getClientOriginalExtension();
-                            $picture = uniqid() . date('YmdHis') . '.' . $extension;
-                            $destinationPath = base_path() . '/public'.$this->uploadImagePath;
+                        // foreach ($files as $key => $file) {
+                        //     $extension = $file->getClientOriginalExtension();
+                        //     $picture = uniqid() . date('YmdHis') . '.' . $extension;
+                        //     $destinationPath = base_path() . '/public'.$this->uploadImagePath;
                             
-                            $file->move($destinationPath, $picture);
+                        //     $file->move($destinationPath, $picture);
+                        //     $image = new ProductImage;
+                        //     $image->product_id = $product->id;
+                        //     $image->file = $this->uploadImagePath . '/' .$picture;
+                        //     $image->file_type = 'I';
+                        //     $image->status = '1';
+                        //     $image->save();
+                        // }
+
+                        foreach ($files as $key => $file) {
+                            $picture = $file.'.png';
+
+                            $image = file_get_contents($file);
+
+                            $fileName = uniqid() . date('YmdHis') . '.png';
+
+                            file_put_contents( 'assets/images/products/'.$fileName, $image);
                             $image = new ProductImage;
                             $image->product_id = $product->id;
-                            $image->file = $this->uploadImagePath . '/' .$picture;
+                            $image->file = '/assets/images/products/'.$fileName;
                             $image->file_type = 'I';
                             $image->status = '1';
                             $image->save();
@@ -193,14 +209,21 @@ class ProductController extends Controller
                     $files = $request->image;
                     if (count($files)) {
                         foreach ($files as $key => $file) {
-                            $extension = $file->getClientOriginalExtension();
-                            $picture = uniqid() . date('YmdHis') . '.' . $extension;
-                            $destinationPath = base_path() . '/public'.$this->uploadImagePath;
+                            // $extension = $file->getClientOriginalExtension();
+                            // $picture = uniqid() . date('YmdHis') . '.' . $extension;
+                            // $destinationPath = base_path() . '/public'.$this->uploadImagePath;
                             
-                            $file->move($destinationPath, $picture);
+                            // $file->move($destinationPath, $picture);
+                            $picture = $file.'.png';
+
+                            $image = file_get_contents($file);
+
+                            $fileName = uniqid() . date('YmdHis') . '.png';
+
+                            file_put_contents( 'assets/images/products/'.$fileName, $image);
                             $image = new ProductImage;
                             $image->product_id = $product->id;
-                            $image->file = $this->uploadImagePath . '/' .$picture;
+                            $image->file = '/assets/images/products/'.$fileName;
                             $image->file_type    = 'I';
                             $image->status = '1';
                             $image->save();

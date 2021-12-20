@@ -67,16 +67,18 @@
                     <h3 class="mb-4 fw-bold ">Media</h3>
 
                     <label for="urbanFile" class="border-dashed-gray cursor-pointer br-8 p-5 d-flex flex-column justify-content-center align-items-center">
-                      <div class="bg--primary p-3 d-inline-flex rounded-circle mb-3">
+                      <!-- <div class="bg--primary p-3 d-inline-flex rounded-circle mb-3">
 
                         <i class="fas fa-plus fs-3 text-white"></i>
                       </div>
                       <input type="file" class="urbanUploadFileProduct" name="file[]" id="urbanFile" accept="image/*" multiple="">
                       <label for="urbanFile" class="btn btn-outline-primary px-5 py-3 br-8 mb-2"><span class="text-dark f-600">Add Image</span></label>
 
-                      <!-- <span class="f-600">or Drop an Image to Upload</span> -->
+                      <output id="result" /> -->
 
-                      <output id="result" />
+                      <div id="drag-drop-area" class="w-100"></div>
+    
+                            <div class="urbon-files"></div>
                     </label>
 
                     @if(@$userPost->getUserPostFile)
@@ -135,6 +137,24 @@
   @endsection
 
   @section('scripts')
+
+  <script>
+  var uppy = Uppy.Core()
+    .use(Uppy.Dashboard, {
+      inline: true,
+      target: '#drag-drop-area'
+    })
+    .use(Uppy.Tus, {endpoint: 'https://master.tus.io/files/'}) //you can put upload URL here, where you want to upload images
+  uppy.on('complete', (result) => {
+
+      $.each(result.successful, function (key, val) {
+          // alert(key + val.uploadURL);
+          $('.urbon-files').append("<input type='hidden' value='"+val.uploadURL+"' name='image[]'>");
+      });
+
+    console.log('Upload complete! We’ve uploaded these files:', result.successful)
+  })
+</script>
 
   <script>
       //Preview Mutliple Images

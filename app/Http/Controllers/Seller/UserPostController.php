@@ -60,21 +60,30 @@ class UserPostController extends Controller
         
         if($userPost->save()){
 
-            if(isset($request['file']) && !empty($request['file'])){
+            if(isset($request['image']) && !empty($request['image'])){
 
-                $files = $request->file;
+                $files = $request->image;
                 // print_r($files);die();
                 if (count($files)>0) {
                     foreach ($files as $key => $file) {
-                        $extension = $file->getClientOriginalExtension();
+                        // $extension = $file->getClientOriginalExtension();
                 
-                        $picture = uniqid() . date('YmdHis') . '.' . $extension;
-                        $destinationPath = base_path() . '/public'.$this->uploadImagePath;
+                        // $picture = uniqid() . date('YmdHis') . '.' . $extension;
+                        // $destinationPath = base_path() . '/public'.$this->uploadImagePath;
                         
-                        $file->move($destinationPath, $picture);
+                        // $file->move($destinationPath, $picture);
+
+                        $picture = $file.'.png';
+
+                        $image = file_get_contents($file);
+
+                        $fileName = uniqid() . date('YmdHis') . '.png';
+
+                        file_put_contents( 'assets/images/userPost/'.$fileName, $image);
+
                         $image = new UserPostFile;
                         $image->user_post_id = $userPost->id;
-                        $image->file = $this->uploadImagePath . '/' .$picture;
+                        $image->file = '/assets/images/userPost/'.$fileName;
                         $image->file_type = 'I';
                         $image->save();
                     }
@@ -122,6 +131,7 @@ class UserPostController extends Controller
      */
     public function update(UserPostUpdateRequest $request)
     {
+        // print_r($request->all());die();
         $userPost = UserPost::find($request->id);
         $userPost->user_id = Auth::id();
         $userPost->title = $request->title;
@@ -129,19 +139,28 @@ class UserPostController extends Controller
         
         if($userPost->save()){
 
-            if(isset($request['file']) && !empty($request['file'])){
+            if(isset($request['image']) && !empty($request['image'])){
 
-                $files = $request->file;
+                $files = $request->image;
+                // print_r($files);die();
                 if (count($files)) {
                     foreach ($files as $key => $file) {
-                        $extension = $file->getClientOriginalExtension();
-                        $picture = uniqid() . date('YmdHis') . '.' . $extension;
-                        $destinationPath = base_path() . '/public'.$this->uploadImagePath;
+                        // $extension = $file->getClientOriginalExtension();
+                        // $picture = uniqid() . date('YmdHis') . '.' . $extension;
+                        // $destinationPath = base_path() . '/public'.$this->uploadImagePath;
                         
-                        $file->move($destinationPath, $picture);
+                        // $file->move($destinationPath, $picture);
+                        $picture = $file.'.png';
+                        // print_r($picture);die();
+                        $image = file_get_contents($file);
+
+                        $fileName = uniqid() . date('YmdHis') . '.png';
+
+                        file_put_contents( 'assets/images/userPost/'.$fileName, $image);
+// die('here');
                         $image = new UserPostFile;
                         $image->user_post_id = $userPost->id;
-                        $image->file = $this->uploadImagePath . '/' .$picture;
+                        $image->file = '/assets/images/userPost/'.$fileName;
                         $image->file_type = 'I';
                         $image->save();
                     }
