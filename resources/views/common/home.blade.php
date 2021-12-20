@@ -389,21 +389,21 @@ That is why we have happy consumers all around the world and are proud to be ass
     <div class="row">
       <div class="col-lg-4 p-0">
         <div class="text-center sec-5-card p-5 h-100">
-          <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/1.png') }}" alt="">
+          <img class="avatar-80 mb-2" src="{{ asset('assets/images/section-5/1.png') }}" alt="">
           <h4 class="fw-bold mb-2">Delivery</h4>
           <p class="mb-0">Shipping is worldwide. There is no location barrier.</p>
         </div>
       </div>
       <div class="col-lg-4 p-0">
         <div class="text-center sec-5-card p-5 h-100">
-          <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/2.png') }}" alt="">
+          <img class="avatar-80 mb-2" src="{{ asset('assets/images/section-5/2.png') }}" alt="">
           <h4 class="fw-bold mb-2">Support</h4>
           <p class="mb-0">24/7 live support available to attend to your inquiries.</p>
         </div>
       </div>
       <div class="col-lg-4 p-0">
         <div class="text-center sec-5-card p-5 h-100">
-          <img class="img-fluid mb-2" src="{{ asset('assets/images/section-5/3.png') }}" alt="">
+          <img class="avatar-80 mb-2" src="{{ asset('assets/images/section-5/3.png') }}" alt="">
           <h4 class="fw-bold mb-2">Security</h4>
           <p class="mb-0">High end encryption to ensure security of your details.</p>
         </div>

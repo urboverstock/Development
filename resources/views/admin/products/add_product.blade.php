@@ -113,9 +113,9 @@
                           </label>
                           @if(@$product->product_image)
                             @foreach($product->product_image as $key => $image)
-                              <div class="result">
+                              <div class="result mt-4">
                                 <div>
-                                  <a href="{{ route('sellerDeleteImage', $image->id) }}"><i class="fas fa-trash-alt"></i>
+                                  <a class="btn btn--primary" href="{{ route('sellerDeleteImage', $image->id) }}"><i class="fas fa-trash-alt"></i>
                                 <img src="{{ asset('/') .$image->file }}" width="100" style="float: left;"></a>
                               </div>
                               </div>
@@ -373,7 +373,7 @@ window.onload = function(){
                       
                       var div = document.createElement("div");
                       
-                      div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                      div.innerHTML = "<img class='thumbnail img-fluid' src='" + picFile.result + "'" +
                               "title='" + picFile.name + "'/>";
                       
                       output.insertBefore(div,null);            

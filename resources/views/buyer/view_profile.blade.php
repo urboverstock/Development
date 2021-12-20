@@ -5,26 +5,41 @@
   <div class="mt-96 inner-profile-header bg-primary-2 ">
     <img class="logged-wave-img position-absolute" src="{{ asset('assets/images/wave-primary.png') }}" alt="">
     <img class="rounded-circle header-big-avatar" style="max-width: 300px; height: 300px"  data-aos="zoom-in-up" src="{{ $user['profile_img'] }}" alt="">
-    <div class="--right-line"></div>
-    <div class="dropdown --dropdown">
-      <button class="btn btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <a href="mailto:{{ $user['email'] }}"><i class="far fa-envelope"></i></a>
-      </button>
-    </div>
-  </div>
-
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="d-flex mb-2" data-aos="fade-up">
+    <!-- <div class="--right-line"></div> -->
+    <div class="inner-profile-header-content">
+        <div class="d-flex mb-2 mt-5" data-aos="fade-up">
             <h1 class="display-5 f-600 me-3">{{ $user['full_name'] }}</h1>
             <div class="online-active"></div>
           </div>
           @if(!empty($user['about']))
             <h6 class="f-600 mb-2" data-aos="fade-up">Bio : {{ $user['about'] }}</h6>
           @endif
-          
+          <a href="{{ route('buyer.edit_profile') }}">
+            <button type="button" class="btn btn-dark rounded-pill fw-bold px-5 py-3 mb-5" data-aos="fade-up">Edit Profile </button>
+          </a>
+       
+    </div>
+    <!-- <div class="dropdown --dropdown">
+      <button class="btn btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a href="mailto:{{ $user['email'] }}"><i class="far fa-envelope"></i></a>
+      </button>
+    </div> -->
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- <div class="d-flex mb-2" data-aos="fade-up">
+            <h1 class="display-5 f-600 me-3">{{ $user['full_name'] }}</h1>
+            <div class="online-active"></div>
+          </div>
+          @if(!empty($user['about']))
+            <h6 class="f-600 mb-2" data-aos="fade-up">Bio : {{ $user['about'] }}</h6>
+          @endif
+          <a href="{{ route('buyer.edit_profile') }}">
+            <button type="button" class="btn btn-dark rounded-pill fw-bold px-5 py-3 mb-5" data-aos="fade-up">Edit Profile </button>
+          </a> -->
           <!-- <div class="d-flex align-items-center flex-wrap mb-3" data-aos="fade-up">
             <p class="mb-0 text-random-color font-500  me-3">Jewelery</p>
             <div class="bg-dark circle-sm"></div>
@@ -90,9 +105,7 @@
             </a>
           </div> -->
 
-          <a href="{{ route('buyer.edit_profile') }}">
-            <button type="button" class="btn btn-dark rounded-pill fw-bold px-5 py-3 mb-5" data-aos="fade-up">Edit Profile </button>
-          </a>
+          
           <div class="mb-5" data-aos="fade-up">
             <div class="urban-title text--primary position-relative mb-2">
               <p class="mb-0">Browse through</p>

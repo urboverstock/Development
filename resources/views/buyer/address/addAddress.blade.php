@@ -45,7 +45,7 @@
                       <div class="mb-4">
                           <label for="exampleFormControlInput1" class="form-label">State</label>
                           <div class="custom-urban-form">
-                              <input class="form-control" type="text" placeholder="state Name" name="state" value="{{ @$address->state ?: old('state') }}">
+                              <input class="form-control" type="text" placeholder="State Name" name="state" value="{{ @$address->state ?: old('state') }}">
                               <i class="fas fa-pen input-icon"></i>
                           </div>
                           <span class="error">{{ $errors->first('state') }}</span>
@@ -63,7 +63,7 @@
                       <div class="mb-4">
                           <label for="exampleFormControlInput1" class="form-label">Pincode</label>
                           <div class="custom-urban-form">
-                              <input class="form-control" type="number" placeholder="pincode" name="pincode" value="{{ @$address->pincode ?: old('pincode') }}">
+                              <input class="form-control" type="number" placeholder="Pincode" name="pincode" value="{{ @$address->pincode ?: old('pincode') }}">
                               <i class="fas fa-pen input-icon"></i>
                           </div>
                           <span class="error">{{ $errors->first('pincode') }}</span>
