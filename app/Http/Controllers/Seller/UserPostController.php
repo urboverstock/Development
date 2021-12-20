@@ -157,7 +157,7 @@ class UserPostController extends Controller
                         $fileName = uniqid() . date('YmdHis') . '.png';
 
                         file_put_contents( 'assets/images/userPost/'.$fileName, $image);
-// die('here');
+
                         $image = new UserPostFile;
                         $image->user_post_id = $userPost->id;
                         $image->file = '/assets/images/userPost/'.$fileName;

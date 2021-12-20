@@ -95,18 +95,25 @@
                 title="Azalt"> 
                 <svg width="14" height="15" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0.970703 0.209473H17.8388V3.76558H0.970703V0.209473Z" fill="#D2D2D2"/>
-                </svg>
-                  
+                </svg>                  
               </button>
+
                 <div class="number text-dark fs-5 f-600 quantity">1</div>
               <button 
                 class="btn value-button increase-button" 
                 onclick="increaseValue(this, 5)"
                 title="Arrtır"
               >
+
+              @if($product_details->quantity == 0)
               <svg width="14" height="15" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9.52007 0.773926V7.33494H15.7364V10.2634H9.52007V16.8564H6.32401V10.2634H0.139648V7.33494H6.32401V0.773926H9.52007Z" fill="#D2D2D2"/>
-                </svg>
+              </svg>
+              @else
+              <svg width="14" height="15" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.52007 0.773926V7.33494H15.7364V10.2634H9.52007V16.8564H6.32401V10.2634H0.139648V7.33494H6.32401V0.773926H9.52007Z" fill="#000"/>
+              </svg>
+              @endif
                 
               </button>
             </div>
@@ -141,6 +148,8 @@
                   <!-- <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Discussion</button> -->
                   <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews </button>
                   <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-store" type="button" role="tab" aria-controls="nav-store" aria-selected="false">Store</button>
+
+                  <button class="nav-link py-3" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-rating" type="button" role="tab" aria-controls="nav-rating" aria-selected="false">Rating</button>
                </div>
             </nav>
             <div class="tab-content px-4" id="nav-tabContent">
@@ -174,6 +183,17 @@
                   @if(!empty($store_user_details->storeDetail->address))
                   <p>Address : {{ $store_user_details->storeDetail->address }}</p>
                   @endif
+               </div>
+               <div class="tab-pane fade" id="nav-rating" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+                <form id="product-rating">
+                  <textarea class="form-control form-control-lg mb-4 py-3" type="text" placeholder="Comment" aria-label="" name="comment" value="{{ old('comment') }}"></textarea>
+                  <span class="error">{{ $errors->first('comment') }}</span>
+
+                  <input class="form-control form-control-lg mb-4 py-3" type="text" placeholder="Email@address.com" aria-label="Email@address.com" name="email" value="{{ old('email') }}">
+                  <span class="error">{{ $errors->first('email') }}</span>
+                </form>
+
                </div>
             </div>
          </div>
