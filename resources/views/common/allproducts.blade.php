@@ -129,7 +129,7 @@
                             <h5 class="mb-0">${{number_format($product->price,2)}}</h5>
                             <div class="d-flex align-items-center">
                                 @if(Auth::check())
-                                <a href="javascript:void(0)" class="add-favourite-product" data-productid="{{$product->id }}"><svg class="me-2" width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <a href="javascript:void(0)" title="Add to favourite" class="add-favourite-product" data-productid="{{$product->id }}"><svg class="me-2" width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                       <rect width="26" height="27" fill="url(#pattern0)"></rect>
                                       <defs>
                                       <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">

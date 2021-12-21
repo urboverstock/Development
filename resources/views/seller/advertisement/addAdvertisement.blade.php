@@ -71,7 +71,7 @@
             <div class="mb-4 ">
               <label for="exampleFormControlTextarea1" class="form-label ">Any Description</label>
               <div class="custom-urban-form">
-                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="" rows="5" name="description">{{ @$advertisement->description ?: old('description') }}</textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Add description here" rows="5" name="description">{{ @$advertisement->description ?: old('description') }}</textarea>
                 <i class="fas fa-pen textarea-icon"></i>
               </div>
               <span class="name-error error">{{ $errors->first('description') }}</span>

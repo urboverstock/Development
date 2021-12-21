@@ -202,8 +202,12 @@
           <h5 class="fw-bold text-white">Sell a few items or build your empire. Whatever your vibe we’ll share 
             our pro tips to help you get there. It's simple to get started.</h5>
           <div class="d-flex flex-wrap mt-4">
-            <button type="button" class="btn btn-light rounded-pill px-4 py-3 me-3 fw-bold mb-3">Be A Seller</button>
-            <button type="button" class="btn btn-outline-light rounded-pill px-4 py-3 me-3 mb-3 fw-bold">Get Featured </button>
+            <a href="{{ route('signup') }}">
+             <button type="button" class="btn btn-light rounded-pill px-4 py-3 me-3 fw-bold mb-3">Be A Seller</button>
+            </a>
+            <a href="{{ route('signin') }}">
+              <button type="button" class="btn btn-outline-light rounded-pill px-4 py-3 me-3 mb-3 fw-bold">Get Featured </button>
+            </a>
           </div>
         </div>
         <div class="col-lg-6 d-lg-block d-none">

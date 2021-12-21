@@ -278,7 +278,11 @@
                         <h6 class="mb-0 fw-bold text-white">{{countSellerFollowers($seller->id)}} Followers</h6>
                         <input type="hidden"  value="{{ route('add-follow-user') }}" class="addFollowUser">
                         <input type="hidden" value="{{ $seller->id }}" class="userId">
-                        <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 add-follow-user" data-userid="{{ $seller->id }}">Follow</button>
+                        @if($seller->is_follow == 1)
+                          <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0">Following</button>
+                        @else
+                          <button type="button" class="btn btn-dark shadow-0 border-0 px-3 rounded-0 add-follow-user" data-userid="{{ $seller->id }}">Follow</button>
+                        @endif
                       </div>
                       <div>
                         <h6 class="fw-bold text-white">{{$seller->about}}</h6>

@@ -355,7 +355,7 @@
                 <p class="text-25 text--primary">
                   You are <br />
                   following <br />
-                  {{$followers}} Sellers
+                  {{$followings}} Sellers
                 </p>
               </div>
             </div>
