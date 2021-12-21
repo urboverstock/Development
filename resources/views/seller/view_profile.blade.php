@@ -98,14 +98,14 @@
               <p class="mb-0">Browse through</p>
             </div>
             <div class="urban-sub-title ust-100 mb-4">
-              <p class="mb-0 pe-5 ms-2">Your Posts</p>
+              <p class="mb-0 pe-5 ms-2">Your Products</p>
             </div>
           </div>
 
           @if(empty(@$user['products'][0]))
             <div class="row" data-aos="fade-up">
               <div class="col-lg-12 mx-auto text-center">
-                <p class="text-24 mb-3 fw-bold">You haven’t made any posts yet</p>
+                <p class="text-24 mb-3 fw-bold">You haven’t made any product yet</p>
                 <p class="text-mute">Make and publish an item in your store to get contents here. Don’t be scared, it’s absolutely free!</p>
               </div>
             </div>

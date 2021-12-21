@@ -195,7 +195,7 @@
                   <div class="card border-0 shadow br-10">
                       <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                          <h5 class="ms-3  f-600">Latest Activities</h5>
+                          <h5 class="ms-3  f-600">Latest wishlist</h5>
                           <h5 class="ms-3 f-600">
                             <a href="#" class="text-decoration-none text-dark">View All</a>
                           </h5>
