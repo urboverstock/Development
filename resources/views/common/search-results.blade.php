@@ -89,7 +89,7 @@
               <div class="urban-sub-title mb-4">
                 <p class="mb-0">
                   <!-- Search Results -->
-                  Trending Now
+                  Search Results
                 </p>
               </div>
             </div>

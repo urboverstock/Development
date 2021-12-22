@@ -5,10 +5,10 @@
           <img src="{{ asset('assets/images/logo.png') }}" alt="">
         </a>
         
-        <div class="custom-form-group-search position-relative 	d-none d-lg-block">
-            <form action="{{ route('search-products') }}">
+        <div class="custom-form-group-search  	d-none d-lg-block">
+            <form class="position-relative" action="{{ route('search-products') }}">
                 <input name="searchproduct" type="text" class="form-control" value="{{ request()->get('searchproduct') }}" placeholder="Search for your favourite brands" />
-                <button type="submit" class="transparent-button"><i class="fas fa-search text--primary"></i></button>
+                <button type="submit" class="transparent-button btn position-absolute top-50 end-0 translate-middle-y"><i class="fas fa-search text--primary"></i></button>
             </form>
         </div>
         <div class="d-flex align-items-center">

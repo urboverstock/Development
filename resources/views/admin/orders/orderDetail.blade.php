@@ -32,8 +32,9 @@
          @endif
 
          <div class="col-lg-12">
-            <div class="d-flex flex-wrap mb-2" data-aos="fade-up">
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-2" data-aos="fade-up">
               <h6 class="display-5 f-600 me-3">Products Ordered</h6>
+              <a href="{{ url()->previous() }}" class="btn btn-dark d-block btn-default">Back</a>
             </div>
             @if(!empty($order->getOrderDetail) && isset($order->getOrderDetail))
             <div class="mb-3" data-aos="fade-up">

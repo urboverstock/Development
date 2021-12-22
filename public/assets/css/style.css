@@ -84,6 +84,71 @@ a.btn {
     width: 80px;
     height: 80px;
 }
+.nav-tabs.product-nav-tabs {
+    background-color: #f9f9f9;
+    border-radius: 50rem;
+}
+@media (max-width: 800px) {
+    .nav-tabs.product-nav-tabs {
+        border-radius: 10px;
+    }
+}
+.nav-tabs.product-nav-tabs .nav-link {
+    border-color: #f9f9f9;
+    background-color: #f9f9f9;
+    color: #a09e9e;
+}
+.nav-tabs.product-nav-tabs .nav-link.active {
+    color: #d9b950;
+    border-bottom: 3px solid #d9b950;
+}
+.product-list-text {
+    display: inline-block;
+    max-width: 150px;
+}
+
+/* start::cartslider  */
+
+.cart-slider {
+    position: relative;
+}
+.cart-slider .prevArrow {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+}
+.cart-slider .prevArrow:hover {
+    color: #d4af37;
+}
+.cart-slider .slider-for .slick-slide.slick-current.slick-active img {
+    border: 1px solid #fff !important;
+}
+.cart-slider .slick-slide.slick-current.slick-active img {
+    border: 1px solid #d4af37 !important;
+}
+.cart-slider .nextArrow {
+    cursor: pointer;
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+}
+.cart-slider .nextArrow:hover {
+    color: #d4af37;
+}
+.cart-slider .slick-prev::before {
+    display: none;
+}
+.cart-slider .slick-next {
+    right: 0 !important;
+}
+
+/* end::cart-slider  */
 @media only screen and (max-width: 700px) {
     .carousel-dark-glass {
         padding: 0.5rem;
