@@ -112,14 +112,17 @@
                           <output id="result" />
                           </label>
                           @if(@$product->product_image)
-                            @foreach($product->product_image as $key => $image)
-                              <div class="result mt-4">
-                                <div>
-                                  <a class="btn btn--primary" href="{{ route('sellerDeleteImage', $image->id) }}"><i class="fas fa-trash-alt"></i>
-                                <img src="{{ asset('/') .$image->file }}" width="100" style="float: left;"></a>
-                              </div>
-                              </div>
-                            @endforeach
+                            <div class="row mt-4">
+                              @foreach($product->product_image as $key => $image)
+                                <div class="col-md-6 mb-3">
+                                  
+                                  <img class="img-fluid mb-3" src="{{ asset('/') .$image->file }}">
+                                  <a class="btn d-block btn--primary" href="{{ route('sellerDeleteImage', $image->id) }}"><i class="fas fa-trash-alt"></i> Delete Image</a>
+                                
+                                </div>
+                              @endforeach
+                            </div>
+                           
                           @endif
                       </div>
                   </div>
