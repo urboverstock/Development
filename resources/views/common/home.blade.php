@@ -270,7 +270,7 @@
                         </div>
                         @if($seller->user_chat_status == 1)
                         <span class="badge bg--primary-darken px-3">
-                          <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}" class="" id="add-to-cart" data-productid="{{ @$product_details->id }}"><i class="far fa-envelope h2 mb-0"></i></a>
+                          <a class="text-white" href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($seller->id)) }}" class="" id="add-to-cart" data-productid="{{ @$product_details->id }}"><i class="far fa-envelope h2 mb-0"></i></a>
                         </span>
                         @endif
                       </div>

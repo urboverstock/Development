@@ -5,6 +5,7 @@ $(".three-item").slick({
     slidesToShow: 3,
     slidesToScroll: 3,
     arrows: true,
+    rtl: false,
     // prevArrow:"<i class='fas fa-chevron-left'></i>",
     prevArrow:
         "<i class='fas fa-chevron-left --arrow-left cursor-pointer '></i>",
