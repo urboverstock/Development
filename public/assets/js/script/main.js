@@ -49,16 +49,82 @@ if (menuIcon) {
     });
 }
 
-let loadmore = document.querySelector(".loadmore");
+$('.increase-button').click(function()
+{
+    var quantity = $('.number').text();
 
-if (loadmore) {
-    $(".loadmore").btnLoadmore({
-        showItem: 12,
+    if(quantity == 5)
+    {
+        $(this).children().children().attr('fill', '#D2D2D2');
+    }
+    else
+    {
+        $('.decrease-button').children().children().attr('fill', '#000');        
+    }
+});
 
-        textBtn: "Load More Products",
-        classBtn: "btn btn-dark rounded-pill px-4 py-3 d-flex m-auto",
+$('.decrease-button').click(function()
+{
+    var quantity = $('.number').text();
+
+    if(quantity == 1)
+    {
+        $(this).children().children().attr('fill', '#D2D2D2');
+    }
+    else if(quantity < 5)
+    {
+        $('.increase-button').children().children().attr('fill', '#000');
+    }
+});
+
+
+$(document).on('click', '.stars', function() {
+
+    $('.stars').removeClass('active');
+
+    $(this).addClass('active');
+
+    $('#rating').val($(this).data('val'));
+
+});
+
+$(document).on('submit', '#reviewform', function(e) {
+
+    var $this = $(this);
+
+    e.preventDefault();
+
+    $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+    $.ajax({
+
+        method: "POST",
+
+        url: $(this).prop('action'),
+
+        data: new FormData(this),
+
+        contentType: false,
+
+        cache: false,
+
+        processData: false,
+
+        success: function(data)
+        {
+            if (data.status) {
+                toastr.success(data.message, "Success");
+                location.reload();
+            } else
+            {
+                toastr.error(data.message, "Error");
+            }
+        }
     });
-}
+});
 
 let focusGroupText = document.querySelector(".--focus-urban-group-text");
 if (focusInput) {
@@ -84,7 +150,9 @@ $(".dropdown-follow").click(function (e) {
 function increaseValue(button, limit) {
     const numberInput = button.parentElement.querySelector(".number");
     var value = parseInt(numberInput.innerHTML, 10);
+ 
     if (isNaN(value)) value = 0;
+    
     if (limit && value >= limit) return;
     numberInput.innerHTML = value + 1;
 }
@@ -177,6 +245,18 @@ $(document).ready(function () {
     });
 });
 
+
+let loadmore = document.querySelector(".loadmore");
+
+if (loadmore) {
+    $(".loadmore").btnLoadmore({
+        showItem: 12,
+
+        textBtn: "Load More Products",
+        classBtn: "btn btn-dark rounded-pill px-4 py-3 d-flex m-auto",
+    });
+}
+
 // var el = document.getElementById("date");
 // var date = document.querySelectorAll(".date");
 // if (date) {
@@ -200,3 +280,5 @@ $(document).ready(function () {
 //         el.classList.remove("empty-date");
 //     }
 // };
+
+

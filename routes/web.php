@@ -128,8 +128,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
 
     Route::any('product/favourite', [App\Http\Controllers\Buyer\ProductController::class, 'productFavourite'])->name('buyerFavouriteProduct');
     Route::any('product/favourite/delete/{id}', [App\Http\Controllers\Buyer\ProductController::class, 'delete_favourite'])->name('buyerDeleteFavourite');
+
+    Route::post('reviewsubmit', [App\Http\Controllers\Buyer\ProductController::class, 'reviewsubmit'])->name('buyerReviewSubmit');
+
     Route::any('orders', [App\Http\Controllers\Buyer\OrderController::class, 'orderList'])->name('buyerOrderList');
     Route::any('order/{id}', [App\Http\Controllers\Buyer\OrderController::class, 'viewOrder'])->name('buyerViewOrder');
+
+
 });
 
 Route::any('view-user-post/{id}', [App\Http\Controllers\UserPostController::class, 'show'])->name('buyerViewUserPost');

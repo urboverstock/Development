@@ -9,9 +9,11 @@ use App\Models\UserDocument;
 use App\Models\ProductCategory;
 use App\Models\ProductCompanies;
 use App\Models\Product;
+use App\Models\OrderDetail;
 use App\Models\ProductImage;
 use App\Models\ProductWishlist;
 use App\Models\ProductFavourite;
+use App\Models\ProductRating;
 use Auth, Validator;
 use App\Models\Notification;
 use App\Models\UserOffer;
@@ -79,6 +81,37 @@ class ProductController extends Controller
         {
             return redirect()->back()->with('error', COMMON_ERROR);
         }
+    }
+
+    public function reviewsubmit(Request $request)
+    {
+        $userId = Auth::user()->id;
+
+        $checkOrderComplete = OrderDetail::where(['product_id' => $request->product_id, 'user_id' => $userId, 'status' => 2])->count();
+
+        if($checkOrderComplete == 0)
+        {
+            return response()->json(['status' => 0, 'message' => 'Buy This Product First.']);
+        }
+        else
+        {
+            $prev = ProductRating::where('product_id', $request->product_id)->where('user_id', $userId)->first();
+
+            if(!empty($prev))
+            {
+                return response()->json(['status' => 0, 'message' => 'You Have Reviewed Already.']);
+            }
+            
+            $Rating = new ProductRating;
+            $Rating->user_id = Auth::user()->id;
+            $Rating->product_id = $request->product_id;
+            $Rating->rating = $request->rating;
+            $Rating->review = $request->comment;
+            $Rating['created_at'] = date('Y-m-d H:i:s');
+            $Rating->save();
+            return response()->json(['status' => 1, 'message' => 'Your Rating Submitted Successfully.']);
+        }
+            
     }
 
 }
