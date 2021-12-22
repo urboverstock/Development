@@ -7,7 +7,30 @@ input.empty-date {
 input.empty-date::-webkit-calendar-picker-indicator {
     filter: invert(0.5);
 }
-
+.h-300 {
+    height: 300px;
+}
+.all-post-laravel-paginations {
+    display: flex;
+    justify-content: end;
+}
+.all-post-laravel-paginations nav div:nth-child(2) {
+    display: none;
+}
+.all-post-laravel-paginations nav span {
+    border-bottom: 3px solid #fff !important;
+    border-right: 1px solid #fff !important;
+    border-left: 1px solid #fff !important;
+    border-top: 1px solid #fff !important;
+}
+.all-post-laravel-paginations nav a {
+    border-bottom: 3px solid #d9b950 !important;
+    border-right: 1px solid #fff !important;
+    border-left: 1px solid #fff !important;
+    border-top: 1px solid #fff !important;
+    text-decoration: none;
+    color: #d9b950;
+}
 .custom-urban-form select {
     padding-top: 20px;
     padding-bottom: 20px;
