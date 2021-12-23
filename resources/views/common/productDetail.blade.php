@@ -16,7 +16,7 @@
 }
 </style>
 
- <section class="mt-96   pb-3 ">
+ <section class="mt-96 pb-3 ">
     <div class="container pt-4">
       <div class="row">
         <div class="col-lg-5 mb-4">

@@ -27,8 +27,8 @@ class UserPostUpdateRequest extends FormRequest
     {
         return [
             'title' => ['required',Rule::unique('user_posts')->ignore(request()->id)->whereNull('deleted_at')->where('user_id', Auth::user()->id)],
-            'description' => 'required',
-            'file' => 'max:2048'
+            'description' => 'required', 
+            'image' => 'max:2048|mimes:jpg,jpeg,png'
         ];
     }
 
@@ -37,7 +37,7 @@ class UserPostUpdateRequest extends FormRequest
         return [
             'title.required' => 'Title is required!',
             'title.unique' => request()->title.' is already taken!',
-            'file.max' => 'The :attribute failed to upload.'
+            'image.max' => 'The :attribute failed to upload.'
         ];
     }
 }

@@ -20,6 +20,10 @@
   .error{
     color: red;
   }
+
+  .uppy-Dashboard-files{
+    display: flex;
+  }
 </style>
 @endsection
 
@@ -77,42 +81,42 @@
                       <output id="result" /> -->
 
                       <div id="drag-drop-area" class="w-100"></div>
-    
-                            <div class="urbon-files"></div>
+                      <div class="urbon-files"></div>
                     </label>
 
-                    @if(@$userPost->getUserPostFile)
-                            @foreach($userPost->getUserPostFile as $key => $image)
+                      @if(@$userPost->getUserPostFile)
+                        @foreach($userPost->getUserPostFile as $key => $image)
 
-                            <?php 
-                              $ext = pathinfo($image, PATHINFO_EXTENSION);
-                            ?>
+                        <?php 
+                          $ext = pathinfo($image, PATHINFO_EXTENSION);
+                        ?>
 
-                            
-                              <div class="result">
-                                <div>
-                                  <a href="{{ route('sellerDeleteUserPostFile', \Illuminate\Support\Facades\Crypt::encrypt( $image->id)) }}"><i class="fas fa-trash-alt"></i>
+                        
+                          <div class="result">
+                            <div>
+                              <a href="{{ route('sellerDeleteUserPostFile', \Illuminate\Support\Facades\Crypt::encrypt( $image->id)) }}"><i class="fas fa-trash-alt"></i>
 
-                                  <?php 
-                                    $ext = pathinfo($image->file, PATHINFO_EXTENSION);
-                                  ?>
+                              <?php 
+                                $ext = pathinfo($image->file, PATHINFO_EXTENSION);
+                              ?>
 
-                                  <?php 
-                                    if ($ext == "mp4" || $ext == "mov" || $ext == "vob" || $ext == "mpeg" || $ext == "3gp" || $ext == "avi" || $ext == "wmv" || $ext == "mov" || $ext == "amv" || $ext == "svi" || $ext == "flv" || $ext == "mkv" || $ext == "webm" || $ext == "gif" || $ext == "asf") {
-                                  ?>
+                              <?php 
+                                if ($ext == "mp4" || $ext == "mov" || $ext == "vob" || $ext == "mpeg" || $ext == "3gp" || $ext == "avi" || $ext == "wmv" || $ext == "mov" || $ext == "amv" || $ext == "svi" || $ext == "flv" || $ext == "mkv" || $ext == "webm" || $ext == "gif" || $ext == "asf") {
+                              ?>
 
-                                    <video controls autoplay style="width: 200px;vertical-align: middle;">
-                                      <source src="{{url('/') . $image->file}}" type="video/ogg">
-                                      <source src="{{url('/') . $image->file}}" type="video/{{ $ext }}">
-                                    </video>
-                                  <?php } else { ?>
-                                <img src="{{ asset('/') .$image->file }}" width="100" style="float: left;"></a>
-                              <?php } ?>
-                              </div>
-                              </div>
-                            @endforeach
-                          @endif
+                                <video controls autoplay style="width: 200px;vertical-align: middle;">
+                                  <source src="{{url('/') . $image->file}}" type="video/ogg">
+                                  <source src="{{url('/') . $image->file}}" type="video/{{ $ext }}">
+                                </video>
+                              <?php } else { ?>
+                            <img src="{{ asset('/') .$image->file }}" width="100" style="float: left;"></a>
+                          <?php } ?>
+                          </div>
+                          </div>
+                        @endforeach
+                      @endif
                   </div>
+                  <span class="error">{{ $errors->first('image') }} </span>
                 </div>
 
                 <div class="col-lg-12">

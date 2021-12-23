@@ -24,7 +24,7 @@ class ProductController extends Controller
     //Add product form and save to the table
     public function addProduct(Request $request){
 
-// print_r($request->all());die();
+        // print_r($request->all());die();
         $product_categories = ProductCategory::all();
         $product_companies = ProductCompanies::all();
 
@@ -40,8 +40,8 @@ class ProductController extends Controller
                 // 'gender' => 'required|in:M,F',
                 // 'company_id' => 'required',
                 'description' => 'required',
-                'quantity' => 'required',
-                'image' => 'required'
+                'quantity' => 'required', 
+                'image' => 'required|mimes:jpg,jpeg,png'
             ]);
 
             if ($validator->fails()) {
@@ -147,6 +147,7 @@ class ProductController extends Controller
                 // 'company_id' => 'required',
                 'description' => 'required',                
                 'quantity' => 'required',
+                'image' => 'mimes:jpg,jpeg,png'
             ]);
 
             if ($validator->fails()) {

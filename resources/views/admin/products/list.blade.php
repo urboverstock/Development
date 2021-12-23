@@ -230,7 +230,7 @@
                         </td>
                         <td>
                           <div class="d-flex align-items-center">
-                            <img class="avatar-sm br-10 me-2" src="../assets/images/admin-dashboard/64.png" alt="">
+                            <img class="avatar-sm br-10 me-2" src="{{ productDefaultImage($product['id'])}}" alt="">
                             <span class="text-dark-admin text-truncate product-list-text">{{ $product['name'] }}</span>
                           </div>
                         </td>

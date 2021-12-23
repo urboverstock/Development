@@ -19,6 +19,10 @@
   .error{
     color: red;
   }
+
+  .uppy-Dashboard-files{
+    display: flex;
+  }
 </style>
 @endsection
 
@@ -89,7 +93,7 @@
 
                             <div id="drag-drop-area" class="w-100"></div>
     
-                          <div class="urbon-files"></div>
+                            <div class="urbon-files"></div>
 
                             <!-- <div class="bg--primary p-3 d-inline-flex rounded-circle mb-3">
                               
@@ -112,7 +116,10 @@
                               </div>
                             @endforeach
                           @endif
+
                       </div>
+                          <p><span class="price-error error">{{ $errors->first('image') }}</span>
+                          </p>
                   </div>
                   <div class="card border-0 mb-5 shadow br-16">
                       <div class="card-body">
@@ -341,64 +348,64 @@
 	});
 
   //Preview Mutliple Images
-window.onload = function(){
+// window.onload = function(){
         
-    //Check File API support
-    if(window.File && window.FileList && window.FileReader)
-    {
-        var filesInput = document.getElementById("urbanFile");
+//     //Check File API support
+//     if(window.File && window.FileList && window.FileReader)
+//     {
+//         var filesInput = document.getElementById("urbanFile");
         
-        filesInput.addEventListener("change", function(event){
+//         filesInput.addEventListener("change", function(event){
 
-          var fileExtension = ['jpeg', 'jpg', 'png'];
-          if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-              alert("Only formats are allowed : "+fileExtension.join(', '));
-          }
+//           var fileExtension = ['jpeg', 'jpg', 'png'];
+//           if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+//               alert("Only formats are allowed : "+fileExtension.join(', '));
+//           }
 
-            var fileSize = filesInput.files[0];
-            var sizeInMb = fileSize.size/1024;
-            var sizeLimit= 1024*2;
-            if (sizeInMb > sizeLimit) {
-              alert('please upload image less than 2MB');
-              $(this).val('');
-            }else{
-              var files = event.target.files; //FileList object
-              var output = document.getElementById("result");
+//             var fileSize = filesInput.files[0];
+//             var sizeInMb = fileSize.size/1024;
+//             var sizeLimit= 1024*2;
+//             if (sizeInMb > sizeLimit) {
+//               alert('please upload image less than 2MB');
+//               $(this).val('');
+//             }else{
+//               var files = event.target.files; //FileList object
+//               var output = document.getElementById("result");
               
-              for(var i = 0; i< files.length; i++)
-              {
-                  var file = files[i];
+//               for(var i = 0; i< files.length; i++)
+//               {
+//                   var file = files[i];
                   
-                  //Only pics
-                  if(!file.type.match('image'))
-                    continue;
+//                   //Only pics
+//                   if(!file.type.match('image'))
+//                     continue;
                   
-                  var picReader = new FileReader();
+//                   var picReader = new FileReader();
                   
-                  picReader.addEventListener("load",function(event){
+//                   picReader.addEventListener("load",function(event){
                       
-                      var picFile = event.target;
+//                       var picFile = event.target;
                       
-                      var div = document.createElement("div");
+//                       var div = document.createElement("div");
                       
-                      div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
-                              "title='" + picFile.name + "'/>";
+//                       div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+//                               "title='" + picFile.name + "'/>";
                       
-                      output.insertBefore(div,null);            
+//                       output.insertBefore(div,null);            
                   
-                  });
+//                   });
                   
-                  //Read the image
-                  picReader.readAsDataURL(file);
-              }
-            }
-        });
-    }
-    else
-    {
-        console.log("Your browser does not support File API");
-    }
-}
+//                   //Read the image
+//                   picReader.readAsDataURL(file);
+//               }
+//             }
+//         });
+//     }
+//     else
+//     {
+//         console.log("Your browser does not support File API");
+//     }
+// }
 
 
 // $(".priceCheck").blur(function() {

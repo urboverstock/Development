@@ -41,7 +41,7 @@ class ProductController extends Controller
                 // 'company_id' => 'required',
                 'description' => 'required',
                 'quantity' => 'required',
-                'image' => 'required'
+                'image' => 'required|mimes:jpg,jpeg,png'
             ]);
 
             if ($validator->fails()) {
@@ -139,6 +139,7 @@ class ProductController extends Controller
                 // 'company_id' => 'required',
                 'description' => 'required',                
                 'quantity' => 'required',
+                'image' => 'mimes:jpg,jpeg,png'
             ]);
 
             if ($validator->fails()) {

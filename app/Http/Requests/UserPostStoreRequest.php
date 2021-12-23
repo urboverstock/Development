@@ -25,7 +25,8 @@ class UserPostStoreRequest extends FormRequest
     {
         return [
             'title' => 'required|unique:user_posts,title,NULL,id,deleted_at,NULL',
-            'description' => 'required',
+            'description' => 'required', 
+            'image' => 'mimes:jpg,jpeg,png'
         ];
     }
 }
