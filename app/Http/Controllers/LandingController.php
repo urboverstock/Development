@@ -707,19 +707,30 @@ class LandingController extends Controller
             $user_id = Auth::user()->id;
          }
 
-         $check_coupon = Coupon::where(['name' => $request->coupon_code,'status' => 1])->first();
+         $check_coupon = Coupon::where(['name' => $request->coupon_code,'status' => 1])
+         ->whereDate('start_date', '<=', date("Y-m-d"))
+         ->whereDate('end_date', '>=', date("Y-m-d"))
+         ->first();
          if($check_coupon){
-             $coupon = New UsedCoupon;
-             $coupon->user_id = $user_id;
-             $coupon->coupon_id = $check_coupon->id;
-             $coupon->name = $request->coupon_code;
-             if($coupon->save()){
-                 $response["status"] = 1;
-                 $response["message"] = "Coupon apply successfully";
+             //echo $request->total_price.'----'.$check_coupon->price;die;
+             if($check_coupon->type == 1 && $request->total_price < $check_coupon->price){
+                $response["status"] = 0;
+                $response["message"] = "Order total is less than coupon amount!";
              }else{
-                 $response["status"] = 0;
-                 $response["message"] = "Something went wrong";
+                $coupon = New UsedCoupon;
+                $coupon->user_id = $user_id;
+                $coupon->coupon_id = $check_coupon->id;
+                $coupon->name = $request->coupon_code;
+                if($coupon->save()){
+                    $response["status"] = 1;
+                    $response["message"] = "Coupon apply successfully";
+                }else{
+                    $response["status"] = 0;
+                    $response["message"] = "Something went wrong";
+                }
              }
+
+             
          }else{
              $response["status"] = 0;
              $response["message"] = "Invalid coupon code!";

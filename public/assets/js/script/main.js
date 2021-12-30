@@ -115,11 +115,15 @@ $(document).on('submit', '#reviewform', function(e) {
 
         success: function(data)
         {
-            if (data.status) {
+            if (data.status == 1) {
                 toastr.success(data.message, "Success");
                 location.reload();
-            } else
-            {
+            } else if(data.status == 2){
+                toastr.error(data.message, "Error");
+                window.setTimeout(function() {
+                    window.location.href = base_url + "/signin";
+                }, 1000);
+            }else{
                 toastr.error(data.message, "Error");
             }
         }

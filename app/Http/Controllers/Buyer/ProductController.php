@@ -85,6 +85,11 @@ class ProductController extends Controller
 
     public function reviewsubmit(Request $request)
     {
+        if(!Auth::check()){
+            return response()->json(['status' => 2, 'message' => 'Please login first.']);
+            //return redirect()->route('signin')->with('error', 'You need to login first');
+        }
+        
         $userId = Auth::user()->id;
 
         $checkOrderComplete = OrderDetail::where(['product_id' => $request->product_id, 'user_id' => $userId, 'status' => 2])->count();

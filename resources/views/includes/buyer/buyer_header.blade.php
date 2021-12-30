@@ -51,6 +51,7 @@
               <li><a href="{{ route('products') }}" class="dropdown-item border-bottom">Products</a></li>
               <!--li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li-->
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerOrderList') }}">My Orders</a></li>
+              <li><a class="dropdown-item border-bottom " href="{{ route('buyerFavouriteProduct') }}">Save to later</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerFavouriteProduct') }}">My Favourites</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('buyerAddress') }}">Shipping Address</a></li>
               <li><a class="dropdown-item border-bottom " href="{{ route('AllPost') }}">All Posts</a></li>

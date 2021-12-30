@@ -129,7 +129,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('product/favourite', [App\Http\Controllers\Buyer\ProductController::class, 'productFavourite'])->name('buyerFavouriteProduct');
     Route::any('product/favourite/delete/{id}', [App\Http\Controllers\Buyer\ProductController::class, 'delete_favourite'])->name('buyerDeleteFavourite');
 
-    Route::post('reviewsubmit', [App\Http\Controllers\Buyer\ProductController::class, 'reviewsubmit'])->name('buyerReviewSubmit');
+    //Route::post('reviewsubmit', [App\Http\Controllers\Buyer\ProductController::class, 'reviewsubmit'])->name('buyerReviewSubmit');
 
     Route::any('orders', [App\Http\Controllers\Buyer\OrderController::class, 'orderList'])->name('buyerOrderList');
     Route::any('order/{id}', [App\Http\Controllers\Buyer\OrderController::class, 'viewOrder'])->name('buyerViewOrder');
@@ -147,6 +147,7 @@ Route::get('increase-decrease-cart/{cart_id}', [App\Http\Controllers\LandingCont
 Route::get('remove-cart/{cart_id}', [App\Http\Controllers\LandingController::class, 'removeCart'])->name('remove-cart');
 Route::get('cart-later/{cart_id}', [App\Http\Controllers\LandingController::class, 'saveToLaterCart'])->name('save-later-cart');
 Route::get('remove-all-cart', [App\Http\Controllers\LandingController::class, 'removeAllCart'])->name('remove-all-cart');
+Route::post('reviewsubmit', [App\Http\Controllers\Buyer\ProductController::class, 'reviewsubmit'])->name('buyerReviewSubmit');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::any('dashboard', [App\Http\Controllers\AdminController::class, 'orders'])->name('admin.dashboard');

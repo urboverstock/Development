@@ -304,6 +304,7 @@
        <div class="modal-body">
          <form method="post" id="apply_coupon">
          	@csrf
+           <input type="hidden" name="total_price" value="{{ $total_price }}">
            <div class="row">
              <div class="col-lg-12">
                <div class="mb-4">
