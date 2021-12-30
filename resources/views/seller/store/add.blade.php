@@ -33,7 +33,7 @@
                         <!-- image-upload z-test  -->
                         <label for="imageUpload" class="cursor-pointer">
                           <div class="image-upload">
-                            <img style="height: 80px; width: 80px" class=" mb-md-0 rounded-circle mb-4 image_prev" src="{{ !empty(@$store->picture) ? @$store->picture : asset('assets/images/default.png') }}" alt="">
+                            <img style="height: 80px; width: 80px" class=" mb-md-0 rounded-circle mb-4 image_prev" src="{{ !empty(@$store->picture) ? asset(@$store->picture) : asset('assets/images/default.png') }}" alt="">
                             <input type="file" name="profile_pic" class="d-none" id="imageUpload" accept="image/*" />
                           </div>
                         </label>
