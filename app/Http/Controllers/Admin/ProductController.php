@@ -24,7 +24,7 @@ class ProductController extends Controller
     //Add product form and save to the table
     public function addProduct(Request $request){
 
-// print_r($request->all());die();
+        // print_r($request->all());die();
         $product_categories = ProductCategory::all();
         $product_companies = ProductCompanies::all();
 
@@ -41,13 +41,26 @@ class ProductController extends Controller
                 // 'company_id' => 'required',
                 'description' => 'required',
                 'quantity' => 'required',
-                'image' => 'required|mimes:jpg,jpeg,png'
+                // 'image' => 'required|mimes:jpg,jpeg,png'
             ]);
 
             if ($validator->fails()) {
                 return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
+            }
+
+            $extensions = $request->extension;
+
+            if(isset($extensions))
+            {
+                foreach ($extensions as $key => $value) {
+                // print_r($value);die();
+                    if($value != 'jpg' && $value != 'jpeg' && $value != 'png')
+                    {
+                        return redirect()->back()->with('error', 'The image file must be jpg, jpeg, png');
+                    }
+                }
             }
 
             $product                = new Product;
@@ -139,13 +152,26 @@ class ProductController extends Controller
                 // 'company_id' => 'required',
                 'description' => 'required',                
                 'quantity' => 'required',
-                'image' => 'mimes:jpg,jpeg,png'
+                // 'image' => 'mimes:jpg,jpeg,png'
             ]);
 
             if ($validator->fails()) {
                 return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
+            }
+
+            $extensions = $request->extension;
+
+            if(isset($extensions))
+            {
+                foreach ($extensions as $key => $value) {
+                // print_r($value);die();
+                    if($value != 'jpg' && $value != 'jpeg' && $value != 'png')
+                    {
+                        return redirect()->back()->with('error', 'The image file must be jpg, jpeg, png');
+                    }
+                }
             }
 
             // $checkExists = Product::where(['name' => $request->name, 'user_id' => Auth::user()->id])

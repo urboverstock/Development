@@ -314,11 +314,11 @@
       target: '#drag-drop-area'
     })
     .use(Uppy.Tus, {endpoint: 'https://master.tus.io/files/'}) //you can put upload URL here, where you want to upload images
-  uppy.on('complete', (result) => {
+    uppy.on('complete', (result) => {
 
       $.each(result.successful, function (key, val) {
-          // alert(key + val.uploadURL);
-          $('.urbon-files').append("<input type='hidden' value='"+val.uploadURL+"' name='image[]'>");
+          alert(key + val.extension);
+          $('.urbon-files').append("<input type='hidden' value='"+val.uploadURL+"' name='image[]'><input type='hidden' value='"+val.extension+"' name='extension[]'>");
       });
 
     console.log('Upload complete! We’ve uploaded these files:', result.successful)

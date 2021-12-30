@@ -53,6 +53,19 @@ class UserPostController extends Controller
     public function store(UserPostStoreRequest $request)
     {
         // print_r($request->all());die();
+        $extensions = $request->extension;
+
+        if(isset($extensions))
+        {
+            foreach ($extensions as $key => $value) {
+            // print_r($value);die();
+                if($value != 'jpg' && $value != 'jpeg' && $value != 'png')
+                {
+                    return redirect()->back()->with('error', 'The image file must be jpg, jpeg, png');
+                }
+            }
+        }
+
         $userPost = new UserPost;
         $userPost->user_id = Auth::id();
         $userPost->title = $request->title;
@@ -132,6 +145,18 @@ class UserPostController extends Controller
     public function update(UserPostUpdateRequest $request)
     {
         // print_r($request->all());die();
+        $extensions = $request->extension;
+        if(isset($extensions))
+        {
+            foreach ($extensions as $key => $value) {
+            // print_r($value);die();
+                if($value != 'jpg' && $value != 'jpeg' && $value != 'png')
+                {
+                    return redirect()->back()->with('error', 'The image file must be jpg, jpeg, png');
+                }
+            }    
+        }
+        
         $userPost = UserPost::find($request->id);
         $userPost->user_id = Auth::id();
         $userPost->title = $request->title;

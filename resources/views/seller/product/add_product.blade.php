@@ -308,7 +308,8 @@
 
       $.each(result.successful, function (key, val) {
           // alert(key + val.uploadURL);
-          $('.urbon-files').append("<input type='hidden' value='"+val.uploadURL+"' name='image[]'>");
+          // $('.urbon-files').append("<input type='hidden' value='"+val.uploadURL+"' name='image[]'>");
+          $('.urbon-files').append("<input type='hidden' value='"+val.uploadURL+"' name='image[]'><input type='hidden' value='"+val.extension+"' name='extension[]'>");
       });
 
     console.log('Upload complete! We’ve uploaded these files:', result.successful)

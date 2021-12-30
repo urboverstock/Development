@@ -41,13 +41,26 @@ class ProductController extends Controller
                 // 'company_id' => 'required',
                 'description' => 'required',
                 'quantity' => 'required', 
-                'image' => 'required|mimes:jpg,jpeg,png'
+                // 'image' => 'required|mimes:jpg,jpeg,png'
             ]);
 
             if ($validator->fails()) {
                 return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
+            }
+
+            $extensions = $request->extension;
+
+            if(isset($extensions))
+            {
+                foreach ($extensions as $key => $value) {
+                // print_r($value);die();
+                    if($value != 'jpg' && $value != 'jpeg' && $value != 'png')
+                    {
+                        return redirect()->back()->with('error', 'The image file must be jpg, jpeg, png');
+                    }
+                }
             }
 
             $product                = new Product;
@@ -147,7 +160,7 @@ class ProductController extends Controller
                 // 'company_id' => 'required',
                 'description' => 'required',                
                 'quantity' => 'required',
-                'image' => 'mimes:jpg,jpeg,png'
+                // 'image' => 'mimes:jpg,jpeg,png'
             ]);
 
             if ($validator->fails()) {
@@ -169,6 +182,19 @@ class ProductController extends Controller
 
             if(empty($product)){
                 return redirect()->back()->with('error', COMMON_ERROR);
+            }
+
+            $extensions = $request->extension;
+
+            if(isset($extensions))
+            {
+                foreach ($extensions as $key => $value) {
+                // print_r($value);die();
+                    if($value != 'jpg' && $value != 'jpeg' && $value != 'png')
+                    {
+                        return redirect()->back()->with('error', 'The image file must be jpg, jpeg, png');
+                    }
+                }
             }
 
             $product->user_id       = Auth::id();
