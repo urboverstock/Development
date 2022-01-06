@@ -7,8 +7,22 @@ input.empty-date {
 input.empty-date::-webkit-calendar-picker-indicator {
     filter: invert(0.5);
 }
+.text-one-line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .h-300 {
     height: 300px;
+}
+.box-200 {
+    width: 200px;
+    height: 200px;
+    object-fit: fill;
+}
+.product-img-size-sm {
+    height: 200px;
+    width: 100%;
 }
 .all-post-laravel-paginations {
     display: flex;

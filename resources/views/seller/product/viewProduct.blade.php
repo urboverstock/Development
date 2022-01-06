@@ -40,9 +40,9 @@
               Description : {{$product->description}}
             </div>
             @if(count($product->product_image) > 0)
-            <div class="mb-3" data-aos="fade-up">
+            <div class="mb-3 d-flex align-items-baseline flex-wrap" data-aos="fade-up">
             	@foreach($product->product_image as $productImage)
-            		<img src="{{ url('/') . $productImage->file }}" width="200">
+            		<img class="box-200 me-3 mb-3" src="{{ url('/') . $productImage->file }}" />
             	@endforeach
             </div>
             @endif

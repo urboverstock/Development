@@ -116,8 +116,8 @@
                   <div class="card product-item border-0 br-12 shadow mb-5">
                     <div class="card-body ">
                       <a href="{{ route('sellerViewProduct',   \Illuminate\Support\Facades\Crypt::encrypt($product['id'])) }}">
-                        <img class="view-profile-img mb-3 br-12" src="{{ !empty($product['product_image']) ? url('/') .$product['product_image'][0]['file'] : asset('assets/images/default.png') }}" alt="" ></a>
-                      <h5 class="fw-bold "><a class="text-dark text-decoration-none" href="{{ route('sellerViewProduct',   \Illuminate\Support\Facades\Crypt::encrypt($product['id'])) }}">{{ $product['name'] }}</a></h5>
+                        <img class="product-img-size-sm mb-3 br-12" src="{{ !empty($product['product_image']) ? url('/') .$product['product_image'][0]['file'] : asset('assets/images/default.png') }}" alt="" ></a>
+                      <h5 class="fw-bold text-one-line"><a class="text-dark text-decoration-none" href="{{ route('sellerViewProduct',   \Illuminate\Support\Facades\Crypt::encrypt($product['id'])) }}">{{ $product['name'] }}</a></h5>
                       <div class="d-flex my-2">
                         <i class="fas fa-star me-2 text--primary text-13"></i>
                         <i class="fas fa-star me-2 text--primary text-13"></i>
@@ -128,7 +128,7 @@
                     </div>
                     <div class="card-footer bg-transparent">
                       <div class="d-flex justify-content-between flex-wrap py-2">
-                        <h5 class="mb-0">${{ round($product['price'], 2) }}</h5>
+                        <h5 class="mb-0 text-one-line">${{ round($product['price'], 2) }}</h5>
                         <div class="d-flex align-items-center">
                           <a href="{{ route('sellerEditProduct', $product['id']) }}">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
