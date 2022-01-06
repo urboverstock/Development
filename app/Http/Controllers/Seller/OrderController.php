@@ -8,7 +8,9 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\GuestUser;
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Support\Facades\Crypt;
+use Auth;
 
 class OrderController extends Controller
 {
@@ -30,7 +32,13 @@ class OrderController extends Controller
         }
         else
         {
-    	   $orders = Order::latest();
+            //$orders = Order::latest();
+            $getProductId = Product::where('user_id', Auth::user()->id)->get()->pluck('id')->toArray();
+            if($getProductId){
+                $orders = Order::latest();
+            }else{
+                $orders = Order::where('user_id', Auth::user()->id);
+            }
         }
 
         $orders = $orders->get()->toArray();
