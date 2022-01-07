@@ -114,13 +114,15 @@
                             <a class="text-decoration-none text-dark" title="view details" href="{{ route('product-detail', $product->sku) }}"><h5 class="fw-bold">{{$product->name }}</h5></a>
                             <div class="d-flex flex-wrap justify-content-between align-items-center">
                                 <span class="badge rounded-pill bg-secondary-two text-dark px-3 py-2 my-2">{{@$product->user->name }}</span>
-                                <div class="d-flex my-2">
-                                    <i class="fas fa-star me-2 text--primary text-13"></i>
-                                    <i class="fas fa-star me-2 text--primary text-13"></i>
-                                    <i class="fas fa-star me-2 text--primary text-13"></i>
-                                    <i class="fas fa-star me-2 text--primary text-13"></i>
-                                    <i class="fas fa-star text--primary text-13"></i>
-                                </div>
+                                <a class="text-decoration-none text-dark" title="Rate Product on detail page" href="{{ route('product-detail', $product->sku) }}">
+                                  <div class="d-flex my-2">
+                                      <i class="fas fa-star me-2 text--primary text-13"></i>
+                                      <i class="fas fa-star me-2 text--primary text-13"></i>
+                                      <i class="fas fa-star me-2 text--primary text-13"></i>
+                                      <i class="fas fa-star me-2 text--primary text-13"></i>
+                                      <i class="fas fa-star text--primary text-13"></i>
+                                  </div>
+                                </a>
                             </div>
                         </div>
                         <div class="card-footer bg-transparent">

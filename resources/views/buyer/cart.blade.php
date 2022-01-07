@@ -232,13 +232,15 @@
                      <!-- <div class="bg-text rounded-pill px-3 py-2">
                         <h6 class="mb-0 f-600">Jhonathan Doe</h6>
                         </div> -->
-                     <div class="d-flex my-2">
-                        <i class="fas fa-star me-2 text--primary text-13"></i>
-                        <i class="fas fa-star me-2 text--primary text-13"></i>
-                        <i class="fas fa-star me-2 text--primary text-13"></i>
-                        <i class="fas fa-star me-2 text--primary text-13"></i>
-                        <i class="fas fa-star text--primary text-13"></i>
-                     </div>
+                      <a class="text-decoration-none text-dark" title="Rate Product on detail page" href="{{ route('product-detail', $recent_product['sku']) }}">
+                        <div class="d-flex my-2">
+                            <i class="fas fa-star me-2 text--primary text-13"></i>
+                            <i class="fas fa-star me-2 text--primary text-13"></i>
+                            <i class="fas fa-star me-2 text--primary text-13"></i>
+                            <i class="fas fa-star me-2 text--primary text-13"></i>
+                            <i class="fas fa-star text--primary text-13"></i>
+                        </div>
+                     </a>
                   </div>
                </div>
                <div class="card-footer bg-transparent">
