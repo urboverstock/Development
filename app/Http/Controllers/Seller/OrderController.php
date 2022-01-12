@@ -21,14 +21,19 @@ class OrderController extends Controller
 
         if(!empty($search) && isset($search))
         {
-            $orders = Order::with('getUserDetail')
-            ->whereHas('getUserDetail', function($query) use($search)
-            {
-                $query->where('first_name', 'LIKE', '%'.$search.'%')
-                    ->orWhere('last_name', 'LIKE', '%'.$search.'%');
+            $getProductId = Product::where('user_id', Auth::user()->id)->get()->pluck('id')->toArray();
+            if($getProductId){
+                $orders = Order::with('getUserDetail')
+                    ->whereHas('getUserDetail', function($query) use($search)
+                    {
+                        $query->where('first_name', 'LIKE', '%'.$search.'%')
+                            ->orWhere('last_name', 'LIKE', '%'.$search.'%');
 
-            })
-            ->orWhere('order_number', 'LIKE', '%' . $search . '%');
+                    })
+                    ->orWhere('order_number', 'LIKE', '%' . $search . '%');
+            }else{
+                $orders = Order::where('user_id', Auth::user()->id);
+            }
         }
         else
         {
