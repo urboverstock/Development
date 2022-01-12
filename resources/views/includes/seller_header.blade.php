@@ -10,10 +10,10 @@
           <img class="navbar-logo-seller" src="{{ asset('assets/images/logo.png') }}" alt="">
         </a>
         
-        <div class="custom-form-group-search position-relative 	d-none d-lg-block">
-          <form action="{{ route('search-products') }}">
+        <div class=" ">
+          <form class="custom-form-group-search position-relative d-none d-lg-flex" action="{{ route('search-products') }}">
             <input type="text" class="form-control" placeholder="Search for your favourite brands" value="{{ request()->get('searchproduct') }}" name="searchproduct" />
-            <button type="submit" class="btn"><i class="fas fa-search text--primary" style="top: 35%" ></i></button>
+            <button type="submit" class="btn"><i class="fas fa-search text--primary position-absolute end-0 me-4"  ></i></button>
           </form>
         </div>
         <div class="d-flex align-items-center">
@@ -23,7 +23,7 @@
             <div class="me-4 " data-bs-toggle="dropdown" aria-expanded="false">
               <img class="avatar-50 rounded-cricle " src="{{ $user->profile_img }}" alt="" style="cursor: pointer; border-radius: 50%; height: 50px">
             </div>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+            <ul class="dropdown-menu dropdown-menu-end z-dropdown-higlight" aria-labelledby="dropdownMenuButton1">
                <!-- fw-bold -->
               <li><a class="dropdown-item border-bottom" href="{{ route('sellerView_profile') }}">My Profile</a></li>
               <li><a class="dropdown-item border-bottom" href="{{ route('sellerStore') }}">My Store</a></li>

@@ -39,7 +39,7 @@
                       <div class="d-flex justify-content-between flex-wrap align-items-center mb-5">
                         <label for="imageUpload" class="d-flex align-items-center mb-md-0 mb-5 cursor-pointer">
                           
-                            <h6 class="mb-0 text-18 font-500 me-3 text-mute-2">Edit Your Profile Image</h6>
+                            <h6 class="mb-0 text-18 font-500 me-3 text-mute-2">Edit Your Profile Image </h6>
                             <div class="bg-dark d-flex p-2 br-50">
                               <i class="fas fa-pen text-white text-8"></i>
                             </div>

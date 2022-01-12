@@ -4,6 +4,9 @@ span.error {
 input.empty-date {
     color: #808080 !important;
 }
+ul.z-dropdown-higlight li a:hover {
+    font-weight: bold !important;
+}
 input.empty-date::-webkit-calendar-picker-indicator {
     filter: invert(0.5);
 }

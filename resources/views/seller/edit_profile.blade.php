@@ -57,13 +57,15 @@
                         </label>
                         
                         <!-- image-upload z-test  -->
-                        <label for="imageUpload" class="cursor-pointer">
-                          <div class="image-upload">
-                            <img style="height: 80px; width: 80px" class=" mb-md-0 rounded-circle mb-4 image_prev" src="{{ $user->profile_img }}" alt="">
-                            <input type="file" name="profile_pic" class="d-none" id="imageUpload" accept="image/*" />
-                          </div>
-                        </label>
-                            <span class="error">{{ $errors->first('profile_pic') }}</span>
+                        <div class="d-flex flex-column">
+                          <label for="imageUpload" class="cursor-pointer">
+                            <div class="image-upload mb-2">
+                              <img style="height: 80px; width: 80px" class=" mb-md-0 rounded-circle mb-4 image_prev" src="{{ $user->profile_img }}" alt="">
+                              <input type="file" name="profile_pic" class="d-none" id="imageUpload" accept="image/*" />
+                            </div>
+                          </label>
+                          <span class="error">{{ $errors->first('profile_pic') }}</span>
+                        </div>
                       </div>
                     </div>
                     <div class="col-lg-6">

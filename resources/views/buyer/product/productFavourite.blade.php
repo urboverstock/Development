@@ -35,10 +35,10 @@
                   <div class="card product-item border-0 shadow br-12 mb-5">
                     <div class="card-body "> 
                       <a class="text-decoration-none text-dark" target="_blank" href="{{ route('product-detail', $favourite['get_product_detail']['sku']) }}">
-                        <img class="img-fluid br-12 mb-3" src="{{ productDefaultImage($favourite['get_product_detail']['id'])}}" alt="">
+                        <img class="product-img-size br-12 mb-3" src="{{ productDefaultImage($favourite['get_product_detail']['id'])}}" alt="">
                       </a>
                       <a class="text-decoration-none text-dark" target="_blank" href="{{ route('product-detail', $favourite['get_product_detail']['sku']) }}">
-                        <h5 class="fw-bold">{{ $favourite['get_product_detail']['name'] }}</h5>
+                        <h5 class="fw-bold text-one-line">{{ $favourite['get_product_detail']['name'] }}</h5>
                       </a>
                     </div>
                     <div class="card-footer bg-transparent">
