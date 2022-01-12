@@ -51,7 +51,7 @@
                 </div>
                 @endforeach
                 @else
-                  <div>No Records</div>
+                  <div class="text-center fs-2">No Records Found</div>
                 @endif
               </div>
             </div>
