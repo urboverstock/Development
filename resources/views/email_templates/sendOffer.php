@@ -15,7 +15,7 @@
 
     <tfoot style='background:#ff8a23; width:100%; text-align:center;'>
     <tr>
-        <td style='padding:10px 0; color:#fff'>2019 &copy; Urbon Overstock App.</td>
+        <td style='padding:10px 0; color:#fff'>2019 &copy; Urban Overstock App.</td>
     </tr>
     </tfoot>
 </table>
