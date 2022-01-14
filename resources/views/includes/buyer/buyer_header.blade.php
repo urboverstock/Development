@@ -42,21 +42,21 @@
             </div>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                <!-- fw-bold -->
-              <li><a class="dropdown-item border-bottom" href="{{ route('buyer.edit_profile') }}">My Profile</a></li>
-              <li><a class="dropdown-item border-bottom" href="{{ route('buyer.dashboard') }}">Dashboard</a></li>
+              <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'edit-profile')) style="font-weight: bold !important;" @endif  href="{{ route('buyer.edit_profile') }}">My Profile</a></li>
+              <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'dashboard')) style="font-weight: bold !important;" @endif href="{{ route('buyer.dashboard') }}">Dashboard</a></li>
               <li class="">
                 <a href="{{ route('buyer.index') }}#z-about" class="dropdown-item border-bottom">About Us</a>
               </li>
-              <li><a class="dropdown-item border-bottom" href="{{ route('buyer.followers') }}">Followers</a></li>
-              <li><a href="{{ route('products') }}" class="dropdown-item border-bottom">Products</a></li>
+              <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'followers')) style="font-weight: bold !important;" @endif  href="{{ route('buyer.followers') }}">Followers</a></li>
+              <li><a href="{{ route('products') }}" @if((request()->segment(1) == 'products')) style="font-weight: bold !important;" @endif class="dropdown-item border-bottom">Products</a></li>
               <!--li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li-->
-              <li><a class="dropdown-item border-bottom " href="{{ route('buyerOrderList') }}">My Orders</a></li>
-              <li><a class="dropdown-item border-bottom " href="{{ route('buyerFavouriteProduct') }}">Save to later</a></li>
-              <li><a class="dropdown-item border-bottom " href="{{ route('buyerFavouriteProduct') }}">My Favourites</a></li>
-              <li><a class="dropdown-item border-bottom " href="{{ route('buyerAddress') }}">Shipping Address</a></li>
-              <li><a class="dropdown-item border-bottom " href="{{ route('AllPost') }}">All Posts</a></li>
-              <li><a class="dropdown-item border-bottom " href="{{ route('buyerUserPost') }}">My Post</a></li>
-              <li><a class="dropdown-item border-bottom " href="{{ route('chat') }}">Chat</a></li>
+              <li><a class="dropdown-item border-bottom " @if((request()->segment(2) == 'orders')) style="font-weight: bold !important;" @endif href="{{ route('buyerOrderList') }}">My Orders</a></li>
+              <li><a class="dropdown-item border-bottom " @if((request()->segment(3) == 'favourite')) style="font-weight: bold !important;" @endif href="{{ route('buyerFavouriteProduct') }}">Save to later</a></li>
+              <li><a class="dropdown-item border-bottom " @if((request()->segment(3) == 'favourite')) style="font-weight: bold !important;" @endif href="{{ route('buyerFavouriteProduct') }}">My Favourites</a></li>
+              <li><a class="dropdown-item border-bottom " @if((request()->segment(2) == 'address')) style="font-weight: bold !important;" @endif href="{{ route('buyerAddress') }}">Shipping Address</a></li>
+              <li><a class="dropdown-item border-bottom " @if((request()->segment(1) == 'all-post')) style="font-weight: bold !important;" @endif href="{{ route('AllPost') }}">All Posts</a></li>
+              <li><a class="dropdown-item border-bottom " @if((request()->segment(2) == 'user-post')) style="font-weight: bold !important;" @endif href="{{ route('buyerUserPost') }}">My Post</a></li>
+              <li><a class="dropdown-item border-bottom " @if((request()->segment(1) == 'chat')) style="font-weight: bold !important;" @endif href="{{ route('chat') }}">Chat</a></li>
               <li><a href="#z-contact" class="dropdown-item border-bottom">Contact Us</a>
               </li>
               <li class="logout_btn"><a class="dropdown-item border-bottom" href="javascript:;">Logout</a></li>
