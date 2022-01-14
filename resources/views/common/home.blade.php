@@ -453,7 +453,7 @@ With our exotic picks sourced from the most forward-thinking suppliers, we can h
             <h2 class="fw-bold ">
                 <!-- Be part of the community that's transforming things in the most fun way  -->
                 <!-- If you have any queries regarding our services, would like to enquire about our existing and upcoming goods, or would like to discuss delivery, please contact us at -->
-                For all inquiries please reach out to support@urbanoverstock.con and we will get back to you as soon as possible!
+                For all inquiries please reach out to support@urbanoverstock.com and we will get back to you as soon as possible!
             </h2>
             <img class="sec-8-img position-absolute top-0 start-100 translate-middle" src="assets/images/section-8/1.png" alt="">
           </div>
