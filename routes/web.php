@@ -129,6 +129,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('product/favourite', [App\Http\Controllers\Buyer\ProductController::class, 'productFavourite'])->name('buyerFavouriteProduct');
     Route::any('product/favourite/delete/{id}', [App\Http\Controllers\Buyer\ProductController::class, 'delete_favourite'])->name('buyerDeleteFavourite');
 
+    Route::any('product/savelater', [App\Http\Controllers\Buyer\ProductController::class, 'productSaveLater'])->name('buyerSaveLaterProduct');
+    Route::any('product/savelater/delete/{id}', [App\Http\Controllers\Buyer\ProductController::class, 'delete_savelater'])->name('buyerDeleteSavelater');
+
+    Route::any('product/wishlist', [App\Http\Controllers\Buyer\ProductController::class, 'productWishlist'])->name('buyerWishlistProduct');
+    Route::any('product/wishlist/delete/{id}', [App\Http\Controllers\Buyer\ProductController::class, 'delete_wishlist'])->name('buyerDeleteWishlist');
+
     //Route::post('reviewsubmit', [App\Http\Controllers\Buyer\ProductController::class, 'reviewsubmit'])->name('buyerReviewSubmit');
 
     Route::any('orders', [App\Http\Controllers\Buyer\OrderController::class, 'orderList'])->name('buyerOrderList');

@@ -51,7 +51,8 @@
               <li><a href="{{ route('products') }}" @if((request()->segment(1) == 'products')) style="font-weight: bold !important;" @endif class="dropdown-item border-bottom">Products</a></li>
               <!--li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li-->
               <li><a class="dropdown-item border-bottom " @if((request()->segment(2) == 'orders')) style="font-weight: bold !important;" @endif href="{{ route('buyerOrderList') }}">My Orders</a></li>
-              <li><a class="dropdown-item border-bottom " @if((request()->segment(3) == 'favourite')) style="font-weight: bold !important;" @endif href="{{ route('buyerFavouriteProduct') }}">Save to later</a></li>
+              <li><a class="dropdown-item border-bottom " @if((request()->segment(3) == 'favourite')) style="font-weight: bold !important;" @endif href="{{ route('buyerSaveLaterProduct') }}">Save to later</a></li>
+              <li><a class="dropdown-item border-bottom " @if((request()->segment(3) == 'favourite')) style="font-weight: bold !important;" @endif href="{{ route('buyerWishlistProduct') }}">My Wishlist</a></li>
               <li><a class="dropdown-item border-bottom " @if((request()->segment(3) == 'favourite')) style="font-weight: bold !important;" @endif href="{{ route('buyerFavouriteProduct') }}">My Favourites</a></li>
               <li><a class="dropdown-item border-bottom " @if((request()->segment(2) == 'address')) style="font-weight: bold !important;" @endif href="{{ route('buyerAddress') }}">Shipping Address</a></li>
               <li><a class="dropdown-item border-bottom " @if((request()->segment(1) == 'all-post')) style="font-weight: bold !important;" @endif href="{{ route('AllPost') }}">All Posts</a></li>

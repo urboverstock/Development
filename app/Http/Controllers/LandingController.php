@@ -15,6 +15,7 @@ use App\Models\UserFollowers;
 use App\Models\ProductWishlist;
 use App\Models\ProductFavourite;
 use App\Models\ProductCategory;
+use App\Models\SaveLater;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Order;
 use Auth, Validator, Hash;
@@ -677,12 +678,12 @@ class LandingController extends Controller
         $cart = Cart::find($cart_id);
         if($cart->delete())
         {
-            $check = ProductFavourite::where(['user_id'=> Auth::user()->id,'product_id'=>$cart->product_id])->first();
+            $check = SaveLater::where(['user_id'=> Auth::user()->id,'product_id'=>$cart->product_id])->first();
             if(empty($check)){
-                $favourite                = new ProductFavourite;
-                $favourite->user_id       = Auth::user()->id;
-                $favourite->product_id    = $cart->product_id;
-                if($favourite->save()){
+                $save_later                = new SaveLater;
+                $save_later->user_id       = Auth::user()->id;
+                $save_later->product_id    = $cart->product_id;
+                if($save_later->save()){
                     //$response["status"] = 1;
                     //$response["message"] = "You have favourite successfully";
                 }

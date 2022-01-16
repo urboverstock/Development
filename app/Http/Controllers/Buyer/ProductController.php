@@ -13,6 +13,7 @@ use App\Models\OrderDetail;
 use App\Models\ProductImage;
 use App\Models\ProductWishlist;
 use App\Models\ProductFavourite;
+use App\Models\SaveLater;
 use App\Models\ProductRating;
 use Auth, Validator;
 use App\Models\Notification;
@@ -117,6 +118,128 @@ class ProductController extends Controller
             return response()->json(['status' => 1, 'message' => 'Your Rating Submitted Successfully.']);
         }
             
+    }
+
+    //Get all list of product favourite and also Search via user name and product name
+    public function productSaveLater(Request $request)
+    {
+        // print_r($request->all());die();
+        $productId = Product::where('user_id', Auth::user()->id)->get()->pluck('id')->toArray();
+
+        $search = $request->search;
+
+        if(!empty($search) && isset($search))
+        {
+            // print_r($search);die();
+            $savelaters = SaveLater::with('getUserDetail', 'getProductDetail:id,name')
+            ->whereHas('getUserDetail', function($q) use($search)
+            {
+                $q->select('id', 'first_name', 'profile_pic', 'last_name')
+                ->where('first_name', 'LIKE', '%'. $search .'%')
+                ->orWhere('last_name', 'LIKE', '%'. $search .'%');
+                // print($q->toSql());die();
+            })
+            ->orWhereHas('getProductDetail', function($q) use($search)
+            {
+                $q->select('id', 'name','price','sku')->where('name', 'LIKE', '%'. $search .'%');
+            })
+            ->where('user_id', Auth::user()->id);
+        }
+        else
+        {
+            $savelaters = SaveLater::with(['getUserDetail' => function($q)
+            {
+                $q->select('id', 'first_name', 'profile_pic', 'last_name');
+            }])
+            ->with(['getProductDetail' => function($q)
+            {
+                $q->select('id', 'name','price','sku');
+            }])
+            ->where('user_id', Auth::user()->id);
+        }
+
+        
+        $savelaters = $savelaters->get()->toArray();
+
+        // echo "<pre>";
+        // print_r($savelaters);die();
+
+        return view('buyer.product.productSaveLater', compact('savelaters'));
+    }
+
+    public function delete_savelater($id)
+    {
+        $id = Crypt::decrypt($id);
+        $savelater = SaveLater::find($id);
+        if($savelater->delete())
+        {
+            return redirect()->route('buyerSaveLaterProduct')->with('success', 'Save later product removed successfully');
+        }
+        else
+        {
+            return redirect()->back()->with('error', COMMON_ERROR);
+        }
+    }
+
+    //Get all list of product favourite and also Search via user name and product name
+    public function productWishlist(Request $request)
+    {
+        // print_r($request->all());die();
+        $productId = Product::where('user_id', Auth::user()->id)->get()->pluck('id')->toArray();
+
+        $search = $request->search;
+
+        if(!empty($search) && isset($search))
+        {
+            // print_r($search);die();
+            $wishlists = ProductWishlist::with('getUserDetail', 'getProductDetail:id,name')
+            ->whereHas('getUserDetail', function($q) use($search)
+            {
+                $q->select('id', 'first_name', 'profile_pic', 'last_name')
+                ->where('first_name', 'LIKE', '%'. $search .'%')
+                ->orWhere('last_name', 'LIKE', '%'. $search .'%');
+                // print($q->toSql());die();
+            })
+            ->orWhereHas('getProductDetail', function($q) use($search)
+            {
+                $q->select('id', 'name','price','sku')->where('name', 'LIKE', '%'. $search .'%');
+            })
+            ->where('user_id', Auth::user()->id);
+        }
+        else
+        {
+            $wishlists = ProductWishlist::with(['getUserDetail' => function($q)
+            {
+                $q->select('id', 'first_name', 'profile_pic', 'last_name');
+            }])
+            ->with(['getProductDetail' => function($q)
+            {
+                $q->select('id', 'name','price','sku');
+            }])
+            ->where('user_id', Auth::user()->id);
+        }
+
+        
+        $wishlists = $wishlists->get()->toArray();
+
+        // echo "<pre>";
+        // print_r($wishlists);die();
+
+        return view('buyer.product.productWishlist', compact('wishlists'));
+    }
+
+    public function delete_wishlist($id)
+    {
+        $id = Crypt::decrypt($id);
+        $savelater = ProductWishlist::find($id);
+        if($savelater->delete())
+        {
+            return redirect()->route('buyerWishlistProduct')->with('success', 'Wishlist removed successfully');
+        }
+        else
+        {
+            return redirect()->back()->with('error', COMMON_ERROR);
+        }
     }
 
 }
