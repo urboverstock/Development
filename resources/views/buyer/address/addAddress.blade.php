@@ -72,9 +72,14 @@
                       <div class="mb-4">
                           <label for="exampleFormControlInput1" class="form-label">Set default</label>
                           <div class="custom-urban-form">
-                              <select name="default" class="form-control">
+                              <select name="default" class="form-control form-select">
                                 <option disabled="" selected="">Select</option>
-                                <option value="0" {{ (@$address->default == 0 || old('type') == 0) ? 'selected' : '' }}>No</option>
+                                @if(isset($address))
+                                  <option value="0" {{ (@$address->default == 0 || old('type') == 0) ? 'selected' : '' }}>No</option>
+                                @else
+                                  <option value="0">No</option>
+                                @endif
+                                
                                 <option value="1" {{ (@$address->default == 1 || old('type') == 1) ? 'selected' : '' }}>Yes</option>
                               </select>
                           </div>

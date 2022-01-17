@@ -25,27 +25,27 @@
             </div>
             <ul class="dropdown-menu dropdown-menu-end z-dropdown-higlight" aria-labelledby="dropdownMenuButton1">
                <!-- fw-bold -->
-              <li><a class="dropdown-item border-bottom" href="{{ route('sellerEdit_profile') }}">My Profile</a></li>
-              <li><a class="dropdown-item border-bottom" href="{{ route('sellerStore') }}">My Store</a></li>
-              <li><a class="dropdown-item border-bottom" href="{{ route('sellerDashboard') }}">Dashboard</a></li>
+              <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'edit-profile')) style="font-weight: bold !important;" @endif href="{{ route('sellerEdit_profile') }}">My Profile</a></li>
+              <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'add-store')) style="font-weight: bold !important;" @endif href="{{ route('sellerStore') }}">My Store</a></li>
+              <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'dashboard')) style="font-weight: bold !important;" @endif href="{{ route('sellerDashboard') }}">Dashboard</a></li>
 
-              <li><a href="{{ route('sellerView_profile') }}" class="dropdown-item border-bottom">Products</a></li>
-              <li><a class="dropdown-item border-bottom" href="{{ route('sellerAddProduct') }}
+              <li><a href="{{ route('sellerView_profile') }}" @if((request()->segment(2) == 'view-profile')) style="font-weight: bold !important;" @endif class="dropdown-item border-bottom">Products</a></li>
+              <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'add-product')) style="font-weight: bold !important;" @endif href="{{ route('sellerAddProduct') }}
               ">Add Product</a></li>
 
-              <li><a class="dropdown-item border-bottom" href="{{ route('sellerCoupon') }}
+              <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'coupon')) style="font-weight: bold !important;" @endif href="{{ route('sellerCoupon') }}
               ">Coupons</a></li>
 
-              <li><a class="dropdown-item border-bottom" href="{{ route('sellerOrderList') }}
+              <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'orders')) style="font-weight: bold !important;" @endif href="{{ route('sellerOrderList') }}
               ">Orders</a></li>
 
-              <li><a class="dropdown-item border-bottom" href="{{ route('sellerWishlistProduct') }}
+              <li><a class="dropdown-item border-bottom"  @if((request()->segment(3) == 'wishlist')) style="font-weight: bold !important;" @endif href="{{ route('sellerWishlistProduct') }}
               ">Users Wishlist</a></li>
 
-              <li><a class="dropdown-item border-bottom" href="{{ route('AllPost') }}
+              <li><a class="dropdown-item border-bottom"  @if((request()->segment(1) == 'all-post')) style="font-weight: bold !important;" @endif href="{{ route('AllPost') }}
               ">All Posts</a></li>
 
-              <li><a class="dropdown-item border-bottom" href="{{ route('sellerUserPost') }}
+              <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'user-post')) style="font-weight: bold !important;" @endif href="{{ route('sellerUserPost') }}
               ">My Post</a></li>
 
               <li><a class="dropdown-item border-bottom" href="{{ route('chat') }}
@@ -53,7 +53,7 @@
 
               @if($user->user_type != 4)
                 <li>
-                  <a class="dropdown-item border-bottom" href="{{ route('sellerListAdvertisement') }}">Advertisement</a>
+                  <a class="dropdown-item border-bottom" @if((request()->segment(2) == 'advertisement')) style="font-weight: bold !important;" @endif href="{{ route('sellerListAdvertisement') }}">Advertisement</a>
                 </li>
               @endif          
               <!-- <li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li> -->
