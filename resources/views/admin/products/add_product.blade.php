@@ -232,8 +232,8 @@
                                   <i class="fas fa-pen"></i> -->
                                   <select name="status" class="form-control form-select">
                                     <option value="0" {{ (@$product->status == 0 || old('status') == 0) ? 'selected' : '' }}>In-active</option>
-                                    <option value="1" {{ (@$product->status == 1 || old('status') == 1) ? 'selected' : '' }}>Draft</option>
-                                    <option value="2" {{ (@$product->status == 2 || old('status') == 2) ? 'selected' : '' }}>Published</option>
+                                    <option value="1" {{ (@$product->status == 1 || old('status') == 1) ? 'selected' : '' }}>Published</option>
+                                    <option value="2" {{ (@$product->status == 2 || old('status') == 2) ? 'selected' : '' }}>Draft</option>
                                   </select>
                               </div>
                               <div class="mb-3">

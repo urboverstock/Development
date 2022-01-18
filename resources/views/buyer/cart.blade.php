@@ -29,7 +29,7 @@
                         <label class="form-check-label d-flex flex-wrap fw-bold mb-sm-3 mb-0" for="flexCheckDefault2">
                             <img class="avatar-lg br-10 me-4 mb-sm-0 mb-3" src="{{ productDefaultImage(@$cart['product']['id'])}}" alt="" width="100">
                             <div>
-                                <a href="#" class="text-decoration-none text-dark">
+                                <a href="{{ route('product-detail', @$cart['product']['sku']) }}" class="text-decoration-none text-dark">
                                     <h5 class="fw-bold mb-3">{{ @$cart['product']['name'] }}</h5>
                                 </a>
                                 <h5 class="text--primary f-600">${{ @$cart['p_price'] }}</h5>

@@ -37,7 +37,7 @@
                           <label for="exampleFormControlInput1" class="form-label">Question</label>
                           <div class="custom-urban-form">
                               <input class="form-control" type="text" placeholder="question" name="question" value="{{ @$faq->question ?: old('question') }}">
-                              <i class="fas fa-pen"></i>
+                              <i class="fas fa-pen input-icon"></i>
                           </div>
                           <span class="error">{{ $errors->first('question') }}</span>
                       </div>
