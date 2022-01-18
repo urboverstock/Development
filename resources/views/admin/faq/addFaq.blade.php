@@ -45,7 +45,7 @@
                       <div class="mb-4 ">
                         <label for="exampleFormControlTextarea1" class="form-label ">Answer</label>
                         <div class="custom-urban-form">
-                          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="" rows="5" name="answer">{{ @$faq->answer ?: old('answer') }}</textarea>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="answer..." rows="5" name="answer">{{ @$faq->answer ?: old('answer') }}</textarea>
                           <i class="fas fa-pen textarea-icon"></i>
                         </div>
                         <span class="name-error error">{{ $errors->first('answer') }}</span>
