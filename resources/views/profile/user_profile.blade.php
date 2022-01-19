@@ -40,7 +40,7 @@
           @if(Auth::check() && $user->id != Auth::user()->id)
             <a href="{{ url('/chat?user_id='.  \Illuminate\Support\Facades\Crypt::encrypt($user->id)) }}" class="btn btn-dark z-btn-text-white py-2 px-4 mb-3 me-3 display-5" id="add-to-cart" data-productid="{{ @$product_details->id }}" data-aos="fade-up"><i class="far fa-comments"></i></a>
             @else
-            <a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3" data-aos="fade-up"><i class="far fa-comments"></i></a>
+            <!--a href="{{ route('signin') }}" class="btn btn-dark z-btn-text-white py-2 px-4 rounded-pill mb-3 me-3" data-aos="fade-up"><i class="far fa-comments"></i></a-->
         
           @endif
           @endif
