@@ -111,7 +111,7 @@
                               <div class="result">
                                 <div>
                                   <a href="{{ route('sellerDeleteImage', $image->id) }}"><i class="fas fa-trash-alt"></i>
-                                <img src="{{ asset('/') .$image->file }}" width="100" style="float: left;"></a>
+                                <img src="{{ $image->file }}" width="100px" height="200px" style="float: left;"></a>
                               </div>
                               </div>
                             @endforeach

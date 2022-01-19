@@ -89,7 +89,13 @@
               <div class="urban-sub-title mb-4">
                 <p class="mb-0">
                   <!-- Search Results -->
-                  Search Results
+                  @if(request()->get('category')==1)
+                      Men Products
+                    @elseif(request()->get('category')==2)
+                      Women Products
+                    @else
+                      Search Results 
+                  @endif
                 </p>
               </div>
             </div>

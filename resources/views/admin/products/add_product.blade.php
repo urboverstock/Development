@@ -120,7 +120,7 @@
                               @foreach($product->product_image as $key => $image)
                                 <div class="col-md-6 mb-3">
                                   
-                                  <img class="img-fluid mb-3" src="{{ asset('/') .$image->file }}">
+                                  <img class="img-fluid mb-3" src="{{ $image->file }}">
                                   <a class="btn d-block btn--primary" href="{{ route('sellerDeleteImage', $image->id) }}"><i class="fas fa-trash-alt"></i> Delete Image</a>
                                 
                                 </div>
@@ -317,7 +317,7 @@
     uppy.on('complete', (result) => {
 
       $.each(result.successful, function (key, val) {
-          alert(key + val.extension);
+          //alert(key + val.extension);
           $('.urbon-files').append("<input type='hidden' value='"+val.uploadURL+"' name='image[]'><input type='hidden' value='"+val.extension+"' name='extension[]'>");
       });
 

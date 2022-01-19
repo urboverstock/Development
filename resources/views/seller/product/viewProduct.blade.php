@@ -42,9 +42,7 @@
             @if(count($product->product_image) > 0)
             <div class="mb-3 d-flex align-items-baseline flex-wrap" data-aos="fade-up">
             	@foreach($product->product_image as $key=>$productImage)
-                @if($key==0)
-            		  <img class="box-200 me-3 mb-3" src="{{ url('/') . $productImage->file }}" />
-                @endif
+            		<img class="box-200 me-3 mb-3" src="{{ url('/') . $productImage->file }}" />
             	@endforeach
             </div>
             @endif

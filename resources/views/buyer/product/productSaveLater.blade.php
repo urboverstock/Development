@@ -22,7 +22,7 @@
                     <p class="mb-0">List of</p>
                   </div>
                   <div class="urban-sub-title ust-100 mb-4">
-                    <p class="mb-0 pe-4">My save later list</p>
+                    <p class="mb-0 pe-4">My save to later list</p>
                   </div>
                 </div>
               </div>
@@ -35,7 +35,7 @@
                   <div class="card product-item border-0 shadow br-12 mb-5">
                     <div class="card-body "> 
                       <a class="text-decoration-none text-dark" target="_blank" href="{{ route('product-detail', $savelater['get_product_detail']['sku']) }}">
-                        <img class="product-img-size br-12 mb-3" style="width:100%;height:100%;" src="{{ productDefaultImage($savelater['get_product_detail']['id'])}}" alt="">
+                        <img class="product-img-size br-12 mb-3" style="width:100%;height:200px;" src="{{ productDefaultImage($savelater['get_product_detail']['id'])}}" alt="">
                       </a>
                       <a class="text-decoration-none text-dark" target="_blank" href="{{ route('product-detail', $savelater['get_product_detail']['sku']) }}">
                         <h5 class="fw-bold text-one-line">{{ $savelater['get_product_detail']['name'] }}</h5>
