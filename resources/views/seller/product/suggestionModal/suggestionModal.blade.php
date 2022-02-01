@@ -11,7 +11,7 @@
   <div class="mb-4">
     <label for="exampleFormControlInput1" class="form-label">Offer Type</label>
     <div class="custom-urban-form">
-      <select class="form-control offerType" name="offerType" id="offerType">
+      <select class="form-control form-select offerType" name="offerType" id="offerType">
         <option selected="" disabled="">Select</option>
         <option value="1">Free Shipping</option>
         <option value="2">Flat Discount</option>
