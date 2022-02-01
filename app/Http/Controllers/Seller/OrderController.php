@@ -23,7 +23,13 @@ class OrderController extends Controller
         {
             $getProductId = Product::where('user_id', Auth::user()->id)->get()->pluck('id')->toArray();
             if($getProductId){
-                $orders = Order::with('getUserDetail')
+
+                $getProductId = Product::where('user_id', Auth::user()->id)->get()->pluck('id')->toArray();
+                $getOrderId = OrderDetail::whereIn('product_id', $getProductId)->get()->pluck('order_id')->toArray();
+                $getUniqueOrderId = array_unique($getOrderId);
+                //$orders = Order::whereIn('id', $getUniqueOrderId);
+
+                $orders = Order::with('getUserDetail')->whereIn('id', $getUniqueOrderId)
                     ->whereHas('getUserDetail', function($query) use($search)
                     {
                         $query->where('first_name', 'LIKE', '%'.$search.'%')
@@ -40,13 +46,20 @@ class OrderController extends Controller
             //$orders = Order::latest();
             $getProductId = Product::where('user_id', Auth::user()->id)->get()->pluck('id')->toArray();
             if($getProductId){
-                $orders = Order::latest();
+                //$orders = Order::latest();
+
+                $getProductId = Product::where('user_id', Auth::user()->id)->get()->pluck('id')->toArray();
+                $getOrderId = OrderDetail::whereIn('product_id', $getProductId)->get()->pluck('order_id')->toArray();
+                $getUniqueOrderId = array_unique($getOrderId);
+                $orders = Order::whereIn('id', $getUniqueOrderId);
+
             }else{
                 $orders = Order::where('user_id', Auth::user()->id);
             }
         }
 
         $orders = $orders->get()->toArray();
+        //echo "<pre>";print_r($orders);die;
 
         if(count($orders))
         {

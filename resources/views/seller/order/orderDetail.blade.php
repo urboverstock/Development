@@ -67,14 +67,15 @@
             </div>
             @endif           
         </div>
-
         @if($order && @$order->getUserAddress && isset($order->getUserAddress->getUserDetail) && !empty($order->getUserAddress->getUserDetail))
         <div class="col-lg-12">
           <div class="d-flex flex-wrap mb-2 align-center" data-aos="fade-up">
             @if(isset($order->getUserAddress->getUserDetail->name))
               <a href="{{ url('chat?user_id='. \Illuminate\Support\Facades\Crypt::encrypt($order->getUserAddress->getUserDetail->id)).'&user=auth' }}" class="btn btn-dark rounded-pill px-4 py-2 mt-3 mb-4">Send Message</a>
             @else
-              <a href="{{ url('chat?user_id='. \Illuminate\Support\Facades\Crypt::encrypt($order->getGuestUserDetail->id)).'&user=guest' }}" class="btn btn-dark rounded-pill px-4 py-2 mt-3 mb-4">Send Message</a>
+              @if($order && @$order->getGuestUserDetail && isset($order->getGuestUserDetail->id))
+                <a href="{{ url('chat?user_id='. \Illuminate\Support\Facades\Crypt::encrypt($order->getGuestUserDetail->id)).'&user=guest' }}" class="btn btn-dark rounded-pill px-4 py-2 mt-3 mb-4">Send Message</a>
+              @endif
             @endif
             </div>
         </div>

@@ -748,6 +748,7 @@ $(document).ready(function() {
 		rules: {
 			name: {
 				required:true,
+				specialChars:true,
 			},			
 			type:{
 				required:true,

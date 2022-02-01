@@ -11,7 +11,7 @@
   <div class="mb-4">
     <label for="exampleFormControlInput1" class="form-label">Offer Type</label>
     <div class="custom-urban-form">
-      <select class="form-control offerType" name="offerType" >
+      <select class="form-control offerType" name="offerType" id="offerType">
         <option selected="" disabled="">Select</option>
         <option value="1">Free Shipping</option>
         <option value="2">Flat Discount</option>
@@ -24,7 +24,7 @@
     <label for="exampleFormControlInput1" class="form-label">Offer Percentage</label>
     <div class="custom-urban-form">
       <input class="form-control" id="offerPercentage" placeholder="Offer Percentage" type="text" name="offerPercentage">
-      <i class="fas fa-pen"></i>
+      <i class="fas fa-pen input-icon"></i>
     </div>
     <span class="error">{{ $errors->first('offerPercentage') }}</span>
   </div>
@@ -33,7 +33,7 @@
     <label for="exampleFormControlInput1" class="form-label">Message</label>
     <div class="custom-urban-form">
       <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="" rows="5" name="message"></textarea>
-      <i class="fas fa-pen"></i>
+      <i class="fas fa-pen textarea-icon"></i>
     </div>
     <span class="error">{{ $errors->first('message') }}</span>
   </div>
@@ -60,6 +60,9 @@
 
  $("form[name='sellerSendSuggestionNotifcation']").validate({
   rules: {
+    offerType: {
+			required: true
+		},
     offerPercentage: {
       required:true,
       number: true
