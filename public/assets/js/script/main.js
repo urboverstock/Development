@@ -247,6 +247,11 @@ $(document).ready(function () {
             $("select").css("color", "gray !important");
         }
     });
+
+    $(".addoffer-close-modal").click(function() {
+		$("#myModal").modal('hide');
+        $('.modal-backdrop').remove();
+	});
 });
 
 

@@ -223,6 +223,8 @@ $('.slider-for').slick({
 
             $('#cart-section'+cart_id).remove();
             toastr.success(response.message, "Success");
+
+            setTimeout(function(){ location.reload(); }, 1000);
           }else{
             toastr.error(response.message, "Error");
           }

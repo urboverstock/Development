@@ -88,7 +88,7 @@
                   
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-default addoffer-close-modal" data-dismiss="modal">Close</button>
                 </div>
               </div>
 
