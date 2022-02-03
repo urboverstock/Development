@@ -183,7 +183,7 @@
      
 
       @if(count($products) >= 8)
-       <div><button type="button" class=" btn btn-dark rounded-pill px-4 py-3 d-flex m-auto loadmoreproductsbtn" >Load More Products</button>
+       <div class="loadmore-pagination-sec"><button type="button" class=" btn btn-dark rounded-pill px-4 py-3 d-flex m-auto loadmoreproductsbtn" >Load More Products</button>
       </div>
       @endif
       @else

@@ -15,6 +15,8 @@ $(document).ready(function() {
 						$(".loadmore-main").append(response.html);
 						pagecount = parseInt($(".productpagecount").val()) + 1;
 						$(".productpagecount").val(pagecount);
+					}else{
+						$(".loadmore-pagination-sec").hide();
 					}
 			}).fail(function() {
 				ajaxrequestTime = false;
