@@ -89,9 +89,9 @@
               <div class="urban-sub-title mb-4">
                 <p class="mb-0">
                   <!-- Search Results -->
-                  @if(request()->get('category')==1)
+                  @if(request()->get('category')==2)
                       Men Products
-                    @elseif(request()->get('category')==2)
+                    @elseif(request()->get('category')==3)
                       Women Products
                     @else
                       Search Results 

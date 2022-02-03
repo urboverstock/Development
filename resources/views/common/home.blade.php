@@ -199,13 +199,13 @@
   <section class="section-2">
     <div class="row">
       <div class="col-md-6 m-0 p-0" >
-        <a href="{{route('search-products')}}?category=1" class="text-dark text-decoration-none position-relative">
+        <a href="{{route('search-products')}}?category=2" class="text-dark text-decoration-none position-relative">
           <h4 class="fw-bold position-absolute p-5"  data-aos="fade-left">Men</h4>
           <img class="w-100" src="{{ asset('assets/images/men.png') }}" alt="">
         </a>  
       </div>
       <div class="col-md-6 m-0 p-0">
-        <a href="{{route('search-products')}}?category=2" class="text-dark text-decoration-none position-relative">
+        <a href="{{route('search-products')}}?category=3" class="text-dark text-decoration-none position-relative">
           <h4 class="fw-bold position-absolute end-0 p-5"  data-aos="fade-right">Women</h4>
           <img class="w-100" src="{{ asset('assets/images/women.png') }}" alt="">
         </a>  
