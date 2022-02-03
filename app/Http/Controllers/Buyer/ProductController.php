@@ -93,7 +93,7 @@ class ProductController extends Controller
         
         $userId = Auth::user()->id;
 
-        $checkOrderComplete = OrderDetail::where(['product_id' => $request->product_id, 'user_id' => $userId, 'status' => 2])->count();
+        $checkOrderComplete = OrderDetail::where(['product_id' => $request->product_id, 'user_id' => $userId, 'status' => 3])->count();
 
         if($checkOrderComplete == 0)
         {
