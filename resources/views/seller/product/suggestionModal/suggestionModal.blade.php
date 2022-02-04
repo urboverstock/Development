@@ -32,7 +32,7 @@
   <div class="mb-4">
     <label for="exampleFormControlInput1" class="form-label">Message</label>
     <div class="custom-urban-form">
-      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="" rows="5" name="message"></textarea>
+      <textarea class="form-control" id="message" placeholder="" rows="5" name="message"></textarea>
       <i class="fas fa-pen textarea-icon"></i>
     </div>
     <span class="error">{{ $errors->first('message') }}</span>
@@ -67,9 +67,15 @@
       required:true,
       number: true
     },
+    message: {
+      required:true
+    }
   },
   messages: {
     offerPercentage: {
+      required: "This field is required",
+    },
+    message: {
       required: "This field is required",
     }
   },
