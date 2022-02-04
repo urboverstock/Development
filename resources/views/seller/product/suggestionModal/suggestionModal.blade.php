@@ -85,7 +85,7 @@
                 // var message = 'Success';
                 // $(this).modal('hide');
                 toastr.success(res.success);
-                // location.reload();
+                setTimeout(function(){ location.reload(); }, 1000);
               },
               error:function(){
                 console.log('error');

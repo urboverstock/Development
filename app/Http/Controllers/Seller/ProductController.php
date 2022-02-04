@@ -388,6 +388,7 @@ class ProductController extends Controller
         $mail = emailSend($data);
 
         return response()->json(['success' => 'Offer send successfully']);
+        //return back()->with('success', 'Offer send successfully');
     }
 
     //Get listing of offers
