@@ -48,7 +48,13 @@
                       <th scope="row" class="py-3 align-middle f-400">{{ $key + 1  }}</th>
                       <th scope="row" class="py-3 align-middle f-400">{{ $offer['user']['full_name']}}</th>
                       <td class="py-3 align-middle">{{ $offer['get_product_details']['name'] }}</td>
-                      <td class="py-3 align-middle">{{ $offer['offer_percentage'] }}</td>
+                      <td class="py-3 align-middle">
+                      @if($offer['offer_percentage'] != null)
+                          {{ $offer['offer_percentage'] }}
+                        @else
+                          N/A
+                      @endif
+                      </td>
                       <td class="py-3 align-middle">{{ $offer['description'] }}</td>
                       <td class="py-3 align-middle">{{ date('d M, Y', strtotime($offer['created_at']) ) }}</td>
                       

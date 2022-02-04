@@ -42,6 +42,8 @@
               <li><a class="dropdown-item border-bottom"  @if((request()->segment(3) == 'wishlist')) style="font-weight: bold !important;" @endif href="{{ route('sellerWishlistProduct') }}
               ">Users Wishlist</a></li>
 
+              <li><a class="dropdown-item border-bottom " @if((request()->segment(3) == 'favourite')) style="font-weight: bold !important;" @endif href="{{ route('sellerFavouriteProduct') }}">My Favourites</a></li>
+
               <li><a class="dropdown-item border-bottom"  @if((request()->segment(1) == 'all-post')) style="font-weight: bold !important;" @endif href="{{ route('AllPost') }}
               ">All Posts</a></li>
 

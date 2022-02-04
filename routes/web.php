@@ -49,6 +49,9 @@ Route::group(['middleware' => ['auth', 'checksellerstore'], 'prefix' => 'seller'
     Route::any('send-suggestion-notifcation', [App\Http\Controllers\Seller\ProductController::class, 'sendSuggestionNotifcation'])->name('SendSuggestionNotifcation');
     Route::get('offer-listing/{productId}', [App\Http\Controllers\Seller\ProductController::class, 'offerListing'])->name('OfferListing');
 
+    Route::any('product/favourite', [App\Http\Controllers\Seller\ProductController::class, 'productFavourite'])->name('FavouriteProduct');
+    Route::any('product/favourite/delete/{id}', [App\Http\Controllers\Seller\ProductController::class, 'delete_favourite'])->name('DeleteFavourite');
+
     Route::any('coupon', [App\Http\Controllers\Seller\CouponController::class, 'index'])->name('Coupon');
     Route::any('add-coupon', [App\Http\Controllers\Seller\CouponController::class, 'create'])->name('AddCoupon');
     Route::any('store-coupon', [App\Http\Controllers\Seller\CouponController::class, 'store'])->name('StoreCoupon');

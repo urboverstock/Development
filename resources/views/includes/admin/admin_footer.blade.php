@@ -1,4 +1,4 @@
-<footer class="text-white bg-dark mt-auto py-3">
+<!--footer class="text-white bg-dark mt-auto py-3">
   <div class="container">
     <div
       class="d-flex justify-content-between flex-wrap align-items-center"
@@ -7,4 +7,4 @@
       <p class="fw-bold mb-0">© 2021 Urban Overstock</p>
     </div>
   </div>
-</footer>
+</footer-->
