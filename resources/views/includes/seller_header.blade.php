@@ -33,8 +33,8 @@
               <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'add-product')) style="font-weight: bold !important;" @endif href="{{ route('sellerAddProduct') }}
               ">Add Product</a></li>
 
-              <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'coupon')) style="font-weight: bold !important;" @endif href="{{ route('sellerCoupon') }}
-              ">Coupons</a></li>
+              <!--li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'coupon')) style="font-weight: bold !important;" @endif href="{{ route('sellerCoupon') }}
+              ">Coupons</a></li-->
 
               <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'orders')) style="font-weight: bold !important;" @endif href="{{ route('sellerOrderList') }}
               ">Orders</a></li>

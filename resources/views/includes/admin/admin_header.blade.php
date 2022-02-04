@@ -154,6 +154,9 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li>
+                <a class="dropdown-item" href="{{ route('adminCoupon') }}">Coupons</a>
+              </li>
+              <li>
                 <a class="dropdown-item" href="{{ route('admin.edit_profile') }}">Settings</a>
               </li>
               <li>

@@ -200,6 +200,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::any('edit-product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'editProduct'])->name('adminEditProduct');
     Route::any('view-product/{id}', [App\Http\Controllers\Admin\ProductController::class, 'viewProduct'])->name('adminViewProduct');
     Route::any('delete-image/{id}', [App\Http\Controllers\Admin\ProductController::class, 'deleteImage'])->name('adminDeleteImage');
+
+    Route::any('coupon', [App\Http\Controllers\Admin\CouponController::class, 'index'])->name('adminCoupon');
+    Route::any('add-coupon', [App\Http\Controllers\Admin\CouponController::class, 'create'])->name('adminAddCoupon');
+    Route::any('store-coupon', [App\Http\Controllers\Admin\CouponController::class, 'store'])->name('adminStoreCoupon');
+    Route::any('edit-coupon/{id}', [App\Http\Controllers\Admin\CouponController::class, 'editCoupon'])->name('adminEditCoupon');
+    Route::any('update-coupon', [App\Http\Controllers\Admin\CouponController::class, 'update'])->name('adminUpdateCoupon');
+    Route::any('view-coupon/{id}', [App\Http\Controllers\Admin\CouponController::class, 'show'])->name('adminViewCoupon');
+    Route::any('delete-coupon/{id}', [App\Http\Controllers\Admin\CouponController::class, 'delete'])->name('adminDeleteCoupon');
 });
 
 
