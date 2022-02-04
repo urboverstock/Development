@@ -89,38 +89,38 @@ $(".four-item").slick({
     ],
 });
 
+// $(".center-slick").slick({
+//     centerMode: true,
+//     centerPadding: "0px",
+//     slidesToShow: 3,
+//     autoplay: true,
+//     prevArrow:
+//         "<i class='fas fa-chevron-left --arrow-left cursor-pointer '></i>",
+//     nextArrow:
+//         "<i class='fas fa-chevron-right --arrow-right cursor-pointer '></i>",
+//     responsive: [
+//         {
+//             breakpoint: 1400,
+//             settings: {
+//                 arrows: false,
+//                 centerMode: true,
+//                 centerPadding: "40px",
+//                 slidesToShow: 3,
+//             },
+//         },
+//         {
+//             breakpoint: 1250,
+//             settings: {
+//                 arrows: false,
+//                 centerMode: true,
+//                 centerPadding: "40px",
+//                 slidesToShow: 1,
+//             },
+//         },
+//     ],
+// });
 $(".center-slick").slick({
-    centerMode: true,
-    centerPadding: "0px",
-    slidesToShow: 3,
-    autoplay: true,
-    prevArrow:
-        "<i class='fas fa-chevron-left --arrow-left cursor-pointer '></i>",
-    nextArrow:
-        "<i class='fas fa-chevron-right --arrow-right cursor-pointer '></i>",
-    responsive: [
-        {
-            breakpoint: 1400,
-            settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: "40px",
-                slidesToShow: 3,
-            },
-        },
-        {
-            breakpoint: 1250,
-            settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: "40px",
-                slidesToShow: 1,
-            },
-        },
-    ],
-});
-$(".center-slick").slick({
-    centerMode: true,
+    centerMode: false,
     centerPadding: "0px",
     slidesToShow: 3,
     autoplay: true,
