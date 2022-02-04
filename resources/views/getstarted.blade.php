@@ -135,7 +135,7 @@
             <div class="card product-item border-0 shadow-sm mb-5">
               <div class="card-body ">
                 <a class="text-decoration-none text-dark" target="_blank" href="{{ route('product-detail', $product->sku) }}">
-                  <img class=" productImg" src="{{ productDefaultImage($product->id)}}" alt="">
+                  <img class=" product-img-size" src="{{ productDefaultImage($product->id)}}" alt="">
                 </a>
                 <a class="text-decoration-none text-dark" href="{{ route('product-detail', $product->sku) }}"><h5 class="fw-bold">{{$product->name }}</h5></a>
               </div>
@@ -194,6 +194,7 @@
 
   
   <section class="bg--black seller-section  mb-0 position-relative">
+    
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 --left-seller">

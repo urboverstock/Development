@@ -17,7 +17,9 @@ body {
 footer {
     margin-top: auto;
 }
-
+.br-30 {
+    border-radius: 30px;
+}
 .productImg {
     margin: 0 auto;
     width: 240px;
