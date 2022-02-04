@@ -7,7 +7,7 @@
         
         <div class="custom-form-group-search  	d-none d-lg-block">
             <form class="position-relative" action="{{ route('search-products') }}">
-                <input name="searchproduct" type="text" class="form-control" value="{{ request()->get('searchproduct') }}" placeholder="Search for your favourite brands" />
+                <input name="searchproduct" type="text" class="form-control" required value="{{ request()->get('searchproduct') }}" placeholder="Search for your favourite brands" />
                 <button type="submit" class="transparent-button btn position-absolute top-50 end-0 translate-middle-y"><i class="fas fa-search text--primary"></i></button>
             </form>
         </div>
