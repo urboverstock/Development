@@ -87,6 +87,11 @@ class ProductController extends Controller
     {
         $request->request->add(['limit' => 8]);
         $products = Product::getProducts($request);
+        if($products->lastPage() == $request->page){
+            $response['is_last_page'] = 1;
+        }else{
+            $response['is_last_page'] = 0;
+        }
         $response['status'] = (count($products) > 0) ? 1 : 0;
         $response['html'] = View('ajax_view.products', compact('products'))->render();
         return response()->json($response);

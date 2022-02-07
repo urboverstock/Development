@@ -15,6 +15,9 @@ $(document).ready(function() {
 						$(".loadmore-main").append(response.html);
 						pagecount = parseInt($(".productpagecount").val()) + 1;
 						$(".productpagecount").val(pagecount);
+						if(response.is_last_page){
+							$(".loadmore-pagination-sec").hide();
+						}
 					}else{
 						$(".loadmore-pagination-sec").hide();
 					}

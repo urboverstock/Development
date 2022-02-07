@@ -901,7 +901,7 @@ $(document).ready(function() {
 						toastr.error(response.message, "Error");
 					}
 					$("#applyCouponModal").modal('hide');
-					setTimeout(function(){ location.reload(); }, 1000);
+					//setTimeout(function(){ location.reload(); }, 1000);
 				},
 				error:function(){
 					   alert("failure");

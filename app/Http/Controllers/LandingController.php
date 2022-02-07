@@ -714,6 +714,15 @@ class LandingController extends Controller
          ->first();
          if($check_coupon){
              //echo $request->total_price.'----'.$check_coupon->price;die;
+             if($check_coupon->type == 0){
+                $discount_amt = ($request->total_price / 100) * $check_coupon->price;
+                if($request->total_price < $discount_amt){
+                    $response["status"] = 0;
+                    $response["message"] = "Order total is less than coupon amount!";
+                    return response()->json($response);
+                }
+             }
+
              if($check_coupon->type == 1 && $request->total_price < $check_coupon->price){
                 $response["status"] = 0;
                 $response["message"] = "Order total is less than coupon amount!";
