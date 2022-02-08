@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\OrderDetail;
 use App\Models\UserFollowers;
 use App\Models\ProductView;
+use App\Models\ProductRating;
 use Auth;
 
 class ProductController extends Controller
@@ -130,8 +131,21 @@ class ProductController extends Controller
 
             $totalProductView = ProductView::where('product_id', $product_details->id)->first();
             // print_r($totalProductView);die();
+
+            $reviews = ProductRating::with(['getUserDetail' => function($q)
+            {
+                $q->select('id', 'first_name', 'profile_pic', 'last_name');
+            }])
+            ->with(['getProductDetail' => function($q)
+            {
+                $q->select('id', 'name','price','sku');
+            }])->where('product_id', $product_details->id);
+
+            $reviews = $reviews->get()->toArray();
+            //echo "<pre>";
+            //print_r($reviews);die();
             
-            return view('common.productDetail', compact('product_details', 'recent_products', 'store_user_details', 'totalSoldProduct', 'totalProductView'));
+            return view('common.productDetail', compact('product_details', 'recent_products', 'store_user_details', 'totalSoldProduct', 'totalProductView', 'reviews'));
         } else {
             return redirect('/');
         }

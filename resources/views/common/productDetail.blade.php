@@ -178,7 +178,18 @@
                   Discussion
                </div>
                <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-contact-tab">
-                  Reviews
+                  @if(isset($reviews) && !empty($reviews))
+                     <ul>
+                        @foreach($reviews as $review)
+                           <li>
+                              Comment: {{ $review['review'] }}<br>
+                              Rating: {{ $review['rating'] }}
+                           </li>
+                        @endforeach
+                     </ul>
+                  @else
+                     No Review
+                  @endif
                </div>
                <div class="tab-pane fade" id="nav-store" role="tabpanel" aria-labelledby="nav-contact-tab">
                   <h3 class="f-600 mb-0 me-3">{{ $store_user_details->full_name }}</h3>

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class ProductRating extends Model
 {
     use HasFactory;
+
+    public function getUserDetail()
+    {
+    	return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+
+    public function getProductDetail()
+    {
+    	return $this->belongsTo('App\Models\Product', 'product_id', 'id');
+    }
 }
