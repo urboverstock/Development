@@ -82,7 +82,7 @@
   <div class="sub-footer bg--primary">
     <div class="container">
       <div class="d-flex justify-content-between flex-wrap align-items-center">
-        <p class="fw-bold text-footer-bottom  mb-0">© 2021 Urban Overstock</p>
+        <p class="fw-bold text-footer-bottom  mb-0">© 2021 Urban Overstock App.</p>
         <div class="d-flex">
           <img class="img-fluid me-3" src="{{ asset('assets/images/paypal.png') }}" alt="">
           <img class="visa-footer-image" src="{{ asset('assets/images/visa.png') }}" alt="">

@@ -251,7 +251,11 @@ $(document).ready(function () {
     $(".addoffer-close-modal").click(function() {
 		$("#myModal").modal('hide');
         $('.modal-backdrop').remove();
-	});
+    });
+    
+    $("#myModal").on('hidden.bs.modal', function () {
+        $('.modal-backdrop').remove();
+    });
 });
 
 

@@ -91,6 +91,20 @@
         });
     </script>
 
+    <script>
+        $(document).on('click', '.logout_btn', function(){
+            $('.logout-screen').show();
+        });
+
+        $(document).on('click', '.cancel_logout_btn', function(){
+            $('.logout-screen').hide();
+        });
+
+        $(document).on('click', '.confirm_logout_btn', function(){
+            window.location.href = "{{ route('logout') }}";
+        });
+    </script>
+
     @yield('scripts')
   
 </body>

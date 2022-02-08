@@ -57,8 +57,9 @@
           <li class="nav-item me-4">
             <a class="nav-link {{ (request()->segment(2) == 'faq') ? 'active' : '' }}" href="{{ route('adminFaq') }}">Faqs</a>
           </li>
-          <li class="nav-item me-4">
-            <a class="nav-link" href="{{ route('admin.logout') }}">Logout</a>
+          <li class="nav-item me-4 logout_btn">
+            <!--a class="nav-link" href="{{ route('admin.logout') }}">Logout</a-->
+            <a class="nav-link" href="javascript:;">Logout</a>
           </li>
         </ul>
       </div>
