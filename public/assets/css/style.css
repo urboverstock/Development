@@ -20,6 +20,12 @@ footer {
 .br-30 {
     border-radius: 30px;
 }
+.product-square-size {
+    height: 183px;
+    width: 240px;
+    object-fit: fill;
+    margin-bottom: 0.5rem;
+}
 .productImg {
     margin: 0 auto;
     width: 240px;
