@@ -44,6 +44,17 @@
                         @endif
 
                     </select>
+
+                    <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example" name="tag">
+                        <option selected class="" disabled="">Tag</option>
+
+                        @if(isset($alltags) && !empty($alltags))
+                          @foreach($alltags as $tag)
+                          <option value="{{ $tag['tags'] }}" {{ @$filter_tag == $tag['tags'] ? 'selected' : '' }}>{{ $tag['tags'] }}</option>
+                          @endforeach
+                        @endif
+
+                    </select>
                     <!-- <select class="form-select border-0 br-10 shadow-sm py-2 text--gray-one text-14 fw-bold me-3 my-2" aria-label="Default select example" name="gender">
                         <option selected class="">Gender</option>
                         <option value="1" {{ (@$gender == '1') ? 'selected' : '' }}>Men</option>

@@ -45,11 +45,14 @@ class ProductController extends Controller
         $request->request->add(['limit' => 8]);
         $products = Product::getProducts($request);
         $brands = Product::select('brand')->whereNotNull('brand')->groupBy('brand')->get()->toArray();
+        $alltags = Product::select('tags')->whereNotNull('tags')->groupBy('tags')->get()->toArray();
         $categories = ProductCategory::get();
         $search = $request->searchproduct;
         $price = $request->price;
         $filter_brand = $request->brand;
-        return view('common.search-results', compact('products','categories','search','price', 'brands', 'filter_brand'));
+        $filter_tag = $request->tag;
+        //echo "<pre>";print_r($alltags);die;
+        return view('common.search-results', compact('products','categories','search','price', 'brands','alltags' ,'filter_brand','filter_tag'));
     }
 
     public function getProducts(Request $request)
@@ -57,13 +60,15 @@ class ProductController extends Controller
         $request->request->add(['limit' => 8]);
         $products = Product::getProducts($request);
         $brands = Product::select('brand')->whereNotNull('brand')->groupBy('brand')->get()->toArray();
+        $alltags = Product::select('tags')->whereNotNull('tags')->groupBy('tags')->get()->toArray();
         // echo "<pre>";
         // print_r($brands);die();
         $categories = ProductCategory::get();
         $search = $request->search;
         $price = $request->price;
         $filter_brand = $request->brand;
-        return view('common.allproducts', compact('products','categories','search','price', 'brands', 'filter_brand'));
+        $filter_tag = $request->tag;
+        return view('common.allproducts', compact('products','categories','search','price', 'brands','alltags', 'filter_brand','filter_tag'));
     }
 
     public function getCollectionProducts(Request $request, $id)

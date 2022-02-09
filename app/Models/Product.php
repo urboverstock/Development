@@ -51,6 +51,10 @@ class Product extends Model
             $query->where('brand', $request->brand);
         }
 
+        if($request->tag) {
+            $query->where('tags', $request->tag);
+        }
+
         if($request->price) {
             $explode = explode('-', $request->price);
             
