@@ -3,7 +3,7 @@
         <div class="card product-item border-0 shadow-sm mb-5">
             <div class="card-body ">
                 <a class="text-decoration-none text-dark" title="view details" target="_blank" href="{{ route('product-detail', $product->sku) }}">
-                    <img class="img-fluid productImg" src="{{ productDefaultImage($product->id)}}" alt="">
+                    <img class=" product-img-size mb-3" src="{{ productDefaultImage($product->id)}}" alt="">
                 </a>
                 <a class="text-decoration-none text-dark" title="view details" target="_blank" href="{{ route('product-detail', $product->sku) }}">
                     <h5 class="fw-bold">{{$product->name }}</h5>
