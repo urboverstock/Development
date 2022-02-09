@@ -167,7 +167,8 @@
                 <a class="dropdown-item" href="{{ route('admin.chat') }}">Chats</a>
               </li>
               <li>
-                <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
+                <!--a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a-->
+                <a class="dropdown-item logout_btn" href="javascript:;">Logout</a>
               </li>
             </ul>
           </div>

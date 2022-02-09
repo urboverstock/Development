@@ -142,7 +142,14 @@ class LandingController extends Controller
 
                 if (Auth::user()->user_type == 4) {
                     if($postData['previous_url']){
-                        return Redirect::to(''.$postData['previous_url'].'')->with('success', "Logged in successfully");
+                        $previous_url = $postData['previous_url'];
+                        if (strpos($previous_url, 'admin') == true) {
+                            return redirect()->route('buyer.index')->with('success', "Logged in successfully");
+                        }else if(strpos($previous_url, 'seller') == true){
+                            return redirect()->route('buyer.index')->with('success', "Logged in successfully");
+                        }else{
+                            return Redirect::to(''.$postData['previous_url'].'')->with('success', "Logged in successfully");
+                        }
                     }else{
                         return redirect()->route('buyer.index')->with('success', "Logged in successfully");   
                     }
