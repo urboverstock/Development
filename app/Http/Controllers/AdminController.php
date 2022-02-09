@@ -93,17 +93,17 @@ class AdminController extends Controller
         $product->category_id   = $request->category_id;
         // $product->company_id    = $request['company_id'];
         $product->brand    = $request->brand;
-        $product->compare_price    = $request->compare_price;
-        $product->cost_per_price    = $request->cost_per_price;
+        //$product->compare_price    = $request->compare_price;
+        //$product->cost_per_price    = $request->cost_per_price;
 
         $slug = \Str::slug($request->name);
         $count = Product::whereRaw("sku RLIKE '^{$slug}(-[0-9]+)?$'")->count();
         $slug = $count ? "{$slug}-{$count}" : $slug;
 
         $product->sku    = $slug;
-        $product->charge_tax    = $request->charge_tax;
-        $product->track_quantity    = $request->track_quantity;
-        $product->continue_selling    = $request->continue_selling;
+        //$product->charge_tax    = $request->charge_tax;
+        //$product->track_quantity    = $request->track_quantity;
+        //$product->continue_selling    = $request->continue_selling;
         $product->quantity    = $request->quantity;
         $product->tags    = $request->tags;
         

@@ -134,7 +134,7 @@
                       <div class="card-body">
                           <h3 class=" mb-4 fw-bold ">Pricing</h3>
                           <div class="row">
-                              <div class="col-lg-6 mb-4">
+                              <div class="col-lg-12 mb-4">
                                   <label for="exampleFormControlInput1" class="form-label">Price</label>
                                   <div class="custom-urban-form">
                                       <input class="form-control priceCheck" type="text" placeholder="$ 0.00" name="price" value="{{ @$product->price ?: old('price') }}">
@@ -142,15 +142,15 @@
                                   </div>
                                   <span class="price-error">{{ $errors->first('price') }}</span>
                               </div>
-                              <div class="col-lg-6 mb-4">
+                              <!--div class="col-lg-6 mb-4">
                                   <label for="exampleFormControlInput1" class="form-label">Compare at Price</label>
                                   <div class="custom-urban-form">
                                       <input class="form-control ComparePrice" type="text" placeholder="$ 0.00" name="compare_price" value="{{ @$product->compare_price ?: old('compare_price') }}">
                                       <i class="fas fa-pen"></i>
                                   </div>
                                   <span class="compare-price-error">{{ $errors->first('compare_price') }}</span>
-                              </div>
-                              <div class="col-lg-12">
+                              </div-->
+                              <!--div class="col-lg-12">
                                   <label for="exampleFormControlInput1" class="form-label">Cost per Item</label>
                                   <div class="custom-urban-form mb-2">
                                       <input class="form-control CostItem" type="text" placeholder="$ 0.00" name="cost_per_price" value="{{ @$product->cost_per_price ?: old('cost_per_price') }}">
@@ -160,11 +160,11 @@
                                   <span>Customer Won't see this</span>
                                   <div class="mt-3 ">
                                       <div class="urban-checkbox form-group-checkbox">
-                                          <input type="checkbox" id="vehicle1" name="charge_tax" value="1" <?php if(isset($product->charge_tax) && $product->charge_tax == 1) { echo 'checked'; } else if(old('charge_tax') == 1) { echo 'checked'; } ?>>
+                                          <input type="checkbox" id="vehicle1" name="charge_tax" value="1" <?php //if(isset($product->charge_tax) && $product->charge_tax == 1) { echo 'checked'; } else if(old('charge_tax') == 1) { echo 'checked'; } ?>>
                                           <label for="vehicle1" class="fw-bold"> Charge tax on this Product</label>
                                       </div>
                                   </div>
-                              </div>
+                              </div-->
                           </div>
                           
                       </div>
@@ -189,12 +189,12 @@
                                   </div>
                                   <span class="price-error">{{ $errors->first('barcode') }}</span>
                               </div> -->
-                              <div class="col-lg-12">
+                              <div class="col-lg-12" style="display:none;">
                                   <div class="urban-checkbox form-group-checkbox">
                                       <input type="checkbox" id="checkbox2" name="track_quantity" value="1" <?php if(@$product->track_quantity == 1) { echo 'checked'; } else if(old('track_quantity') == 1) { echo 'checked';} ?>>
                                       <label for="checkbox2" class="fw-bold">Track Quantity</label>
                                   </div>
-                                  <div class="urban-checkbox form-group-checkbox">
+                                  <div class="urban-checkbox form-group-checkbox" style="display:none;">
                                       <input type="checkbox" id="checkbox3" name="continue_selling" value="1" <?php if(@$product->continue_selling == 1) { echo 'checked'; } else if(old('continue_selling') == 1) { echo 'checked'; } ?>>
                                       <label for="checkbox3" class="fw-bold"> Continue Selling When Out of Stock</label>
                                   </div>

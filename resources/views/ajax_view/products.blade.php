@@ -41,9 +41,11 @@
                     </a>
                 </div>
             </div>
+            @if(Auth::check() && Auth::user()->user_type != 3)
             <div class="product-wishlist position-absolute end-0 pe-3">
                 <button type="button" class="btn btn--primary btn-sm fw-bold">Add to Wishlist</button>
             </div>
+            @endif
         </div>
     </div>
   </div>

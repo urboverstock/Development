@@ -288,7 +288,7 @@ $(document).ready(function() {
 				maxlength:10
 			},
 
-			compare_price:{
+			/* compare_price:{
 				required:true,
 				digits: true,
 				minlength:1,
@@ -300,7 +300,7 @@ $(document).ready(function() {
 				digits: true,
 				minlength:1,
 				maxlength:10
-			},
+			}, */
 			// gender:{
 			// 	required:true
 			// },
@@ -331,11 +331,11 @@ $(document).ready(function() {
 	            error.appendTo($('.name-error'));
 	        }else if(element.attr("name") == "price"){
 				error.appendTo($('.price-error'));
-			}else if(element.attr("name") == "compare_price"){
+			}/* else if(element.attr("name") == "compare_price"){
 				error.appendTo($('.compare-price-error'));
 			}else if(element.attr("name") == "cost_per_price"){
 				error.appendTo($('.cost-price-error'));
-			}else{
+			} */else{
 	            error.insertAfter(element);
 	        }
 	    }

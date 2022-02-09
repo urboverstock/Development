@@ -81,9 +81,9 @@ class ProductController extends Controller
             $slug = $count ? "{$slug}-{$count}" : $slug;
 
             $product->sku    = $slug;
-            $product->charge_tax    = $request->charge_tax;
-            $product->track_quantity    = $request->track_quantity;
-            $product->continue_selling    = $request->continue_selling;
+            //$product->charge_tax    = $request->charge_tax;
+            //$product->track_quantity    = $request->track_quantity;
+            //$product->continue_selling    = $request->continue_selling;
             $product->quantity    = $request->quantity;
             $product->tags    = $request->tags;
             
@@ -213,8 +213,8 @@ class ProductController extends Controller
             $product->category_id   = $request->category_id;
             // $product->company_id    = $request->company_id;
             $product->brand    = $request->brand;
-            $product->compare_price    = $request->compare_price;
-            $product->cost_per_price    = $request->cost_per_price;
+            //$product->compare_price    = $request->compare_price;
+            //$product->cost_per_price    = $request->cost_per_price;
             $product->status        = $request->status;
             
             if($product->sku != '')
@@ -230,9 +230,9 @@ class ProductController extends Controller
             
 
             $product->sku    = $slug;
-            $product->charge_tax    = $request->charge_tax;
-            $product->track_quantity    = $request->track_quantity;
-            $product->continue_selling    = $request->continue_selling;
+            //$product->charge_tax    = $request->charge_tax;
+            //$product->track_quantity    = $request->track_quantity;
+            //$product->continue_selling    = $request->continue_selling;
             $product->quantity    = $request->quantity;
             $product->tags    = $request->tags;
             // print_r($product);die();
