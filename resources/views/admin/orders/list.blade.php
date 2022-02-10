@@ -202,7 +202,7 @@
                         <td>
                           
                         </td>
-                        <td class="py-3 align-middle">#{{ $order['id'] }}</td>
+                        <td class="py-3 align-middle" data-sort="{{ $order['id'] }}">#{{ $order['id'] }}</td>
                         <td class="py-3 align-middle">
                         @if(!empty($order['get_user_detail']) && isset($order['get_user_detail']))
                           {{ $order['get_user_detail']['first_name']}} {{ $order['get_user_detail']['last_name']}}
