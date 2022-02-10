@@ -119,6 +119,7 @@
               <div class="form-floating">
                 <textarea class="form-control message" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                 <label for="floatingTextarea2">Write Message</label>
+                <span class="user-error error" style="display: none;">Please select user from sidebar.</span>
                 <span class="description-error error" style="display: none;">Message can not be Empty</span>
               </div>
               <div class="d-flex justify-content-end">
@@ -189,8 +190,12 @@
 
                 $('#sendMessage').click(function(e)
                 {
-                    let message = $('.message').val(); 
-
+                    let message = $('.message').val();
+                    if(recieverId == '')
+                    {
+                        $('.user-error').show();
+                        return fasle;
+                    }
                     if(message == '')
                     {
                         $('.description-error').show();
@@ -198,7 +203,7 @@
                     else
                     {
                         $('.description-error').hide();
-
+                        $('.user-error').hide();
                         socket.emit('sendChatToServer', {
                             message: message,
                             username: username,
