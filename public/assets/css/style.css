@@ -22,8 +22,12 @@ footer {
 }
 .product-square-size {
     height: 183px;
-    width: 240px;
-    object-fit: fill;
+    width: 100%;
+    margin: auto;
+    min-width: 100%;
+    max-width: 240px;
+    object-fit: cover;
+    object-position: top;
     margin-bottom: 0.5rem;
 }
 .productImg {
