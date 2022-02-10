@@ -52,14 +52,14 @@
             <a class="nav-link {{ (request()->segment(2) == 'sellers') ? 'active' : '' }}" href="{{ route('admin.sellers') }}">SELLERS</a>
           </li>
           <li class="nav-item me-4">
-            <a class="nav-link {{ (request()->segment(2) == 'advertisements') ? 'active' : '' }}" href="{{ route('admin.advertisements') }}">Advertisements</a>
+            <a class="nav-link {{ (request()->segment(2) == 'advertisements') ? 'active' : '' }}" href="{{ route('admin.advertisements') }}">ADVERTISEMENTS</a>
           </li>
           <li class="nav-item me-4">
-            <a class="nav-link {{ (request()->segment(2) == 'faq') ? 'active' : '' }}" href="{{ route('adminFaq') }}">Faqs</a>
+            <a class="nav-link {{ (request()->segment(2) == 'faq') ? 'active' : '' }}" href="{{ route('adminFaq') }}">FAQS</a>
           </li>
           <li class="nav-item me-4 logout_btn">
             <!--a class="nav-link" href="{{ route('admin.logout') }}">Logout</a-->
-            <a class="nav-link" href="javascript:;">Logout</a>
+            <a class="nav-link" href="javascript:;">LOGOUT</a>
           </li>
         </ul>
       </div>

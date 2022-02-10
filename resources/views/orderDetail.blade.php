@@ -12,7 +12,7 @@
            <h6 class="f-600 mb-2" data-aos="fade-up">Total Product : {{ $order->total_quantity }}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Total Price : ${{ $order->price }}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Status : {{ getOrderStatusName($order->status) }}</h6>
-           <h6 class="f-600 mb-2" data-aos="fade-up">Total Date : {{ date('h:s:A', strtotime($order->created_at)) }} | {{ date('d M Y', strtotime($order->created_at)) }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Ordered Date : {{ date('h:s:A', strtotime($order->created_at)) }} | {{ date('d M Y', strtotime($order->created_at)) }}</h6>
          </div>
 
          <div class="col-lg-6">
