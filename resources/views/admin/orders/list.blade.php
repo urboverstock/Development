@@ -211,7 +211,7 @@
                         <td class="py-3 align-middle">{{ $order['order_number'] }}</td>
                         <td class="py-3 align-middle">{{ $order['total_quantity'] }}</td>
                         <td class="py-3 align-middle">{{ $order['price'] }}</td>
-                        <td class="py-3 align-middle">{{ date('d/m/Y', strtotime($order['created_at'])) }}</td>
+                        <td class="py-3 align-middle" data-sort="{{ date('Ymd', strtotime($order['created_at'])) }}">{{ date('d/m/Y', strtotime($order['created_at'])) }}</td>
                         <td class="py-3 align-middle">
                         @switch($order['status'])
                           @case(0)
