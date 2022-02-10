@@ -25,6 +25,11 @@
               <button type="submit" class="btn btn-dark shadow py-3 fw-bold btn-lg">Reset Password</button>
             </div>
           </form>
+
+          <a href="{{ route('signin') }}" class="d-flex text-decoration-none text-dark align-items-center">
+            <i class="fas fa-caret-right me-2 mb-0"></i>
+            <p class="mb-0 fw-bold">Login</p>
+          </a>
           
         </div>
       </div>
