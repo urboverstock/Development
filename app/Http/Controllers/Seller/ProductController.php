@@ -359,6 +359,11 @@ class ProductController extends Controller
             ->withInput();
         }
 
+        $product = Product::where('id', $request->product_id)->first();
+        $price = (int)$product->price;
+        if($price < $request->offerPercentage){
+            return response()->json(['error' => 'Offer amount should be less from product amount!']);
+        }
         $notification = new Notification;
         $notification->seller_id = Auth::id();
         $notification->user_id = $request->user_id;

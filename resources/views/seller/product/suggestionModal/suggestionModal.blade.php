@@ -21,9 +21,9 @@
   </div>
 
   <div class="mb-4 offerPercentage" style="display: none;">
-    <label for="exampleFormControlInput1" class="form-label">Offer Percentage</label>
+    <label for="exampleFormControlInput1" class="form-label">Offer Amount</label>
     <div class="custom-urban-form">
-      <input class="form-control" id="offerPercentage" placeholder="Offer Percentage" type="text" name="offerPercentage">
+      <input class="form-control" id="offerPercentage" placeholder="Offer Amount" type="text" name="offerPercentage">
       <i class="fas fa-pen input-icon"></i>
     </div>
     <span class="error">{{ $errors->first('offerPercentage') }}</span>
@@ -90,8 +90,13 @@
 
                 // var message = 'Success';
                 // $(this).modal('hide');
-                toastr.success(res.success);
-                setTimeout(function(){ location.reload(); }, 1000);
+                if(res.error){
+                  toastr.error(res.error);
+                }
+                if(res.success){
+                  toastr.success(res.success);
+                }
+                setTimeout(function(){ location.reload(); }, 3000);
               },
               error:function(){
                 console.log('error');
