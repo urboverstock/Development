@@ -33,6 +33,8 @@ return [
     'stripe' => [
         'key' => 'pk_test_tx1oatPnanMYzcAm3Fw5XqRe',
         'secret' => 'sk_test_QBGGi6SRi4m9OwZBlqlRu7Id',
+        //'key' => 'pk_test_51JOJlFSIwoyXxNkPDJJKPjURMrd80ajtdPegJXzyWtIVhcHDHCSPtGWq5J3w61oNbIevUopHzlsDZY3HVTffLidV000QejCNl6',
+        //'secret' => 'sk_test_51JOJlFSIwoyXxNkPketIV0Rl2lEW2wPoAwgausF9Dhj8M0u1z02xsdLwPQlGhyIGwdADXW3kvE7ohvL82KVYh1Xo007Fr5tlO0',
     ],
 
 ];

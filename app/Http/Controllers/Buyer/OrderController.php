@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Buyer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Payment;
+use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Crypt;
+use Stripe;
+use Config;
 use Auth;
 
 class OrderController extends Controller
@@ -52,8 +56,23 @@ class OrderController extends Controller
         
         if(!empty($order))
         {
+            if($orderStatus == ORDER_CANCEL){
+                $payment_details = Payment::where(['user_id' => Auth::id(),'order_id' => $orderId])->first();
+                /*if($payment_details){
+                    $stripe = new \Stripe\StripeClient(Config::get('services.stripe.secret'));
+                    $refund = $stripe->refunds->create([
+                        'charge' => $payment_details->charge_id,
+                    ]);
+                }*/
+            }
+
             $order->status = $orderStatus;
             $order->save();
+
+            if($orderStatus == ORDER_CANCEL)
+            {
+                $order_detail = OrderDetail::where('order_id', $order->id)->update(['status' => ORDER_CANCEL]);
+            }
 
             $result['status'] = 1;
             return response()->json($result, 200);
