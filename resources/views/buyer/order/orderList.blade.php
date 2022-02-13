@@ -49,14 +49,12 @@
                       <td class="py-3 align-middle text-24">{{ $order['price'] }}</td>
                       <td class="py-3 align-middle text-24">{{ date('d/m/Y', strtotime($order['created_at'])) }}</td>
                       <td class="py-3 align-middle text-22">
-                        <!--select id="order_status" class="order_status">
-                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_PENDING] ) }}" {{ $order['status'] == ORDER_PENDING ? 'selected' : ''}}>Pending</option>
-                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_PROCESS] ) }}" {{ $order['status'] == ORDER_PROCESS ? 'selected' : ''}}>Processing</option>
-                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_ON_DELIVERY] ) }}" {{ $order['status'] == ORDER_ON_DELIVERY ? 'selected' : ''}}>On Delivery</option>
-                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_COMPLETED] ) }}" {{ $order['status'] == ORDER_COMPLETED ? 'selected' : ''}}>Completed</option>
-                          <option value="{{ route('sellerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_DECLINED] ) }}" {{ $order['status'] == ORDER_DECLINED ? 'selected' : ''}}>Declined</option>
-                        </select-->
-                          
+                        @if($order['status'] == 0)
+                          <select id="order_status" class="order_status">
+                            <option value="{{ route('buyerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_PENDING] ) }}" {{ $order['status'] == ORDER_PENDING ? 'selected' : ''}}>Pending</option>
+                            <option value="{{ route('buyerUpdateOrderStatus', ['orderId' => $order['id'], 'orderStatus' => ORDER_CANCEL] ) }}" {{ $order['status'] == ORDER_CANCEL ? 'selected' : ''}}>Cancel</option>
+                          </select>
+                        @else
                           @switch($order['status'])
                             @case(0)
                               Pending
@@ -73,7 +71,12 @@
                             @case(4)
                               Declined
                             @break
+                            @case(5)
+                              Cancel
+                            @break
                           @endswitch
+
+                        @endif
 
                       </td>
                       <td class="py-3 align-middle "><a href="{{ route('buyerViewOrder', \Illuminate\Support\Facades\Crypt::encrypt($order['id'])) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>

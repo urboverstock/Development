@@ -78,6 +78,7 @@
     <script type="text/javascript" src="{{ asset('assets/js/plugins/slick.js') }}"></script>
     <script src="https://transloadit.edgly.net/releases/uppy/v1.6.0/uppy.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/script/sweetalert.min.js') }}"></script>
     <!--<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>-->
 
     <!--<script src="{{ asset('assets/js/script/apexChart.js') }}"></script>-->

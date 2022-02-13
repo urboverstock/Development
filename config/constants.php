@@ -9,6 +9,7 @@ defined('ORDER_PROCESS') OR define('ORDER_PROCESS', 1);
 defined('ORDER_ON_DELIVERY') OR define('ORDER_ON_DELIVERY', 2);
 defined('ORDER_COMPLETED') OR define('ORDER_COMPLETED', 3);
 defined('ORDER_DECLINED') OR define('ORDER_DECLINED', 4);
+defined('ORDER_CANCEL') OR define('ORDER_CANCEL', 5);
 
 defined('LOGOUT') OR define('LOGOUT', 0);
 defined('LOGIN') OR define('LOGIN', 1);
