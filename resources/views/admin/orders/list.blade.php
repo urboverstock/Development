@@ -229,6 +229,9 @@
                           @case(4)
                             <span class="badge bg--primary fw-normal px-4 py-2">Declined</span>
                           @break
+                          @case(5)
+                            <span class="badge bg--primary fw-normal px-4 py-2">Cancel</span>
+                          @break
                         @endswitch
                         </td>
                         <td class="py-3 align-middle">
