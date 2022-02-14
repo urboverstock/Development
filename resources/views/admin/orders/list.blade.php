@@ -230,7 +230,7 @@
                             <span class="badge bg--primary fw-normal px-4 py-2">Declined</span>
                           @break
                           @case(5)
-                            <span class="badge bg--primary fw-normal px-4 py-2">Cancel</span>
+                            <span class="badge bg--primary fw-normal px-4 py-2">Refund</span>
                           @break
                         @endswitch
                         </td>

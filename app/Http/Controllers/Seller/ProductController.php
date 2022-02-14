@@ -359,11 +359,17 @@ class ProductController extends Controller
             ->withInput();
         }
 
+        $is_exists = UserOffer::where(['offer_used'=>1,'user_id' => $request->user_id,'product_id' => $request->product_id])->first();
+        if($is_exists){
+            return response()->json(['error' => 'You have already send offer for it!']);
+        }
+
         $product = Product::where('id', $request->product_id)->first();
         $price = (int)$product->price;
         if($price < $request->offerPercentage){
             return response()->json(['error' => 'Offer amount should be less from product amount!']);
         }
+        
         $notification = new Notification;
         $notification->seller_id = Auth::id();
         $notification->user_id = $request->user_id;

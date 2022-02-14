@@ -72,7 +72,7 @@
                               Declined
                             @break
                             @case(5)
-                              Cancel
+                              Refund
                             @break
                           @endswitch
 
