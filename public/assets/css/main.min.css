@@ -1015,6 +1015,12 @@ footer {
 section {
     padding-bottom: 150px;
 }
+@media (max-width: 500px) {
+    section {
+        padding-top: 40px !important;
+        padding-bottom: 40px;
+    }
+}
 .section-1 {
     padding-bottom: 0;
 }
