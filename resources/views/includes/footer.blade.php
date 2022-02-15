@@ -23,7 +23,7 @@
             <a href="#" class="text-black text-decoration-none mb-3 fw-500">Contact Now</a>
             <!-- <a href="#" class="text-black text-decoration-none mb-3 fw-500">Our Community </a> -->
             <a href="#" class="text-black text-decoration-none mb-3 fw-500">How It Works </a>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#faq" class="text-black text-decoration-none mb-3 fw-500">FAQ’s </a>
+            <a href="#z-faq"  class="text-black text-decoration-none mb-3 fw-500">FAQ’s </a>
           </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-2 mb-3">

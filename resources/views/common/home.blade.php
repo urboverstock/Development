@@ -755,7 +755,7 @@ That is why we have happy consumers all around the world and are proud to be ass
   </section>
 
   <!-- faq animation  -->
-  <section class="py-0">
+  <section id="z-faq" class="py-0">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-12 text-center">
