@@ -47,7 +47,14 @@ footer {
     background: transparent;
     border: 0;
 }
-
+.accordion-button {
+    background-color: #d4af37 !important;
+    color: #fff !important;
+}
+.accordion-button.collapsed {
+    background-color: white !important;
+    color: #000 !important;
+}
 .latest-products .slick-track {
     display: flex;
 }

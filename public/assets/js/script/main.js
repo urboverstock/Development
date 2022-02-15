@@ -49,61 +49,48 @@ if (menuIcon) {
     });
 }
 
-$('.increase-button').click(function()
-{
-    var quantity = $('.number').text();
+$(".increase-button").click(function () {
+    var quantity = $(".number").text();
 
-    if(quantity == 5)
-    {
-        $(this).children().children().attr('fill', '#D2D2D2');
-    }
-    else
-    {
-        $('.decrease-button').children().children().attr('fill', '#000');        
+    if (quantity == 5) {
+        $(this).children().children().attr("fill", "#D2D2D2");
+    } else {
+        $(".decrease-button").children().children().attr("fill", "#000");
     }
 });
 
-$('.decrease-button').click(function()
-{
-    var quantity = $('.number').text();
+$(".decrease-button").click(function () {
+    var quantity = $(".number").text();
 
-    if(quantity == 1)
-    {
-        $(this).children().children().attr('fill', '#D2D2D2');
-    }
-    else if(quantity < 5)
-    {
-        $('.increase-button').children().children().attr('fill', '#000');
+    if (quantity == 1) {
+        $(this).children().children().attr("fill", "#D2D2D2");
+    } else if (quantity < 5) {
+        $(".increase-button").children().children().attr("fill", "#000");
     }
 });
 
+$(document).on("click", ".stars", function () {
+    $(".stars").removeClass("active");
 
-$(document).on('click', '.stars', function() {
+    $(this).addClass("active");
 
-    $('.stars').removeClass('active');
-
-    $(this).addClass('active');
-
-    $('#rating').val($(this).data('val'));
-
+    $("#rating").val($(this).data("val"));
 });
 
-$(document).on('submit', '#reviewform', function(e) {
-
+$(document).on("submit", "#reviewform", function (e) {
     var $this = $(this);
 
     e.preventDefault();
 
     $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
     $.ajax({
-
         method: "POST",
 
-        url: $(this).prop('action'),
+        url: $(this).prop("action"),
 
         data: new FormData(this),
 
@@ -113,20 +100,19 @@ $(document).on('submit', '#reviewform', function(e) {
 
         processData: false,
 
-        success: function(data)
-        {
+        success: function (data) {
             if (data.status == 1) {
                 toastr.success(data.message, "Success");
                 location.reload();
-            } else if(data.status == 2){
+            } else if (data.status == 2) {
                 toastr.error(data.message, "Error");
-                window.setTimeout(function() {
+                window.setTimeout(function () {
                     window.location.href = base_url + "/signin";
                 }, 1000);
-            }else{
+            } else {
                 toastr.error(data.message, "Error");
             }
-        }
+        },
     });
 });
 
@@ -154,9 +140,9 @@ $(".dropdown-follow").click(function (e) {
 function increaseValue(button, limit) {
     const numberInput = button.parentElement.querySelector(".number");
     var value = parseInt(numberInput.innerHTML, 10);
- 
+
     if (isNaN(value)) value = 0;
-    
+
     if (limit && value >= limit) return;
     numberInput.innerHTML = value + 1;
 }
@@ -248,16 +234,15 @@ $(document).ready(function () {
         }
     });
 
-    $(".addoffer-close-modal").click(function() {
-		$("#myModal").modal('hide');
-        $('.modal-backdrop').remove();
+    $(".addoffer-close-modal").click(function () {
+        $("#myModal").modal("hide");
+        $(".modal-backdrop").remove();
     });
-    
-    $("#myModal").on('hidden.bs.modal', function () {
-        $('.modal-backdrop').remove();
+
+    $("#myModal").on("hidden.bs.modal", function () {
+        $(".modal-backdrop").remove();
     });
 });
-
 
 let loadmore = document.querySelector(".loadmore");
 
@@ -293,5 +278,3 @@ if (loadmore) {
 //         el.classList.remove("empty-date");
 //     }
 // };
-
-

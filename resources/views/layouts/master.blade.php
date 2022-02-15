@@ -67,6 +67,8 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.4/lottie_svg.min.js"></script>
     <script src="{{ asset('assets/js/script/main.js') }}"></script>
     <script src="{{ asset('assets/js/script/jquery.validate.js') }}"></script>
     <script src="{{ asset('assets/js/script/form_validation.js') }}"></script>
