@@ -39,7 +39,7 @@
             >
           </li>
           <li class="nav-item me-4">
-            <a class="nav-link {{ (request()->segment(2) == 'orders') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.dashboard') }}"
+            <a class="nav-link {{ (request()->segment(2) == 'orders') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.orders') }}"
               >ORDERS</a
             >
           </li>
