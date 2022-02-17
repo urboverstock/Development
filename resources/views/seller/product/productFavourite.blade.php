@@ -25,6 +25,7 @@
                     <p class="mb-0 pe-4">My favourite</p>
                   </div>
                 </div>
+                <a href="#" class="btn btn-dark">Back</a>
               </div>
             </div>
             <div class="col-lg-12">

@@ -5,11 +5,14 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-12 mb-5">
-                <span class="float-right">
-                	<a href="{{route('sellerAddUserPost')}}" class="btn btn-dark rounded-pill mb-3 fw-bold px-5 py-3 mb-1 aos-init aos-animate" data-aos="fade-up">Add User Post
-                  </a>
-                <!-- <h4 class="f-600">User Posts</h4> -->
-                </span>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="float-right">
+                    <a href="{{route('sellerAddUserPost')}}" class="btn btn-dark rounded-pill mb-3 fw-bold px-5 py-3 mb-1 aos-init aos-animate" data-aos="fade-up">Add User Post
+                    </a>
+                  <!-- <h4 class="f-600">User Posts</h4> -->
+                  </span>
+                  <a href="#" class="btn btn-outline-dark"> Back</a>
+                </div>
             </div>
 
             <div class="col-lg-12 mb-5">

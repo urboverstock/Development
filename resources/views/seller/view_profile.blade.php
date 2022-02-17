@@ -93,13 +93,16 @@
           <a href="{{ route('sellerEdit_profile') }}">
             <button type="button" class="btn btn-dark rounded-pill fw-bold px-5 py-3 mb-5" data-aos="fade-up">Edit Profile </button>
           </a>
-          <div class="mb-5" data-aos="fade-up">
-            <div class="urban-title text--primary position-relative mb-2">
-              <p class="mb-0">Browse through</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="mb-5" data-aos="fade-up">
+              <div class="urban-title text--primary position-relative mb-2">
+                <p class="mb-0">Browse through</p>
+              </div>
+              <div class="urban-sub-title ust-100 mb-4">
+                <p class="mb-0 pe-5 ms-2">Your Products</p>
+              </div>
             </div>
-            <div class="urban-sub-title ust-100 mb-4">
-              <p class="mb-0 pe-5 ms-2">Your Products</p>
-            </div>
+            <a href="#" class="btn btn-dark">Back</a>
           </div>
 
           @if(empty(@$user['products'][0]))

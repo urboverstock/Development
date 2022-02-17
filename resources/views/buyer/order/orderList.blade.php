@@ -5,9 +5,13 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-12 mb-5">
+                <div class="d-flex justify-content-between align-items-center">
                 <span class="float-right">                	
                   <h4 class="f-600 mb-0">Orders</h4>
                 </span>
+                
+                <a href="#" class="btn btn-outline-dark"> Back</a>
+                </div>
             </div>
 
             <div class="col-lg-12 mb-5">

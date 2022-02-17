@@ -12,7 +12,7 @@
 	<section class="mt-5 mb-4">
     <div class="container">
       <div class="row">
-        <div class="d-flex">
+        <div class="col-lg-6">
           <div class="card border-0 shadow br-10 px-4">
             <div class="card-body">
             <div class="d-flex mb-0" data-aos="fade-up">
@@ -41,7 +41,7 @@
                   <source src="{{url('/') . $file->file}}" type="video/{{ $ext }}">
                 </video>
               <?php } else { ?>
-            		<img class="view-post-img " src="{{ url('/') . $file->file }}">
+            		<img class="img-fluid " src="{{ url('/') . $file->file }}">
               <?php } ?>
             	@endforeach
             </div>

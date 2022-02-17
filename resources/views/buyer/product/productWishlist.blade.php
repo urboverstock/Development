@@ -22,9 +22,10 @@
                     <p class="mb-0">List of</p>
                   </div>
                   <div class="urban-sub-title ust-100 mb-4">
-                    <p class="mb-0 pe-4">My Wishlist</p>
+                    <p class="mb-0 pe-4">My Wishlist </p>
                   </div>
                 </div>
+                <a href="#" class="btn btn-dark"> Back</a>
               </div>
             </div>
             <div class="col-lg-12">
