@@ -11,6 +11,7 @@
            <h6 class="f-600 mb-2" data-aos="fade-up">Order ID : {{ $order->order_number }}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Total Product : {{ $order->total_quantity }}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Total Price : {{ $order->price }}</h6>
+           <h6 class="f-600 mb-2" data-aos="fade-up">Status : {{ getOrderStatusName($order->status) }}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Ordered Date : {{ date('h:s:A', strtotime($order->created_at)) }} | {{ date('d M Y', strtotime($order->created_at)) }}</h6>
          </div>
 
@@ -29,6 +30,24 @@
            <h6 class="f-600 mb-2" data-aos="fade-up">Pin Code : {{ $order->getUserAddress->pincode }}</h6>
 
          </div>
+         @else
+          @if(!empty($order->address))
+          <div class="col-lg-6">
+            <div class="d-flex mb-2" data-aos="fade-up">
+              <h1 class="display-5 f-600 me-3">Shipping Details</h1>
+              
+            </div>
+            <h6 class="f-600 mb-2" data-aos="fade-up">Name :  {{ $order->getUserDetail->first_name }} {{ $order->getUserDetail->last_name }}</h6>
+            <h6 class="f-600 mb-2" data-aos="fade-up">Email : {{ $order->getUserDetail->email }}</h6>
+            <h6 class="f-600 mb-2" data-aos="fade-up">Phone : {{ $order->getUserDetail->phone_number }}</h6>
+            <h6 class="f-600 mb-2" data-aos="fade-up">Address : {{ $order->address }}</h6>
+            <h6 class="f-600 mb-2" data-aos="fade-up">Country : {{ $order->country }}</h6>
+            <h6 class="f-600 mb-2" data-aos="fade-up">City : {{ $order->city }}</h6>
+            <h6 class="f-600 mb-2" data-aos="fade-up">State : {{ $order->state }}</h6>
+            <h6 class="f-600 mb-2" data-aos="fade-up">Pin Code : {{ $order->pincode }}</h6>
+
+          </div>
+          @endif
          @endif
 
          <div class="col-lg-12">
