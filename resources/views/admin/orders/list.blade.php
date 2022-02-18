@@ -235,7 +235,7 @@
                         @endswitch
                         </td>
                         <td class="py-3 align-middle">
-                        <a href="{{ route('adminViewOrder', \Illuminate\Support\Facades\Crypt::encrypt($order['id'])) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                        <a class="hover-primary" href="{{ route('adminViewOrder', \Illuminate\Support\Facades\Crypt::encrypt($order['id'])) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         </td>
                         <!--td>
                           <div class="dropdown admin-btn-dropdown">
