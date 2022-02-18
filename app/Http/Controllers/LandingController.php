@@ -15,6 +15,7 @@ use App\Models\UserFollowers;
 use App\Models\ProductWishlist;
 use App\Models\ProductFavourite;
 use App\Models\ProductCategory;
+use App\Models\Faq;
 use App\Models\SaveLater;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Order;
@@ -34,8 +35,9 @@ class LandingController extends Controller
         $latestProducts = Product::getLatestProducts($request);
         $request->request->add(['limit' => 3]);
         $sellers = User::getSellers($request);
+        $faqs = Faq::latest()->take(3)->get();
         // echo "<pre>"; print_r($latestProducts); die;
-        return view('common.home', compact('latestProducts', 'sellers', 'user_posts'));
+        return view('common.home', compact('latestProducts', 'sellers', 'user_posts','faqs'));
     }
 
     public function register(Request $request)
