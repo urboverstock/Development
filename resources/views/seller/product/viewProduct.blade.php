@@ -13,7 +13,7 @@
             <div class="col-lg-12">
               <div class="d-flex justify-content-between align-items-center">
                 <h4 class="display-5 text--primary f-600 me-3">{{$product->name}}</h4>
-                <a href="#" class="btn btn-dark">Back</a>
+                <a href="{{ URL::previous() }}" class="btn btn-dark">Back</a>
               </div>
             </div>
             <div class="col-lg-6 mb-4">
@@ -40,13 +40,13 @@
                 <input class="form-control" type="text" value="${{$product->price}}" aria-label="Disabled input example" disabled readonly>
               </div>
             </div>
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-6 mb-4" style="display: none;">
               <div class="mb-2">
                 <h5 class="me-2 font-weight-bold mb-2" for="">Compare Price:</h5>
                 <input class="form-control" type="text" value="${{!empty($product->compare_price) || ($product->compare_price != 0) ? $product->compare_price : 0}}" aria-label="Disabled input example" disabled readonly>
               </div>
             </div>
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-6 mb-4" style="display: none;">
               <div class="mb-2">
                 <h5 class="me-2 font-weight-bold mb-2" for="">Cost Per Price :</h5>
                 <input class="form-control" type="text" value="{{ !empty($product->cost_per_price) || ($product->cost_per_price != 0) ? $product->cost_per_price : 0 }}" aria-label="Disabled input example" disabled readonly>

@@ -22,6 +22,7 @@ use App\Models\ProductFavourite;
 use App\Models\Chat;
 use App\Models\Cart;
 use App\Models\UsedCoupon;
+use App\Models\Faq;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Requests\StoreStripeRequest;
 use Auth, Validator, DB, Session;
@@ -48,6 +49,7 @@ class BuyerController extends Controller
         $latestProducts = Product::getLatestProducts($request);
         $request->request->add(['limit' => 3]);
         $sellers = User::getSellers($request);
+        $faqs = Faq::latest()->take(3)->get();
         //echo "<pre>"; print_r($sellers->toArray()); die;
 
         foreach ($sellers as $key => $seller){
@@ -62,7 +64,7 @@ class BuyerController extends Controller
                 $seller->is_follow = 0;
             }
         }
-        return view('common.home', compact('latestProducts', 'sellers', 'user_posts'));
+        return view('common.home', compact('latestProducts', 'sellers', 'user_posts','faqs'));
     }
 
     public function dashboard(Request $request)

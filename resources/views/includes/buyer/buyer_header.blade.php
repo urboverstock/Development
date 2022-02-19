@@ -44,9 +44,9 @@
                <!-- fw-bold -->
               <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'edit-profile')) style="font-weight: bold !important;" @endif  href="{{ route('buyer.edit_profile') }}">My Profile</a></li>
               <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'dashboard')) style="font-weight: bold !important;" @endif href="{{ route('buyer.dashboard') }}">Dashboard</a></li>
-              <li class="">
+              <!--li class="">
                 <a href="{{ route('buyer.index') }}#z-about" class="dropdown-item border-bottom">About Us</a>
-              </li>
+              </li-->
               <li><a class="dropdown-item border-bottom" @if((request()->segment(2) == 'followers')) style="font-weight: bold !important;" @endif  href="{{ route('buyer.followers') }}">Followers</a></li>
               <li><a href="{{ route('products') }}" @if((request()->segment(1) == 'products')) style="font-weight: bold !important;" @endif class="dropdown-item border-bottom">Products</a></li>
               <!--li><a class="dropdown-item border-bottom" href="javascript:;">Deliveries</a></li-->

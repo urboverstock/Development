@@ -11,7 +11,7 @@
                   </a>
                 <!-- <h4 class="f-600">Advertisement</h4> -->
                 </span>
-                <a href="#" class="btn btn-outline-dark"> Back</a>
+                <a href="{{ URL::previous() }}" class="btn btn-outline-dark"> Back</a>
                 </div>
             </div>
 

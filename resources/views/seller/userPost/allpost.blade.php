@@ -14,7 +14,7 @@
                     <p class="mb-0 pe-4">All Posts</p>
                   </div>
                 </div>
-                <a href="#" class="btn btn-dark">Back</a>
+                <a href="{{ URL::previous() }}" class="btn btn-dark">Back</a>
               </div>
             </div>
         	@foreach($user_posts as $user_post)

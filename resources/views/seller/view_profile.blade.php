@@ -102,7 +102,7 @@
                 <p class="mb-0 pe-5 ms-2">Your Products</p>
               </div>
             </div>
-            <a href="#" class="btn btn-dark">Back</a>
+            <a href="{{ URL::previous() }}" class="btn btn-dark">Back</a>
           </div>
 
           @if(empty(@$user['products'][0]))

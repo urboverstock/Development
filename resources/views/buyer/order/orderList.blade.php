@@ -10,7 +10,7 @@
                   <h4 class="f-600 mb-0">Orders</h4>
                 </span>
                 
-                <a href="#" class="btn btn-outline-dark"> Back</a>
+                <a href="{{ URL::previous() }}" class="btn btn-outline-dark"> Back</a>
                 </div>
             </div>
 
