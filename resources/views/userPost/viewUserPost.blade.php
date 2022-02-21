@@ -12,11 +12,18 @@
 	<section class="mt-5 mb-4">
     <div class="container">
       <div class="row">
+        <div class="col-lg-12 mt-3">
+            <div class="d-flex justify-content-between mb-4 align-items-center">
+              <h4 class="mb-0 f-600">View User Post</h4>
+              <a href="{{ URL::previous() }}" class="btn btn-dark"> Back</a>
+            </div>
+        </div>
         <div class="col-lg-6">
           <div class="card border-0 shadow br-10 px-4">
             <div class="card-body">
+             
             <div class="d-flex mb-0" data-aos="fade-up">
-              <h1 class="display-5 f-600 me-3 mb-1">{{$userPost->title}}</h1>
+              <h4 class="display-5 f-600 me-3 mb-1">{{$userPost->title}}</h4>
             </div>
             <div class="d-flex mb-0" data-aos="fade-up">
               <p class="mb-1"><label>Post By : </label><span> <a class="text-decoration-none text--primary text-decoration-none" href="{{ route('profile', \Illuminate\Support\Facades\Crypt::encrypt($userPost->getUser->id)) }}"> {{ $userPost->getUser->fullname }} </a></span></p>

@@ -4,10 +4,11 @@
 	<section class="mt-90">
     <div class="container mt-5">
         <div class="row">
-            <div class="col-lg-12 mb-5">
-                <span class="float-right">                	
-                  <h4 class="f-600 mb-0">Orders</h4>
-                </span>
+            <div class="col-lg-12">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="f-600 mb-0">Orders</h4>
+                <a href="{{ URL::previous() }}" class="btn btn-dark"> Back</a>
+              </div>
             </div>
 
             <div class="col-lg-12 mb-5">

@@ -7,8 +7,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <div class="d-flex mb-2" data-aos="fade-up">
-            <h1 class="display-5 f-600 me-3">{{$userPost->title}}</h1>
+          <div class="d-flex align-items-center flex-wrap justify-content-between mb-2" data-aos="fade-up">
+            <h4 class="display-5 f-600 me-3">{{$userPost->title}}</h4>
+            <a href="{{ URL::previous() }}" class="btn btn-dark"> Back</a>
           </div>
 
             <div class="d-flex flex-wrap mb-2" data-aos="fade-up">

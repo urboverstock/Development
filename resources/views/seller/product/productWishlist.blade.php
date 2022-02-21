@@ -15,6 +15,10 @@
         <div class="row">
 
             <div class="col-lg-12 mb-5">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="f-600 mb-0">Product Wishlist</h4>
+                <a href="{{ URL::previous() }}" class="btn btn-dark"> Back</a>
+              </div>
                 <div class="bg-chat p-3 br-12">
                     <div class="d-flex justify-content-between flex-wrap">
                         <!-- <div class="custom-form-group-search position-relative col-lg-8 d-lg-block d-none ">
@@ -29,8 +33,10 @@
 	                            <button type="submit" class="border-0"><i class="fas fa-search text--primary"></i></button>
                           </form>
                         </div>
+                        
                     </div>
                 </div>
+                
             </div>
 
             @if(count($wishlists) > 0)

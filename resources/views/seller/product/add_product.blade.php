@@ -37,9 +37,12 @@
       @endif
               {{ csrf_field() }}
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 my-5">
                 
-                <h3 class="mt-5 mb-4 fw-bold ">{{ isset($product) ? 'Edit Product' : 'Add Product' }}</h3>
+                <div class="d-flex justify-content-between align-items-center">
+                  <h3 class=" fw-bold ">{{ isset($product) ? 'Edit Product' : 'Add Product' }}</h3>
+                  <a href="{{ URL::previous() }}" class="btn btn-dark"> Back</a>
+                </div>
             </div>
               <div class="col-lg-8">               
                   <div class="card border-0 mb-5 shadow br-16">
