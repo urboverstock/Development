@@ -45,11 +45,13 @@
                             </div>
                 
                         </label>
+                        <div>
                         <label for="imageUpload">
                           <img class="avatar-80 rounded-circle cursor-pointer mb-md-0 mb-4 image_prev" src="{{ $user->profile_img }}" alt="">
                           <input type="file" class="d-none" name="profile_pic" id="imageUpload" accept="image/*"/>
                         </label>
                         <span class="error">{{ $errors->first('profile_pic') }}</span>
+                        </div>
                       </div>
                     </div>
                     <div class="col-lg-6">

@@ -125,7 +125,7 @@
                     <div class="card product-item border-0 shadow-sm mb-5">
                         <div class="card-body ">
                             <a class="text-decoration-none text-dark" target="_blank" title="view details" href="{{ route('product-detail', $product->sku) }}">
-                              <img class="product-img-size mb-3" src="{{ productDefaultImage($product->id)}}" alt="">
+                              <img class="product-square-size mb-3" src="{{ productDefaultImage($product->id)}}" alt="">
                             </a>
                             <a class="text-decoration-none text-dark" title="view details" href="{{ route('product-detail', $product->sku) }}"><h5 class="fw-bold text-one-line">{{$product->name }}</h5></a>
                             <div class="d-flex flex-wrap justify-content-between align-items-center">
