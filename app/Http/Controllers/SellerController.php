@@ -13,6 +13,7 @@ use App\Models\ProductWishlist;
 use Auth, Validator;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use Carbon\Carbon;
 
 class SellerController extends Controller
 {
@@ -65,6 +66,61 @@ class SellerController extends Controller
         }
         
         $data['order_By_month'] = $final_result;
+        //echo "<pre>";print_r($final_result);die;
+
+        $order_By_year = Order::select(\DB::raw('count(id) as `orderCount`'), \DB::raw("DATE_FORMAT(created_at, '%Y') year"))
+            ->groupBy('year')
+            ->get()
+            ->toArray();
+
+        $key = array_column($order_By_year, 'year');
+        $val = array_column($order_By_year, 'orderCount');
+        $order_By_year = array_combine($key, $val);
+        $years = array("2021", "2022");
+
+        foreach ($years as $year) {
+            if (array_key_exists($year, $order_By_year)) {
+                $result = $order_By_year[$year];
+            } else {
+                $result = 0;
+            }
+            $final_resultyear[] = $result;
+        }
+
+        foreach ($order_By_year as $key => $val) {
+            //$order_By_month[$key] = $val['data'];
+            $order_By_year[$key] = $val;
+        }
+        $data['order_By_year'] = $final_resultyear;
+
+        //weekly data
+        $order_By_week = Order::select(\DB::raw('count(id) as `orderCount`'), \DB::raw("DATE_FORMAT(created_at, '%W') weekday"))
+            ->whereBetween('created_at', 
+                [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
+            )
+            ->groupBy('weekday')
+            ->get()
+            ->toArray();
+        
+        $key = array_column($order_By_week, 'weekday');
+        $val = array_column($order_By_week, 'orderCount');
+        $order_By_week = array_combine($key, $val);
+        $days = array("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday");
+
+        foreach ($days as $day) {
+            if (array_key_exists($day, $order_By_week)) {
+                $result = $order_By_week[$day];
+            } else {
+                $result = 0;
+            }
+            $final_resultweek[] = $result;
+        }
+
+        foreach ($order_By_week as $key => $val) {
+            //$order_By_month[$key] = $val['data'];
+            $order_By_week[$key] = $val;
+        }
+        $data['order_By_week'] = $final_resultweek;
 
         $order_chart = Order::select('status as name', \DB::raw('count(*) as y'))
             ->whereIn('id', $getUniqueOrderId)
