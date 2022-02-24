@@ -69,6 +69,7 @@ class SellerController extends Controller
         //echo "<pre>";print_r($final_result);die;
 
         $order_By_year = Order::select(\DB::raw('count(id) as `orderCount`'), \DB::raw("DATE_FORMAT(created_at, '%Y') year"))
+            ->whereIn('id', $getUniqueOrderId)
             ->groupBy('year')
             ->get()
             ->toArray();
@@ -95,6 +96,7 @@ class SellerController extends Controller
 
         //weekly data
         $order_By_week = Order::select(\DB::raw('count(id) as `orderCount`'), \DB::raw("DATE_FORMAT(created_at, '%W') weekday"))
+            ->whereIn('id', $getUniqueOrderId)
             ->whereBetween('created_at', 
                 [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
             )
