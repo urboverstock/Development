@@ -290,8 +290,12 @@
                   </div>
               </div>
 
-              <div class="col-lg-12">
-                <button type="submit" class="btn btn-dark px-5 py-3 rounded-pill">Save</button>
+              <div class="col-lg-8">
+                <div class="d-flex justify-content-between">
+                  <button type="submit" class="btn btn-dark px-5 py-3 rounded-pill">Save</button>
+                  
+                  <button  class="btn btn--primary text-white px-5 py-3 rounded-pill">Cancel</button>
+                </div>
               </div>
         </div>
       </form>

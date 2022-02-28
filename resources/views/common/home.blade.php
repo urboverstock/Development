@@ -32,15 +32,10 @@
                  
                 </div> -->
                 <div class="carousel-social-media">
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-facebook-f fs-3"></i>
-                  </a>
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-twitter fs-3"></i>
-                  </a>
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-linkedin-in fs-3"></i>
-                  </a>
+   
+         
+                  <a   href="http://www.facebook.com/sharer.php?u {{url('/')}}" target="_blank" class="mb-4 fs-3 text-decoration-none text-light me-2 "><i class="fab fa-facebook-f"></i></a>
+                  <a   href="https://www.instagram.com/urban.overstock/" target="_blank" class="mb-4 fs-3 text-decoration-none text-light font-weight-bold "><i class="fab fa-instagram"></i></a>
                 </div>
               </div>
             </div>
@@ -66,15 +61,10 @@
                  
                 </div> -->
                 <div class="carousel-social-media">
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-facebook-f fs-3"></i>
-                  </a>
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-twitter fs-3"></i>
-                  </a>
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-linkedin-in fs-3"></i>
-                  </a>
+   
+         
+                  <a   href="http://www.facebook.com/sharer.php?u {{url('/')}}" target="_blank" class="mb-4 fs-3 text-decoration-none text-light me-2 "><i class="fab fa-facebook-f"></i></a>
+                  <a   href="https://www.instagram.com/urban.overstock/" target="_blank" class="mb-4 fs-3 text-decoration-none text-light font-weight-bold "><i class="fab fa-instagram"></i></a>
                 </div>
               </div>
             </div>
@@ -100,15 +90,10 @@
                  
                 </div>
                 <div class="carousel-social-media">
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-facebook-f fs-3"></i>
-                  </a>
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-twitter fs-3"></i>
-                  </a>
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-linkedin-in fs-3"></i>
-                  </a>
+   
+         
+                  <a   href="http://www.facebook.com/sharer.php?u {{url('/')}}" target="_blank" class="mb-4 fs-3 text-decoration-none text-light me-2 "><i class="fab fa-facebook-f"></i></a>
+                  <a   href="https://www.instagram.com/urban.overstock/" target="_blank" class="mb-4 fs-3 text-decoration-none text-light font-weight-bold "><i class="fab fa-instagram"></i></a>
                 </div>
               </div>
             </div>
@@ -134,15 +119,10 @@
                  
                 </div> -->
                 <div class="carousel-social-media">
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-facebook-f fs-3"></i>
-                  </a>
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-twitter fs-3"></i>
-                  </a>
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-linkedin-in fs-3"></i>
-                  </a>
+   
+         
+                  <a   href="http://www.facebook.com/sharer.php?u {{url('/')}}" target="_blank" class="mb-4 fs-3 text-decoration-none text-light me-2 "><i class="fab fa-facebook-f"></i></a>
+                  <a   href="https://www.instagram.com/urban.overstock/" target="_blank" class="mb-4 fs-3 text-decoration-none text-light font-weight-bold "><i class="fab fa-instagram"></i></a>
                 </div>
               </div>
             </div>
@@ -168,15 +148,10 @@
                  
                 </div>
                 <div class="carousel-social-media">
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-facebook-f fs-3"></i>
-                  </a>
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-twitter fs-3"></i>
-                  </a>
-                  <a href="#" class="text-light text-decoration-none mb-4">
-                    <i class="fab fa-linkedin-in fs-3"></i>
-                  </a>
+   
+         
+                  <a   href="http://www.facebook.com/sharer.php?u {{url('/')}}" target="_blank" class="mb-4 fs-3 text-decoration-none text-light me-2 "><i class="fab fa-facebook-f"></i></a>
+                  <a   href="https://www.instagram.com/urban.overstock/" target="_blank" class="mb-4 fs-3 text-decoration-none text-light font-weight-bold "><i class="fab fa-instagram"></i></a>
                 </div>
               </div>
             </div>

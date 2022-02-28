@@ -20,7 +20,7 @@
           <div class="d-flex flex-column">
             <a href="#" class="text-black text-decoration-none mb-3 fw-500">About Us</a>
             <!-- <a href="{{ route('viewPage', 'about-us') }}" class="text-black text-decoration-none mb-3 fw-500">About Us</a> -->
-            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Contact Now</a>
+            <!-- <a href="#" class="text-black text-decoration-none mb-3 fw-500">Contact Now</a> -->
             <!-- <a href="#" class="text-black text-decoration-none mb-3 fw-500">Our Community </a> -->
             <a href="#" class="text-black text-decoration-none mb-3 fw-500">How It Works </a>
             <a href="#z-faq"  class="text-black text-decoration-none mb-3 fw-500">FAQ’s </a>

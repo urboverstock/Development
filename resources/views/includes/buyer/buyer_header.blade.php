@@ -58,7 +58,7 @@
               <li><a class="dropdown-item border-bottom " @if((request()->segment(1) == 'all-post')) style="font-weight: bold !important;" @endif href="{{ route('AllPost') }}">All Posts</a></li>
               <li><a class="dropdown-item border-bottom " @if((request()->segment(2) == 'user-post')) style="font-weight: bold !important;" @endif href="{{ route('buyerUserPost') }}">My Post</a></li>
               <li><a class="dropdown-item border-bottom " @if((request()->segment(1) == 'chat')) style="font-weight: bold !important;" @endif href="{{ route('chat') }}">Chat</a></li>
-              <li><a href="#z-contact" class="dropdown-item border-bottom">Contact Us</a>
+
               </li>
               <li class="logout_btn"><a class="dropdown-item border-bottom" href="javascript:;">Logout</a></li>
             </ul>

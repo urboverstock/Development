@@ -10,13 +10,23 @@ ul.z-dropdown-higlight li a:hover {
 input.empty-date::-webkit-calendar-picker-indicator {
     filter: invert(0.5);
 }
-.text-one-line {
+.error {
+    margin-bottom: 1rem;
+    display: block;
+}
+
+input[password] .text-one-line {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .h-300 {
     height: 300px;
+}
+a.top-edit-icon svg {
+    width: 24px;
+    height: 24px;
 }
 .box-200 {
     width: 200px;

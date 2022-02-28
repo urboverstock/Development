@@ -32,7 +32,9 @@
               <span class="error">{{ $errors->first('email') }}</span>
             </div>
             <div class="col-lg-12">
-              <input class="form-control form-control-lg mb-4 py-3" type="password" placeholder="Password" aria-label="" name="password" id="password">
+ 
+                <input class="form-control form-control-lg py-3 mb-4" type="password" placeholder="Password" aria-label="password" name="password" id="password">
+              
               <span class="error">{{ $errors->first('password') }}</span>
             </div>
             <div class="col-lg-12">
@@ -83,7 +85,7 @@
         
         <a href="{{ route('forgot_password') }}" class="d-flex text-decoration-none text-dark align-items-center">
           <i class="fas fa-caret-right me-2 mb-0"></i>
-          <p class="mb-0 fw-bold">Need Help ?</p>
+          <p class="mb-0 fw-bold">Change Password ?</p>
         </a>
         
         

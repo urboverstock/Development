@@ -702,6 +702,7 @@ ul.urban-table-pagintaion li.page-item a.page-link.arrow {
     bottom: 5%;
     right: 5%;
     max-width: 550px;
+    z-index: 99;
 }
 @media (max-width: 992px) {
     .carousel-inner .carousel-social-media {
