@@ -100,11 +100,29 @@
                   </div>
               </div>
 
-              <div class="col-lg-12">
+              <div class="col-lg-12 mb-3">
+                  <div class="card border-0 shadow br-10">
+                      <div class="card-body">
+                        <h5 class="ms-3 mt-3 f-600">This Week Overview</h5>
+                        <div id="weekchart"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-12 mb-3">
                   <div class="card border-0 shadow br-10">
                       <div class="card-body">
                         <h5 class="ms-3 mt-3 f-600">Monthly Overview</h5>
                         <div id="chart"></div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-12 mb-3">
+                  <div class="card border-0 shadow br-10">
+                      <div class="card-body">
+                        <h5 class="ms-3 mt-3 f-600">Yearly Overview</h5>
+                        <div id="yearlychart"></div>
                       </div>
                   </div>
               </div>
@@ -566,6 +584,113 @@
             series: [{
                 name: 'Orders ',
                 data: <?= json_encode($data['order_By_month']) ?>
+            }]
+        });
+
+        Highcharts.chart('yearlychart', {
+            chart: {
+                type: 'areaspline'
+            },
+            title: {
+                text: 'All Orders'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 150,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+            },
+            xAxis: {
+                categories: [
+                    '2021',
+                    '2022'
+                ],
+                plotBands: [{// visualize the weekend
+                    from: 6.5,
+                    to: 6.5,
+                    color: 'rgba(68, 170, 213, .2)'
+                }]
+            },
+            yAxis: {
+                title: {
+                    text: 'Order units'
+                }
+            },
+            tooltip: {
+                shared: true,
+                valueSuffix: ' units'
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                areaspline: {
+                    fillOpacity: 0.5
+                }
+            },
+            series: [{
+                name: 'Orders ',
+                data: <?= json_encode($data['order_By_year']) ?>
+            }]
+        });
+
+        Highcharts.chart('weekchart', {
+            chart: {
+                type: 'areaspline'
+            },
+            title: {
+                text: 'All Orders'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 150,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+            },
+            xAxis: {
+                categories: [
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thurday',
+                    'Friday',
+                    'Saturday',
+                    'Sunday'
+                ],
+                plotBands: [{// visualize the weekend
+                    from: 6.5,
+                    to: 6.5,
+                    color: 'rgba(68, 170, 213, .2)'
+                }]
+            },
+            yAxis: {
+                title: {
+                    text: 'Order units'
+                }
+            },
+            tooltip: {
+                shared: true,
+                valueSuffix: ' units'
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                areaspline: {
+                    fillOpacity: 0.5
+                }
+            },
+            series: [{
+                name: 'Orders ',
+                data: <?= json_encode($data['order_By_week']) ?>
             }]
         });
 

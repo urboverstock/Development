@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\Cart;
+use App\Models\Product;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Crypt;
 use Stripe;
@@ -82,5 +84,41 @@ class OrderController extends Controller
             $result['status'] = API_FAILURE_RESPONSE;
             return response()->json($result, 200);
         }
+    }
+
+    public function reOrder($id)
+    {
+        $id = Crypt::decrypt($id);
+    	$order = Order::with('getOrderDetail')->find($id);
+        $order = $order->toArray();  
+    	//echo "<pre>";print_r($order);die();
+        if(isset($order['get_order_detail']) && !empty($order['get_order_detail'])){
+            $userId = Auth::user()->id;
+            foreach ($order['get_order_detail'] as $key => $item) {
+                //echo $item['product_id'];die;
+                //echo "<pre>";print_r($item);die();
+                $product = Product::find($item['product_id']);
+                $check = Cart::where(['product_id'=>$item['product_id'],'user_id'=>$userId])
+                ->first();
+                if($product->quantity != 0){
+                    if(empty($check)){
+                        $cart = new Cart;
+                        $cart->user_id = Auth::user()->id;
+                        $cart->product_id = $item['product_id'];
+                        $cart->quantity = isset($item['quantity']) ? $item['quantity'] : 1;
+                        $cart->save();
+                    }else{
+                        if($check->quantity >= $product->quantity){
+                            
+                        }else{
+                            $cart = Cart::find($check->id);
+                            $cart->quantity = $check->quantity + 1;
+                            $cart->save();
+                        }
+                    }
+                }
+            }
+        }
+        return redirect()->route('carts')->with('success', 'Ordered items added to cart successfully.');
     }
 }

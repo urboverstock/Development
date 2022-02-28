@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Page;
 use App\Models\UserRole;
 use App\Models\Cart;
+use App\Models\OrderDetail;
 use App\Models\Coupon;
 use App\Models\UsedCoupon;
 use App\Models\UserFollowers;
@@ -19,7 +20,7 @@ use App\Models\Faq;
 use App\Models\SaveLater;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Order;
-use Auth, Validator, Hash;
+use Auth, Validator, Hash, DB;
 
 class LandingController extends Controller
 {
@@ -381,10 +382,21 @@ class LandingController extends Controller
         $get_offer_amount = array_column($carts, 'product_offer');
         $total_offer = array_sum($get_offer_amount);
 
-        // echo "<pre>";
-        // print_r($carts);die();
+        $trends = DB::table('order_details')
+            ->leftJoin('products','products.id','=','order_details.product_id')
+            ->selectRaw('products.*, sum(order_details.product_quantity) total')
+            ->groupBy('order_details.product_id')
+            ->orderBy('total','desc')
+            ->take(4)
+            //->get()->toArray();
+            ->pluck('id')->toArray();
+        
+        $trending_products = Product::with('product_image')->whereIn('id', $trends)->orderBy('id', 'DESC')->get()->toArray();
 
-        return view('buyer.cart', compact('carts', 'total_price', 'recent_products', 'apply_coupon', 'total_offer'));
+        // echo "<pre>";
+        // print_r($recent_products);die();
+
+        return view('buyer.cart', compact('carts', 'total_price', 'recent_products','trending_products', 'apply_coupon', 'total_offer'));
     }
 
     public function increaseOrDecreaseCart(Request $request)

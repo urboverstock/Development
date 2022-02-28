@@ -143,7 +143,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'buyer'], function () {
     Route::any('orders', [App\Http\Controllers\Buyer\OrderController::class, 'orderList'])->name('buyerOrderList');
     Route::any('order/{id}', [App\Http\Controllers\Buyer\OrderController::class, 'viewOrder'])->name('buyerViewOrder');
     Route::any('order-status/{orderId}/{orderStatus}', [App\Http\Controllers\Buyer\OrderController::class, 'updateOrderStatus'])->name('buyerUpdateOrderStatus');
-
+    Route::any('reorder/{orderId}', [App\Http\Controllers\Buyer\OrderController::class, 'reOrder'])->name('buyerReOrder');
 
 
 });
