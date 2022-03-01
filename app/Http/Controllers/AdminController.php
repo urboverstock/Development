@@ -255,7 +255,7 @@ class AdminController extends Controller
           
 
           if($user->save()){
-              return redirect::back()->with('success', 'Profile has been update successfully.');
+              return redirect()->route('admin.dashboard')->with('success', "Profile has been update successfully.");
           }else{
               return redirect()->back()->with('error', COMMON_ERROR);
           }
