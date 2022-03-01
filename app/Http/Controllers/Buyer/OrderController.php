@@ -47,8 +47,22 @@ class OrderController extends Controller
     {
         $id = Crypt::decrypt($id);
     	$order = Order::with('getOrderDetail.getProductDetails', 'getUserAddress.getUserDetail')->find($id);
-    	// print_r($order);die();
-        return view('buyer.order.orderDetail', compact('order'));
+
+        $out_off_stock_item_array = [];
+        $out_off_stock_items = "";
+        if(isset($order->getOrderDetail) && !empty($order->getOrderDetail)){
+            $userId = Auth::user()->id;
+            foreach ($order->getOrderDetail as $key => $item) {
+                if($item->getProductDetails->quantity == 0){
+                    $out_off_stock_item_array[] = $item->getProductDetails->name;
+                }
+            }
+        }
+
+        if(sizeof($order->getOrderDetail) != sizeof($out_off_stock_item_array)){
+            $out_off_stock_items = implode(', ', $out_off_stock_item_array);
+        }
+        return view('buyer.order.orderDetail', compact('order','out_off_stock_items'));
     }
 
     //Change the order status

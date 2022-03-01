@@ -13,7 +13,12 @@
            <h6 class="f-600 mb-2" data-aos="fade-up">Total Price : {{ $order->price }}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Status : {{ getOrderStatusName($order->status) }}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Ordered Date : {{ date('h:s:A', strtotime($order->created_at)) }} | {{ date('d M Y', strtotime($order->created_at)) }}</h6>
-           <a href="{{ route('buyerReOrder', \Illuminate\Support\Facades\Crypt::encrypt($order->id)) }}" class="btn btn-dark">Reorder</a>
+           @if(getOrderStatusName($order->status) == "ORDER COMPLETED")
+            <a href="{{ route('buyerReOrder', \Illuminate\Support\Facades\Crypt::encrypt($order->id)) }}" class="btn btn-dark">Reorder</a>
+            @if($out_off_stock_items != "")
+              <p style="color:red;">{{$out_off_stock_items}} items is currently out off stock.</p>
+            @endif
+           @endif
           </div>
 
          @if(!empty($order->getUserAddress->getUserDetail) && isset($order->getUserAddress->getUserDetail))
