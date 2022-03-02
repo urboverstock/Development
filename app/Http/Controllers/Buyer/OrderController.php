@@ -61,6 +61,8 @@ class OrderController extends Controller
 
         if(sizeof($order->getOrderDetail) != sizeof($out_off_stock_item_array)){
             $out_off_stock_items = implode(', ', $out_off_stock_item_array);
+        }else{
+            $out_off_stock_items = "All";
         }
         return view('buyer.order.orderDetail', compact('order','out_off_stock_items'));
     }

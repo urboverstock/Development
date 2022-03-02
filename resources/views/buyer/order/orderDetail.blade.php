@@ -14,10 +14,10 @@
            <h6 class="f-600 mb-2" data-aos="fade-up">Status : {{ getOrderStatusName($order->status) }}</h6>
            <h6 class="f-600 mb-2" data-aos="fade-up">Ordered Date : {{ date('h:s:A', strtotime($order->created_at)) }} | {{ date('d M Y', strtotime($order->created_at)) }}</h6>
            @if(getOrderStatusName($order->status) == "ORDER COMPLETED")
-            <a href="{{ route('buyerReOrder', \Illuminate\Support\Facades\Crypt::encrypt($order->id)) }}" class="btn btn-dark">Reorder</a>
-            
-            @if($out_off_stock_items != "")
-              <p style="color:red;">{{$out_off_stock_items}} items is currently out off stock.</p>
+            @if($out_off_stock_items == "")
+              <a href="{{ route('buyerReOrder', \Illuminate\Support\Facades\Crypt::encrypt($order->id)) }}" class="btn btn-dark">Reorder</a>
+            @else
+              <a href="javascript:void(0);" class="btn btn-dark"  data-bs-toggle="modal" data-bs-target="#reorderModal">Reorder</a>
             @endif
            @endif
           </div>
@@ -93,3 +93,30 @@
     </div>
   </section>
 @endsection
+
+<!-- Modal -->
+<div class="modal fade" id="reorderModal" tabindex="-1" aria-labelledby="couponModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="couponModalLabel">Reorder</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        @if($out_off_stock_items == "All")
+          <p style="color:red;">All ordered items is currently out off stock.</p>
+        @else
+          <p>Are you sure you want to reorder item?</p>
+          @if($out_off_stock_items != "" && $out_off_stock_items != "All")
+            <p style="color:red;">{{$out_off_stock_items}} items is currently out off stock.</p>
+          @endif
+          <a href="{{ route('buyerReOrder', \Illuminate\Support\Facades\Crypt::encrypt($order->id)) }}" class="btn btn-dark">Reorder</a>
+        @endif
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
