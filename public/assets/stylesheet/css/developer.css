@@ -20,7 +20,16 @@ input[password] .text-one-line {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
+.password-prepend-icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.password-prepend-icon svg {
+    width: 24px;
+    height: 24px;
+    color: #d9b950;
+}
 .h-300 {
     height: 300px;
 }
