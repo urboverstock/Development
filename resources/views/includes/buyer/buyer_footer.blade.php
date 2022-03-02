@@ -10,31 +10,32 @@
       <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-2 mb-3">
           <div class="d-flex flex-column">
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Home Decor</a>
+            <!--a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Home Decor</a>
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Kitchenware</a>
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Fitness Tools </a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Electronics </a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">All Products </a>
+            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Electronics </a-->
+            <a href="{{ route('get-started') }}" class="text-dark text-decoration-none mb-3 fw-bold">All Products </a>
           </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-2 mb-3">
           <div class="d-flex flex-column">
-            <a href="{{ route('viewPage', 'about-us') }}" class="text-dark text-decoration-none mb-3 fw-bold">About Us</a>
+            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">About Us</a>
             <!-- <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Contact Now</a> -->
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Our Community </a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">How It Works </a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">FAQ’s </a>
+            <!--a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Our Community </a-->
+            <a href="{{url('/')}}#" class="text-dark text-decoration-none mb-3 fw-bold">How It Works </a>
+            <a href="{{url('/')}}#z-faq" class="text-dark text-decoration-none mb-3 fw-bold">FAQ’s </a>
           </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-2 mb-3">
           <div class="d-flex flex-column">
             <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Browse Through</a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Terms of Service</a>
+            <a href="{{url('/')}}#" class="text-dark text-decoration-none mb-3 fw-bold">Terms of Service</a>
             <a href="{{ route('viewPage', 'privacy-policy') }}" class="text-dark text-decoration-none mb-3 fw-bold">Privacy Policy</a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Refund Policy </a>
-            <a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Disclaimer </a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#refunPolicy" class="text-dark text-decoration-none mb-3 fw-bold">Refund Policy </a>
+            <!--a href="#" class="text-dark text-decoration-none mb-3 fw-bold">Disclaimer </a-->
           </div>
         </div>
+        @include('includes.modal.refund_policy')
         <div class="col-sm-12 col-md-12 col-lg-6 mb-3">
           <form method="post" action="{{ route('sendNewsLetter') }}">
             @csrf
