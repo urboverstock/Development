@@ -104,11 +104,15 @@
       </div>
       <div class="modal-body">
         @if($out_off_stock_items == "All")
-          <p style="color:red;">All ordered items is currently out off stock.</p>
+          @if($out_off_stock_item_count == 1)
+            <p style="color:red;">This order quantity is out of stock.</p>
+          @else
+            <p style="color:red;">All ordered items is currently out of stock.</p>
+          @endif
         @else
           <p>Are you sure you want to reorder item?</p>
           @if($out_off_stock_items != "" && $out_off_stock_items != "All")
-            <p style="color:red;">{{$out_off_stock_items}} items is currently out off stock.</p>
+            <p style="color:red;">{{$out_off_stock_items}} items is currently out of stock.</p>
           @endif
           <a href="{{ route('buyerReOrder', \Illuminate\Support\Facades\Crypt::encrypt($order->id)) }}" class="btn btn-dark">Reorder</a>
         @endif

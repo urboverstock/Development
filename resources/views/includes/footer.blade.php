@@ -18,20 +18,20 @@
         </div>
         <div class="col-sm-6 col-md-6 col-lg-2 mb-3">
           <div class="d-flex flex-column">
-            <a href="#" class="text-black text-decoration-none mb-3 fw-500">About Us</a>
+            <a href="{{ route('viewPage', 'about-us') }}" class="text-black text-decoration-none mb-3 fw-500">About Us</a>
             <!-- <a href="{{ route('viewPage', 'about-us') }}" class="text-black text-decoration-none mb-3 fw-500">About Us</a> -->
             <!-- <a href="#" class="text-black text-decoration-none mb-3 fw-500">Contact Now</a> -->
             <!-- <a href="#" class="text-black text-decoration-none mb-3 fw-500">Our Community </a> -->
-            <a href="#" class="text-black text-decoration-none mb-3 fw-500">How It Works </a>
+            <a href="{{ route('viewPage', 'how-it-works') }}" class="text-black text-decoration-none mb-3 fw-500">How It Works </a>
             <a href="#z-faq"  class="text-black text-decoration-none mb-3 fw-500">FAQ’s </a>
           </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-2 mb-3">
           <div class="d-flex flex-column">
-            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Browse Through</a>
-            <a href="#" class="text-black text-decoration-none mb-3 fw-500">Terms of Service</a>
+            <a href="{{ route('viewPage', 'browse-through') }}" class="text-black text-decoration-none mb-3 fw-500">Browse Through</a>
+            <a href="{{ route('viewPage', 'terms-of-service') }}" class="text-black text-decoration-none mb-3 fw-500">Terms of Service</a>
             <a href="{{ route('viewPage', 'privacy-policy') }}" class="text-black text-decoration-none mb-3 fw-500">Privacy Policy</a>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#refunPolicy" class="text-black text-decoration-none mb-3 fw-500">Refund Policy </a>
+            <a href="{{ route('viewPage', 'refund-policy') }}" class="text-black text-decoration-none mb-3 fw-500">Refund Policy </a>
             <!-- <a href="#" class="text-black text-decoration-none mb-3 fw-500">Disclaimer </a> -->
           </div>
         </div>

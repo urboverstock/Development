@@ -50,21 +50,24 @@ class OrderController extends Controller
 
         $out_off_stock_item_array = [];
         $out_off_stock_items = "";
+        $out_off_stock_item_count = 0;
         if(isset($order->getOrderDetail) && !empty($order->getOrderDetail)){
             $userId = Auth::user()->id;
             foreach ($order->getOrderDetail as $key => $item) {
-                if($item->getProductDetails->quantity == 0){
+                if($item->getProductDetails->quantity == 0 || $item->getProductDetails->status == 0){
                     $out_off_stock_item_array[] = $item->getProductDetails->name;
                 }
             }
         }
 
+        $out_off_stock_item_count = sizeof($out_off_stock_item_array);
         if(sizeof($order->getOrderDetail) != sizeof($out_off_stock_item_array)){
             $out_off_stock_items = implode(', ', $out_off_stock_item_array);
         }else{
             $out_off_stock_items = "All";
         }
-        return view('buyer.order.orderDetail', compact('order','out_off_stock_items'));
+
+        return view('buyer.order.orderDetail', compact('order','out_off_stock_items','out_off_stock_item_count'));
     }
 
     //Change the order status
