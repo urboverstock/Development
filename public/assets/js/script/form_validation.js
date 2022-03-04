@@ -1087,5 +1087,35 @@ $(document).ready(function() {
 
 	    },
 	});
+
+	$("body").on('click', '.password-prepend-icon', function() {
+		//$(this).toggleClass("fa-eye fa-eye-slash");
+		var input = $("#login_password");
+		if (input.attr("type") === "password") {
+		  input.attr("type", "text");
+		} else {
+		  input.attr("type", "password");
+		}
+	});
+
+	$("body").on('click', '.reg-password', function() {
+		//$(this).toggleClass("fa-eye fa-eye-slash");
+		var input = $("#password");
+		if (input.attr("type") === "password") {
+		  input.attr("type", "text");
+		} else {
+		  input.attr("type", "password");
+		}
+	});
+
+	$("body").on('click', '.reg-confirm-password', function() {
+		//$(this).toggleClass("fa-eye fa-eye-slash");
+		var input = $("#reg_confirm_password");
+		if (input.attr("type") === "password") {
+		  input.attr("type", "text");
+		} else {
+		  input.attr("type", "password");
+		}
+	});
 });
 

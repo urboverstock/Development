@@ -22,13 +22,13 @@
           <input class="form-control form-control-lg mb-4 py-3" type="text" placeholder="Email@address.com" aria-label="Email@address.com" name="email" value="{{ old('email') }}">
           <span class="error">{{ $errors->first('email') }}</span>
           <div class="position-relative">
-            <span class="password-prepend-icon ">
+            <span class="password-prepend-icon" style="cursor:pointer;">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
             </span>
-            <input class="form-control form-control-lg session py-3" type="password" placeholder="Password" aria-label="password" name="password">
+            <input class="form-control form-control-lg session py-3" id="login_password" type="password" placeholder="Password" aria-label="password" name="password">
           </div>
           
           <span class="error d-block">{{ $errors->first('password') }}</span>
