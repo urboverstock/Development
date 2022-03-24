@@ -148,7 +148,7 @@
                 let socket_port = 3000;
                 console.log(ip_address);
                 let socket = io(ip_address + ':' + socket_port);
-
+                console.log(socket);
                 var socketId = '';
                 socket.on('connect', () => {
                     socketId = socket.id;
