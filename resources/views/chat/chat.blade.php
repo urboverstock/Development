@@ -153,8 +153,9 @@
                 socket.on('connect', () => {
                     socketId = socket.id;
                     console.log(socketId + 'socketId');
+                    console.log("Successfully Connected Node Server");
                 });
-                console.log("Successfully Connected Node Server");
+                
                 let recieverId = $("#recieverId").val();
                 let senderId = $("#senderId").val();
                 let username = $('#username').val();
